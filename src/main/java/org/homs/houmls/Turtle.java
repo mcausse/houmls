@@ -5,8 +5,8 @@ import java.util.Stack;
 
 public class Turtle {
 
-    Stack<Double> xs = new Stack<>();
-    Stack<Double> ys = new Stack<>();
+    final Stack<Double> xs = new Stack<>();
+    final Stack<Double> ys = new Stack<>();
 
     double angle;
 
@@ -21,8 +21,8 @@ public class Turtle {
     }
 
     public void walk(double distance) {
-        this.xs.push(this.xs.peek() + distance*Math.cos(angle));
-        this.ys.push(this.ys.peek() + distance*Math.sin(angle));
+        this.xs.push(this.xs.peek() + distance * Math.cos(angle));
+        this.ys.push(this.ys.peek() + distance * Math.sin(angle));
     }
 
     public void drawPolyline(Graphics g) {
@@ -34,6 +34,7 @@ public class Turtle {
         }
         g.drawPolyline(xsa, ysa, xs.size());
     }
+
     public void fillPolygon(Graphics g) {
         int[] xsa = new int[xs.size()];
         int[] ysa = new int[xs.size()];

@@ -10,6 +10,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Supplier;
 
 // XXX https://stackoverflow.com/questions/63583595/java-graphics2d-zoom-on-mouse-location
 // XXX https://medium.com/@benjamin.botto/zooming-at-the-mouse-coordinates-with-affine-transformations-86e7312fd50b
@@ -74,7 +75,15 @@ public class MainC1 {
         public static final double DIAMOND_SIZE = 13.0;
 
         public enum Type {
-            DEFAULT, AGGREGATION, COMPOSITION, ARROW;
+            DEFAULT, AGGREGATION, COMPOSITION, ARROW, MEMBER_COMMENT,
+            //
+            // Crow’s Foot Notation
+            // https://vertabelo.com/blog/crow-s-foot-notation/
+            // http://www2.cs.uregina.ca/~bernatja/crowsfoot.html
+            //
+            // TODO
+//            TO_ONE_OPTIONAL, TO_ONE_MANDATORY,
+//            TO_MANY_OPTIONAL, TO_MANY_MANDATORY
         }
 
         Shape linkedStartShape;
@@ -85,7 +94,7 @@ public class MainC1 {
         Type endType;
         double endx, endy;
 
-        List<Point> points;
+        List<Point> middlePoints;
 
         public Arrow(Shape linkedStartShape, Type startType, double startx, double starty, Shape linkedEndShape, Type endType, double endx, double endy) {
             this.linkedStartShape = linkedStartShape;
@@ -96,11 +105,102 @@ public class MainC1 {
             this.endType = endType;
             this.endx = endx;
             this.endy = endy;
-            this.points = new ArrayList<>();
+            this.middlePoints = new ArrayList<>();
         }
 
-        public List<Point> getPoints() {
-            return points;
+        public List<Point> getMiddlePoints() {
+            return middlePoints;
+        }
+
+        @Override
+        public Draggable findTranslatableByPos(double mousex, double mousey) {
+
+            int BOX_SIZE = (int) (DIAMOND_SIZE * 2);
+
+            /*
+             * START
+             */
+            {
+                Supplier<Rectangle> boxSupplier = () -> {
+                    Point p = getStartOrEndPoint(linkedStartShape, startx, starty);
+                    Rectangle box = new Rectangle((int) (p.getX() - BOX_SIZE), (int) (p.getY() - BOX_SIZE), BOX_SIZE * 2, BOX_SIZE * 2);
+                    return box;
+                };
+                if (boxSupplier.get().contains(mousex, mousey)) {
+                    return new Draggable() {
+                        @Override
+                        public Cursor getTranslationCursor() {
+                            return Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR);
+                        }
+
+                        @Override
+                        public Rectangle getRectangle() {
+                            return boxSupplier.get();
+                        }
+
+                        @Override
+                        public void translate(double dx, double dy) {
+                            startx += dx;
+                            starty += dy;
+                        }
+                    };
+                }
+            }
+            /*
+             * END
+             */
+            {
+                Supplier<Rectangle> boxSupplier = () -> {
+                    Point p = getStartOrEndPoint(linkedEndShape, endx, endy);
+                    Rectangle box = new Rectangle((int) (p.getX() - BOX_SIZE), (int) (p.getY() - BOX_SIZE), BOX_SIZE * 2, BOX_SIZE * 2);
+                    return box;
+                };
+                if (boxSupplier.get().contains(mousex, mousey)) {
+                    return new Draggable() {
+                        @Override
+                        public Cursor getTranslationCursor() {
+                            return Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR);
+                        }
+
+                        @Override
+                        public Rectangle getRectangle() {
+                            return boxSupplier.get();
+                        }
+
+                        @Override
+                        public void translate(double dx, double dy) {
+                            endx += dx;
+                            endy += dy;
+                        }
+                    };
+                }
+            }
+
+            /*
+             * N-MIDDLE POINTS!
+             */
+            for (var middlePoint : middlePoints) {
+                Supplier<Rectangle> boxSupplier = () -> new Rectangle((int) (middlePoint.getX() - BOX_SIZE), (int) (middlePoint.getY() - BOX_SIZE), BOX_SIZE * 2, BOX_SIZE * 2);
+                if (boxSupplier.get().contains(mousex, mousey)) {
+                    return new Draggable() {
+                        @Override
+                        public Cursor getTranslationCursor() {
+                            return Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR);
+                        }
+
+                        @Override
+                        public Rectangle getRectangle() {
+                            return boxSupplier.get();
+                        }
+
+                        @Override
+                        public void translate(double dx, double dy) {
+                            middlePoint.translate((int) dx, (int) dy);
+                        }
+                    };
+                }
+            }
+            return null;
         }
 
         @Override
@@ -120,7 +220,7 @@ public class MainC1 {
         List<Point> getListOfAbsolutePoints() {
             List<Point> r = new ArrayList<>();
             r.add(getStartOrEndPoint(linkedStartShape, startx, starty));
-            r.addAll(this.points);
+            r.addAll(this.middlePoints);
             r.add(getStartOrEndPoint(linkedEndShape, endx, endy));
             return r;
         }
@@ -132,11 +232,6 @@ public class MainC1 {
                 var rect = linkedStartShape.getRectangle();
                 return new Point((int) (rect.getX() + startx), (int) (rect.getY() + starty));
             }
-        }
-
-        @Override
-        public Draggable findTranslatableByPos(double mousex, double mousey) {
-            return null;
         }
 
         @Override
@@ -169,6 +264,10 @@ public class MainC1 {
         private void drawEdgeOfArrow(Graphics g, Type type, Point firstPoint, double angle, double sqrmod) {
             switch (type) {
                 case DEFAULT:
+                    break;
+                case MEMBER_COMMENT:
+                    int MEMBER_COMMENT_BOX_RADIUS = 3;
+                    g.fillRoundRect(firstPoint.x - MEMBER_COMMENT_BOX_RADIUS, firstPoint.y - MEMBER_COMMENT_BOX_RADIUS, MEMBER_COMMENT_BOX_RADIUS * 2, MEMBER_COMMENT_BOX_RADIUS * 2, 2, 2);
                     break;
                 case AGGREGATION:
                 case COMPOSITION: {
@@ -205,44 +304,33 @@ public class MainC1 {
                     turtle.drawPolyline(g);
                 }
                 break;
+
+//                case TO_ONE_OPTIONAL:
+//                case TO_ONE_MANDATORY: {
+//                    var turtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);
+//                    turtle.walk(DIAMOND_SIZE*2);
+//                    turtle.rotate(90);
+//                    turtle.walk(DIAMOND_SIZE);
+//                    turtle.walk(-DIAMOND_SIZE * 2);
+//                    turtle.drawPolyline(g);
+//                }
+//                break;
+//                case TO_MANY_OPTIONAL:
+//                case TO_MANY_MANDATORY: {
+//                    var turtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);
+//                    turtle.walk(DIAMOND_SIZE);
+//                    turtle.rotate(135);
+//                    turtle.walk(DIAMOND_SIZE);
+//                    turtle.walk(-DIAMOND_SIZE);
+//                    turtle.rotate(90);
+//                    turtle.walk(DIAMOND_SIZE);
+//                    turtle.walk(-DIAMOND_SIZE);
+//                    turtle.drawPolyline(g);
+//                }
+//                break;
                 default:
                     throw new RuntimeException(startType.name());
             }
-//            int[] xs = {
-//                    firstPoint.x,
-//                    (int) (firstPoint.x + DIAMOND_SIZE * Math.cos(angle - Math.PI / 4.0)),
-//                    (int) (firstPoint.x + sqrmod * Math.cos(angle)),
-//                    (int) (firstPoint.x + DIAMOND_SIZE * Math.cos(angle + Math.PI / 4.0)),
-//                    firstPoint.x
-//            };
-//            int[] ys = {
-//                    firstPoint.y,
-//                    (int) (firstPoint.y + DIAMOND_SIZE * Math.sin(angle - Math.PI / 4.0)),
-//                    (int) (firstPoint.y + sqrmod * Math.sin(angle)),
-//                    (int) (firstPoint.y + DIAMOND_SIZE * Math.sin(angle + Math.PI / 4.0)),
-//                    firstPoint.y
-//            };
-//
-//            switch (type) {
-//                case DEFAULT:
-//                    break;
-//                case AGGREGATION:
-//                    g.setColor(Color.WHITE);
-//                    g.fillPolygon(xs, ys, 5);
-//                    g.setColor(Color.BLACK);
-//                    g.drawPolyline(xs, ys, 5);
-//                    break;
-//                case COMPOSITION:
-//                    g.setColor(Color.BLACK);
-//                    g.fillPolygon(xs, ys, 5);
-////                    g.setColor(Color.BLACK);
-////                    g.drawPolyline(xs, ys, 5);
-//                    break;
-//                case ARROW:
-//                    // TODO
-//                default:
-//                    throw new RuntimeException(startType.name());
-//            }
         }
     }
 
@@ -528,6 +616,14 @@ public class MainC1 {
             g.fillRect(0, 0, dim.width, dim.height);
 
             Graphics2D g2 = (Graphics2D) g;
+
+            g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+            g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+            g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+            g2.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+            g2.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
+            g2.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
+
             g2.setStroke(new BasicStroke(1));
 
 
@@ -586,9 +682,12 @@ public class MainC1 {
         Clazz class2 = new Clazz(250, 50, 150, 150, "*11111\n---\n233333\n---");
         canvas.addElement(class1);
         canvas.addElement(class2);
-//        Arrow arrow = new Arrow(class1, Arrow.Type.AGGREGATION, 0, 0, class2, Arrow.Type.COMPOSITION, 0, 0);
-        Arrow arrow = new Arrow(class1, Arrow.Type.ARROW, 0, 0, class2, Arrow.Type.ARROW, 0, 0);
-        arrow.getPoints().add(new Point(200, 500));
+        Arrow arrow = new Arrow(class1, Arrow.Type.AGGREGATION, 0, 0, class2, Arrow.Type.COMPOSITION, 0, 0);
+//        Arrow arrow = new Arrow(class1, Arrow.Type.ARROW, 0, 0, class2, Arrow.Type.ARROW, 0, 0);
+//        Arrow arrow = new Arrow(class1, Arrow.Type.MEMBER_COMMENT, 0, 0, class2, Arrow.Type.MEMBER_COMMENT, 0, 0);
+//        Arrow arrow = new Arrow(class1, Arrow.Type.TO_ONE_OPTIONAL, 0, 0, class2, Arrow.Type.TO_MANY_OPTIONAL, 0, 0);
+
+        arrow.getMiddlePoints().add(new Point(200, 500));
         canvas.addElement(arrow);
 
         var f = new JFrame("MartinUML (Houmls)");
