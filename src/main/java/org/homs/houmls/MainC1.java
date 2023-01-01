@@ -50,10 +50,6 @@ public class MainC1 {
         }
     }
 
-    /**
-     * Modela les característiques d'un aspecte "draggable", com pot ser un bloc, o
-     * l'aresta d'un bloc, una fletxa, o la punta d'una fletxa.
-     */
     public interface Draggable {
 
         Cursor getTranslationCursor();
@@ -566,6 +562,7 @@ public class MainC1 {
             @Override
             public void mouseReleased(MouseEvent e) {
                 setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+//                selectedDraggable.dragHasFinished(elements);
                 lastDragPoint = null;
                 selectedDraggable = null;
             }
