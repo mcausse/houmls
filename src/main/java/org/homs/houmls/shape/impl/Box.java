@@ -48,38 +48,11 @@ public class Box implements Shape {
         int iwidth = (int) width;
         int iheight = (int) height;
 
-        g.setColor(Color.YELLOW);
-        g.fillRect(ix, iy, iwidth, iheight);
+        drawTheBox((Graphics2D) g);
 
-        Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(Color.BLACK);
-        g2.setStroke(basicStroke);
-
-        g2.drawRect(ix, iy, iwidth, iheight);
-
-        // ombra fina
-        g2.drawLine(ix + iwidth + 1, iy + 1, ix + iwidth + 1, iy + iheight + 1);
-        g2.drawLine(ix + 1, iy + iheight + 1, ix + iwidth + 1, iy + iheight + 1);
+        var g2 = (Graphics2D) g;
 
         String[] textLines = attributesText.split("\\n");
-//        int rownum = 0;
-//        for (String line : textLines) {
-//            if (line.trim().equals("---")) {
-//                g.drawLine(ix, iy + (fontHeigth + FONT_Y_CORRECTION) * rownum, ix + iwidth, iy + (fontHeigth + FONT_Y_CORRECTION) * rownum);
-//            } else {
-//                rownum++;
-//                if (line.startsWith("*")) {
-//                    line = line.substring(1);
-//                    g.setFont(LookAndFeel.regularFontBold);
-//                } else if (line.startsWith("_")) {
-//                    line = line.substring(1);
-//                    g.setFont(LookAndFeel.regularFontItalic);
-//                } else {
-//                    g.setFont(LookAndFeel.regularFont);
-//                }
-//                g.drawString(line, ix + FONT_X_CORRECTION, iy + rownum * (fontHeigth + FONT_Y_CORRECTION) - FONT_Y_CORRECTION);
-//            }
-//        }
         int y = iy;
         for (String line : textLines) {
             if (line.trim().equals("---")) {
@@ -88,10 +61,8 @@ public class Box implements Shape {
             } else {
 
                 int alignCorrectionXPx = FONT_X_CORRECTION;
-                boolean centerAlign = false;
                 if (line.startsWith(".")) {
                     line = line.substring(1);
-                    centerAlign = true;
                     int textLineWidthPx = (int) new StringMetrics(g2).getWidth(line);
                     int boxWidthPx = (int) this.width;
                     alignCorrectionXPx += boxWidthPx / 2 - textLineWidthPx / 2;
@@ -109,6 +80,26 @@ public class Box implements Shape {
                 g.drawString(line, ix + alignCorrectionXPx, y);
             }
         }
+    }
+
+    protected void drawTheBox(Graphics2D g2) {
+
+        int ix = (int) x;
+        int iy = (int) y;
+        int iwidth = (int) width;
+        int iheight = (int) height;
+
+        g2.setColor(Color.YELLOW);
+        g2.fillRect(ix, iy, iwidth, iheight);
+
+        g2.setColor(Color.BLACK);
+        g2.setStroke(basicStroke);
+
+        g2.drawRect(ix, iy, iwidth, iheight);
+
+        // ombra fina
+        g2.drawLine(ix + iwidth + 1, iy + 1, ix + iwidth + 1, iy + iheight + 1);
+        g2.drawLine(ix + 1, iy + iheight + 1, ix + iwidth + 1, iy + iheight + 1);
     }
 
     @Override

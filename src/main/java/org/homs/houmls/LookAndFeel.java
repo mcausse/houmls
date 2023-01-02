@@ -3,6 +3,9 @@ package org.homs.houmls;
 import java.awt.*;
 
 public class LookAndFeel {
+
+    public static final Color yellowMartin = new Color(0xff, 0xff, 0xda);
+
     protected static final String regularFontName = Font.SANS_SERIF; // Font.MONOSPACED; //"Courier";
     protected static final int regularFontSize = 12;
 

@@ -4,6 +4,8 @@ import org.homs.houmls.shape.Draggable;
 import org.homs.houmls.shape.Shape;
 
 import javax.swing.*;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.AffineTransform;
@@ -17,8 +19,6 @@ import static org.homs.houmls.LookAndFeel.basicStroke;
 
 public class Canvas extends JPanel {
 
-//    public static final int SELECTION_BORDER_PX = 10;
-
     // TODO canviar a List per permetre multi-sel.lecció
     Shape selectedShape = null;
     String diagramAttributesText = "Welcome to Houmls, the superb and open-source UML tool.";
@@ -29,11 +29,29 @@ public class Canvas extends JPanel {
 
         public ObjectSelectorListener(JTextArea editorTextPaneRef) {
             this.editorTextPaneRef = editorTextPaneRef;
-            this.editorTextPaneRef.addKeyListener(new KeyAdapter() {
+            this.editorTextPaneRef.getDocument().addDocumentListener(new DocumentListener() {
                 @Override
-                public void keyTyped(KeyEvent e) {
-                    selectedShape.setAttributesText(editorTextPaneRef.getText());
-                    repaint();
+                public void insertUpdate(DocumentEvent e) {
+                    update(e);
+                }
+
+                @Override
+                public void removeUpdate(DocumentEvent e) {
+                    update(e);
+                }
+
+                @Override
+                public void changedUpdate(DocumentEvent e) {
+                    update(e);
+                }
+
+                void update(DocumentEvent e) {
+                    if (selectedShape == null) {
+                        diagramAttributesText = editorTextPaneRef.getText();
+                    } else {
+                        selectedShape.setAttributesText(editorTextPaneRef.getText());
+                        repaint();
+                    }
                 }
             });
         }

@@ -1,12 +1,14 @@
 package org.homs.houmls;
 
 import org.homs.houmls.shape.impl.Box;
+import org.homs.houmls.shape.impl.Comment;
 import org.homs.houmls.shape.impl.Connector;
 
 import javax.swing.*;
 import java.awt.*;
 
 import static org.homs.houmls.GridControl.GRID_SIZE;
+import static org.homs.houmls.LookAndFeel.yellowMartin;
 
 // XXX https://stackoverflow.com/questions/63583595/java-graphics2d-zoom-on-mouse-location
 // XXX https://medium.com/@benjamin.botto/zooming-at-the-mouse-coordinates-with-affine-transformations-86e7312fd50b
@@ -46,6 +48,7 @@ public class MainC1 {
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
         var shapeTextEditor = new JTextArea();
+        shapeTextEditor.setBackground(yellowMartin);
 
         var canvas = new Canvas(shapeTextEditor);
         {
@@ -70,6 +73,9 @@ public class MainC1 {
             canvas.addElement(target);
             canvas.addElement(adapter);
             canvas.addElement(commentConnector);
+
+            var comment = new Comment(GRID_SIZE * 30, GRID_SIZE * 35, GRID_SIZE * 10, GRID_SIZE * 10, "This is just a \nsimple comment!");
+            canvas.addElement(comment);
         }
         {
 //            HoumlsConnector houmlsConnector = new HoumlsConnector(
@@ -114,7 +120,7 @@ public class MainC1 {
 
         f.setVisible(true);
         SwingUtilities.invokeLater(() -> {
-            sl.setDividerLocation(0.8);
+            sl.setDividerLocation(0.7);
             toolBoxSplitPane.setDividerLocation(0.5);
         });
     }
