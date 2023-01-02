@@ -2,6 +2,7 @@ package org.homs.houmls.shape.impl;
 
 import org.homs.houmls.GridControl;
 import org.homs.houmls.LookAndFeel;
+import org.homs.houmls.StringMetrics;
 import org.homs.houmls.shape.Draggable;
 import org.homs.houmls.shape.Shape;
 
@@ -10,7 +11,7 @@ import java.util.List;
 
 import static org.homs.houmls.LookAndFeel.basicStroke;
 
-public class HoumlsBox implements Shape {
+public class Box implements Shape {
 
     static final int FONT_X_CORRECTION = 5;
     static final int FONT_Y_CORRECTION = 6;
@@ -21,7 +22,7 @@ public class HoumlsBox implements Shape {
     double height;
     String attributesText;
 
-    public HoumlsBox(int x, int y, int width, int height, String attributesText) {
+    public Box(int x, int y, int width, int height, String attributesText) {
         this.x = x;
         this.y = y;
         this.width = width;
@@ -56,13 +57,45 @@ public class HoumlsBox implements Shape {
 
         g2.drawRect(ix, iy, iwidth, iheight);
 
+        // ombra fina
+        g2.drawLine(ix + iwidth + 1, iy + 1, ix + iwidth + 1, iy + iheight + 1);
+        g2.drawLine(ix + 1, iy + iheight + 1, ix + iwidth + 1, iy + iheight + 1);
+
         String[] textLines = attributesText.split("\\n");
-        int rownum = 0;
+//        int rownum = 0;
+//        for (String line : textLines) {
+//            if (line.trim().equals("---")) {
+//                g.drawLine(ix, iy + (fontHeigth + FONT_Y_CORRECTION) * rownum, ix + iwidth, iy + (fontHeigth + FONT_Y_CORRECTION) * rownum);
+//            } else {
+//                rownum++;
+//                if (line.startsWith("*")) {
+//                    line = line.substring(1);
+//                    g.setFont(LookAndFeel.regularFontBold);
+//                } else if (line.startsWith("_")) {
+//                    line = line.substring(1);
+//                    g.setFont(LookAndFeel.regularFontItalic);
+//                } else {
+//                    g.setFont(LookAndFeel.regularFont);
+//                }
+//                g.drawString(line, ix + FONT_X_CORRECTION, iy + rownum * (fontHeigth + FONT_Y_CORRECTION) - FONT_Y_CORRECTION);
+//            }
+//        }
+        int y = iy;
         for (String line : textLines) {
             if (line.trim().equals("---")) {
-                g.drawLine(ix, iy + (fontHeigth + FONT_Y_CORRECTION) * rownum, ix + iwidth, iy + (fontHeigth + FONT_Y_CORRECTION) * rownum);
+                y += FONT_Y_CORRECTION;
+                g.drawLine(ix, y, ix + iwidth, y);
             } else {
-                rownum++;
+
+                int alignCorrectionXPx = FONT_X_CORRECTION;
+                boolean centerAlign = false;
+                if (line.startsWith(".")) {
+                    line = line.substring(1);
+                    centerAlign = true;
+                    int textLineWidthPx = (int) new StringMetrics(g2).getWidth(line);
+                    int boxWidthPx = (int) this.width;
+                    alignCorrectionXPx += boxWidthPx / 2 - textLineWidthPx / 2;
+                }
                 if (line.startsWith("*")) {
                     line = line.substring(1);
                     g.setFont(LookAndFeel.regularFontBold);
@@ -72,7 +105,8 @@ public class HoumlsBox implements Shape {
                 } else {
                     g.setFont(LookAndFeel.regularFont);
                 }
-                g.drawString(line, ix + FONT_X_CORRECTION, iy + rownum * (fontHeigth + FONT_Y_CORRECTION) - FONT_Y_CORRECTION);
+                y += fontHeigth;
+                g.drawString(line, ix + alignCorrectionXPx, y);
             }
         }
     }

@@ -21,15 +21,30 @@ public class Canvas extends JPanel {
 
     // TODO canviar a List per permetre multi-sel.lecció
     Shape selectedShape = null;
+    String diagramAttributesText = "Welcome to Houmls, the superb and open-source UML tool.";
 
     class ObjectSelectorListener extends MouseAdapter {
+
+        final JTextArea editorTextPaneRef;
+
+        public ObjectSelectorListener(JTextArea editorTextPaneRef) {
+            this.editorTextPaneRef = editorTextPaneRef;
+            this.editorTextPaneRef.addKeyListener(new KeyAdapter() {
+                @Override
+                public void keyTyped(KeyEvent e) {
+                    selectedShape.setAttributesText(editorTextPaneRef.getText());
+                    repaint();
+                }
+            });
+        }
+
         @Override
         public void mousePressed(MouseEvent e) {
             selectedShape = findShapeByMousePosition(e.getX(), e.getY());
             if (selectedShape == null) {
-                editorTextPaneRef.setText("");
+                editorTextPaneRef.setText(diagramAttributesText);
             } else {
-                editorTextPaneRef.setText(selectedShape.toString());
+                editorTextPaneRef.setText(selectedShape.getAttributesText());
             }
             repaint();
         }
@@ -138,7 +153,7 @@ public class Canvas extends JPanel {
         addMouseListener(draggablesListener);
         addMouseMotionListener(draggablesListener);
 
-        var objectSelectorListener = new ObjectSelectorListener();
+        var objectSelectorListener = new ObjectSelectorListener(editorTextPaneRef);
         addMouseListener(objectSelectorListener);
     }
 

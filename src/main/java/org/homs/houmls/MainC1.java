@@ -1,7 +1,7 @@
 package org.homs.houmls;
 
-import org.homs.houmls.shape.impl.HoumlsBox;
-import org.homs.houmls.shape.impl.HoumlsConnector;
+import org.homs.houmls.shape.impl.Box;
+import org.homs.houmls.shape.impl.Connector;
 
 import javax.swing.*;
 import java.awt.*;
@@ -50,23 +50,23 @@ public class MainC1 {
         var canvas = new Canvas(shapeTextEditor);
         {
 
-            HoumlsBox class1 = new HoumlsBox(GRID_SIZE * 10, GRID_SIZE * 5, GRID_SIZE * 10, GRID_SIZE * 10, "_<<@Component>>\n*MartinCanvas\n---\nvoid paint(Graphics g)\n---");
-            HoumlsBox class2 = new HoumlsBox(GRID_SIZE * 25, GRID_SIZE * 5, GRID_SIZE * 10, GRID_SIZE * 10, "*11111\n---\n233333\n---");
-            HoumlsConnector houmlsConnector1 = new HoumlsConnector(class1, HoumlsConnector.Type.AGGREGATION, GRID_SIZE * 10, GRID_SIZE * 3, class2, HoumlsConnector.Type.ARROW, 0, GRID_SIZE * 3);
-            HoumlsConnector houmlsConnector2 = new HoumlsConnector(class1, HoumlsConnector.Type.COMPOSITION, GRID_SIZE * 10, GRID_SIZE * 6, class2, HoumlsConnector.Type.ARROW, 0, GRID_SIZE * 6);
+            Box class1 = new Box(GRID_SIZE * 10, GRID_SIZE * 5, GRID_SIZE * 10, GRID_SIZE * 10, "._<<@Component>>\n.*MartinCanvas\n---\n---\nvoid paint(Graphics g)\n---");
+            Box class2 = new Box(GRID_SIZE * 25, GRID_SIZE * 5, GRID_SIZE * 10, GRID_SIZE * 10, "*11111\n---\n233333\n---");
+            Connector connector1 = new Connector(class1, Connector.Type.AGGREGATION, GRID_SIZE * 10, GRID_SIZE * 3, class2, Connector.Type.ARROW, 0, GRID_SIZE * 3);
+            Connector connector2 = new Connector(class1, Connector.Type.COMPOSITION, GRID_SIZE * 10, GRID_SIZE * 6, class2, Connector.Type.ARROW, 0, GRID_SIZE * 6);
 //            arrow.getMiddlePoints().add(new Point(150, 100));
-            canvas.addElement(houmlsConnector1);
-            canvas.addElement(houmlsConnector2);
+            canvas.addElement(connector1);
+            canvas.addElement(connector2);
             canvas.addElement(class1);
             canvas.addElement(class2);
 
         }
         {
-            HoumlsBox target = new HoumlsBox(GRID_SIZE * 10, GRID_SIZE * 20, GRID_SIZE * 10, GRID_SIZE * 10, "_<<interface>>\n*Target\n---\noperation()\n---");
-            HoumlsBox adapter = new HoumlsBox(GRID_SIZE * 10, GRID_SIZE * 35, GRID_SIZE * 10, GRID_SIZE * 10, "*Adapter\n---\noperation()\n---");
-            HoumlsConnector houmlsConnector = new HoumlsConnector(adapter, HoumlsConnector.Type.DEFAULT, GRID_SIZE * 5, GRID_SIZE * 0, target, HoumlsConnector.Type.INHERITANCE, GRID_SIZE * 5, GRID_SIZE * 10);
-            HoumlsConnector commentConnector = new HoumlsConnector(adapter, HoumlsConnector.Type.MEMBER_COMMENT, GRID_SIZE * 10 - 10, GRID_SIZE * 2 + 2, null, HoumlsConnector.Type.DEFAULT, GRID_SIZE * 40, GRID_SIZE * 30);
-            canvas.addElement(houmlsConnector);
+            Box target = new Box(GRID_SIZE * 10, GRID_SIZE * 20, GRID_SIZE * 10, GRID_SIZE * 10, "._<<interface>>\n.*Target\n---\n---\noperation()\n---");
+            Box adapter = new Box(GRID_SIZE * 10, GRID_SIZE * 35, GRID_SIZE * 10, GRID_SIZE * 10, ".*Adapter\n---\n---\noperation()\n---");
+            Connector connector = new Connector(adapter, Connector.Type.DEFAULT, GRID_SIZE * 5, GRID_SIZE * 0, target, Connector.Type.INHERITANCE, GRID_SIZE * 5, GRID_SIZE * 10);
+            Connector commentConnector = new Connector(adapter, Connector.Type.MEMBER_COMMENT, GRID_SIZE * 10 - 10, GRID_SIZE * 2 + 2, null, Connector.Type.DEFAULT, GRID_SIZE * 40, GRID_SIZE * 30);
+            canvas.addElement(connector);
             canvas.addElement(target);
             canvas.addElement(adapter);
             canvas.addElement(commentConnector);
@@ -94,7 +94,7 @@ public class MainC1 {
         lateralBar.add(toolBoxSplitPane);
 
 
-        var f = new JFrame("MartinUML (Houmls)");
+        var f = new JFrame("Houmls v0.0");
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         f.addKeyListener(canvas.getOffsetAndZoomListener());
 

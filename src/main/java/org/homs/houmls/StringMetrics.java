@@ -18,12 +18,12 @@ public class StringMetrics {
         return font.getStringBounds(message, context);
     }
 
-    double getWidth(String message) {
+    public double getWidth(String message) {
         Rectangle2D bounds = font.getStringBounds(message, context);
         return bounds.getWidth();
     }
 
-    int getHeight(String message) {
+    public int getHeight(String message) {
         Rectangle2D bounds = font.getStringBounds(message, context);
         return (int) bounds.getHeight();
     }

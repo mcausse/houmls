@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 
 import static org.homs.houmls.LookAndFeel.basicStroke;
 
-public class HoumlsConnector implements Shape {
+public class Connector implements Shape {
 
     public static final double DIAMOND_SIZE = 13.0;
     public static final int BOX_EXTRA_LINKABLE_BORDER = 5;
@@ -43,7 +43,7 @@ public class HoumlsConnector implements Shape {
 
     String attributesText;
 
-    public HoumlsConnector(Shape linkedStartShape, Type startType, double startx, double starty, Shape linkedEndShape, Type endType, double endx, double endy) {
+    public Connector(Shape linkedStartShape, Type startType, double startx, double starty, Shape linkedEndShape, Type endType, double endx, double endy) {
         this.linkedStartShape = linkedStartShape;
         this.startType = startType;
         this.startx = startx;
@@ -105,7 +105,7 @@ public class HoumlsConnector implements Shape {
                         var p = getAbsolutePoint(linkedStartShape, startx, starty);
                         Shape isLinkedTo = null;
                         for (var element : elements) {
-                            if (element.getClass().equals(HoumlsConnector.class)) {
+                            if (element.getClass().equals(Connector.class)) {
                                 // evita linkar fletxes a altres fletxes!
                                 continue;
                             }
@@ -168,7 +168,7 @@ public class HoumlsConnector implements Shape {
                         var p = getAbsolutePoint(linkedEndShape, endx, endy);
                         Shape isLinkedTo = null;
                         for (var element : elements) {
-                            if (element.getClass().equals(HoumlsConnector.class)) {
+                            if (element.getClass().equals(Connector.class)) {
                                 // evita linkar fletxes a altres fletxes!
                                 continue;
                             }
@@ -370,10 +370,10 @@ public class HoumlsConnector implements Shape {
             break;
             case ARROW: {
                 var turtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);
-                turtle.rotate(-45);
+                turtle.rotate(-35);
                 turtle.walk(DIAMOND_SIZE);
                 turtle.walk(-DIAMOND_SIZE);
-                turtle.rotate(90);
+                turtle.rotate(+35 + 35);
                 turtle.walk(DIAMOND_SIZE);
                 g.setColor(Color.BLACK);
                 turtle.drawPolyline(g);
