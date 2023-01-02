@@ -1,0 +1,223 @@
+package org.homs.houmls;
+
+import org.homs.houmls.shape.Draggable;
+import org.homs.houmls.shape.Shape;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.awt.geom.AffineTransform;
+import java.awt.geom.NoninvertibleTransformException;
+import java.awt.geom.Point2D;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+import static org.homs.houmls.LookAndFeel.basicStroke;
+
+public class Canvas extends JPanel {
+
+    final OffsetAndZoomListener offsetAndZoomListener;
+
+    class OffsetAndZoomListener extends KeyAdapter implements MouseWheelListener {
+
+        static final int MOUSE_WHEEL_ROTATION_PX_AMOUNT = 50;
+        static final double MOUSE_WHEEL_ROTATION_ZOOM_FACTOR = 0.10;
+
+        boolean controlPressed = false;
+        boolean shiftPressed = false;
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            controlPressed = e.isControlDown();
+            shiftPressed = e.isShiftDown();
+        }
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            controlPressed = e.isControlDown();
+            shiftPressed = e.isShiftDown();
+        }
+
+        @Override
+        public void mouseWheelMoved(MouseWheelEvent e) {
+            if (controlPressed) {
+                var deltaZoom = -MOUSE_WHEEL_ROTATION_ZOOM_FACTOR * (double) e.getWheelRotation();
+                if (zoom + deltaZoom > 0.01) {
+                    zoom += deltaZoom;
+                }
+            } else {
+                if (shiftPressed) {
+                    offsetX += (-e.getWheelRotation() * MOUSE_WHEEL_ROTATION_PX_AMOUNT) / zoom;
+                } else {
+                    offsetY += (-e.getWheelRotation() * MOUSE_WHEEL_ROTATION_PX_AMOUNT) / zoom;
+                }
+            }
+            repaint();
+        }
+    }
+
+    class DraggablesListener extends MouseAdapter implements MouseMotionListener {
+
+        Point lastDragPoint = null;
+        Draggable selectedDraggable = null;
+
+        @Override
+        public void mouseDragged(MouseEvent e) {
+            if (lastDragPoint == null) {
+                lastDragPoint = e.getPoint();
+                selectedDraggable = findSelectedTranslatable(e.getX(), e.getY());
+            } else if (selectedDraggable != null) {
+                double translateToX = (e.getX() - lastDragPoint.x) / zoom;
+                double translateToY = (e.getY() - lastDragPoint.y) / zoom;
+                selectedDraggable.translate(translateToX, translateToY);
+                lastDragPoint.x = e.getX();
+                lastDragPoint.y = e.getY();
+                repaint();
+            }
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+            setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            if (selectedDraggable != null) {
+                selectedDraggable.dragHasFinished(elements);
+                repaint();
+            }
+            lastDragPoint = null;
+            selectedDraggable = null;
+        }
+
+        @Override
+        public void mouseMoved(MouseEvent e) {
+            var draggable = findSelectedTranslatable(e.getX(), e.getY());
+            if (draggable == null) {
+                setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            } else {
+                if (draggable.getTranslationCursor() != null) {
+                    setCursor(draggable.getTranslationCursor());
+                }
+            }
+        }
+    }
+
+    double zoom = 1.0;
+    double offsetX = 0.0;
+    double offsetY = 0.0;
+
+    final List<Shape> elements = new ArrayList<>();
+
+    public Canvas() {
+        super(true);
+        offsetAndZoomListener = new OffsetAndZoomListener();
+        addMouseWheelListener(offsetAndZoomListener);
+        addKeyListener(offsetAndZoomListener);
+        var draggablesListener = new DraggablesListener();
+        addMouseListener(draggablesListener);
+        addMouseMotionListener(draggablesListener);
+    }
+
+    public void addElement(Shape element) {
+        this.elements.add(element);
+        Collections.sort(this.elements);
+    }
+
+    public OffsetAndZoomListener getOffsetAndZoomListener() {
+        return offsetAndZoomListener;
+    }
+
+    @Override
+    protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
+
+        Dimension dim = getSize();
+        g.setColor(Color.WHITE);
+        g.fillRect(0, 0, dim.width, dim.height);
+
+
+        Graphics2D g2 = (Graphics2D) g;
+
+        g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        g2.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
+        g2.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
+        g2.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
+
+        g2.setStroke(basicStroke);
+
+        AffineTransform at = getAffineTransform();
+        g2.setTransform(at);
+
+        drawGrid(g);
+        g.setFont(LookAndFeel.regularFontBold);
+        int fontHeigth = new StringMetrics(g2).getHeight("aaaAA0");
+
+        for (var element : elements) {
+            element.draw(g, fontHeigth);
+        }
+    }
+
+    void drawGrid(Graphics g) {
+        int minx = 0;
+        int miny = 0;
+        int maxx = 0;
+        int maxy = 0;
+        for (var element : elements) {
+            var rect = element.getRectangle();
+            if (minx > rect.getX()) {
+                minx = (int) rect.getX();
+            }
+            if (miny > rect.getY()) {
+                miny = (int) rect.getY();
+            }
+            if (maxx < rect.getX()) {
+                maxx = (int) rect.getX();
+            }
+            if (maxy < rect.getY()) {
+                maxy = (int) rect.getY();
+            }
+        }
+        g.setColor(GridControl.GRID_COLOR);
+        for (int x = minx - 500; x < maxx + 500; x += GridControl.GRID_SIZE) {
+            for (int y = miny - 500; y < maxy + 500; y += GridControl.GRID_SIZE) {
+                int gx = GridControl.engrid(x);
+                int gy = GridControl.engrid(y);
+                g.drawLine(gx, gy, gx, gy);
+            }
+        }
+    }
+
+    public AffineTransform getAffineTransform() {
+        Dimension dim = getSize();
+        var zoomPointX = dim.width / 2;
+        var zoomPointY = dim.height / 2;
+
+        AffineTransform at = new AffineTransform();
+        at.translate(zoomPointX, zoomPointY);
+        at.scale(zoom, zoom);
+        at.translate(-zoomPointX, -zoomPointY);
+        at.translate(offsetX, offsetY);
+        return at;
+    }
+
+    public Draggable findSelectedTranslatable(int posx, int posy) {
+        var at = getAffineTransform();
+        Point2D mousePos = null;
+        try {
+            mousePos = at.inverseTransform(new Point(posx, posy), null);
+        } catch (NoninvertibleTransformException e) {
+            e.printStackTrace();
+            return null;
+        }
+        for (int i = elements.size() - 1; i >= 0; i--) {
+            var shape = elements.get(i);
+            var translatable = shape.findTranslatableByPos(mousePos.getX(), mousePos.getY());
+            if (translatable != null) {
+                return translatable;
+            }
+        }
+        return null;
+    }
+
+}

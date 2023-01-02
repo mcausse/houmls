@@ -17,7 +17,8 @@ public class Turtle {
     }
 
     public void rotate(double degrees) {
-        this.angle += degrees * Math.PI / 180.0;
+        //this.angle += degrees * Math.PI / 180.0;
+        this.angle += Math.toRadians(degrees);
     }
 
     public void walk(double distance) {
@@ -43,5 +44,9 @@ public class Turtle {
             ysa[i] = ys.get(i).intValue();
         }
         g.fillPolygon(xsa, ysa, xs.size());
+    }
+
+    public double pitagoras(double a, double b) {
+        return Math.sqrt(Math.pow(a, 2.0) + Math.pow(b, 2.0));
     }
 }

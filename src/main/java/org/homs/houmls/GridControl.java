@@ -1,0 +1,23 @@
+package org.homs.houmls;
+
+import java.awt.*;
+
+public class GridControl {
+
+    public static final int GRID_SIZE = 15;
+
+    public static final Color GRID_COLOR = Color.GRAY;
+
+    public static int engrid(int c) {
+        return c - c % GRID_SIZE;
+    }
+
+    public static int engrid(double c) {
+        int part = (int) c % GRID_SIZE;
+        if (part <= GRID_SIZE / 2) {
+            return (int) c - part;
+        } else {
+            return (int) c - part + GRID_SIZE;
+        }
+    }
+}
