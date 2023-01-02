@@ -17,6 +17,24 @@ import static org.homs.houmls.LookAndFeel.basicStroke;
 
 public class Canvas extends JPanel {
 
+//    public static final int SELECTION_BORDER_PX = 10;
+
+    // TODO canviar a List per permetre multi-sel.lecció
+    Shape selectedShape = null;
+
+    class ObjectSelectorListener extends MouseAdapter {
+        @Override
+        public void mousePressed(MouseEvent e) {
+            selectedShape = findShapeByMousePosition(e.getX(), e.getY());
+            if (selectedShape == null) {
+                editorTextPaneRef.setText("");
+            } else {
+                editorTextPaneRef.setText(selectedShape.toString());
+            }
+            repaint();
+        }
+    }
+
     final OffsetAndZoomListener offsetAndZoomListener;
 
     class OffsetAndZoomListener extends KeyAdapter implements MouseWheelListener {
@@ -66,7 +84,7 @@ public class Canvas extends JPanel {
         public void mouseDragged(MouseEvent e) {
             if (lastDragPoint == null) {
                 lastDragPoint = e.getPoint();
-                selectedDraggable = findSelectedTranslatable(e.getX(), e.getY());
+                selectedDraggable = findDraggableByMousePosition(e.getX(), e.getY());
             } else if (selectedDraggable != null) {
                 double translateToX = (e.getX() - lastDragPoint.x) / zoom;
                 double translateToY = (e.getY() - lastDragPoint.y) / zoom;
@@ -90,7 +108,7 @@ public class Canvas extends JPanel {
 
         @Override
         public void mouseMoved(MouseEvent e) {
-            var draggable = findSelectedTranslatable(e.getX(), e.getY());
+            var draggable = findDraggableByMousePosition(e.getX(), e.getY());
             if (draggable == null) {
                 setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             } else {
@@ -106,15 +124,22 @@ public class Canvas extends JPanel {
     double offsetY = 0.0;
 
     final List<Shape> elements = new ArrayList<>();
+    final JTextArea editorTextPaneRef;
 
-    public Canvas() {
+    public Canvas(JTextArea editorTextPaneRef) {
         super(true);
-        offsetAndZoomListener = new OffsetAndZoomListener();
+
+        this.editorTextPaneRef = editorTextPaneRef;
+
+        this.offsetAndZoomListener = new OffsetAndZoomListener();
         addMouseWheelListener(offsetAndZoomListener);
         addKeyListener(offsetAndZoomListener);
         var draggablesListener = new DraggablesListener();
         addMouseListener(draggablesListener);
         addMouseMotionListener(draggablesListener);
+
+        var objectSelectorListener = new ObjectSelectorListener();
+        addMouseListener(objectSelectorListener);
     }
 
     public void addElement(Shape element) {
@@ -152,6 +177,12 @@ public class Canvas extends JPanel {
         drawGrid(g);
         g.setFont(LookAndFeel.regularFontBold);
         int fontHeigth = new StringMetrics(g2).getHeight("aaaAA0");
+
+        if (selectedShape != null) {
+            g.setColor(Color.CYAN);
+            selectedShape.drawSelection(g);
+        }
+
 
         for (var element : elements) {
             element.draw(g, fontHeigth);
@@ -207,9 +238,9 @@ public class Canvas extends JPanel {
         return at;
     }
 
-    public Draggable findSelectedTranslatable(int posx, int posy) {
+    public Draggable findDraggableByMousePosition(int posx, int posy) {
         var at = getAffineTransform();
-        Point2D mousePos = null;
+        final Point2D mousePos;
         try {
             mousePos = at.inverseTransform(new Point(posx, posy), null);
         } catch (NoninvertibleTransformException e) {
@@ -221,6 +252,25 @@ public class Canvas extends JPanel {
             var translatable = shape.findTranslatableByPos(mousePos.getX(), mousePos.getY());
             if (translatable != null) {
                 return translatable;
+            }
+        }
+        return null;
+    }
+
+    public Shape findShapeByMousePosition(int posx, int posy) {
+        var at = getAffineTransform();
+        final Point2D mousePos;
+        try {
+            mousePos = at.inverseTransform(new Point(posx, posy), null);
+        } catch (NoninvertibleTransformException e) {
+            e.printStackTrace();
+            return null;
+        }
+        for (int i = elements.size() - 1; i >= 0; i--) {
+            var shape = elements.get(i);
+            var translatable = shape.findTranslatableByPos(mousePos.getX(), mousePos.getY());
+            if (translatable != null) {
+                return shape; // <======================
             }
         }
         return null;

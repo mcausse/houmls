@@ -12,15 +12,12 @@ import java.util.function.Supplier;
 
 import static org.homs.houmls.LookAndFeel.basicStroke;
 
-public class Arrow implements Shape {
+public class HoumlsConnector implements Shape {
 
     public static final double DIAMOND_SIZE = 13.0;
     public static final int BOX_EXTRA_LINKABLE_BORDER = 5;
+    public static final int SELECTION_BOX_SIZE = 16;
 
-    @Override
-    public int compareTo(Shape o) {
-        return 1000;
-    }
 
     public enum Type {
         DEFAULT, AGGREGATION, COMPOSITION, ARROW, MEMBER_COMMENT, INHERITANCE
@@ -44,7 +41,9 @@ public class Arrow implements Shape {
 
     List<Point> middlePoints;
 
-    public Arrow(Shape linkedStartShape, Type startType, double startx, double starty, Shape linkedEndShape, Type endType, double endx, double endy) {
+    String attributesText;
+
+    public HoumlsConnector(Shape linkedStartShape, Type startType, double startx, double starty, Shape linkedEndShape, Type endType, double endx, double endy) {
         this.linkedStartShape = linkedStartShape;
         this.startType = startType;
         this.startx = startx;
@@ -61,9 +60,18 @@ public class Arrow implements Shape {
     }
 
     @Override
+    public String getAttributesText() {
+        return attributesText;
+    }
+
+    @Override
+    public void setAttributesText(String attributesText) {
+        this.attributesText = attributesText;
+    }
+
+    @Override
     public Draggable findTranslatableByPos(double mousex, double mousey) {
 
-        int BOX_SIZE = (int) (DIAMOND_SIZE * 2);
 
         /*
          * START
@@ -71,7 +79,7 @@ public class Arrow implements Shape {
         {
             Supplier<Rectangle> boxSupplier = () -> {
                 Point p = getAbsolutePoint(linkedStartShape, startx, starty);
-                Rectangle box = new Rectangle((int) (p.getX() - BOX_SIZE), (int) (p.getY() - BOX_SIZE), BOX_SIZE * 2, BOX_SIZE * 2);
+                Rectangle box = new Rectangle((int) (p.getX() - SELECTION_BOX_SIZE), (int) (p.getY() - SELECTION_BOX_SIZE), SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
                 return box;
             };
             if (boxSupplier.get().contains(mousex, mousey)) {
@@ -95,9 +103,9 @@ public class Arrow implements Shape {
                     @Override
                     public void dragHasFinished(List<Shape> elements) {
                         var p = getAbsolutePoint(linkedStartShape, startx, starty);
-                        org.homs.houmls.shape.Shape isLinkedTo = null;
+                        Shape isLinkedTo = null;
                         for (var element : elements) {
-                            if (element.getClass().equals(Arrow.class)) {
+                            if (element.getClass().equals(HoumlsConnector.class)) {
                                 // evita linkar fletxes a altres fletxes!
                                 continue;
                             }
@@ -134,7 +142,7 @@ public class Arrow implements Shape {
         {
             Supplier<Rectangle> boxSupplier = () -> {
                 Point p = getAbsolutePoint(linkedEndShape, endx, endy);
-                Rectangle box = new Rectangle((int) (p.getX() - BOX_SIZE), (int) (p.getY() - BOX_SIZE), BOX_SIZE * 2, BOX_SIZE * 2);
+                Rectangle box = new Rectangle((int) (p.getX() - SELECTION_BOX_SIZE), (int) (p.getY() - SELECTION_BOX_SIZE), SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
                 return box;
             };
             if (boxSupplier.get().contains(mousex, mousey)) {
@@ -158,9 +166,9 @@ public class Arrow implements Shape {
                     @Override
                     public void dragHasFinished(List<Shape> elements) {
                         var p = getAbsolutePoint(linkedEndShape, endx, endy);
-                        org.homs.houmls.shape.Shape isLinkedTo = null;
+                        Shape isLinkedTo = null;
                         for (var element : elements) {
-                            if (element.getClass().equals(Arrow.class)) {
+                            if (element.getClass().equals(HoumlsConnector.class)) {
                                 // evita linkar fletxes a altres fletxes!
                                 continue;
                             }
@@ -197,7 +205,7 @@ public class Arrow implements Shape {
          * N-MIDDLE POINTS!
          */
         for (var middlePoint : middlePoints) {
-            Supplier<Rectangle> boxSupplier = () -> new Rectangle((int) (middlePoint.getX() - BOX_SIZE), (int) (middlePoint.getY() - BOX_SIZE), BOX_SIZE * 2, BOX_SIZE * 2);
+            Supplier<Rectangle> boxSupplier = () -> new Rectangle((int) (middlePoint.getX() - SELECTION_BOX_SIZE), (int) (middlePoint.getY() - SELECTION_BOX_SIZE), SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
             if (boxSupplier.get().contains(mousex, mousey)) {
                 return new Draggable() {
                     @Override
@@ -245,8 +253,13 @@ public class Arrow implements Shape {
     public Rectangle getRectangle() {
         Point startp = getAbsolutePoint(linkedStartShape, startx, starty);
         Point endp = getAbsolutePoint(linkedEndShape, endx, endy);
-        return new Rectangle((int) startp.getX(), (int) startp.getY(), (int) (endp.getX() - startp.getX()), (int) (endp.getY() - startp.getY()));
-//        return new Rectangle((int) startx, (int) starty, (int) (endx - startx), (int) (endy - starty));
+
+        int minx = (int) Math.min(startp.getX(), endp.getX());
+        int maxx = (int) Math.max(startp.getX(), endp.getX());
+        int miny = (int) Math.min(startp.getY(), endp.getY());
+        int maxy = (int) Math.max(startp.getY(), endp.getY());
+
+        return new Rectangle(minx, miny, maxx - minx, maxy - miny);
     }
 
     List<Point> getListOfAbsolutePoints() {
@@ -271,7 +284,7 @@ public class Arrow implements Shape {
 
         ((Graphics2D) g).setStroke(basicStroke);
 
-        Point p = null;
+//        Point p = null;
         List<Point> listOfAbsolutePoints = getListOfAbsolutePoints();
         g.setColor(Color.BLACK);
         for (var i = 1; i < listOfAbsolutePoints.size(); i++) {
@@ -383,4 +396,19 @@ public class Arrow implements Shape {
                 throw new RuntimeException(startType.name());
         }
     }
+
+    @Override
+    public void drawSelection(Graphics g) {
+        int borderPx = SELECTION_BOX_SIZE;
+        List<Point> listOfAbsolutePoints = getListOfAbsolutePoints();
+        for (var p : listOfAbsolutePoints) {
+            g.fillOval((int) p.getX() - borderPx, (int) p.getY() - borderPx, borderPx << 1, borderPx << 1);
+        }
+    }
+
+    @Override
+    public int compareTo(Shape o) {
+        return 1000;
+    }
+
 }
