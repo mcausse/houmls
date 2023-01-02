@@ -20,7 +20,7 @@ public class HoumlsConnector implements Shape {
 
 
     public enum Type {
-        DEFAULT, AGGREGATION, COMPOSITION, ARROW, MEMBER_COMMENT, INHERITANCE
+        DEFAULT, AGGREGATION, COMPOSITION, ARROW, MEMBER_COMMENT, INHERITANCE,
         //
         // Crow’s Foot Notation
         // https://vertabelo.com/blog/crow-s-foot-notation/
@@ -128,7 +128,7 @@ public class HoumlsConnector implements Shape {
                         }
 
                         // Engrida, excepte si és un comentari de membre, que millor deixar-lo lliure
-                        if (startType != Type.MEMBER_COMMENT) {
+                        if (startType != Type.MEMBER_COMMENT && endType != Type.MEMBER_COMMENT) {
                             startx = GridControl.engrid(startx);
                             starty = GridControl.engrid(starty);
                         }
@@ -192,7 +192,7 @@ public class HoumlsConnector implements Shape {
                         }
 
                         // Engrida, excepte si és un comentari de membre, que millor deixar-lo lliure
-                        if (startType != Type.MEMBER_COMMENT) {
+                        if (startType != Type.MEMBER_COMMENT && endType != Type.MEMBER_COMMENT) {
                             endx = GridControl.engrid(endx);
                             endy = GridControl.engrid(endy);
                         }
@@ -284,7 +284,6 @@ public class HoumlsConnector implements Shape {
 
         ((Graphics2D) g).setStroke(basicStroke);
 
-//        Point p = null;
         List<Point> listOfAbsolutePoints = getListOfAbsolutePoints();
         g.setColor(Color.BLACK);
         for (var i = 1; i < listOfAbsolutePoints.size(); i++) {
@@ -320,14 +319,26 @@ public class HoumlsConnector implements Shape {
             case AGGREGATION:
             case COMPOSITION: {
                 var turtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);
-                turtle.rotate(-45);
+//                turtle.rotate(-45);
+//                turtle.walk(DIAMOND_SIZE);
+//                turtle.rotate(90);
+//                turtle.walk(DIAMOND_SIZE);
+//                turtle.rotate(90);
+//                turtle.walk(DIAMOND_SIZE);
+//                turtle.rotate(90);
+//                turtle.walk(DIAMOND_SIZE);
+
+                int degreesRomboide = 10;
+
+                turtle.rotate(-45 + degreesRomboide);
                 turtle.walk(DIAMOND_SIZE);
-                turtle.rotate(90);
+                turtle.rotate(90 - degreesRomboide * 2);
                 turtle.walk(DIAMOND_SIZE);
-                turtle.rotate(90);
+                turtle.rotate(90 + degreesRomboide * 2);
                 turtle.walk(DIAMOND_SIZE);
-                turtle.rotate(90);
+                turtle.rotate(90 - degreesRomboide * 2);
                 turtle.walk(DIAMOND_SIZE);
+
                 if (type == Type.AGGREGATION) {
                     g.setColor(Color.WHITE);
                     turtle.fillPolygon(g);
@@ -371,24 +382,26 @@ public class HoumlsConnector implements Shape {
 
 //                case TO_ONE_OPTIONAL:
 //                case TO_ONE_MANDATORY: {
+//                    int size= (int) (DIAMOND_SIZE*2/3);
 //                    var turtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);
-//                    turtle.walk(DIAMOND_SIZE*2);
+//                    turtle.walk(size);
 //                    turtle.rotate(90);
-//                    turtle.walk(DIAMOND_SIZE);
-//                    turtle.walk(-DIAMOND_SIZE * 2);
+//                    turtle.walk(size);
+//                    turtle.walk(-size * 2);
 //                    turtle.drawPolyline(g);
 //                }
 //                break;
 //                case TO_MANY_OPTIONAL:
 //                case TO_MANY_MANDATORY: {
+//                    int size= (int) Turtle.pitagoras(DIAMOND_SIZE,DIAMOND_SIZE);
 //                    var turtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);
 //                    turtle.walk(DIAMOND_SIZE);
 //                    turtle.rotate(135);
-//                    turtle.walk(DIAMOND_SIZE);
-//                    turtle.walk(-DIAMOND_SIZE);
+//                    turtle.walk(size);
+//                    turtle.walk(-size);
 //                    turtle.rotate(90);
-//                    turtle.walk(DIAMOND_SIZE);
-//                    turtle.walk(-DIAMOND_SIZE);
+//                    turtle.walk(size);
+//                    turtle.walk(-size);
 //                    turtle.drawPolyline(g);
 //                }
 //                break;

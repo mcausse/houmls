@@ -65,9 +65,21 @@ public class MainC1 {
             HoumlsBox target = new HoumlsBox(GRID_SIZE * 10, GRID_SIZE * 20, GRID_SIZE * 10, GRID_SIZE * 10, "_<<interface>>\n*Target\n---\noperation()\n---");
             HoumlsBox adapter = new HoumlsBox(GRID_SIZE * 10, GRID_SIZE * 35, GRID_SIZE * 10, GRID_SIZE * 10, "*Adapter\n---\noperation()\n---");
             HoumlsConnector houmlsConnector = new HoumlsConnector(adapter, HoumlsConnector.Type.DEFAULT, GRID_SIZE * 5, GRID_SIZE * 0, target, HoumlsConnector.Type.INHERITANCE, GRID_SIZE * 5, GRID_SIZE * 10);
+            HoumlsConnector commentConnector = new HoumlsConnector(adapter, HoumlsConnector.Type.MEMBER_COMMENT, GRID_SIZE * 10 - 10, GRID_SIZE * 2 + 2, null, HoumlsConnector.Type.DEFAULT, GRID_SIZE * 40, GRID_SIZE * 30);
             canvas.addElement(houmlsConnector);
             canvas.addElement(target);
             canvas.addElement(adapter);
+            canvas.addElement(commentConnector);
+        }
+        {
+//            HoumlsConnector houmlsConnector = new HoumlsConnector(
+//                    null, HoumlsConnector.Type.TO_ONE_OPTIONAL, GRID_SIZE * 10, GRID_SIZE * 50,
+//                    null, HoumlsConnector.Type.TO_MANY_OPTIONAL, GRID_SIZE * 35, GRID_SIZE * 50);
+//            HoumlsConnector commentConnector = new HoumlsConnector(
+//                    null, HoumlsConnector.Type.TO_ONE_MANDATORY, GRID_SIZE * 10 , GRID_SIZE * 55,
+//                    null, HoumlsConnector.Type.TO_MANY_MANDATORY, GRID_SIZE * 35, GRID_SIZE * 55);
+//            canvas.addElement(houmlsConnector);
+//            canvas.addElement(commentConnector);
         }
 
         //

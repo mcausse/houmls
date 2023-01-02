@@ -17,7 +17,6 @@ public class Turtle {
     }
 
     public void rotate(double degrees) {
-        //this.angle += degrees * Math.PI / 180.0;
         this.angle += Math.toRadians(degrees);
     }
 
@@ -30,8 +29,8 @@ public class Turtle {
         int[] xsa = new int[xs.size()];
         int[] ysa = new int[xs.size()];
         for (int i = 0; i < xs.size(); i++) {
-            xsa[i] = xs.get(i).intValue();
-            ysa[i] = ys.get(i).intValue();
+            xsa[i] = (int) Math.round(xs.get(i));
+            ysa[i] = (int) Math.round(ys.get(i));
         }
         g.drawPolyline(xsa, ysa, xs.size());
     }
@@ -40,13 +39,13 @@ public class Turtle {
         int[] xsa = new int[xs.size()];
         int[] ysa = new int[xs.size()];
         for (int i = 0; i < xs.size(); i++) {
-            xsa[i] = xs.get(i).intValue();
-            ysa[i] = ys.get(i).intValue();
+            xsa[i] = (int) Math.round(xs.get(i));
+            ysa[i] = (int) Math.round(ys.get(i));
         }
         g.fillPolygon(xsa, ysa, xs.size());
     }
 
-    public double pitagoras(double a, double b) {
+    public static double pitagoras(double a, double b) {
         return Math.sqrt(Math.pow(a, 2.0) + Math.pow(b, 2.0));
     }
 }

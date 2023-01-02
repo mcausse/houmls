@@ -5,6 +5,7 @@ import java.awt.*;
 public interface Shape extends Draggable, Comparable<Shape> {
 
     String getAttributesText();
+
     void setAttributesText(String attributesText);
 
     Draggable findTranslatableByPos(double mousex, double mousey);

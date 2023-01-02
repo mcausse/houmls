@@ -110,10 +110,10 @@ public class HoumlsBox implements Shape {
 
     @Override
     public void drawSelection(Graphics g) {
-        int borderPx=8;
+        int borderPx = 8;
         var rect = getRectangle();
         rect.grow(borderPx, borderPx);
-        g.fillRect((int) rect.getX(), (int) rect.getY() , (int) rect.getWidth(), (int) rect.getHeight() );
+        g.fillRect((int) rect.getX(), (int) rect.getY(), (int) rect.getWidth(), (int) rect.getHeight());
     }
 
     @Override
