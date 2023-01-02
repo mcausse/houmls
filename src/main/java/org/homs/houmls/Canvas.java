@@ -163,19 +163,25 @@ public class Canvas extends JPanel {
         int miny = 0;
         int maxx = 0;
         int maxy = 0;
-        for (var element : elements) {
-            var rect = element.getRectangle();
-            if (minx > rect.getX()) {
-                minx = (int) rect.getX();
-            }
-            if (miny > rect.getY()) {
-                miny = (int) rect.getY();
-            }
-            if (maxx < rect.getX()) {
-                maxx = (int) rect.getX();
-            }
-            if (maxy < rect.getY()) {
-                maxy = (int) rect.getY();
+        if (!elements.isEmpty()) {
+            minx = Integer.MAX_VALUE;
+            miny = Integer.MAX_VALUE;
+            maxx = Integer.MIN_VALUE;
+            maxy = Integer.MIN_VALUE;
+            for (var element : elements) {
+                var rect = element.getRectangle();
+                if (minx > rect.getX()) {
+                    minx = (int) rect.getX();
+                }
+                if (miny > rect.getY()) {
+                    miny = (int) rect.getY();
+                }
+                if (maxx < rect.getX() + rect.getWidth()) {
+                    maxx = (int) (rect.getX() + rect.getWidth());
+                }
+                if (maxy < rect.getY() + rect.getHeight()) {
+                    maxy = (int) (rect.getY() + rect.getHeight());
+                }
             }
         }
         g.setColor(GridControl.GRID_COLOR);

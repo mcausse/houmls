@@ -11,15 +11,14 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import static org.homs.houmls.LookAndFeel.basicStroke;
-import static org.homs.houmls.LookAndFeel.dashedStroke;
 
-public class Arrow implements org.homs.houmls.shape.Shape {
+public class Arrow implements Shape {
 
     public static final double DIAMOND_SIZE = 13.0;
     public static final int BOX_EXTRA_LINKABLE_BORDER = 5;
 
     @Override
-    public int compareTo(org.homs.houmls.shape.Shape o) {
+    public int compareTo(Shape o) {
         return 1000;
     }
 
@@ -35,17 +34,17 @@ public class Arrow implements org.homs.houmls.shape.Shape {
 //            TO_MANY_OPTIONAL, TO_MANY_MANDATORY
     }
 
-    org.homs.houmls.shape.Shape linkedStartShape;
+    Shape linkedStartShape;
     Type startType;
     double startx, starty;
 
-    org.homs.houmls.shape.Shape linkedEndShape;
+    Shape linkedEndShape;
     Type endType;
     double endx, endy;
 
     List<Point> middlePoints;
 
-    public Arrow(org.homs.houmls.shape.Shape linkedStartShape, Type startType, double startx, double starty, org.homs.houmls.shape.Shape linkedEndShape, Type endType, double endx, double endy) {
+    public Arrow(Shape linkedStartShape, Type startType, double startx, double starty, Shape linkedEndShape, Type endType, double endx, double endy) {
         this.linkedStartShape = linkedStartShape;
         this.startType = startType;
         this.startx = startx;
@@ -94,10 +93,14 @@ public class Arrow implements org.homs.houmls.shape.Shape {
                     }
 
                     @Override
-                    public void dragHasFinished(List<org.homs.houmls.shape.Shape> elements) {
+                    public void dragHasFinished(List<Shape> elements) {
                         var p = getAbsolutePoint(linkedStartShape, startx, starty);
                         org.homs.houmls.shape.Shape isLinkedTo = null;
                         for (var element : elements) {
+                            if (element.getClass().equals(Arrow.class)) {
+                                // evita linkar fletxes a altres fletxes!
+                                continue;
+                            }
                             var rectangle = element.getRectangle();
                             rectangle.grow(BOX_EXTRA_LINKABLE_BORDER, BOX_EXTRA_LINKABLE_BORDER);
                             if (rectangle.contains(p.getX(), p.getY())) {
@@ -153,10 +156,14 @@ public class Arrow implements org.homs.houmls.shape.Shape {
                     }
 
                     @Override
-                    public void dragHasFinished(List<org.homs.houmls.shape.Shape> elements) {
+                    public void dragHasFinished(List<Shape> elements) {
                         var p = getAbsolutePoint(linkedEndShape, endx, endy);
                         org.homs.houmls.shape.Shape isLinkedTo = null;
                         for (var element : elements) {
+                            if (element.getClass().equals(Arrow.class)) {
+                                // evita linkar fletxes a altres fletxes!
+                                continue;
+                            }
                             var rectangle = element.getRectangle();
                             rectangle.grow(BOX_EXTRA_LINKABLE_BORDER, BOX_EXTRA_LINKABLE_BORDER);
                             if (rectangle.contains(p.getX(), p.getY())) {
@@ -209,7 +216,7 @@ public class Arrow implements org.homs.houmls.shape.Shape {
                     }
 
                     @Override
-                    public void dragHasFinished(List<org.homs.houmls.shape.Shape> elements) {
+                    public void dragHasFinished(List<Shape> elements) {
                         middlePoint.setLocation(
                                 GridControl.engrid(middlePoint.getX()),
                                 GridControl.engrid(middlePoint.getY())
@@ -231,12 +238,15 @@ public class Arrow implements org.homs.houmls.shape.Shape {
     }
 
     @Override
-    public void dragHasFinished(List<org.homs.houmls.shape.Shape> elements) {
+    public void dragHasFinished(List<Shape> elements) {
     }
 
     @Override
     public Rectangle getRectangle() {
-        return new Rectangle((int) startx, (int) starty, (int) (endx - startx), (int) (endy - starty));
+        Point startp = getAbsolutePoint(linkedStartShape, startx, starty);
+        Point endp = getAbsolutePoint(linkedEndShape, endx, endy);
+        return new Rectangle((int) startp.getX(), (int) startp.getY(), (int) (endp.getX() - startp.getX()), (int) (endp.getY() - startp.getY()));
+//        return new Rectangle((int) startx, (int) starty, (int) (endx - startx), (int) (endy - starty));
     }
 
     List<Point> getListOfAbsolutePoints() {
@@ -259,7 +269,7 @@ public class Arrow implements org.homs.houmls.shape.Shape {
     @Override
     public void draw(Graphics g, int fontHeigth) {
 
-        ((Graphics2D) g).setStroke(dashedStroke);
+        ((Graphics2D) g).setStroke(basicStroke);
 
         Point p = null;
         List<Point> listOfAbsolutePoints = getListOfAbsolutePoints();

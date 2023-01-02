@@ -41,16 +41,41 @@ public class MainC1 {
             canvas.addElement(adapter);
         }
 
+        //
+        // LATERAL BAR
+        //
+        var lateralBar = new JPanel();
+        lateralBar.setLayout(new BorderLayout());
+        var shapesCatalog = new JPanel();
+        var shapeTextEditor = new JTextArea();
+
+
+        JSplitPane toolBoxSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, shapesCatalog, shapeTextEditor);
+        lateralBar.add(toolBoxSplitPane);
+
+
         var f = new JFrame("MartinUML (Houmls)");
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         f.addKeyListener(canvas.getOffsetAndZoomListener());
 
-        f.add(canvas);
+        JSplitPane sl = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, canvas, lateralBar);
+        f.add(sl);
         {
             GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
             Rectangle frameBounds = env.getMaximumWindowBounds();
-            f.setSize(new Dimension(frameBounds.width / 2, frameBounds.height));
+            f.setSize(new Dimension(frameBounds.width, frameBounds.height));
         }
+
+        lateralBar.addKeyListener(canvas.getOffsetAndZoomListener());
+        shapesCatalog.addKeyListener(canvas.getOffsetAndZoomListener());
+        shapeTextEditor.addKeyListener(canvas.getOffsetAndZoomListener());
+        sl.addKeyListener(canvas.getOffsetAndZoomListener());
+        toolBoxSplitPane.addKeyListener(canvas.getOffsetAndZoomListener());
+
         f.setVisible(true);
+        SwingUtilities.invokeLater(() -> {
+            sl.setDividerLocation(0.8);
+            toolBoxSplitPane.setDividerLocation(0.5);
+        });
     }
 }
