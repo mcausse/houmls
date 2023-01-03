@@ -65,6 +65,12 @@ public class Turtle {
         g.fillOval(x - radius, y - radius, radius * 2, radius * 2);
     }
 
+    public void drawText(Graphics g, String text) {
+        int x = (int) Math.round(this.xs.peek());
+        int y = (int) Math.round(this.ys.peek());
+        g.drawString(text, x, y);
+    }
+
     public Point getPosition() {
         return new Point(
                 (int) Math.round(this.xs.peek()),

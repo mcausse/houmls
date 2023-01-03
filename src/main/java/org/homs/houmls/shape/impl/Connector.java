@@ -1,16 +1,17 @@
 package org.homs.houmls.shape.impl;
 
-import org.homs.houmls.GridControl;
-import org.homs.houmls.Turtle;
+import org.homs.houmls.*;
 import org.homs.houmls.shape.Draggable;
 import org.homs.houmls.shape.Shape;
 
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.function.Supplier;
 
 import static org.homs.houmls.LookAndFeel.basicStroke;
+import static org.homs.houmls.LookAndFeel.dashedStroke;
 import static org.homs.houmls.shape.impl.Connector.Type.*;
 
 public class Connector implements Shape {
@@ -21,15 +22,39 @@ public class Connector implements Shape {
 
 
     public enum Type {
-        DEFAULT, AGGREGATION, COMPOSITION, ARROW, MEMBER_COMMENT, INHERITANCE,
+        DEFAULT(""),
+        ARROW("<"),
+        INHERITANCE("<<"),
+        INHERITANCE_BLACKFILLED("<<<"),
+        AGGREGATION("<<<<"),
+        COMPOSITION("<<<<<"),
+        MEMBER_COMMENT("m"),
         //
         // Crow’s Foot Notation
         // https://vertabelo.com/blog/crow-s-foot-notation/
         // http://www2.cs.uregina.ca/~bernatja/crowsfoot.html
         //
-        // TODO
-        TO_ONE_OPTIONAL, TO_ONE_MANDATORY,
-        TO_MANY_OPTIONAL, TO_MANY_MANDATORY
+        TO_ONE_OPTIONAL("|o"), TO_ONE_MANDATORY("||"),
+        TO_MANY_OPTIONAL(">o"), TO_MANY_MANDATORY(">|");
+
+        private final String code;
+
+        Type(String code) {
+            this.code = code;
+        }
+
+        public String getCode() {
+            return code;
+        }
+
+        public static Type findByCode(String code) {
+            for (Type type : Type.values()) {
+                if (code.equals(type.getCode())) {
+                    return type;
+                }
+            }
+            return DEFAULT; //TODO throw?
+        }
     }
 
     static class ConnectorPoint {
@@ -38,6 +63,8 @@ public class Connector implements Shape {
         public Type type;
         public double posx;
         public double posy;
+
+        public String text = "";
 
         public ConnectorPoint(Shape linkedShape, Type type, double posx, double posy) {
             this.linkedShape = linkedShape;
@@ -99,6 +126,9 @@ public class Connector implements Shape {
 
     String attributesText;
 
+    String text = "";
+    Stroke stroke = basicStroke;
+
     public Connector(Shape linkedStartShape, Type startType, double startx, double starty, Shape linkedEndShape, Type endType, double endx, double endy) {
         this.startPoint = new ConnectorPoint(linkedStartShape, startType, startx, starty);
         this.endPoint = new ConnectorPoint(linkedEndShape, endType, endx, endy);
@@ -127,7 +157,36 @@ public class Connector implements Shape {
 
     @Override
     public void setAttributesText(String attributesText) {
+
         this.attributesText = attributesText;
+
+        Map<String, String> props = PropsParser.parseProperties(attributesText);
+
+        String lt = props.getOrDefault("lt", "-");
+        String m1 = props.getOrDefault("m1", "");
+        String m2 = props.getOrDefault("m2", "");
+//        String text = props.getOrDefault("", "");// TODO
+
+        startPoint.text = m1;
+        endPoint.text = m2;
+
+        int lineStyleCharacterPos = Math.max(
+                lt.indexOf('-'),
+                lt.indexOf('.')
+        );
+        if (lineStyleCharacterPos >= 0) {
+            if (lt.charAt(lineStyleCharacterPos) == '-') {
+                this.stroke = basicStroke;
+            } else {
+                this.stroke = dashedStroke;
+            }
+            String startStyle = lt.substring(0, lineStyleCharacterPos);
+            String endStyle = lt.substring(lineStyleCharacterPos + 1);
+            String revEndStyle = PropsParser.reverseArrowStyle(endStyle);
+
+            startPoint.type = Type.findByCode(startStyle);
+            endPoint.type = Type.findByCode(revEndStyle);
+        }
     }
 
     @Override
@@ -287,7 +346,7 @@ public class Connector implements Shape {
     @Override
     public void draw(Graphics g, int fontHeigth) {
 
-        ((Graphics2D) g).setStroke(basicStroke);
+        ((Graphics2D) g).setStroke(this.stroke);
 
         List<Point> listOfAbsolutePoints = getListOfAbsolutePoints();
         g.setColor(Color.BLACK);
@@ -303,17 +362,34 @@ public class Connector implements Shape {
             Point firstPoint = listOfAbsolutePoints.get(0);
             Point secondPoint = listOfAbsolutePoints.get(1);
             double firstToSecondPointAngle = Math.atan2(secondPoint.getY() - firstPoint.getY(), secondPoint.getX() - firstPoint.getX());
-            drawEdgeOfArrow(g, startPoint.type, firstPoint, firstToSecondPointAngle);
+            drawEdgeOfArrow(g, startPoint.type, firstPoint, firstToSecondPointAngle, endPoint.text, fontHeigth);
         }
         {
             Point lastlastPoint = listOfAbsolutePoints.get(listOfAbsolutePoints.size() - 2);
             Point lastPoint = listOfAbsolutePoints.get(listOfAbsolutePoints.size() - 1);
             double firstToSecondPointAngle = Math.atan2(lastlastPoint.getY() - lastPoint.getY(), lastlastPoint.getX() - lastPoint.getX());
-            drawEdgeOfArrow(g, endPoint.type, lastPoint, firstToSecondPointAngle);
+            drawEdgeOfArrow(g, endPoint.type, lastPoint, firstToSecondPointAngle, endPoint.text, fontHeigth);
         }
     }
 
-    protected void drawEdgeOfArrow(Graphics g, Type type, Point firstPoint, double angle) {
+    protected void drawEdgeOfArrow(Graphics g, Type type, Point firstPoint, double angle, String text, int fontHeigth) {
+
+        //
+        // LABEL
+        //
+        {
+            g.setFont(LookAndFeel.regularFont);
+            var sm = new StringMetrics((Graphics2D) g);
+            Rectangle rect = sm.getBounds(text).getBounds();
+
+            var textTurtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);
+            textTurtle.walk(DIAMOND_SIZE * 2);
+            textTurtle.rotate(90);
+            textTurtle.walk(DIAMOND_SIZE);
+            Point turtlePos = textTurtle.getPosition();
+            g.drawString(text, turtlePos.x - rect.width / 2, turtlePos.y + rect.height / 2 - 4);
+        }
+
         switch (type) {
             case DEFAULT:
                 break;
@@ -350,7 +426,8 @@ public class Connector implements Shape {
                 }
             }
             break;
-            case INHERITANCE: {
+            case INHERITANCE:
+            case INHERITANCE_BLACKFILLED: {
                 var turtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);
                 double arrowSize = DIAMOND_SIZE + 5.0;
                 double alpha = 35;
@@ -360,10 +437,15 @@ public class Connector implements Shape {
                 turtle.walk(2.0 * arrowSize * Math.sin(Math.toRadians(alpha)));
                 turtle.rotate(90 + alpha);
                 turtle.walk(arrowSize);
-                g.setColor(Color.WHITE);
-                turtle.fillPolygon(g);
-                g.setColor(Color.BLACK);
-                turtle.drawPolyline(g);
+                if (type == INHERITANCE_BLACKFILLED) {
+                    g.setColor(Color.BLACK);
+                    turtle.fillPolygon(g);
+                } else {
+                    g.setColor(Color.WHITE);
+                    turtle.fillPolygon(g);
+                    g.setColor(Color.BLACK);
+                    turtle.drawPolyline(g);
+                }
             }
             break;
             case ARROW: {
@@ -455,11 +537,6 @@ public class Connector implements Shape {
         for (var p : listOfAbsolutePoints) {
             g.fillOval((int) p.getX() - borderPx, (int) p.getY() - borderPx, borderPx << 1, borderPx << 1);
         }
-    }
-
-    @Override
-    public int compareTo(Shape o) {
-        return 1000;
     }
 
 }

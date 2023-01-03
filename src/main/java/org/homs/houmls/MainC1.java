@@ -25,8 +25,9 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *     - parser de text tipo MarkDown amb aligments
  *
  *     - text a les arrows, cardinalitat (1..2, 0..*) rols, etc...
- *     - box de comment (+ pergamino?)
- *     - duplicar element amb double-click
+ *     - layers?
+ *     X box de comment (+ pergamino?)
+ *     X duplicar element amb double-click
  *
  *     - crear/esborrar elements + toolbox panel
  *     - crear/eliminar points intermitjos de connectors.
@@ -94,6 +95,20 @@ public class MainC1 {
             canvas.addElement(b2);
             canvas.addElement(c1);
             canvas.addElement(c2);
+
+            c1.setAttributesText(
+                    "label\n" +
+                            "lt=||-o|\n" +
+                            "m1=jou\n" +
+                            "m2=juas\n"
+            );
+            c2.setAttributesText(
+                    "label\n" +
+                            "lt=>|-o<\n" +
+                            "m1=jou\n" +
+                            "m2=juas\n" +
+                            "\n"
+            );
         }
 
         //

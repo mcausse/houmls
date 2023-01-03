@@ -14,7 +14,7 @@ public class StringMetrics {
         context = g2.getFontRenderContext();
     }
 
-    Rectangle2D getBounds(String message) {
+    public Rectangle2D getBounds(String message) {
         return font.getStringBounds(message, context);
     }
 

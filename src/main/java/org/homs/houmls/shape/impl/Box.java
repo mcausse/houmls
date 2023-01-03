@@ -2,12 +2,14 @@ package org.homs.houmls.shape.impl;
 
 import org.homs.houmls.GridControl;
 import org.homs.houmls.LookAndFeel;
+import org.homs.houmls.PropsParser;
 import org.homs.houmls.StringMetrics;
 import org.homs.houmls.shape.Draggable;
 import org.homs.houmls.shape.Shape;
 
 import java.awt.*;
 import java.util.List;
+import java.util.Map;
 
 import static org.homs.houmls.LookAndFeel.basicStroke;
 
@@ -34,7 +36,7 @@ public class Box implements Shape {
 
     @Override
     public Shape duplicate() {
-        var r = new Box((int) x+DUPLICATE_OFFSET_PX, (int) y+DUPLICATE_OFFSET_PX, (int) width, (int) height, attributesText);
+        var r = new Box((int) x + DUPLICATE_OFFSET_PX, (int) y + DUPLICATE_OFFSET_PX, (int) width, (int) height, attributesText);
         r.setAttributesText(attributesText);
         return r;
     }
@@ -46,7 +48,14 @@ public class Box implements Shape {
 
     @Override
     public void setAttributesText(String attributesText) {
+
         this.attributesText = attributesText;
+
+        Map<String, String> props = PropsParser.parseProperties(attributesText);
+        Color bg = PropsParser.getColorByProp(props, "bg");
+        if (bg != null) {
+            this.backgroundColor = bg;
+        }
     }
 
     @Override
@@ -148,11 +157,6 @@ public class Box implements Shape {
         var rect = getRectangle();
         rect.grow(borderPx, borderPx);
         g.fillRect((int) rect.getX(), (int) rect.getY(), (int) rect.getWidth(), (int) rect.getHeight());
-    }
-
-    @Override
-    public int compareTo(Shape o) {
-        return -1000;
     }
 
 }

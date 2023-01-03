@@ -2,6 +2,7 @@ package org.homs.houmls;
 
 import org.homs.houmls.shape.Draggable;
 import org.homs.houmls.shape.Shape;
+import org.homs.houmls.shape.impl.Connector;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -12,7 +13,6 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static org.homs.houmls.LookAndFeel.basicStroke;
@@ -71,8 +71,10 @@ public class Canvas extends JPanel {
         public void mouseClicked(MouseEvent e) {
             if (e.getClickCount() >= 2 && e.getButton() == MouseEvent.BUTTON1) {
                 var shapeToDuplicate = findShapeByMousePosition(e.getX(), e.getY());
-                addElementToTop(shapeToDuplicate.duplicate());
-                repaint();
+                if (shapeToDuplicate != null) {
+                    addElementToTop(shapeToDuplicate.duplicate());
+                    repaint();
+                }
             }
         }
     }
@@ -186,11 +188,10 @@ public class Canvas extends JPanel {
 
     public void addElement(Shape element) {
         this.elements.add(element);
-        Collections.sort(this.elements);
     }
+
     public void addElementToTop(Shape element) {
-        this.elements.add(0,element);
-        Collections.sort(this.elements);
+        this.elements.add(0, element);
     }
 
     public OffsetAndZoomListener getOffsetAndZoomListener() {
@@ -229,9 +230,16 @@ public class Canvas extends JPanel {
             selectedShape.drawSelection(g);
         }
 
-
+        // aquesta separació assegura que les fletxes mai siguin tapades per cap caixa
         for (var element : elements) {
-            element.draw(g, fontHeigth);
+            if (!Connector.class.isAssignableFrom(element.getClass())) {
+                element.draw(g, fontHeigth);
+            }
+        }
+        for (var element : elements) {
+            if (Connector.class.isAssignableFrom(element.getClass())) {
+                element.draw(g, fontHeigth);
+            }
         }
     }
 

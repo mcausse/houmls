@@ -15,10 +15,11 @@ public class Comment extends Box {
 
     @Override
     public Shape duplicate() {
-        var r = new Comment((int) x+DUPLICATE_OFFSET_PX, (int) y+DUPLICATE_OFFSET_PX, (int) width, (int) height, attributesText);
+        var r = new Comment((int) x + DUPLICATE_OFFSET_PX, (int) y + DUPLICATE_OFFSET_PX, (int) width, (int) height, attributesText);
         r.setAttributesText(attributesText);
         return r;
     }
+
     protected void drawTheBox(Graphics2D g2) {
 
         int ix = (int) x;

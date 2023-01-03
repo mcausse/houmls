@@ -4,7 +4,7 @@ import org.homs.houmls.GridControl;
 
 import java.awt.*;
 
-public interface Shape extends Draggable, Comparable<Shape> {
+public interface Shape extends Draggable {
 
     int DUPLICATE_OFFSET_PX = GridControl.GRID_SIZE * 2;
 
