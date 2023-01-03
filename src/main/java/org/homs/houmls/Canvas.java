@@ -72,7 +72,7 @@ public class Canvas extends JPanel {
             if (e.getClickCount() >= 2 && e.getButton() == MouseEvent.BUTTON1) {
                 var shapeToDuplicate = findShapeByMousePosition(e.getX(), e.getY());
                 if (shapeToDuplicate != null) {
-                    addElementToTop(shapeToDuplicate.duplicate());
+                    addElement(shapeToDuplicate.duplicate());
                     repaint();
                 }
             }
@@ -190,10 +190,6 @@ public class Canvas extends JPanel {
         this.elements.add(element);
     }
 
-    public void addElementToTop(Shape element) {
-        this.elements.add(0, element);
-    }
-
     public OffsetAndZoomListener getOffsetAndZoomListener() {
         return offsetAndZoomListener;
     }
@@ -222,8 +218,7 @@ public class Canvas extends JPanel {
         g2.setTransform(at);
 
         drawGrid(g);
-        g.setFont(LookAndFeel.regularFontBold);
-        int fontHeigth = new StringMetrics(g2).getHeight("aaaAA0");
+        g.setFont(LookAndFeel.regularFont());
 
         if (selectedShape != null) {
             g.setColor(Color.CYAN);
@@ -233,12 +228,12 @@ public class Canvas extends JPanel {
         // aquesta separació assegura que les fletxes mai siguin tapades per cap caixa
         for (var element : elements) {
             if (!Connector.class.isAssignableFrom(element.getClass())) {
-                element.draw(g, fontHeigth);
+                element.draw(g);
             }
         }
         for (var element : elements) {
             if (Connector.class.isAssignableFrom(element.getClass())) {
-                element.draw(g, fontHeigth);
+                element.draw(g);
             }
         }
     }
@@ -256,16 +251,16 @@ public class Canvas extends JPanel {
             for (var element : elements) {
                 var rect = element.getRectangle();
                 if (minx > rect.getX()) {
-                    minx = (int) rect.getX();
+                    minx = rect.x;
                 }
                 if (miny > rect.getY()) {
-                    miny = (int) rect.getY();
+                    miny = rect.y;
                 }
                 if (maxx < rect.getX() + rect.getWidth()) {
-                    maxx = (int) (rect.getX() + rect.getWidth());
+                    maxx = rect.x + rect.width;
                 }
                 if (maxy < rect.getY() + rect.getHeight()) {
-                    maxy = (int) (rect.getY() + rect.getHeight());
+                    maxy = rect.y + rect.height;
                 }
             }
         }

@@ -82,7 +82,7 @@ public class Connector implements Shape {
                 return new Point((int) posx, (int) posy);
             } else {
                 var rect = linkedShape.getRectangle();
-                return new Point((int) (rect.getX() + posx), (int) (rect.getY() + posy));
+                return new Point((int) (rect.x + posx), (int) (rect.y + posy));
             }
         }
 
@@ -128,6 +128,7 @@ public class Connector implements Shape {
 
     String text = "";
     Stroke stroke = basicStroke;
+//    int fontSize = LookAndFeel.regularFontSize;
 
     public Connector(Shape linkedStartShape, Type startType, double startx, double starty, Shape linkedEndShape, Type endType, double endx, double endy) {
         this.startPoint = new ConnectorPoint(linkedStartShape, startType, startx, starty);
@@ -192,14 +193,13 @@ public class Connector implements Shape {
     @Override
     public Draggable findTranslatableByPos(double mousex, double mousey) {
 
-
         /*
          * START
          */
         {
             Supplier<Rectangle> boxSupplier = () -> {
                 Point p = startPoint.getAbsolutePoint();
-                Rectangle box = new Rectangle((int) (p.getX() - SELECTION_BOX_SIZE), (int) (p.getY() - SELECTION_BOX_SIZE), SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
+                Rectangle box = new Rectangle(p.x - SELECTION_BOX_SIZE, p.y - SELECTION_BOX_SIZE, SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
                 return box;
             };
             if (boxSupplier.get().contains(mousex, mousey)) {
@@ -239,7 +239,7 @@ public class Connector implements Shape {
         {
             Supplier<Rectangle> boxSupplier = () -> {
                 Point p = endPoint.getAbsolutePoint();
-                Rectangle box = new Rectangle((int) (p.getX() - SELECTION_BOX_SIZE), (int) (p.getY() - SELECTION_BOX_SIZE), SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
+                Rectangle box = new Rectangle(p.x - SELECTION_BOX_SIZE, p.y - SELECTION_BOX_SIZE, SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
                 return box;
             };
             if (boxSupplier.get().contains(mousex, mousey)) {
@@ -278,7 +278,8 @@ public class Connector implements Shape {
          * N-MIDDLE POINTS!
          */
         for (var middlePoint : middlePoints) {
-            Supplier<Rectangle> boxSupplier = () -> new Rectangle((int) (middlePoint.getX() - SELECTION_BOX_SIZE), (int) (middlePoint.getY() - SELECTION_BOX_SIZE), SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
+            Supplier<Rectangle> boxSupplier = () -> new Rectangle(middlePoint.x - SELECTION_BOX_SIZE, middlePoint.y - SELECTION_BOX_SIZE,
+                    SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
             if (boxSupplier.get().contains(mousex, mousey)) {
                 return new Draggable() {
                     @Override
@@ -327,10 +328,10 @@ public class Connector implements Shape {
         Point startp = startPoint.getAbsolutePoint();
         Point endp = endPoint.getAbsolutePoint();
 
-        int minx = (int) Math.min(startp.getX(), endp.getX());
-        int maxx = (int) Math.max(startp.getX(), endp.getX());
-        int miny = (int) Math.min(startp.getY(), endp.getY());
-        int maxy = (int) Math.max(startp.getY(), endp.getY());
+        int minx = Math.min(startp.x, endp.x);
+        int maxx = Math.max(startp.x, endp.x);
+        int miny = Math.min(startp.y, endp.y);
+        int maxy = Math.max(startp.y, endp.y);
 
         return new Rectangle(minx, miny, maxx - minx, maxy - miny);
     }
@@ -344,7 +345,7 @@ public class Connector implements Shape {
     }
 
     @Override
-    public void draw(Graphics g, int fontHeigth) {
+    public void draw(Graphics g) {
 
         ((Graphics2D) g).setStroke(this.stroke);
 
@@ -353,7 +354,7 @@ public class Connector implements Shape {
         for (var i = 1; i < listOfAbsolutePoints.size(); i++) {
             var p1 = listOfAbsolutePoints.get(i - 1);
             var p2 = listOfAbsolutePoints.get(i);
-            g.drawLine((int) p1.getX(), (int) p1.getY(), (int) p2.getX(), (int) p2.getY());
+            g.drawLine(p1.x, p1.y, p2.x, p2.y);
         }
 
         ((Graphics2D) g).setStroke(basicStroke);
@@ -362,23 +363,23 @@ public class Connector implements Shape {
             Point firstPoint = listOfAbsolutePoints.get(0);
             Point secondPoint = listOfAbsolutePoints.get(1);
             double firstToSecondPointAngle = Math.atan2(secondPoint.getY() - firstPoint.getY(), secondPoint.getX() - firstPoint.getX());
-            drawEdgeOfArrow(g, startPoint.type, firstPoint, firstToSecondPointAngle, endPoint.text, fontHeigth);
+            drawEdgeOfArrow(g, startPoint.type, firstPoint, firstToSecondPointAngle, endPoint.text);
         }
         {
             Point lastlastPoint = listOfAbsolutePoints.get(listOfAbsolutePoints.size() - 2);
             Point lastPoint = listOfAbsolutePoints.get(listOfAbsolutePoints.size() - 1);
             double firstToSecondPointAngle = Math.atan2(lastlastPoint.getY() - lastPoint.getY(), lastlastPoint.getX() - lastPoint.getX());
-            drawEdgeOfArrow(g, endPoint.type, lastPoint, firstToSecondPointAngle, endPoint.text, fontHeigth);
+            drawEdgeOfArrow(g, endPoint.type, lastPoint, firstToSecondPointAngle, endPoint.text);
         }
     }
 
-    protected void drawEdgeOfArrow(Graphics g, Type type, Point firstPoint, double angle, String text, int fontHeigth) {
+    protected void drawEdgeOfArrow(Graphics g, Type type, Point firstPoint, double angle, String text) {
 
         //
         // LABEL
         //
         {
-            g.setFont(LookAndFeel.regularFont);
+            g.setFont(LookAndFeel.regularFont());
             var sm = new StringMetrics((Graphics2D) g);
             Rectangle rect = sm.getBounds(text).getBounds();
 
@@ -535,7 +536,7 @@ public class Connector implements Shape {
         int borderPx = SELECTION_BOX_SIZE;
         List<Point> listOfAbsolutePoints = getListOfAbsolutePoints();
         for (var p : listOfAbsolutePoints) {
-            g.fillOval((int) p.getX() - borderPx, (int) p.getY() - borderPx, borderPx << 1, borderPx << 1);
+            g.fillOval(p.x - borderPx, p.y - borderPx, borderPx << 1, borderPx << 1);
         }
     }
 

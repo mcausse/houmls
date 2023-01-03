@@ -14,7 +14,7 @@ public interface Shape extends Draggable {
 
     Draggable findTranslatableByPos(double mousex, double mousey);
 
-    void draw(Graphics g, int fontHeigth);
+    void draw(Graphics g);
 
     void drawSelection(Graphics g);
 

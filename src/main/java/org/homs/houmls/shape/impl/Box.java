@@ -25,6 +25,7 @@ public class Box implements Shape {
     String attributesText;
 
     Color backgroundColor = Color.WHITE;
+    int fontSize = LookAndFeel.regularFontSize;
 
     public Box(int x, int y, int width, int height, String attributesText) {
         this.x = x;
@@ -52,14 +53,23 @@ public class Box implements Shape {
         this.attributesText = attributesText;
 
         Map<String, String> props = PropsParser.parseProperties(attributesText);
+
         Color bg = PropsParser.getColorByProp(props, "bg");
         if (bg != null) {
             this.backgroundColor = bg;
         }
+
+        var fontSizeString = props.getOrDefault("fontsize", String.valueOf(LookAndFeel.regularFontSize));
+        try {
+            this.fontSize = Integer.valueOf(fontSizeString);
+        } catch (NumberFormatException e) {
+            //
+        }
+
     }
 
     @Override
-    public void draw(Graphics g, int fontHeigth) {
+    public void draw(Graphics g) {
 
         int ix = (int) x;
         int iy = (int) y;
@@ -69,6 +79,9 @@ public class Box implements Shape {
         drawTheBox((Graphics2D) g);
 
         var g2 = (Graphics2D) g;
+
+        g.setFont(LookAndFeel.regularFont(fontSize));
+        int fontHeigth = new StringMetrics(g2).getHeight("aaaAA0");
 
         String[] textLines = attributesText.split("\\n");
         int y = iy;
@@ -87,12 +100,12 @@ public class Box implements Shape {
                 }
                 if (line.startsWith("*")) {
                     line = line.substring(1);
-                    g.setFont(LookAndFeel.regularFontBold);
+                    g.setFont(LookAndFeel.regularFontBold(fontSize));
                 } else if (line.startsWith("_")) {
                     line = line.substring(1);
-                    g.setFont(LookAndFeel.regularFontItalic);
+                    g.setFont(LookAndFeel.regularFontItalic(fontSize));
                 } else {
-                    g.setFont(LookAndFeel.regularFont);
+                    g.setFont(LookAndFeel.regularFont(fontSize));
                 }
                 y += fontHeigth;
                 g.drawString(line, ix + alignCorrectionXPx, y);
@@ -156,7 +169,7 @@ public class Box implements Shape {
         int borderPx = 8;
         var rect = getRectangle();
         rect.grow(borderPx, borderPx);
-        g.fillRect((int) rect.getX(), (int) rect.getY(), (int) rect.getWidth(), (int) rect.getHeight());
+        g.fillRect(rect.x, rect.y, rect.width, rect.height);
     }
 
 }

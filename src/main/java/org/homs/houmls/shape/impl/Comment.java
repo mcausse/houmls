@@ -52,9 +52,9 @@ public class Comment extends Box {
 
         g2.setColor(Color.BLACK);
         turtle.drawPolyline(g2);
-//
+
 //        // ombra fina
-//        g2.drawLine(ix + iwidth + 1, iy + 1, ix + iwidth + 1, iy + iheight + 1);
+//        g2.drawLine(ix + iwidth + 1, iy + 2+COMMENT_FOLD_DIST, ix + iwidth + 1, iy + iheight + 1);
 //        g2.drawLine(ix + 1, iy + iheight + 1, ix + iwidth + 1, iy + iheight + 1);
     }
 }
