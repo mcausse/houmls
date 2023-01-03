@@ -20,6 +20,14 @@ public class Turtle {
         this.angle += Math.toRadians(degrees);
     }
 
+    public void setAngle(int degrees) {
+        this.angle = Math.toRadians(degrees);
+    }
+
+    public void setAngle(double rads) {
+        this.angle = rads;
+    }
+
     public void walk(double distance) {
         this.xs.push(this.xs.peek() + distance * Math.cos(angle));
         this.ys.push(this.ys.peek() + distance * Math.sin(angle));
@@ -43,6 +51,24 @@ public class Turtle {
             ysa[i] = (int) Math.round(ys.get(i));
         }
         g.fillPolygon(xsa, ysa, xs.size());
+    }
+
+    public void drawCircle(Graphics g, int radius) {
+        int x = (int) Math.round(this.xs.peek());
+        int y = (int) Math.round(this.ys.peek());
+        g.drawOval(x - radius, y - radius, radius * 2, radius * 2);
+    }
+
+    public void fillCircle(Graphics g, int radius) {
+        int x = (int) Math.round(this.xs.peek());
+        int y = (int) Math.round(this.ys.peek());
+        g.fillOval(x - radius, y - radius, radius * 2, radius * 2);
+    }
+
+    public Point getPosition() {
+        return new Point(
+                (int) Math.round(this.xs.peek()),
+                (int) Math.round(this.ys.peek()));
     }
 
     public static double pitagoras(double a, double b) {

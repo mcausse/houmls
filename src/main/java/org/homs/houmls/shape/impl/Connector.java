@@ -11,11 +11,12 @@ import java.util.List;
 import java.util.function.Supplier;
 
 import static org.homs.houmls.LookAndFeel.basicStroke;
+import static org.homs.houmls.shape.impl.Connector.Type.*;
 
 public class Connector implements Shape {
 
     public static final double DIAMOND_SIZE = 13.0;
-    public static final int BOX_EXTRA_LINKABLE_BORDER = 5;
+    public static final int BOX_EXTRA_LINKABLE_BORDER = GridControl.GRID_SIZE / 2; // 5;
     public static final int SELECTION_BOX_SIZE = 16;
 
 
@@ -27,32 +28,92 @@ public class Connector implements Shape {
         // http://www2.cs.uregina.ca/~bernatja/crowsfoot.html
         //
         // TODO
-//            TO_ONE_OPTIONAL, TO_ONE_MANDATORY,
-//            TO_MANY_OPTIONAL, TO_MANY_MANDATORY
+        TO_ONE_OPTIONAL, TO_ONE_MANDATORY,
+        TO_MANY_OPTIONAL, TO_MANY_MANDATORY
     }
 
-    Shape linkedStartShape;
-    Type startType;
-    double startx, starty;
+    static class ConnectorPoint {
 
-    Shape linkedEndShape;
-    Type endType;
-    double endx, endy;
+        public Shape linkedShape;
+        public Type type;
+        public double posx;
+        public double posy;
+
+        public ConnectorPoint(Shape linkedShape, Type type, double posx, double posy) {
+            this.linkedShape = linkedShape;
+            this.type = type;
+            this.posx = posx;
+            this.posy = posy;
+        }
+
+        /**
+         * @return les coordenades absolutes del punt, tenint en compte que el punt en si es pot guardar
+         * en (posx, posy) en absoluta si no hi ha link amb un component, o bé en relatives al component linkat.
+         */
+        public Point getAbsolutePoint() {
+            if (linkedShape == null) {
+                return new Point((int) posx, (int) posy);
+            } else {
+                var rect = linkedShape.getRectangle();
+                return new Point((int) (rect.getX() + posx), (int) (rect.getY() + posy));
+            }
+        }
+
+        public void manageLink(List<Shape> elements) {
+            Point p = getAbsolutePoint();
+            Shape isLinkedTo = null;
+            for (var element : elements) {
+                if (element instanceof Connector) {
+                    // evita linkar fletxes a altres fletxes!
+                    continue;
+                }
+                var rectangle = element.getRectangle();
+                rectangle.grow(BOX_EXTRA_LINKABLE_BORDER, BOX_EXTRA_LINKABLE_BORDER);
+                if (rectangle.contains(p.getX(), p.getY())) {
+                    isLinkedTo = element;
+                    break;
+                }
+            }
+            // Linka-deslinka
+            if (isLinkedTo == null) {
+                this.posx = p.getX();
+                this.posy = p.getY();
+                this.linkedShape = null;
+            } else {
+                this.posx = p.getX() - isLinkedTo.getRectangle().getX();
+                this.posy = p.getY() - isLinkedTo.getRectangle().getY();
+                this.linkedShape = isLinkedTo;
+            }
+        }
+
+        public void engrida() {
+            this.posx = GridControl.engrid(this.posx);
+            this.posy = GridControl.engrid(this.posy);
+        }
+    }
+
+    final ConnectorPoint startPoint;
+    final ConnectorPoint endPoint;
 
     List<Point> middlePoints;
 
     String attributesText;
 
     public Connector(Shape linkedStartShape, Type startType, double startx, double starty, Shape linkedEndShape, Type endType, double endx, double endy) {
-        this.linkedStartShape = linkedStartShape;
-        this.startType = startType;
-        this.startx = startx;
-        this.starty = starty;
-        this.linkedEndShape = linkedEndShape;
-        this.endType = endType;
-        this.endx = endx;
-        this.endy = endy;
+        this.startPoint = new ConnectorPoint(linkedStartShape, startType, startx, starty);
+        this.endPoint = new ConnectorPoint(linkedEndShape, endType, endx, endy);
         this.middlePoints = new ArrayList<>();
+    }
+
+    @Override
+    public Shape duplicate() {
+        var r = new Connector(
+                null, startPoint.type, startPoint.getAbsolutePoint().x + DUPLICATE_OFFSET_PX, startPoint.getAbsolutePoint().y + DUPLICATE_OFFSET_PX,
+                null, endPoint.type, endPoint.getAbsolutePoint().x + DUPLICATE_OFFSET_PX, endPoint.getAbsolutePoint().y + DUPLICATE_OFFSET_PX
+        );
+        r.setAttributesText(attributesText);
+        middlePoints.forEach(p -> r.getMiddlePoints().add(new Point(p.x + DUPLICATE_OFFSET_PX, p.y + DUPLICATE_OFFSET_PX)));
+        return r;
     }
 
     public List<Point> getMiddlePoints() {
@@ -78,7 +139,7 @@ public class Connector implements Shape {
          */
         {
             Supplier<Rectangle> boxSupplier = () -> {
-                Point p = getAbsolutePoint(linkedStartShape, startx, starty);
+                Point p = startPoint.getAbsolutePoint();
                 Rectangle box = new Rectangle((int) (p.getX() - SELECTION_BOX_SIZE), (int) (p.getY() - SELECTION_BOX_SIZE), SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
                 return box;
             };
@@ -96,42 +157,19 @@ public class Connector implements Shape {
 
                     @Override
                     public void translate(double dx, double dy) {
-                        startx += dx;
-                        starty += dy;
+                        startPoint.posx += dx;
+                        startPoint.posy += dy;
                     }
 
                     @Override
                     public void dragHasFinished(List<Shape> elements) {
-                        var p = getAbsolutePoint(linkedStartShape, startx, starty);
-                        Shape isLinkedTo = null;
-                        for (var element : elements) {
-                            if (element.getClass().equals(Connector.class)) {
-                                // evita linkar fletxes a altres fletxes!
-                                continue;
-                            }
-                            var rectangle = element.getRectangle();
-                            rectangle.grow(BOX_EXTRA_LINKABLE_BORDER, BOX_EXTRA_LINKABLE_BORDER);
-                            if (rectangle.contains(p.getX(), p.getY())) {
-                                isLinkedTo = element;
-                                break;
-                            }
-                        }
-                        // Linka-deslinka
-                        if (isLinkedTo == null) {
-                            startx = p.getX();
-                            starty = p.getY();
-                            linkedStartShape = null;
-                        } else {
-                            startx = p.getX() - isLinkedTo.getRectangle().getX();
-                            starty = p.getY() - isLinkedTo.getRectangle().getY();
-                            linkedStartShape = isLinkedTo;
-                        }
 
                         // Engrida, excepte si és un comentari de membre, que millor deixar-lo lliure
-                        if (startType != Type.MEMBER_COMMENT && endType != Type.MEMBER_COMMENT) {
-                            startx = GridControl.engrid(startx);
-                            starty = GridControl.engrid(starty);
+                        if (startPoint.type != Type.MEMBER_COMMENT && endPoint.type != Type.MEMBER_COMMENT) {
+                            startPoint.engrida();
                         }
+
+                        startPoint.manageLink(elements);
                     }
                 };
             }
@@ -141,7 +179,7 @@ public class Connector implements Shape {
          */
         {
             Supplier<Rectangle> boxSupplier = () -> {
-                Point p = getAbsolutePoint(linkedEndShape, endx, endy);
+                Point p = endPoint.getAbsolutePoint();
                 Rectangle box = new Rectangle((int) (p.getX() - SELECTION_BOX_SIZE), (int) (p.getY() - SELECTION_BOX_SIZE), SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
                 return box;
             };
@@ -159,43 +197,19 @@ public class Connector implements Shape {
 
                     @Override
                     public void translate(double dx, double dy) {
-                        endx += dx;
-                        endy += dy;
+                        endPoint.posx += dx;
+                        endPoint.posy += dy;
                     }
 
                     @Override
                     public void dragHasFinished(List<Shape> elements) {
-                        var p = getAbsolutePoint(linkedEndShape, endx, endy);
-                        Shape isLinkedTo = null;
-                        for (var element : elements) {
-                            if (element.getClass().equals(Connector.class)) {
-                                // evita linkar fletxes a altres fletxes!
-                                continue;
-                            }
-                            var rectangle = element.getRectangle();
-                            rectangle.grow(BOX_EXTRA_LINKABLE_BORDER, BOX_EXTRA_LINKABLE_BORDER);
-                            if (rectangle.contains(p.getX(), p.getY())) {
-
-                                isLinkedTo = element;
-                                break;
-                            }
-                        }
-                        // Linka-deslinka
-                        if (isLinkedTo == null) {
-                            endx = p.getX();
-                            endy = p.getY();
-                            linkedEndShape = null;
-                        } else {
-                            endx = p.getX() - isLinkedTo.getRectangle().getX();
-                            endy = p.getY() - isLinkedTo.getRectangle().getY();
-                            linkedEndShape = isLinkedTo;
-                        }
 
                         // Engrida, excepte si és un comentari de membre, que millor deixar-lo lliure
-                        if (startType != Type.MEMBER_COMMENT && endType != Type.MEMBER_COMMENT) {
-                            endx = GridControl.engrid(endx);
-                            endy = GridControl.engrid(endy);
+                        if (startPoint.type != Type.MEMBER_COMMENT && endPoint.type != Type.MEMBER_COMMENT) {
+                            endPoint.engrida();
                         }
+
+                        endPoint.manageLink(elements);
                     }
                 };
             }
@@ -251,8 +265,8 @@ public class Connector implements Shape {
 
     @Override
     public Rectangle getRectangle() {
-        Point startp = getAbsolutePoint(linkedStartShape, startx, starty);
-        Point endp = getAbsolutePoint(linkedEndShape, endx, endy);
+        Point startp = startPoint.getAbsolutePoint();
+        Point endp = endPoint.getAbsolutePoint();
 
         int minx = (int) Math.min(startp.getX(), endp.getX());
         int maxx = (int) Math.max(startp.getX(), endp.getX());
@@ -264,19 +278,10 @@ public class Connector implements Shape {
 
     List<Point> getListOfAbsolutePoints() {
         List<Point> r = new ArrayList<>();
-        r.add(getAbsolutePoint(linkedStartShape, startx, starty));
+        r.add(startPoint.getAbsolutePoint());
         r.addAll(this.middlePoints);
-        r.add(getAbsolutePoint(linkedEndShape, endx, endy));
+        r.add(endPoint.getAbsolutePoint());
         return r;
-    }
-
-    Point getAbsolutePoint(Shape linkedStartShape, double startx, double starty) {
-        if (linkedStartShape == null) {
-            return new Point((int) startx, (int) starty);
-        } else {
-            var rect = linkedStartShape.getRectangle();
-            return new Point((int) (rect.getX() + startx), (int) (rect.getY() + starty));
-        }
     }
 
     @Override
@@ -298,35 +303,28 @@ public class Connector implements Shape {
             Point firstPoint = listOfAbsolutePoints.get(0);
             Point secondPoint = listOfAbsolutePoints.get(1);
             double firstToSecondPointAngle = Math.atan2(secondPoint.getY() - firstPoint.getY(), secondPoint.getX() - firstPoint.getX());
-            drawEdgeOfArrow(g, startType, firstPoint, firstToSecondPointAngle);
+            drawEdgeOfArrow(g, startPoint.type, firstPoint, firstToSecondPointAngle);
         }
         {
             Point lastlastPoint = listOfAbsolutePoints.get(listOfAbsolutePoints.size() - 2);
             Point lastPoint = listOfAbsolutePoints.get(listOfAbsolutePoints.size() - 1);
             double firstToSecondPointAngle = Math.atan2(lastlastPoint.getY() - lastPoint.getY(), lastlastPoint.getX() - lastPoint.getX());
-            drawEdgeOfArrow(g, endType, lastPoint, firstToSecondPointAngle);
+            drawEdgeOfArrow(g, endPoint.type, lastPoint, firstToSecondPointAngle);
         }
     }
 
-    private void drawEdgeOfArrow(Graphics g, Type type, Point firstPoint, double angle) {
+    protected void drawEdgeOfArrow(Graphics g, Type type, Point firstPoint, double angle) {
         switch (type) {
             case DEFAULT:
                 break;
             case MEMBER_COMMENT:
                 int MEMBER_COMMENT_BOX_RADIUS = 3;
-                g.fillRoundRect(firstPoint.x - MEMBER_COMMENT_BOX_RADIUS, firstPoint.y - MEMBER_COMMENT_BOX_RADIUS, MEMBER_COMMENT_BOX_RADIUS * 2, MEMBER_COMMENT_BOX_RADIUS * 2, 2, 2);
+                g.fillRoundRect(firstPoint.x - MEMBER_COMMENT_BOX_RADIUS, firstPoint.y - MEMBER_COMMENT_BOX_RADIUS,
+                        MEMBER_COMMENT_BOX_RADIUS * 2, MEMBER_COMMENT_BOX_RADIUS * 2, 2, 2);
                 break;
             case AGGREGATION:
             case COMPOSITION: {
                 var turtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);
-//                turtle.rotate(-45);
-//                turtle.walk(DIAMOND_SIZE);
-//                turtle.rotate(90);
-//                turtle.walk(DIAMOND_SIZE);
-//                turtle.rotate(90);
-//                turtle.walk(DIAMOND_SIZE);
-//                turtle.rotate(90);
-//                turtle.walk(DIAMOND_SIZE);
 
                 int degreesRomboide = 10;
 
@@ -348,7 +346,7 @@ public class Connector implements Shape {
                     g.setColor(Color.BLACK);
                     turtle.fillPolygon(g);
                 } else {
-                    throw new RuntimeException(startType.name());
+                    throw new RuntimeException(type.name());
                 }
             }
             break;
@@ -380,33 +378,73 @@ public class Connector implements Shape {
             }
             break;
 
-//                case TO_ONE_OPTIONAL:
-//                case TO_ONE_MANDATORY: {
-//                    int size= (int) (DIAMOND_SIZE*2/3);
-//                    var turtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);
-//                    turtle.walk(size);
-//                    turtle.rotate(90);
-//                    turtle.walk(size);
-//                    turtle.walk(-size * 2);
-//                    turtle.drawPolyline(g);
-//                }
-//                break;
-//                case TO_MANY_OPTIONAL:
-//                case TO_MANY_MANDATORY: {
-//                    int size= (int) Turtle.pitagoras(DIAMOND_SIZE,DIAMOND_SIZE);
-//                    var turtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);
-//                    turtle.walk(DIAMOND_SIZE);
-//                    turtle.rotate(135);
-//                    turtle.walk(size);
-//                    turtle.walk(-size);
-//                    turtle.rotate(90);
-//                    turtle.walk(size);
-//                    turtle.walk(-size);
-//                    turtle.drawPolyline(g);
-//                }
-//                break;
+            case TO_MANY_OPTIONAL:
+            case TO_MANY_MANDATORY:
+            case TO_ONE_OPTIONAL:
+            case TO_ONE_MANDATORY:
+                drawCrowsFootNotation(g, type, firstPoint.getX(), firstPoint.getY(), angle);
+                break;
+
             default:
-                throw new RuntimeException(startType.name());
+                throw new RuntimeException(type.name());
+        }
+    }
+
+    public void drawCrowsFootNotation(Graphics g, Type type, double posx, double posy, double angle) {
+
+        double verticalSpace = DIAMOND_SIZE * 2.0 / 3.0;
+        int degreesRomboide = 10;
+        double degreesRomboideSpace = DIAMOND_SIZE / Math.cos(Math.toRadians(45 - degreesRomboide));
+        int CIRCLE_RADIUS = 4;
+
+        g.setColor(Color.BLACK);
+
+        //
+        // MULTIPLICITAT
+        //
+        if (type == TO_ONE_OPTIONAL || type == TO_ONE_MANDATORY) {
+            var turtle = new Turtle(posx, posy, angle);
+            turtle.walk(DIAMOND_SIZE);
+            turtle.rotate(90);
+            turtle.walk(verticalSpace);
+            turtle.walk(-verticalSpace * 2);
+            turtle.drawPolyline(g);
+        } else if (type == TO_MANY_OPTIONAL || type == TO_MANY_MANDATORY) {
+            var turtle = new Turtle(posx, posy, angle);
+            turtle.walk(DIAMOND_SIZE);
+            turtle.rotate(180 + 45 - degreesRomboide);
+            turtle.walk(degreesRomboideSpace);
+            turtle.walk(-degreesRomboideSpace);
+            turtle.rotate(-(45 - degreesRomboide) * 2);
+            turtle.walk(degreesRomboideSpace);
+            turtle.drawPolyline(g);
+        }
+
+        //
+        // MANDATORY/OPTIONAL
+        //
+        if (type == TO_ONE_OPTIONAL || type == TO_MANY_OPTIONAL) {
+            var turtle = new Turtle(posx, posy, angle);
+            turtle.walk(DIAMOND_SIZE + CIRCLE_RADIUS);
+            if (type == TO_ONE_OPTIONAL) {
+                // bonus per separar la barra del cercle
+                turtle.walk(CIRCLE_RADIUS);
+            }
+            g.setColor(Color.WHITE);
+            turtle.fillCircle(g, CIRCLE_RADIUS);
+            g.setColor(Color.BLACK);
+            turtle.drawCircle(g, CIRCLE_RADIUS);
+        } else if (type == TO_ONE_MANDATORY || type == TO_MANY_MANDATORY) {
+            var turtle = new Turtle(posx, posy, angle);
+            turtle.walk(DIAMOND_SIZE);
+            if (type == TO_ONE_MANDATORY) {
+                // bonus per separar
+                turtle.walk(CIRCLE_RADIUS);
+            }
+            turtle.rotate(90);
+            turtle.walk(verticalSpace);
+            turtle.walk(-verticalSpace * 2);
+            turtle.drawPolyline(g);
         }
     }
 

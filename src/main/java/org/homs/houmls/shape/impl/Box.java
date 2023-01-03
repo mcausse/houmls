@@ -22,12 +22,21 @@ public class Box implements Shape {
     double height;
     String attributesText;
 
+    Color backgroundColor = Color.WHITE;
+
     public Box(int x, int y, int width, int height, String attributesText) {
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.attributesText = attributesText;
+    }
+
+    @Override
+    public Shape duplicate() {
+        var r = new Box((int) x+DUPLICATE_OFFSET_PX, (int) y+DUPLICATE_OFFSET_PX, (int) width, (int) height, attributesText);
+        r.setAttributesText(attributesText);
+        return r;
     }
 
     @Override
@@ -89,7 +98,7 @@ public class Box implements Shape {
         int iwidth = (int) width;
         int iheight = (int) height;
 
-        g2.setColor(Color.YELLOW);
+        g2.setColor(backgroundColor);
         g2.fillRect(ix, iy, iwidth, iheight);
 
         g2.setColor(Color.BLACK);

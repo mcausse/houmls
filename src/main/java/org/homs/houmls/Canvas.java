@@ -66,6 +66,15 @@ public class Canvas extends JPanel {
             }
             repaint();
         }
+
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            if (e.getClickCount() >= 2 && e.getButton() == MouseEvent.BUTTON1) {
+                var shapeToDuplicate = findShapeByMousePosition(e.getX(), e.getY());
+                addElementToTop(shapeToDuplicate.duplicate());
+                repaint();
+            }
+        }
     }
 
     final OffsetAndZoomListener offsetAndZoomListener;
@@ -177,6 +186,10 @@ public class Canvas extends JPanel {
 
     public void addElement(Shape element) {
         this.elements.add(element);
+        Collections.sort(this.elements);
+    }
+    public void addElementToTop(Shape element) {
+        this.elements.add(0,element);
         Collections.sort(this.elements);
     }
 

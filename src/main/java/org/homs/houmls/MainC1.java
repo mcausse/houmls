@@ -20,6 +20,7 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *
  * <pre>
  *     X nou listener per a seleccionar elements => info al JTextArea
+ *     - resizar boxes
  *     - editar info JTextArea i en component es parseja i s'estila!
  *     - parser de text tipo MarkDown amb aligments
  *
@@ -29,6 +30,7 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *
  *     - crear/esborrar elements + toolbox panel
  *     - crear/eliminar points intermitjos de connectors.
+ *     - punt per a moure la fletcha sencera, deslinkant rollo UMLet
  *
  *     - menú general (operacions de fitxer, about, etc).
  *     - llegir XMLs de UMLet, i poder-los exportar
@@ -68,24 +70,30 @@ public class MainC1 {
             Box target = new Box(GRID_SIZE * 10, GRID_SIZE * 20, GRID_SIZE * 10, GRID_SIZE * 10, "._<<interface>>\n.*Target\n---\n---\noperation()\n---");
             Box adapter = new Box(GRID_SIZE * 10, GRID_SIZE * 35, GRID_SIZE * 10, GRID_SIZE * 10, ".*Adapter\n---\n---\noperation()\n---");
             Connector connector = new Connector(adapter, Connector.Type.DEFAULT, GRID_SIZE * 5, GRID_SIZE * 0, target, Connector.Type.INHERITANCE, GRID_SIZE * 5, GRID_SIZE * 10);
-            Connector commentConnector = new Connector(adapter, Connector.Type.MEMBER_COMMENT, GRID_SIZE * 10 - 10, GRID_SIZE * 2 + 2, null, Connector.Type.DEFAULT, GRID_SIZE * 40, GRID_SIZE * 30);
+            var comment = new Comment(GRID_SIZE * 30, GRID_SIZE * 35, GRID_SIZE * 10, GRID_SIZE * 5, "This is just a \nsimple comment!");
+            Connector commentConnector = new Connector(
+                    adapter, Connector.Type.MEMBER_COMMENT, GRID_SIZE * 10 - 10, GRID_SIZE * 2 + 8,
+                    comment, Connector.Type.DEFAULT, GRID_SIZE * 0, GRID_SIZE * 2 + 8);
             canvas.addElement(connector);
             canvas.addElement(target);
             canvas.addElement(adapter);
             canvas.addElement(commentConnector);
-
-            var comment = new Comment(GRID_SIZE * 30, GRID_SIZE * 35, GRID_SIZE * 10, GRID_SIZE * 10, "This is just a \nsimple comment!");
             canvas.addElement(comment);
         }
         {
-//            HoumlsConnector houmlsConnector = new HoumlsConnector(
-//                    null, HoumlsConnector.Type.TO_ONE_OPTIONAL, GRID_SIZE * 10, GRID_SIZE * 50,
-//                    null, HoumlsConnector.Type.TO_MANY_OPTIONAL, GRID_SIZE * 35, GRID_SIZE * 50);
-//            HoumlsConnector commentConnector = new HoumlsConnector(
-//                    null, HoumlsConnector.Type.TO_ONE_MANDATORY, GRID_SIZE * 10 , GRID_SIZE * 55,
-//                    null, HoumlsConnector.Type.TO_MANY_MANDATORY, GRID_SIZE * 35, GRID_SIZE * 55);
-//            canvas.addElement(houmlsConnector);
-//            canvas.addElement(commentConnector);
+            Box b1 = new Box(GRID_SIZE * 10, GRID_SIZE * 50, GRID_SIZE * 10, GRID_SIZE * 10, ".*Target\n---");
+            Box b2 = new Box(GRID_SIZE * 30, GRID_SIZE * 50, GRID_SIZE * 10, GRID_SIZE * 10, ".*Target\n---");
+
+            Connector c1 = new Connector(
+                    b1, Connector.Type.TO_ONE_OPTIONAL, GRID_SIZE * 10, GRID_SIZE * 3,
+                    b2, Connector.Type.TO_MANY_OPTIONAL, GRID_SIZE * 0, GRID_SIZE * 3);
+            Connector c2 = new Connector(
+                    b1, Connector.Type.TO_ONE_MANDATORY, GRID_SIZE * 10, GRID_SIZE * 6,
+                    b2, Connector.Type.TO_MANY_MANDATORY, GRID_SIZE * 0, GRID_SIZE * 6);
+            canvas.addElement(b1);
+            canvas.addElement(b2);
+            canvas.addElement(c1);
+            canvas.addElement(c2);
         }
 
         //
@@ -100,7 +108,7 @@ public class MainC1 {
         lateralBar.add(toolBoxSplitPane);
 
 
-        var f = new JFrame("Houmls v0.0");
+        var f = new JFrame("Houmls");
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         f.addKeyListener(canvas.getOffsetAndZoomListener());
 
