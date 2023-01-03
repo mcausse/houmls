@@ -1,13 +1,10 @@
 package org.homs.houmls;
 
-import org.homs.houmls.shape.impl.Box;
-import org.homs.houmls.shape.impl.Comment;
-import org.homs.houmls.shape.impl.Connector;
+import org.homs.houmls.xml.UxfFileLoader;
 
 import javax.swing.*;
 import java.awt.*;
 
-import static org.homs.houmls.GridControl.GRID_SIZE;
 import static org.homs.houmls.LookAndFeel.yellowMartin;
 
 // XXX https://stackoverflow.com/questions/63583595/java-graphics2d-zoom-on-mouse-location
@@ -21,8 +18,8 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  * <pre>
  *     X nou listener per a seleccionar elements => info al JTextArea
  *     - resizar boxes
- *     - editar info JTextArea i en component es parseja i s'estila!
- *     - parser de text tipo MarkDown amb aligments
+ *     X editar info JTextArea i en component es parseja i s'estila!
+ *     X parser de text tipo MarkDown amb aligments
  *
  *     - text a les arrows, cardinalitat (1..2, 0..*) rols, etc...
  *     - layers?
@@ -54,62 +51,64 @@ public class MainC1 {
         shapeTextEditor.setBackground(yellowMartin);
 
         var canvas = new Canvas(shapeTextEditor);
-        {
+//        {
+//
+//            Box class1 = new Box(GRID_SIZE * 10, GRID_SIZE * 5, GRID_SIZE * 10, GRID_SIZE * 10, "._<<@Component>>\n.*MartinCanvas\n---\n---\nvoid paint(Graphics g)\n---");
+//            Box class2 = new Box(GRID_SIZE * 25, GRID_SIZE * 5, GRID_SIZE * 10, GRID_SIZE * 10, "*11111\n---\n233333\n---");
+//            Connector connector1 = new Connector(class1, Connector.Type.AGGREGATION, GRID_SIZE * 10, GRID_SIZE * 3, class2, Connector.Type.ARROW, 0, GRID_SIZE * 3);
+//            Connector connector2 = new Connector(class1, Connector.Type.COMPOSITION, GRID_SIZE * 10, GRID_SIZE * 6, class2, Connector.Type.ARROW, 0, GRID_SIZE * 6);
+////            arrow.getMiddlePoints().add(new Point(150, 100));
+//            canvas.addElement(connector1);
+//            canvas.addElement(connector2);
+//            canvas.addElement(class1);
+//            canvas.addElement(class2);
+//
+//        }
+//        {
+//            Box target = new Box(GRID_SIZE * 10, GRID_SIZE * 20, GRID_SIZE * 10, GRID_SIZE * 10, "._<<interface>>\n.*Target\n---\n---\noperation()\n---");
+//            Box adapter = new Box(GRID_SIZE * 10, GRID_SIZE * 35, GRID_SIZE * 10, GRID_SIZE * 10, ".*Adapter\n---\n---\noperation()\n---");
+//            Connector connector = new Connector(adapter, Connector.Type.DEFAULT, GRID_SIZE * 5, GRID_SIZE * 0, target, Connector.Type.INHERITANCE, GRID_SIZE * 5, GRID_SIZE * 10);
+//            var comment = new Comment(GRID_SIZE * 30, GRID_SIZE * 35, GRID_SIZE * 10, GRID_SIZE * 5, "This is just a \nsimple comment!");
+//            Connector commentConnector = new Connector(
+//                    adapter, Connector.Type.MEMBER_COMMENT, GRID_SIZE * 10 - 10, GRID_SIZE * 2 + 8,
+//                    comment, Connector.Type.DEFAULT, GRID_SIZE * 0, GRID_SIZE * 2 + 8);
+//            canvas.addElement(connector);
+//            canvas.addElement(target);
+//            canvas.addElement(adapter);
+//            canvas.addElement(commentConnector);
+//            canvas.addElement(comment);
+//        }
+//        {
+//            Box b1 = new Box(GRID_SIZE * 10, GRID_SIZE * 50, GRID_SIZE * 10, GRID_SIZE * 10, ".*Target\n---");
+//            Box b2 = new Box(GRID_SIZE * 30, GRID_SIZE * 50, GRID_SIZE * 10, GRID_SIZE * 10, ".*Target\n---");
+//
+//            Connector c1 = new Connector(
+//                    b1, Connector.Type.TO_ONE_OPTIONAL, GRID_SIZE * 10, GRID_SIZE * 3,
+//                    b2, Connector.Type.TO_MANY_OPTIONAL, GRID_SIZE * 0, GRID_SIZE * 3);
+//            Connector c2 = new Connector(
+//                    b1, Connector.Type.TO_ONE_MANDATORY, GRID_SIZE * 10, GRID_SIZE * 6,
+//                    b2, Connector.Type.TO_MANY_MANDATORY, GRID_SIZE * 0, GRID_SIZE * 6);
+//            canvas.addElement(b1);
+//            canvas.addElement(b2);
+//            canvas.addElement(c1);
+//            canvas.addElement(c2);
+//
+//            c1.setAttributesText(
+//                    "label\n" +
+//                            "lt=||-o|\n" +
+//                            "m1=jou\n" +
+//                            "m2=juas\n"
+//            );
+//            c2.setAttributesText(
+//                    "label\n" +
+//                            "lt=>|-o<\n" +
+//                            "m1=jou\n" +
+//                            "m2=juas\n" +
+//                            "\n"
+//            );
+//        }
 
-            Box class1 = new Box(GRID_SIZE * 10, GRID_SIZE * 5, GRID_SIZE * 10, GRID_SIZE * 10, "._<<@Component>>\n.*MartinCanvas\n---\n---\nvoid paint(Graphics g)\n---");
-            Box class2 = new Box(GRID_SIZE * 25, GRID_SIZE * 5, GRID_SIZE * 10, GRID_SIZE * 10, "*11111\n---\n233333\n---");
-            Connector connector1 = new Connector(class1, Connector.Type.AGGREGATION, GRID_SIZE * 10, GRID_SIZE * 3, class2, Connector.Type.ARROW, 0, GRID_SIZE * 3);
-            Connector connector2 = new Connector(class1, Connector.Type.COMPOSITION, GRID_SIZE * 10, GRID_SIZE * 6, class2, Connector.Type.ARROW, 0, GRID_SIZE * 6);
-//            arrow.getMiddlePoints().add(new Point(150, 100));
-            canvas.addElement(connector1);
-            canvas.addElement(connector2);
-            canvas.addElement(class1);
-            canvas.addElement(class2);
-
-        }
-        {
-            Box target = new Box(GRID_SIZE * 10, GRID_SIZE * 20, GRID_SIZE * 10, GRID_SIZE * 10, "._<<interface>>\n.*Target\n---\n---\noperation()\n---");
-            Box adapter = new Box(GRID_SIZE * 10, GRID_SIZE * 35, GRID_SIZE * 10, GRID_SIZE * 10, ".*Adapter\n---\n---\noperation()\n---");
-            Connector connector = new Connector(adapter, Connector.Type.DEFAULT, GRID_SIZE * 5, GRID_SIZE * 0, target, Connector.Type.INHERITANCE, GRID_SIZE * 5, GRID_SIZE * 10);
-            var comment = new Comment(GRID_SIZE * 30, GRID_SIZE * 35, GRID_SIZE * 10, GRID_SIZE * 5, "This is just a \nsimple comment!");
-            Connector commentConnector = new Connector(
-                    adapter, Connector.Type.MEMBER_COMMENT, GRID_SIZE * 10 - 10, GRID_SIZE * 2 + 8,
-                    comment, Connector.Type.DEFAULT, GRID_SIZE * 0, GRID_SIZE * 2 + 8);
-            canvas.addElement(connector);
-            canvas.addElement(target);
-            canvas.addElement(adapter);
-            canvas.addElement(commentConnector);
-            canvas.addElement(comment);
-        }
-        {
-            Box b1 = new Box(GRID_SIZE * 10, GRID_SIZE * 50, GRID_SIZE * 10, GRID_SIZE * 10, ".*Target\n---");
-            Box b2 = new Box(GRID_SIZE * 30, GRID_SIZE * 50, GRID_SIZE * 10, GRID_SIZE * 10, ".*Target\n---");
-
-            Connector c1 = new Connector(
-                    b1, Connector.Type.TO_ONE_OPTIONAL, GRID_SIZE * 10, GRID_SIZE * 3,
-                    b2, Connector.Type.TO_MANY_OPTIONAL, GRID_SIZE * 0, GRID_SIZE * 3);
-            Connector c2 = new Connector(
-                    b1, Connector.Type.TO_ONE_MANDATORY, GRID_SIZE * 10, GRID_SIZE * 6,
-                    b2, Connector.Type.TO_MANY_MANDATORY, GRID_SIZE * 0, GRID_SIZE * 6);
-            canvas.addElement(b1);
-            canvas.addElement(b2);
-            canvas.addElement(c1);
-            canvas.addElement(c2);
-
-            c1.setAttributesText(
-                    "label\n" +
-                            "lt=||-o|\n" +
-                            "m1=jou\n" +
-                            "m2=juas\n"
-            );
-            c2.setAttributesText(
-                    "label\n" +
-                            "lt=>|-o<\n" +
-                            "m1=jou\n" +
-                            "m2=juas\n" +
-                            "\n"
-            );
-        }
+        canvas.addElements(UxfFileLoader.loadFile());
 
         //
         // LATERAL BAR

@@ -23,6 +23,7 @@ public class Box implements Shape {
     double width;
     double height;
     String attributesText;
+    String text;
 
     Color backgroundColor = Color.WHITE;
     int fontSize = LookAndFeel.regularFontSize;
@@ -32,7 +33,7 @@ public class Box implements Shape {
         this.y = y;
         this.width = width;
         this.height = height;
-        this.attributesText = attributesText;
+        setAttributesText(attributesText);
     }
 
     @Override
@@ -53,6 +54,7 @@ public class Box implements Shape {
         this.attributesText = attributesText;
 
         Map<String, String> props = PropsParser.parseProperties(attributesText);
+        this.text = props.getOrDefault("", "");
 
         Color bg = PropsParser.getColorByProp(props, "bg");
         if (bg != null) {
@@ -61,7 +63,7 @@ public class Box implements Shape {
 
         var fontSizeString = props.getOrDefault("fontsize", String.valueOf(LookAndFeel.regularFontSize));
         try {
-            this.fontSize = Integer.valueOf(fontSizeString);
+            this.fontSize = Integer.parseInt(fontSizeString);
         } catch (NumberFormatException e) {
             //
         }
@@ -83,10 +85,10 @@ public class Box implements Shape {
         g.setFont(LookAndFeel.regularFont(fontSize));
         int fontHeigth = new StringMetrics(g2).getHeight("aaaAA0");
 
-        String[] textLines = attributesText.split("\\n");
+        String[] textLines = this.text.split("\\n");
         int y = iy;
         for (String line : textLines) {
-            if (line.trim().equals("---")) {
+            if (line.trim().equals("--")) {
                 y += FONT_Y_CORRECTION;
                 g.drawLine(ix, y, ix + iwidth, y);
             } else {

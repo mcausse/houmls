@@ -6,6 +6,7 @@ import org.homs.houmls.shape.Shape;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
@@ -86,7 +87,7 @@ public class Connector implements Shape {
             }
         }
 
-        public void manageLink(List<Shape> elements) {
+        public void manageLink(Collection<Shape> elements) {
             Point p = getAbsolutePoint();
             Shape isLinkedTo = null;
             for (var element : elements) {
@@ -122,33 +123,38 @@ public class Connector implements Shape {
     final ConnectorPoint startPoint;
     final ConnectorPoint endPoint;
 
-    List<Point> middlePoints;
+    final List<Point> middlePoints;
 
     String attributesText;
 
     String text = "";
     Stroke stroke = basicStroke;
-//    int fontSize = LookAndFeel.regularFontSize;
 
-    public Connector(Shape linkedStartShape, Type startType, double startx, double starty, Shape linkedEndShape, Type endType, double endx, double endy) {
-        this.startPoint = new ConnectorPoint(linkedStartShape, startType, startx, starty);
-        this.endPoint = new ConnectorPoint(linkedEndShape, endType, endx, endy);
+    public Connector(double startx, double starty, double endx, double endy, String attributes) {
+        this.startPoint = new ConnectorPoint(null, DEFAULT, startx, starty);
+        this.endPoint = new ConnectorPoint(null, DEFAULT, endx, endy);
         this.middlePoints = new ArrayList<>();
+        setAttributesText(attributes);
     }
 
     @Override
     public Shape duplicate() {
         var r = new Connector(
-                null, startPoint.type, startPoint.getAbsolutePoint().x + DUPLICATE_OFFSET_PX, startPoint.getAbsolutePoint().y + DUPLICATE_OFFSET_PX,
-                null, endPoint.type, endPoint.getAbsolutePoint().x + DUPLICATE_OFFSET_PX, endPoint.getAbsolutePoint().y + DUPLICATE_OFFSET_PX
+                startPoint.getAbsolutePoint().x + DUPLICATE_OFFSET_PX, startPoint.getAbsolutePoint().y + DUPLICATE_OFFSET_PX,
+                endPoint.getAbsolutePoint().x + DUPLICATE_OFFSET_PX, endPoint.getAbsolutePoint().y + DUPLICATE_OFFSET_PX,
+                attributesText
         );
-        r.setAttributesText(attributesText);
         middlePoints.forEach(p -> r.getMiddlePoints().add(new Point(p.x + DUPLICATE_OFFSET_PX, p.y + DUPLICATE_OFFSET_PX)));
         return r;
     }
 
     public List<Point> getMiddlePoints() {
         return middlePoints;
+    }
+
+    public void manageLink(Collection<Shape> elements) {
+        startPoint.manageLink(elements);
+        endPoint.manageLink(elements);
     }
 
     @Override
@@ -162,6 +168,8 @@ public class Connector implements Shape {
         this.attributesText = attributesText;
 
         Map<String, String> props = PropsParser.parseProperties(attributesText);
+
+        this.text = props.getOrDefault("", "");
 
         String lt = props.getOrDefault("lt", "-");
         String m1 = props.getOrDefault("m1", "");
@@ -357,13 +365,34 @@ public class Connector implements Shape {
             g.drawLine(p1.x, p1.y, p2.x, p2.y);
         }
 
+        //
+        // LABEL
+        //
+        {
+            double x = (listOfAbsolutePoints.get(0).x + listOfAbsolutePoints.get(1).x) / 2.0;
+            double y = (listOfAbsolutePoints.get(0).y + listOfAbsolutePoints.get(1).y) / 2.0;
+            double angle = Math.atan2(y, x);
+
+            g.setFont(LookAndFeel.regularFont());
+            var sm = new StringMetrics((Graphics2D) g);
+            Rectangle rect = sm.getBounds(text).getBounds();
+
+
+            var turtle = new Turtle(x, y, angle);
+            turtle.rotate(-90);
+            turtle.walk(DIAMOND_SIZE * 2); // TODO posicionar depenent de "angle"!
+
+            Point turtlePos = turtle.getPosition();
+            g.drawString(text, turtlePos.x - rect.width / 2, turtlePos.y + rect.height / 2 - 4);
+        }
+
         ((Graphics2D) g).setStroke(basicStroke);
 
         {
             Point firstPoint = listOfAbsolutePoints.get(0);
             Point secondPoint = listOfAbsolutePoints.get(1);
             double firstToSecondPointAngle = Math.atan2(secondPoint.getY() - firstPoint.getY(), secondPoint.getX() - firstPoint.getX());
-            drawEdgeOfArrow(g, startPoint.type, firstPoint, firstToSecondPointAngle, endPoint.text);
+            drawEdgeOfArrow(g, startPoint.type, firstPoint, firstToSecondPointAngle, startPoint.text);
         }
         {
             Point lastlastPoint = listOfAbsolutePoints.get(listOfAbsolutePoints.size() - 2);

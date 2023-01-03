@@ -47,7 +47,7 @@ public class Comment extends Box {
         turtle.rotate(90);
         turtle.walk(height);
 
-        g2.setColor(Color.YELLOW);
+        g2.setColor(backgroundColor);
         turtle.fillPolygon(g2);
 
         g2.setColor(Color.BLACK);

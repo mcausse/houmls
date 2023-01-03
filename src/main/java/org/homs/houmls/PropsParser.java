@@ -14,7 +14,7 @@ public class PropsParser {
         for (var line : lines) {
             var pos = line.indexOf("=");
             if (pos < 1) {
-                general.append(line + "\n");
+                general.append(line).append("\n");
             } else {
                 var propName = line.substring(0, pos);
                 var propValue = line.substring(pos + 1);

@@ -13,6 +13,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 import static org.homs.houmls.LookAndFeel.basicStroke;
@@ -188,6 +189,10 @@ public class Canvas extends JPanel {
 
     public void addElement(Shape element) {
         this.elements.add(element);
+    }
+
+    public void addElements(Collection<Shape> elements) {
+        this.elements.addAll(elements);
     }
 
     public OffsetAndZoomListener getOffsetAndZoomListener() {
