@@ -1,0 +1,1417 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>0</x>
+      <y>260</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_:LIS_
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>40</x>
+      <y>280</y>
+      <w>30</w>
+      <h>460</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=0</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;440.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>240</x>
+      <y>260</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_:VC_
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>280</y>
+      <w>30</w>
+      <h>460</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=0</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;440.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>480</x>
+      <y>260</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_:VTG (HL7)_
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>520</x>
+      <y>280</y>
+      <w>30</w>
+      <h>460</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=0</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;440.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>50</x>
+      <y>320</y>
+      <w>250</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+OML^O21</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>290</x>
+      <y>370</y>
+      <w>250</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+OML^O21</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>290</x>
+      <y>550</y>
+      <w>250</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+OML^O21</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>50</x>
+      <y>560</y>
+      <w>250</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+OML^O21</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>50</x>
+      <y>620</y>
+      <w>250</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+ORL^O22</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>290</x>
+      <y>630</y>
+      <w>250</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+ORL^O22</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>50</x>
+      <y>350</y>
+      <w>250</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+ACK^O21</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>290</x>
+      <y>400</y>
+      <w>250</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+ORL^O22</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>700</x>
+      <y>260</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_:LIS_
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>740</x>
+      <y>280</y>
+      <w>30</w>
+      <h>530</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=0</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;510.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>940</x>
+      <y>260</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_:VC_
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>980</x>
+      <y>280</y>
+      <w>30</w>
+      <h>540</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=0</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;520.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1180</x>
+      <y>260</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>_:VTG WS_
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1220</x>
+      <y>280</y>
+      <w>30</w>
+      <h>540</h>
+    </coordinates>
+    <panel_attributes>lt=.
+layer=0</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;520.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>320</y>
+      <w>250</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+OML^O21</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>990</x>
+      <y>370</y>
+      <w>250</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+lt=&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>990</x>
+      <y>510</y>
+      <w>250</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;
+</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>550</y>
+      <w>250</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+OML^O21</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>690</y>
+      <w>250</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+ORL^O22</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>990</x>
+      <y>700</y>
+      <w>250</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>350</y>
+      <w>250</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+ACK^O21</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1020</x>
+      <y>660</y>
+      <w>170</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>ProcessNewOrderLISResponse
+ProcessChangeOrderLISResponse
+ProcessCancelOrderLISResponse
+
+fontsize=10
+bg=yellow
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1030</x>
+      <y>470</y>
+      <w>150</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>ProcessNewOrderRequest
+ProcessChangeOrderRequest
+ProcessCancelOrderRequest
+
+fontsize=10
+bg=yellow
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1050</x>
+      <y>330</y>
+      <w>110</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>ProcessNewOrder
+ProcessChangeOrder
+ProcessCancelOrder
+
+fontsize=10
+bg=yellow
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>990</x>
+      <y>540</y>
+      <w>250</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+ProcessApplicationACK
+lt=&lt;&lt;-
+</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>90</x>
+      <y>430</y>
+      <w>170</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>- Pasapalabra: 
+  "chcaMessageReaderDaemon" 
+  stores the message directy to 
+  "thcaMessageObjectOUT"
+- nothing updated in DB. No event.
+- ControlId is the same
+
+fontsize=10
+bg=yellow
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>500</y>
+      <w>90</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;70.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>80</x>
+      <y>700</y>
+      <w>180</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>- ControlId is NOT the same
+- ForwardToVTG()
+- if is accepted by LIS:
+  =&gt; generate events to propagate 
+     to other instruments
+     (OrderEntrance)
+  =&gt; save in DB as with OML^O21
+fontsize=10
+bg=yellow
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>220</x>
+      <y>650</y>
+      <w>80</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;50.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>990</x>
+      <y>400</y>
+      <w>250</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;
+fontsize=12
+ProcessApplicationACK</panel_attributes>
+    <additional_attributes>230.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>280</x>
+      <y>330</y>
+      <w>20</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>
+bg=yellow
+transparency=0
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>280</x>
+      <y>540</y>
+      <w>20</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>
+bg=yellow
+transparency=0
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>40</x>
+      <y>320</y>
+      <w>20</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>
+bg=yellow
+transparency=0
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>520</x>
+      <y>370</y>
+      <w>20</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>
+bg=yellow
+transparency=0
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>520</x>
+      <y>540</y>
+      <w>20</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>
+bg=yellow
+transparency=0
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1220</x>
+      <y>490</y>
+      <w>20</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>
+bg=yellow
+transparency=0
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>40</x>
+      <y>540</y>
+      <w>20</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>
+bg=yellow
+transparency=0
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>740</x>
+      <y>310</y>
+      <w>20</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>
+bg=yellow
+transparency=0
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>980</x>
+      <y>320</y>
+      <w>20</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>
+bg=yellow
+transparency=0
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1220</x>
+      <y>360</y>
+      <w>20</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>
+bg=yellow
+transparency=0
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>980</x>
+      <y>510</y>
+      <w>20</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>
+bg=yellow
+transparency=0
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>740</x>
+      <y>540</y>
+      <w>20</w>
+      <h>200</h>
+    </coordinates>
+    <panel_attributes>
+bg=yellow
+transparency=0
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1220</x>
+      <y>680</y>
+      <w>20</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>
+bg=yellow
+transparency=0
+layer=1</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>190</x>
+      <y>180</y>
+      <w>200</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>*WORKFLOW FLEXIBILITY*
+*HL7*
+bg=yellow
+valign=center
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>890</x>
+      <y>180</y>
+      <w>200</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>*WORKFLOW FLEXIBILITY*
+*Vantage WS*
+bg=yellow
+valign=center
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>940</x>
+      <y>530</y>
+      <w>30</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*1*
+layer=2
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>940</x>
+      <y>660</y>
+      <w>30</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*2*
+layer=2
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1460</x>
+      <y>160</y>
+      <w>30</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*1*
+layer=2
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1500</x>
+      <y>160</y>
+      <w>750</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>
+bg=yellow
+transparency=100
+layer=0</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1460</x>
+      <y>520</y>
+      <w>30</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>*2*
+layer=2
+bg=cyan</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1900</x>
+      <y>430</y>
+      <w>170</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Saves the outgoing object in the 
+output process queue (table 
+'thcaMessageObjectOUT')
+
+fontsize=10
+bg=yellow
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1730</x>
+      <y>210</y>
+      <w>240</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>ws.ext.VANTAGEWS.VANTAGEWSToVCService
+--
+--
+ProcessNewOrderRequest
+ProcessChangeOrderRequest
+ProcessCancelOrderRequest
+--
+bg=pink
+fontsize=10
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1960</x>
+      <y>210</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-()
+bg=pink</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1960</x>
+      <y>240</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-()
+bg=pink</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1960</x>
+      <y>270</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=-()
+bg=pink</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>1550</x>
+      <y>240</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Main Entrance</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1660</x>
+      <y>240</y>
+      <w>90</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;20.0;70.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1520</x>
+      <y>320</y>
+      <w>180</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>hca.mhl.chcaMessageReaderDaemon
+--
+--
+Reader()
+--
+
+fontsize=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1800</x>
+      <y>320</y>
+      <w>230</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>hca.WS.VANTAGEWS.chcaVANTAGEWSImp
+--
+--
+ConvertWFRequestToMsgLIS
+--
+bg=pink
+fontsize=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2040</x>
+      <y>330</y>
+      <w>50</w>
+      <h>20</h>
+    </coordinates>
+    <panel_attributes>msg.LIS
+bg=green
+fontsize=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2020</x>
+      <y>340</y>
+      <w>100</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>80.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2100</x>
+      <y>320</y>
+      <w>130</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>hca.imp.chcaImportRouter
+--
+--
+ImportRouter()
+--
+fontsize=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1690</x>
+      <y>340</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1760</x>
+      <y>340</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1600</x>
+      <y>210</y>
+      <w>30</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;30.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2100</x>
+      <y>420</y>
+      <w>130</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>hca.imp.RequestWF
+--
+--
+ForwardToLIS()
+--
+fontsize=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2160</x>
+      <y>370</y>
+      <w>30</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1530</x>
+      <y>170</y>
+      <w>180</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Saves the serialized WS message
+in the IN queue, at a disposition 
+of the "ReaderDaemon".
+
+fontsize=10
+bg=yellow
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2060</x>
+      <y>440</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>40.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1520</x>
+      <y>620</y>
+      <w>130</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>hca.imp.chcaImportRouter
+--
+--
+ImportRouter()
+--
+fontsize=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1720</x>
+      <y>620</y>
+      <w>160</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>hca.imp.RequestWF
+--
+--
+ProcessLISWorkflowResponse()
+--
+fontsize=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1640</x>
+      <y>640</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1970</x>
+      <y>680</y>
+      <w>160</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>hca.imp.chcaAPOrderHandler
+--
+--
+OrderEntrance()
+--
+fontsize=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1870</x>
+      <y>640</y>
+      <w>120</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+[If LIS accepts]
+fontsize=10</panel_attributes>
+    <additional_attributes>100.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1860</x>
+      <y>580</y>
+      <w>100</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+ForwardToVTG()
+fontsize=10</panel_attributes>
+    <additional_attributes>10.0;40.0;10.0;20.0;80.0;20.0;80.0;70.0;20.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1970</x>
+      <y>600</y>
+      <w>170</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>Saves the outgoing object in 
+the output process queue (table 
+'thcaMessageObjectOUT')
+
+fontsize=10
+bg=yellow
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1930</x>
+      <y>610</y>
+      <w>60</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;40.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1970</x>
+      <y>770</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>If the changes are approbed by 
+LIS, they are propagated to the 
+other instruments (OrderEntrance,
+generating events, in the usual way)
+fontsize=10
+bg=yellow
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2030</x>
+      <y>730</y>
+      <w>30</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1730</x>
+      <y>320</y>
+      <w>40</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>[...]
+--
+--
+--
+
+fontsize=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2280</x>
+      <y>600</y>
+      <w>80</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>60.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2340</x>
+      <y>580</y>
+      <w>140</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>hca.exp.chcaCreateMSG
+--
+--
+CreateMSGStructured
+CreateMSGLisVantageWS
+--
+fontsize=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2470</x>
+      <y>600</y>
+      <w>80</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>60.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2530</x>
+      <y>580</y>
+      <w>150</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+hca.WS.chcaGenericExp
+--
+--
+CreateSerializedWSMsgLis
+--
+bg=pink
+fontsize=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2600</x>
+      <y>640</y>
+      <w>30</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2500</x>
+      <y>690</y>
+      <w>210</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>hca.WS.VANTAGEWS.chcaVTGWSExp
+--
+--
+CreateSerializedWSMsgLis  [VantageWS]
+InsertDataInMsgLIS()
+...
+FillPatient
+--
+bg=pink
+fontsize=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2700</x>
+      <y>730</y>
+      <w>50</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;30.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2730</x>
+      <y>720</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>fills the msg.LISWS
+bg=yellow
+fontsize=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLGeneric</id>
+    <coordinates>
+      <x>1500</x>
+      <y>520</y>
+      <w>750</w>
+      <h>340</h>
+    </coordinates>
+    <panel_attributes>
+bg=yellow
+transparency=100
+layer=-2</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>2490</x>
+      <y>890</y>
+      <w>240</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>ws.ext.VANTAGEWS.VCToVANTAGEWSService
+--
+--
+ProcessNewOrderLISResponse()
+ProcessChangeOrderLISResponse()
+ProcessCancelOrderLISResponse()
+--
+fontsize=10
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1900</x>
+      <y>540</y>
+      <w>420</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+fontsize=10</panel_attributes>
+    <additional_attributes>400.0;40.0;400.0;10.0;10.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>930</x>
+      <y>70</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;&gt;
+sync call</panel_attributes>
+    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>930</x>
+      <y>100</y>
+      <w>150</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=-&gt;
+async call</panel_attributes>
+    <additional_attributes>10.0;20.0;130.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>880</x>
+      <y>580</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>ForwardToLIS()
+
+fontsize=10
+bg=yellow
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>880</x>
+      <y>720</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>ForwardToVTG()
+
+fontsize=10
+bg=yellow
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1370</x>
+      <y>200</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*VTG=&gt;VC=&gt;LIS*
+bg=yellow
+valign=center
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1370</x>
+      <y>560</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*LIS=&gt;VC=&gt;VTG*
+bg=yellow
+valign=center
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>280</x>
+      <y>640</y>
+      <w>270</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+[Other hosts]</panel_attributes>
+    <additional_attributes>250.0;120.0;10.0;10.0</additional_attributes>
+  </element>
+</diagram>

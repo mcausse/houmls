@@ -130,10 +130,19 @@ public class Canvas extends JPanel {
             if (lastDragPoint == null) {
                 lastDragPoint = e.getPoint();
                 selectedDraggable = findDraggableByMousePosition(e.getX(), e.getY());
-            } else if (selectedDraggable != null) {
-                double translateToX = (e.getX() - lastDragPoint.x) / zoom;
-                double translateToY = (e.getY() - lastDragPoint.y) / zoom;
-                selectedDraggable.translate(translateToX, translateToY);
+            } else {
+                if (selectedDraggable == null) {
+                    // DRAGGA TOT
+                    double translateToX = (e.getX() - lastDragPoint.x) / zoom;
+                    double translateToY = (e.getY() - lastDragPoint.y) / zoom;
+                    offsetX += translateToX;
+                    offsetY += translateToY;
+                } else {
+                    // DRAGGA OBJECTE
+                    double translateToX = (e.getX() - lastDragPoint.x) / zoom;
+                    double translateToY = (e.getY() - lastDragPoint.y) / zoom;
+                    selectedDraggable.translate(translateToX, translateToY);
+                }
                 lastDragPoint.x = e.getX();
                 lastDragPoint.y = e.getY();
                 repaint();
@@ -143,8 +152,10 @@ public class Canvas extends JPanel {
         @Override
         public void mouseReleased(MouseEvent e) {
             setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
-            if (selectedDraggable != null) {
-                selectedDraggable.dragHasFinished(elements);
+            if (lastDragPoint != null) {
+                if (selectedDraggable != null) {
+                    selectedDraggable.dragHasFinished(elements);
+                }
                 repaint();
             }
             lastDragPoint = null;

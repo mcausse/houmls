@@ -1,5 +1,6 @@
 package org.homs.houmls.shape.impl;
 
+import org.homs.houmls.GridControl;
 import org.homs.houmls.Turtle;
 import org.homs.houmls.shape.Shape;
 
@@ -8,6 +9,8 @@ import java.awt.*;
 import static org.homs.houmls.LookAndFeel.basicStroke;
 
 public class Comment extends Box {
+
+    public static final int COMMENT_FOLD_DIST = GridControl.GRID_SIZE;
 
     public Comment(int x, int y, int width, int height, String attributesText) {
         super(x, y, width, height, attributesText);
@@ -28,8 +31,6 @@ public class Comment extends Box {
         int iheight = (int) height;
 
         g2.setStroke(basicStroke);
-
-        int COMMENT_FOLD_DIST = 20;
 
         var turtle = new Turtle(ix, iy, 0);
         turtle.walk(iwidth - COMMENT_FOLD_DIST);

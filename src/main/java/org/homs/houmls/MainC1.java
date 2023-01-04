@@ -21,7 +21,7 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *     X editar info JTextArea i en component es parseja i s'estila!
  *     X parser de text tipo MarkDown amb aligments
  *
- *     - text a les arrows, cardinalitat (1..2, 0..*) rols, etc...
+ *     X text a les arrows, cardinalitat (1..2, 0..*) rols, etc...
  *     - layers?
  *     X box de comment (+ pergamino?)
  *     X duplicar element amb double-click
@@ -31,12 +31,28 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *     - punt per a moure la fletcha sencera, deslinkant rollo UMLet
  *
  *     - menú general (operacions de fitxer, about, etc).
- *     - llegir XMLs de UMLet, i poder-los exportar
+ *     X llegir XMLs de UMLet
+ *     - poder exportar XMLs de UMLet
  *     - pestanyes? bah, no cal.
  *     - exportar a PNG, etc...
  *
  *     - undo
  *     - multisellecció + moure en grup!
+ *
+ *
+ *      - llegir "UML Distilled" (Martin Fowler) i apendre UML pràctic d'una puta vegada
+ *      - importar els diagrams que tinc en GitLab de Roche
+ *      - veure com crear un XML (veure DriverEngine...)
+ *
+ *      - + cercles, elipses
+ *      - + Generics <T>
+ *      - + moñeco
+ *      - + required --o)-- provided
+ *      - + altyres tiopos de caixes a base de diferents turtles... veure diagrames de activitat
+ *      - + caixes amb rounded corners
+ *
+ *      - apastelar colors, o admetre RGB a més de noms
+ *
  * </pre>
  */
 public class MainC1 {

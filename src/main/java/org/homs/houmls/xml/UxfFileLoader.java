@@ -25,7 +25,8 @@ public class UxfFileLoader {
         List<Shape> r = new ArrayList<>();
 
 //        File xmlFile = new File("houmls.uxf");
-        File xmlFile = new File("CAssert.uxf");
+//        File xmlFile = new File("CAssert.uxf");
+        File xmlFile = new File("OrderEntrance.uxf");
 
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();

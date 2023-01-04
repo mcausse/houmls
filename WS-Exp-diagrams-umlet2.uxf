@@ -1,0 +1,1238 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>10</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1620</x>
+      <y>2410</y>
+      <w>210</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>hca.chcaWSCaller
+--
+--
+SendMessage
+...
+ProcessVantageWSWebService
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1930</x>
+      <y>2300</y>
+      <w>210</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>ws.sys.wGenericWebClient
+--
+--
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1820</x>
+      <y>2460</y>
+      <w>70</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>50.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1870</x>
+      <y>2410</y>
+      <w>340</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>ws.ext.VANTAGEWS.VCToVANTAGEWSService
+--
+--
+ProcessApplicationACK()
+ProcessPatientUpdate()
+...
+--
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2030</x>
+      <y>2360</y>
+      <w>30</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;50.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>870</x>
+      <y>1690</y>
+      <w>210</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>hca.exp.chcaCreateMSG
+--
+--
+CreateMSGStructured
+CreateMSGLisVantageWS
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1070</x>
+      <y>1730</y>
+      <w>90</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>70.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>540</x>
+      <y>1690</y>
+      <w>270</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>hca.mhl.chcaMessageEventDaemon
+--
+--
+CreateMSGLIS
+--
+bg=orange
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>800</x>
+      <y>1710</y>
+      <w>90</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>70.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1190</x>
+      <y>2410</y>
+      <w>270</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>hca.chcaWSModule
+--
+--
+Send
+[...]
+SendObject
+--
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1450</x>
+      <y>2440</y>
+      <w>190</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>170.0;10.0;10.0;40.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1140</x>
+      <y>1830</y>
+      <w>300</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>hca.WS.VANTAGEWS.chcaVANTAGEWSExp
+--
+--
+CreateSerializedWSMsgLis  [VantageWS]
+InsertDataInMsgLIS()
+...
+--
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1140</x>
+      <y>1690</y>
+      <w>300</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;abstract&gt;&gt;
+hca.WS.chcaGenericExp
+--
+--
+CreateSerializedWSMsgLis
+--
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1280</x>
+      <y>1770</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>430</x>
+      <y>1830</y>
+      <w>650</w>
+      <h>120</h>
+    </coordinates>
+    <panel_attributes>*** ##class(hca.mhl.chcaMessageEventDaemon).CreateMSGLIS()
+*** ##class(hca.exp.chcaCreateMSG).CreateMSGStructured()
+*** ##class(hca.WS.VANTAGEWS.chcaVANTAGEWSExp).CreateSerializedWSMsgLis()
+
+*** ##class(hca.chcaWSCaller).SendMessage()
+*** ##class(hca.chcaWSCaller).ProcessVantageWSWebService()
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1650</x>
+      <y>2530</y>
+      <w>170</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Generic handling of the 
+responses to WS 
+(ACKs/NACKs)
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1020</x>
+      <y>2210</y>
+      <w>400</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Send() FUNCA COM UN DAEMON - While INFINITO 
+- CONSUMEIX WS MESSAGES FROM THE QUEUE 
+(from the "thcaMessageReceiversOUT")
+
+If the App ACK is required by the Channel/Protocol 
+configuration:
+- should be marked in the "thcaMessageReceiversOUT" table.
+- insert an entry into thcaACKs table
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1050</x>
+      <y>2560</y>
+      <w>510</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>fontsize=12
+bg=yellow
+
+_*Send() :: extract from the "msg.LISWS" and sets to the "dt.comWSInfo"*_
+
+Set strActionCode = $ListGet($ListGet($ListGet(rstMessage.Data("LISObject_WS"), 1), 1), 1)
+Set intPatientID = $ListGet($ListGet($ListGet(rstMessage.Data("LISObject_WS"), 1), 1), 4)
+Set intOrderID = $ListGet($ListGet($ListGet(rstMessage.Data("LISObject_WS"), 1), 1), 5)
+...
+Set transactionId = $ListGet($ListGet($ListGet(rstMessage.Data("LISObject_WS"), 1), 1), 8)
+Set pobjConnectionInfo.TransactionId = transactionId</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1490</x>
+      <y>2410</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>dt.comWSInfo
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1180</x>
+      <y>2000</y>
+      <w>190</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>- fills the msg.LISWS
+- creates the TransactionId
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>330</x>
+      <y>560</y>
+      <w>270</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>hca.mhl.chcaMessageReaderDaemon
+--
+--
+Reader()
+--
+
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>680</x>
+      <y>630</y>
+      <w>270</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>hca.chcaMessageRouter
+--
+--
+ParserRouter
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>520</x>
+      <y>680</y>
+      <w>180</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;static&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;50.0;160.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>340</x>
+      <y>850</y>
+      <w>640</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>fontsize=10
+bg=yellow
+#Dim hostImp As hca.WS.chcaGenericHostImp = $Case(pobjTraceInfo.HostType, 	##class(Consts.HostType).#HostTypeDP		: ##class(hca.WS.DP600.chcaDP600Imp).%New(),
+																			##class(Consts.HostType).#HostTypeVirtuoso	: ..DistinguishBetweenVirtuosoOrUpath(pobjTraceInfo),
+																			##class(Consts.HostType).#HostTypeVSS		: ##class(hca.WS.VSS.chcaVSSImp).%New(),
+																			##class(Consts.HostType).#HostTypeHE600		: ##class(hca.WS.HE600.chcaHE600Imp).%New(),
+																			##class(Consts.HostType).#HostTypeSymphony	: ##class(hca.WS.SYMP.chcaSYMPImp).%New(),
+																			##class(Consts.HostType).#HostTypeVTG       : ##class(hca.WS.VANTAGEWS.chcaVANTAGEWSImp).%New())
+
+#Dim routerImp As hca.WS.chcaHostRouter = ##class(hca.WS.chcaHostRouter).%New(hostImp)
+
+Set blnReturn = routerImp.In(pstrProcess, pintID, pobjMessage, pobjProtocolInfo, pobjTraceInfo, pobjChannelInfo)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>800</x>
+      <y>710</y>
+      <w>30</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;140.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>0</x>
+      <y>1570</y>
+      <w>260</w>
+      <h>1120</h>
+    </coordinates>
+    <panel_attributes>
+
+
+WS Export Layer
+
+
+
+bg=cyan
+valign=center
+halign=center
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>0</x>
+      <y>0</y>
+      <w>260</w>
+      <h>1500</h>
+    </coordinates>
+    <panel_attributes>
+
+
+WS Import Layer
+
+
+
+bg=cyan
+valign=center
+halign=center
+fontsize=20</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1310</x>
+      <y>2490</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1230</x>
+      <y>2340</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>320</x>
+      <y>410</y>
+      <w>330</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>ws.ext.VANTAGEWS.VANTAGEWSToVCService
+--
+--
+ProcessApplicationACK()
+ProcessAssignedPathologistUpdate()
+[...]
+--
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>710</x>
+      <y>410</y>
+      <w>270</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>hca.chcaWSModule
+--
+--
+GetMessage()
+--
+bg=orange</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1040</x>
+      <y>410</y>
+      <w>270</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>hca.chcaMainEntrance
+--
+--
+InMessage()
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1370</x>
+      <y>410</y>
+      <w>270</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>hca.chcaACK
+--
+--
+PrepareACKAnswer()
+GetACKMessage()
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1700</x>
+      <y>410</y>
+      <w>270</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>hca.chcaCreateOUTMessage
+--
+--
+GetStructuredMessage()
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1700</x>
+      <y>260</y>
+      <w>270</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>- Set objResponse = ##class(hca.WS.VANTAGEWS.chcaVANTAGEWSImp).Response(pobjmsgLIS.Header.AcknowledgmentCode, pobjmsgLIS.Header.ErrorCondition, pobjmsgLIS.Header.TextMessage)
+- returns an "ws.ext.VANTAGEWS.q1.CommunicationACK" object.
+
+bg=yellow
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1830</x>
+      <y>360</y>
+      <w>30</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>280</x>
+      <y>90</y>
+      <w>600</w>
+      <h>250</h>
+    </coordinates>
+    <panel_attributes>fontsize=10
+bg=yellow
+
+Method ProcessApplicationACK(transactionId As %String, applicationACK As ws.ext.VANTAGEWS.q1.ApplicationACK) As ws.ext.VANTAGEWS.q1.CommunicationACK
+{
+	/*
+	 * Mount the wrapper entity
+	 */
+	#Dim entity As ws.ext.VANTAGEWS.ProcessApplicationACK = ##class(ws.ext.VANTAGEWS.s0.ProcessApplicationACK).%New()
+	Set entity.transactionId = transactionId
+	Set entity.applicationACK = applicationACK
+
+	/*
+	 * Serialize the entity
+	 */
+	#Dim streamMessage As %Library.GlobalCharacterStream = ##class(fn.SerializeObject).SerializeObjectToStream(entity)
+	
+	#Dim streamResponseMessage As %Library.GlobalCharacterStream = ##class(hca.chcaWSModule).GetMessage(streamMessage, ..#HostType, ..%ClassName(1), "")
+
+	Return ..ResponseMessage(streamResponseMessage, "ws.ext.VANTAGEWS.q1.CommunicationACK")</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>490</x>
+      <y>330</y>
+      <w>30</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;80.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>640</x>
+      <y>430</y>
+      <w>90</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>70.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>970</x>
+      <y>430</y>
+      <w>90</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>70.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1300</x>
+      <y>430</y>
+      <w>90</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>70.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1070</x>
+      <y>310</y>
+      <w>200</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>
+This is the...
+
+*M A I N   E N T R A N C E*
+
+bg=yellow
+valign=center
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1010</x>
+      <y>630</y>
+      <w>270</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>hca.WS.chcaHostRouter
+--
+--
+In()
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1410</x>
+      <y>850</y>
+      <w>330</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>hca.WS.VANTAGEWS.chcaVANTAGEWSImp
+--
+--
+ValidateTransactionId()
+ConvertApplicationACKToMsgLIS()
+--
+bg=pink
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1280</x>
+      <y>1000</y>
+      <w>580</w>
+      <h>480</h>
+    </coordinates>
+    <panel_attributes>fontsize=10
+bg=yellow
+##class(hca.WS.DP600.chcaDP600Imp).GetCorrelateClass()
+	a partir del "root":     /// root is the SOAPACtion (the WS method name)
+							/// #Dim root As %String = ..XmlDocHelper.GetMessageXMLRoot(message, traceInfo)
+	root="sendUpdatedSlideStatus" 
+
+a partir de la request serialitzada, la deserialitza a la entitat retornada del "GetCorrelateClass()"
+=&gt; "ws.ext.DP600.s0.sendUpdatedSlideStatus")
+
+zw structured
+structured=&lt;OBJECT REFERENCE&gt;[28@ws.ext.DP600.s0.sendUpdatedSlideStatus]
++----------------- general information ---------------
+|      oref value: 28
+|      class name: ws.ext.DP600.s0.sendUpdatedSlideStatus
+| reference count: 2
++----------------- attribute values ------------------
+|               arg0 = "S21-0002;A;2;3"
+|               arg1 = "SCANNED"
++-----------------------------------------------------
+
+
+If (..HostImport.IsSyncAction(root))
+	Return ..HostImport.HandleSyncAction(root, structured, traceInfo)
+Else
+	Return ..HostImport.HandleAsyncAction(root, process, receiversID, message, structured, protocolInfo, traceInfo, channelInfo)        
+
+
+##class(hca.WS.DP600.chcaDP600Imp).HandleAsyncAction():
+
+	- converteix l'entitat WS "structured" a msg.LIS
+	- ..MessageHandlerManager.SaveObjectIn(receiversID, msgLIS, traceInfo)
+	- ..ImportRouter.ImportRouter(process, message, msgLIS, protocolInfo, channelInfo, traceInfo)
+	
+##class(hca.WS.DP600.chcaDP600Imp).HandleSyncAction()
+
+	- Do ..FillScannedSlide(structured.arg0, traceInfo, ..HostExport)    
+	- valida 
+	- Do exportLayer.SendAddSlide(intOrderID, order.rPatientsIDGet(), vOrder, traceInfo
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1560</x>
+      <y>930</y>
+      <w>30</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>940</x>
+      <y>650</y>
+      <w>90</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>70.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1270</x>
+      <y>650</y>
+      <w>80</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>60.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1330</x>
+      <y>630</y>
+      <w>470</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+hca.WS.chcaGenericHostImp
+--
+--
+GetCorrelateClass(root As %String) As %String
+IsSyncAction(root As %String) As %Boolean
+HandleSyncAction(root As %String, structured As %ObjectHandle, traceInfo As dt.hcaTraceInfo) As %Status
+HandleAsyncAction(root As %String, process As %String
+--
+bg=pink
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1560</x>
+      <y>770</y>
+      <w>30</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;80.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1910</x>
+      <y>850</y>
+      <w>270</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>hca.imp.chcaImportRouter
+--
+--
+ImportRouter()
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1730</x>
+      <y>870</y>
+      <w>200</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>180.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1770</x>
+      <y>850</y>
+      <w>100</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>msg.LIS
+bg=green</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>880</x>
+      <y>270</y>
+      <w>70</w>
+      <h>160</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>50.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>900</x>
+      <y>220</y>
+      <w>430</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>Pass the WS message to the MainEntrance
+
+RETURN THE COM-ACK
+
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1630</x>
+      <y>430</y>
+      <w>90</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>70.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1380</x>
+      <y>2440</y>
+      <w>70</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;40.0;50.0;40.0;50.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1480</x>
+      <y>2330</y>
+      <w>120</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>+TransactionId
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1530</x>
+      <y>2350</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1270</x>
+      <y>1940</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;60.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>920</x>
+      <y>520</y>
+      <w>270</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>hca.chcaACK
+--
+--
+InsertACKData
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>820</x>
+      <y>490</y>
+      <w>120</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>100.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1860</x>
+      <y>690</y>
+      <w>370</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>This is the...
+*I M P O R T   R O U T E R*
+
+the common entrance for all 
+protocols (HL7/WS/REST/...),
+because is the entrance of the msg.LIS as agnostic 
+message representation
+bg=yellow
+valign=center
+halign=center</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>820</x>
+      <y>2410</y>
+      <w>210</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>hca.chcaConnectionsModule
+--
+--
+Activate()
+--
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1020</x>
+      <y>2420</y>
+      <w>190</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>170.0;30.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>940</x>
+      <y>690</y>
+      <w>110</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>90.0;70.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>860</x>
+      <y>760</y>
+      <w>430</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>*HL7 - ^gblMessageControlID*
+##class(hca.chcaCreateObjectAP).In()
+##class(hca.MessageIdValidator).ValidateMessageTransactionID()
+
+bg=yellow
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1910</x>
+      <y>970</y>
+      <w>390</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>*WS - ^gblMessageControlID*
+##class(hca.chcaGetMessageType).MessageControlID()
+bg=yellow
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1730</x>
+      <y>910</y>
+      <w>200</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=.
+</panel_attributes>
+    <additional_attributes>180.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1860</x>
+      <y>540</y>
+      <w>480</w>
+      <h>130</h>
+    </coordinates>
+    <panel_attributes>HandleAsyncAction(): 
+- Converts the WS entity (e.g. "ws.ext.VANTAGEWS.s0.ProcessApplicationACK") to a msg.LIS instance
+- ..MessageHandlerManager.SaveObjectIn(receiversID, msgLIS, traceInfo)
+- Do ..ImportRouter.ImportRouter(..)
+
+bg=yellow
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1790</x>
+      <y>590</y>
+      <w>90</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;50.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>420</x>
+      <y>1610</y>
+      <w>820</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>*LOADS THE msg.LIS AND GENERATES THE WS ENTITY (VIA FILLERS) AND SAVES TO THE OUT QUEUE.*
+bg=yellow</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1370</x>
+      <y>260</y>
+      <w>270</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>- loads the Protocol/Channel ACK configuration for the incoming message.
+- based on the Protocol/Channel gets the ACK message from the "thcaUsedConfig"
+bg=yellow
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1490</x>
+      <y>350</y>
+      <w>30</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;60.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>1280</x>
+      <y>520</y>
+      <w>430</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>- small class
+- converts the XML %Stream of the message to the proper entity, and fills it withthe values.
+- delegates the call to the "chcaVANTAGEWSImp#HandleAsyncAction()" with the message entity.
+
+bg=yellow
+style=wordwrap</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1210</x>
+      <y>590</y>
+      <w>160</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;40.0;140.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLNote</id>
+    <coordinates>
+      <x>2230</x>
+      <y>860</y>
+      <w>210</w>
+      <h>80</h>
+    </coordinates>
+    <panel_attributes>Depending on the Host/Protocol/Channel,
+routes the message to the proper Handler.
+
+Switch by ChannelType
+(e.g. "61 - Scan Status Update")
+
+bg=yellow
+
+fontsize=10</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>2170</x>
+      <y>890</y>
+      <w>80</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=.</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1520</x>
+      <y>1830</y>
+      <w>350</w>
+      <h>150</h>
+    </coordinates>
+    <panel_attributes>hca.WS.VANTAGEWS.chcaVANTAGEWSExpFillers
+--
+--
+FillLabOrder()
+FillStainOrdersList()
+FillStainOrder()
+FillListOfSuplementalInfo()
+FillPatient
+[...]
+--
+bg=pink</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1430</x>
+      <y>1870</y>
+      <w>110</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-
+</panel_attributes>
+    <additional_attributes>90.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLUseCase</id>
+    <coordinates>
+      <x>410</x>
+      <y>710</y>
+      <w>120</w>
+      <h>40</h>
+    </coordinates>
+    <panel_attributes>Things</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>460</x>
+      <y>640</y>
+      <w>80</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=.&gt;
+&lt;&lt;static&gt;&gt;</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+</diagram>

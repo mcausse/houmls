@@ -10,8 +10,11 @@ import org.homs.houmls.shape.Shape;
 import java.awt.*;
 import java.util.List;
 import java.util.Map;
+import java.util.function.Supplier;
 
+import static org.homs.houmls.LookAndFeel.BOXES_WITH_SHADOW;
 import static org.homs.houmls.LookAndFeel.basicStroke;
+import static org.homs.houmls.shape.impl.Connector.SELECTION_BOX_SIZE;
 
 public class Box implements Shape {
 
@@ -67,7 +70,6 @@ public class Box implements Shape {
         } catch (NumberFormatException e) {
             //
         }
-
     }
 
     @Override
@@ -131,8 +133,10 @@ public class Box implements Shape {
         g2.drawRect(ix, iy, iwidth, iheight);
 
         // ombra fina
-        g2.drawLine(ix + iwidth + 1, iy + 1, ix + iwidth + 1, iy + iheight + 1);
-        g2.drawLine(ix + 1, iy + iheight + 1, ix + iwidth + 1, iy + iheight + 1);
+        if (BOXES_WITH_SHADOW) {
+            g2.drawLine(ix + iwidth + 1, iy + 1, ix + iwidth + 1, iy + iheight + 1);
+            g2.drawLine(ix + 1, iy + iheight + 1, ix + iwidth + 1, iy + iheight + 1);
+        }
     }
 
     @Override
@@ -160,6 +164,74 @@ public class Box implements Shape {
     @Override
     public Draggable findTranslatableByPos(double mousex, double mousey) {
         // TODO borders
+//        SELECTION_BOX_SIZE
+
+        // NW
+        {
+            Supplier<Rectangle> boxSupplier = () -> new Rectangle(
+                    (int) this.x - SELECTION_BOX_SIZE,
+                    (int) this.y - SELECTION_BOX_SIZE,
+                    SELECTION_BOX_SIZE * 2,
+                    SELECTION_BOX_SIZE * 2);
+            if (boxSupplier.get().contains(mousex, mousey)) {
+                return new Draggable() {
+                    @Override
+                    public Cursor getTranslationCursor() {
+                        return Cursor.getPredefinedCursor(Cursor.NW_RESIZE_CURSOR);
+                    }
+
+                    @Override
+                    public Rectangle getRectangle() {
+                        return boxSupplier.get();
+                    }
+
+                    @Override
+                    public void translate(double dx, double dy) {
+                        Box.this.x += dx;
+                        Box.this.y += dy;
+                        Box.this.width -= dx;
+                        Box.this.height -= dy;
+                    }
+
+                    @Override
+                    public void dragHasFinished(List<Shape> elements) {
+                    }
+                };
+            }
+        }
+        // NE
+        {
+            Supplier<Rectangle> boxSupplier = () -> new Rectangle(
+                    (int) (this.x + this.width) - SELECTION_BOX_SIZE,
+                    (int) this.y - SELECTION_BOX_SIZE,
+                    SELECTION_BOX_SIZE * 2,
+                    SELECTION_BOX_SIZE * 2);
+            if (boxSupplier.get().contains(mousex, mousey)) {
+                return new Draggable() {
+                    @Override
+                    public Cursor getTranslationCursor() {
+                        return Cursor.getPredefinedCursor(Cursor.NE_RESIZE_CURSOR);
+                    }
+
+                    @Override
+                    public Rectangle getRectangle() {
+                        return boxSupplier.get();
+                    }
+
+                    @Override
+                    public void translate(double dx, double dy) {
+                        Box.this.y += dy;
+                        Box.this.width += dx;
+                        Box.this.height -= dy;
+                    }
+
+                    @Override
+                    public void dragHasFinished(List<Shape> elements) {
+                    }
+                };
+            }
+        }
+
         if (this.x <= mousex && mousex <= this.x + this.width && this.y <= mousey && mousey <= this.y + this.height) {
             return this;
         }
