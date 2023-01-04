@@ -15,6 +15,7 @@ import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Function;
 
 public class UxfFileLoader {
 
@@ -23,13 +24,22 @@ public class UxfFileLoader {
 
         List<Shape> r = new ArrayList<>();
 
-        File xmlFile = new File("houmls.uxf");
+//        File xmlFile = new File("houmls.uxf");
+        File xmlFile = new File("CAssert.uxf");
+
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document doc = builder.parse(xmlFile);
 
         var root = doc.getDocumentElement();
 
+        // 10 => 100%
+        //  6 =>  60%
+        double zoomLevel = Double.parseDouble(doc.getElementsByTagName("zoom_level").item(0).getTextContent());
+//        Function<String, Integer> zoomCorrecter = k -> (int) (Integer.parseInt(k) * 10.0 / zoomLevel);
+//        Function<Integer, Integer> zoomCorrecterI = k -> (int) (k * 10.0 / zoomLevel);
+        Function<String, Integer> zoomCorrecter = Integer::parseInt;
+        Function<Integer, Integer> zoomCorrecterI = k -> k;
 
         NodeList elementList = doc.getElementsByTagName("element");
         for (int i = 0; i < elementList.getLength(); i++) {
@@ -54,20 +64,28 @@ public class UxfFileLoader {
 
                 if (id.equals("UMLNote")) {
                     Comment comment = new Comment(
-                            Integer.parseInt(xval),
-                            Integer.parseInt(yval),
-                            Integer.parseInt(wval),
-                            Integer.parseInt(hval),
+//                            Integer.parseInt(xval),
+//                            Integer.parseInt(yval),
+//                            Integer.parseInt(wval),
+//                            Integer.parseInt(hval),
+                            zoomCorrecter.apply(xval),
+                            zoomCorrecter.apply(yval),
+                            zoomCorrecter.apply(wval),
+                            zoomCorrecter.apply(hval),
                             attributes
                     );
                     r.add(comment);
 
                 } else if (id.equals("UMLClass")) {
                     Box box = new Box(
-                            Integer.parseInt(xval),
-                            Integer.parseInt(yval),
-                            Integer.parseInt(wval),
-                            Integer.parseInt(hval),
+//                            Integer.parseInt(xval),
+//                            Integer.parseInt(yval),
+//                            Integer.parseInt(wval),
+//                            Integer.parseInt(hval),
+                            zoomCorrecter.apply(xval),
+                            zoomCorrecter.apply(yval),
+                            zoomCorrecter.apply(wval),
+                            zoomCorrecter.apply(hval),
                             attributes
                     );
                     r.add(box);
@@ -89,10 +107,10 @@ public class UxfFileLoader {
                     Point firstPoint = points.get(0);
                     Point lastPoint = points.get(points.size() - 1);
                     var connector = new Connector(
-                            firstPoint.x,
-                            firstPoint.y,
-                            lastPoint.x,
-                            lastPoint.y,
+                            zoomCorrecterI.apply(firstPoint.x),
+                            zoomCorrecterI.apply(firstPoint.y),
+                            zoomCorrecterI.apply(lastPoint.x),
+                            zoomCorrecterI.apply(lastPoint.y),
                             attributes);
                     for (j = 1; j < points.size() - 1; j++) {
                         connector.getMiddlePoints().add(points.get(j));

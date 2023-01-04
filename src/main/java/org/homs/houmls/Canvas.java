@@ -301,11 +301,24 @@ public class Canvas extends JPanel {
             e.printStackTrace();
             return null;
         }
+
+        // TODO evitar duplicar els bucles
         for (int i = elements.size() - 1; i >= 0; i--) {
             var shape = elements.get(i);
-            var translatable = shape.findTranslatableByPos(mousePos.getX(), mousePos.getY());
-            if (translatable != null) {
-                return translatable;
+            if (Connector.class.isAssignableFrom(shape.getClass())) {
+                var translatable = shape.findTranslatableByPos(mousePos.getX(), mousePos.getY());
+                if (translatable != null) {
+                    return translatable;
+                }
+            }
+        }
+        for (int i = elements.size() - 1; i >= 0; i--) {
+            var shape = elements.get(i);
+            if (!Connector.class.isAssignableFrom(shape.getClass())) {
+                var translatable = shape.findTranslatableByPos(mousePos.getX(), mousePos.getY());
+                if (translatable != null) {
+                    return translatable;
+                }
             }
         }
         return null;
@@ -320,11 +333,24 @@ public class Canvas extends JPanel {
             e.printStackTrace();
             return null;
         }
+
+        // TODO evitar duplicar els bucles
         for (int i = elements.size() - 1; i >= 0; i--) {
             var shape = elements.get(i);
-            var translatable = shape.findTranslatableByPos(mousePos.getX(), mousePos.getY());
-            if (translatable != null) {
-                return shape; // <======================
+            if (Connector.class.isAssignableFrom(shape.getClass())) {
+                var translatable = shape.findTranslatableByPos(mousePos.getX(), mousePos.getY());
+                if (translatable != null) {
+                    return shape; // <======================
+                }
+            }
+        }
+        for (int i = elements.size() - 1; i >= 0; i--) {
+            var shape = elements.get(i);
+            if (!Connector.class.isAssignableFrom(shape.getClass())) {
+                var translatable = shape.findTranslatableByPos(mousePos.getX(), mousePos.getY());
+                if (translatable != null) {
+                    return shape; // <======================
+                }
             }
         }
         return null;

@@ -18,7 +18,7 @@ import static org.homs.houmls.shape.impl.Connector.Type.*;
 public class Connector implements Shape {
 
     public static final double DIAMOND_SIZE = 13.0;
-    public static final int BOX_EXTRA_LINKABLE_BORDER = GridControl.GRID_SIZE / 2; // 5;
+    public static final int BOX_EXTRA_LINKABLE_BORDER = GridControl.GRID_SIZE; // / 2; // 5;
     public static final int SELECTION_BOX_SIZE = 16;
 
 

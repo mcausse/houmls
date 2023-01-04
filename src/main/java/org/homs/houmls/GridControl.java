@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class GridControl {
 
-    public static final int GRID_SIZE = 15;
+    public static final int GRID_SIZE = 10;
 
     public static final Color GRID_COLOR = Color.GRAY;
 
