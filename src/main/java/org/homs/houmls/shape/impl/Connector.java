@@ -18,8 +18,8 @@ import static org.homs.houmls.shape.impl.Connector.Type.*;
 public class Connector implements Shape {
 
     public static final double DIAMOND_SIZE = 13.0;
-    public static final int BOX_EXTRA_LINKABLE_BORDER = GridControl.GRID_SIZE - 2; // / 2; // 5;
-    public static final int SELECTION_BOX_SIZE = GridControl.GRID_SIZE; //16;
+    public static final int BOX_EXTRA_LINKABLE_BORDER = GridControl.GRID_SIZE - 2;
+    public static final int SELECTION_BOX_SIZE = GridControl.GRID_SIZE;
 
     public enum Type {
         DEFAULT(""),
@@ -86,18 +86,18 @@ public class Connector implements Shape {
             }
         }
 
-        public void manageLink(Collection<Shape> elements) {
+        public void manageLink(Collection<Shape> shapes) {
             Point p = getAbsolutePoint();
             Shape isLinkedTo = null;
-            for (var element : elements) {
-                if (element instanceof Connector) {
+            for (var shape : shapes) {
+                if (shape instanceof Connector) {
                     // evita linkar fletxes a altres fletxes!
                     continue;
                 }
-                var rectangle = element.getRectangle();
+                var rectangle = shape.getRectangle();
                 rectangle.grow(BOX_EXTRA_LINKABLE_BORDER, BOX_EXTRA_LINKABLE_BORDER);
                 if (rectangle.contains(p.getX(), p.getY())) {
-                    isLinkedTo = element;
+                    isLinkedTo = shape;
                     break;
                 }
             }
@@ -197,7 +197,7 @@ public class Connector implements Shape {
     }
 
     @Override
-    public Draggable findTranslatableByPos(Collection<Shape> elements, double mousex, double mousey) {
+    public Draggable findTranslatableByPos(Collection<Shape> connectors, double mousex, double mousey) {
 
         /*
          * START
@@ -227,14 +227,14 @@ public class Connector implements Shape {
                     }
 
                     @Override
-                    public void dragHasFinished(List<Shape> elements) {
+                    public void dragHasFinished(Collection<Shape> shapes) {
 
                         // Engrida, excepte si és un comentari de membre, que millor deixar-lo lliure
                         if (startPoint.type != Type.MEMBER_COMMENT && endPoint.type != Type.MEMBER_COMMENT) {
                             startPoint.engrida();
                         }
 
-                        startPoint.manageLink(elements);
+                        startPoint.manageLink(shapes);
                     }
                 };
             }
@@ -267,14 +267,14 @@ public class Connector implements Shape {
                     }
 
                     @Override
-                    public void dragHasFinished(List<Shape> elements) {
+                    public void dragHasFinished(Collection<Shape> shapes) {
 
                         // Engrida, excepte si és un comentari de membre, que millor deixar-lo lliure
                         if (startPoint.type != Type.MEMBER_COMMENT && endPoint.type != Type.MEMBER_COMMENT) {
                             endPoint.engrida();
                         }
 
-                        endPoint.manageLink(elements);
+                        endPoint.manageLink(shapes);
                     }
                 };
             }
@@ -304,7 +304,7 @@ public class Connector implements Shape {
                     }
 
                     @Override
-                    public void dragHasFinished(List<Shape> elements) {
+                    public void dragHasFinished(Collection<Shape> shapes) {
                         middlePoint.setLocation(
                                 GridControl.engrid(middlePoint.getX()),
                                 GridControl.engrid(middlePoint.getY())
@@ -326,7 +326,7 @@ public class Connector implements Shape {
     }
 
     @Override
-    public void dragHasFinished(List<Shape> elements) {
+    public void dragHasFinished(Collection<Shape> shapes) {
     }
 
     @Override

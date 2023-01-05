@@ -14,13 +14,13 @@ public interface Shape extends Draggable {
     void setAttributesText(String attributesText);
 
     /**
-     * @param elements the list of {@link Shape}s, needed when a box is resized and we should update
-     *                 the linked {@link org.homs.houmls.shape.impl.Connector}s coordinates.
+     * @param connectors the list of {@link org.homs.houmls.shape.impl.Connector}s, needed when a box
+     *                   is resized and we should update the linked coordinates.
      * @param mousex
      * @param mousey
      * @return
      */
-    Draggable findTranslatableByPos(Collection<Shape> elements, double mousex, double mousey);
+    Draggable findTranslatableByPos(Collection<Shape> connectors, double mousex, double mousey);
 
     void draw(Graphics g);
 

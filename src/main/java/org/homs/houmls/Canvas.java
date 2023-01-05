@@ -12,10 +12,9 @@ import java.awt.event.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
-import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
-import java.util.function.Function;
 
 import static org.homs.houmls.LookAndFeel.basicStroke;
 
@@ -74,7 +73,7 @@ public class Canvas extends JPanel {
             if (e.getClickCount() >= 2 && e.getButton() == MouseEvent.BUTTON1) {
                 var shapeToDuplicate = findShapeByMousePosition(e.getX(), e.getY());
                 if (shapeToDuplicate != null) {
-                    addElement(shapeToDuplicate.duplicate());
+                    addShape(shapeToDuplicate.duplicate());
                     repaint();
                 }
             }
@@ -107,14 +106,14 @@ public class Canvas extends JPanel {
         public void mouseWheelMoved(MouseWheelEvent e) {
             if (controlPressed) {
                 var deltaZoom = -MOUSE_WHEEL_ROTATION_ZOOM_FACTOR * (double) e.getWheelRotation();
-                if (zoom + deltaZoom > 0.01) {
-                    zoom += deltaZoom;
+                if (diagram.zoom + deltaZoom > 0.01) {
+                    diagram.zoom += deltaZoom;
                 }
             } else {
                 if (shiftPressed) {
-                    offsetX += (-e.getWheelRotation() * MOUSE_WHEEL_ROTATION_PX_AMOUNT) / zoom;
+                    diagram.offsetX += (-e.getWheelRotation() * MOUSE_WHEEL_ROTATION_PX_AMOUNT) / diagram.zoom;
                 } else {
-                    offsetY += (-e.getWheelRotation() * MOUSE_WHEEL_ROTATION_PX_AMOUNT) / zoom;
+                    diagram.offsetY += (-e.getWheelRotation() * MOUSE_WHEEL_ROTATION_PX_AMOUNT) / diagram.zoom;
                 }
             }
             repaint();
@@ -134,14 +133,14 @@ public class Canvas extends JPanel {
             } else {
                 if (selectedDraggable == null) {
                     // DRAGGA TOT
-                    double translateToX = (e.getX() - lastDragPoint.x) / zoom;
-                    double translateToY = (e.getY() - lastDragPoint.y) / zoom;
-                    offsetX += translateToX;
-                    offsetY += translateToY;
+                    double translateToX = (e.getX() - lastDragPoint.x) / diagram.zoom;
+                    double translateToY = (e.getY() - lastDragPoint.y) / diagram.zoom;
+                    diagram.offsetX += translateToX;
+                    diagram.offsetY += translateToY;
                 } else {
                     // DRAGGA OBJECTE
-                    double translateToX = (e.getX() - lastDragPoint.x) / zoom;
-                    double translateToY = (e.getY() - lastDragPoint.y) / zoom;
+                    double translateToX = (e.getX() - lastDragPoint.x) / diagram.zoom;
+                    double translateToY = (e.getY() - lastDragPoint.y) / diagram.zoom;
                     selectedDraggable.translate(translateToX, translateToY);
                 }
                 lastDragPoint.x = e.getX();
@@ -155,7 +154,7 @@ public class Canvas extends JPanel {
             setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             if (lastDragPoint != null) {
                 if (selectedDraggable != null) {
-                    selectedDraggable.dragHasFinished(elements);
+                    selectedDraggable.dragHasFinished(diagram.getShapes());
                 }
                 repaint();
             }
@@ -176,11 +175,9 @@ public class Canvas extends JPanel {
         }
     }
 
-    double zoom = 1.0;
-    double offsetX = 0.0;
-    double offsetY = 0.0;
 
-    final List<Shape> elements = new ArrayList<>();
+    Diagram diagram = new Diagram();
+
     final JTextArea editorTextPaneRef;
 
     public Canvas(JTextArea editorTextPaneRef) {
@@ -199,12 +196,12 @@ public class Canvas extends JPanel {
         addMouseListener(objectSelectorListener);
     }
 
-    public void addElement(Shape element) {
-        this.elements.add(element);
+    public void addShape(Shape shape) {
+        this.diagram.addShape(shape);
     }
 
-    public void addElements(Collection<Shape> elements) {
-        this.elements.addAll(elements);
+    public void addShapes(Collection<Shape> shapes) {
+        this.diagram.addShapes(shapes);
     }
 
     public OffsetAndZoomListener getOffsetAndZoomListener() {
@@ -237,53 +234,37 @@ public class Canvas extends JPanel {
         drawGrid(g);
         g.setFont(LookAndFeel.regularFont());
 
-        if (selectedShape != null) {
-            g.setColor(Color.CYAN);
-            selectedShape.drawSelection(g);
-        }
+//        if (selectedShape != null) {
+//            g.setColor(Color.CYAN);
+//            selectedShape.drawSelection(g);
+//        }
 
         // aquesta separació assegura que les fletxes mai siguin tapades per cap caixa
-        for (var element : elements) {
+        for (var element : diagram.getShapes()) {
             if (!Connector.class.isAssignableFrom(element.getClass())) {
+                if (element == selectedShape) {
+                    g.setColor(Color.CYAN);
+                    selectedShape.drawSelection(g);
+                }
                 element.draw(g);
             }
         }
-        for (var element : elements) {
+        for (var element : diagram.getShapes()) {
             if (Connector.class.isAssignableFrom(element.getClass())) {
+                if (element == selectedShape) {
+                    g.setColor(Color.CYAN);
+                    selectedShape.drawSelection(g);
+                }
                 element.draw(g);
             }
         }
     }
 
     void drawGrid(Graphics g) {
-        int minx = 0;
-        int miny = 0;
-        int maxx = 0;
-        int maxy = 0;
-        if (!elements.isEmpty()) {
-            minx = Integer.MAX_VALUE;
-            miny = Integer.MAX_VALUE;
-            maxx = Integer.MIN_VALUE;
-            maxy = Integer.MIN_VALUE;
-            for (var element : elements) {
-                var rect = element.getRectangle();
-                if (minx > rect.getX()) {
-                    minx = rect.x;
-                }
-                if (miny > rect.getY()) {
-                    miny = rect.y;
-                }
-                if (maxx < rect.getX() + rect.getWidth()) {
-                    maxx = rect.x + rect.width;
-                }
-                if (maxy < rect.getY() + rect.getHeight()) {
-                    maxy = rect.y + rect.height;
-                }
-            }
-        }
+        Rectangle diagramBounds = diagram.getDiagramBounds();
         g.setColor(GridControl.GRID_COLOR);
-        for (int x = minx - 500; x < maxx + 500; x += GridControl.GRID_SIZE) {
-            for (int y = miny - 500; y < maxy + 500; y += GridControl.GRID_SIZE) {
+        for (int x = diagramBounds.x - 500; x < diagramBounds.x + diagramBounds.width + 500; x += GridControl.GRID_SIZE) {
+            for (int y = diagramBounds.y - 500; y < diagramBounds.y + diagramBounds.height + 500; y += GridControl.GRID_SIZE) {
                 int gx = GridControl.engrid(x);
                 int gy = GridControl.engrid(y);
                 g.drawLine(gx, gy, gx, gy);
@@ -298,9 +279,9 @@ public class Canvas extends JPanel {
 
         AffineTransform at = new AffineTransform();
         at.translate(zoomPointX, zoomPointY);
-        at.scale(zoom, zoom);
+        at.scale(diagram.zoom, diagram.zoom);
         at.translate(-zoomPointX, -zoomPointY);
-        at.translate(offsetX, offsetY);
+        at.translate(diagram.offsetX, diagram.offsetY);
         return at;
     }
 
@@ -314,20 +295,19 @@ public class Canvas extends JPanel {
             return null;
         }
 
-        // TODO evitar duplicar els bucles
-        for (int i = elements.size() - 1; i >= 0; i--) {
-            var shape = elements.get(i);
-            if (Connector.class.isAssignableFrom(shape.getClass())) {
-                var translatable = shape.findTranslatableByPos(elements, mousePos.getX(), mousePos.getY());
+        List<Shape> connectorsList = diagram.getShapesBy(shape -> Connector.class.isAssignableFrom(shape.getClass()));
+        for (var connector : connectorsList) {
+            if (Connector.class.isAssignableFrom(connector.getClass())) {
+                var translatable = connector.findTranslatableByPos(Collections.emptyList(), mousePos.getX(), mousePos.getY());
                 if (translatable != null) {
                     return translatable;
                 }
             }
         }
-        for (int i = elements.size() - 1; i >= 0; i--) {
-            var shape = elements.get(i);
-            if (!Connector.class.isAssignableFrom(shape.getClass())) {
-                var translatable = shape.findTranslatableByPos(elements, mousePos.getX(), mousePos.getY());
+        var nonConnectorsList = diagram.getShapesBy(shape -> !Connector.class.isAssignableFrom(shape.getClass()));
+        for (var nonconnector : nonConnectorsList) {
+            if (!Connector.class.isAssignableFrom(nonconnector.getClass())) {
+                var translatable = nonconnector.findTranslatableByPos(connectorsList, mousePos.getX(), mousePos.getY());
                 if (translatable != null) {
                     return translatable;
                 }
@@ -347,39 +327,44 @@ public class Canvas extends JPanel {
         }
 
         // TODO evitar duplicar els bucles
-        for (int i = elements.size() - 1; i >= 0; i--) {
-            var shape = elements.get(i);
-            if (Connector.class.isAssignableFrom(shape.getClass())) {
-                var translatable = shape.findTranslatableByPos(elements, mousePos.getX(), mousePos.getY());
-                if (translatable != null) {
-                    return shape; // <======================
-                }
+        List<Shape> connectorsList = diagram.getShapesBy(shape -> Connector.class.isAssignableFrom(shape.getClass()));
+        for (var connector : connectorsList) {
+            var translatable = connector.findTranslatableByPos(Collections.emptyList(), mousePos.getX(), mousePos.getY());
+            if (translatable != null) {
+                return connector; // <======================
             }
         }
-        for (int i = elements.size() - 1; i >= 0; i--) {
-            var shape = elements.get(i);
-            if (!Connector.class.isAssignableFrom(shape.getClass())) {
-                var translatable = shape.findTranslatableByPos(elements, mousePos.getX(), mousePos.getY());
-                if (translatable != null) {
-                    return shape; // <======================
-                }
-            }
-        }
-        return null;
-    }
 
-//    public Collection<Connector> findConnectorsBy(Function<Connector, Boolean> filter) {
-//        var r = new ArrayList<Connector>();
-//        for (int i = elements.size() - 1; i >= 0; i--) {
-//            var shape = elements.get(i);
+        var nonConnectorsList = diagram.getShapesBy(shape -> !Connector.class.isAssignableFrom(shape.getClass()));
+        for (var nonconnector : nonConnectorsList) {
+            var translatable = nonconnector.findTranslatableByPos(connectorsList, mousePos.getX(), mousePos.getY());
+            if (translatable != null) {
+                return nonconnector; // <======================
+            }
+        }
+//
+//
+//        for (int i = diagram.shapes.size() - 1; i >= 0; i--) {
+//            var shape = diagram.shapes.get(i);
 //            if (Connector.class.isAssignableFrom(shape.getClass())) {
-//                Connector c = (Connector) shape;
-//                if (filter.apply((Connector) shape)) {
-//                    r.add(c);
+//                var translatable = shape.findTranslatableByPos(diagram.shapes, mousePos.getX(), mousePos.getY());
+//                if (translatable != null) {
+//                    return shape; // <======================
 //                }
 //            }
 //        }
-//        return r;
-//    }
+//
+//        for (int i = diagram.shapes.size() - 1; i >= 0; i--) {
+//            var shape = diagram.shapes.get(i);
+//            if (!Connector.class.isAssignableFrom(shape.getClass())) {
+//                var translatable = shape.findTranslatableByPos(diagram.shapes, mousePos.getX(), mousePos.getY());
+//                if (translatable != null) {
+//                    return shape; // <======================
+//                }
+//            }
+//        }
+        return null;
+    }
+
 
 }

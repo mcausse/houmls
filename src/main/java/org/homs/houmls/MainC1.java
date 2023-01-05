@@ -124,7 +124,7 @@ public class MainC1 {
 //            );
 //        }
 
-        canvas.addElements(UxfFileLoader.loadFile());
+        canvas.addShapes(UxfFileLoader.loadFile());
 
         //
         // LATERAL BAR

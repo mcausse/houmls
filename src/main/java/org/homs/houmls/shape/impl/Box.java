@@ -9,7 +9,6 @@ import org.homs.houmls.shape.Shape;
 
 import java.awt.*;
 import java.util.Collection;
-import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -158,13 +157,13 @@ public class Box implements Shape {
     }
 
     @Override
-    public void dragHasFinished(List<Shape> elements) {
+    public void dragHasFinished(Collection<Shape> shapes) {
         this.x = GridControl.engrid(this.x);
         this.y = GridControl.engrid(this.y);
     }
 
     @Override
-    public Draggable findTranslatableByPos(Collection<Shape> elements, double mousex, double mousey) {
+    public Draggable findTranslatableByPos(Collection<Shape> connectors, double mousex, double mousey) {
         // TODO borders
 //        SELECTION_BOX_SIZE
 
@@ -200,7 +199,7 @@ public class Box implements Shape {
                     }
 
                     @Override
-                    public void dragHasFinished(List<Shape> elements) {
+                    public void dragHasFinished(Collection<Shape> shapes) {
                         Box.this.x = GridControl.engrid(Box.this.x);
                         Box.this.y = GridControl.engrid(Box.this.y);
                         Box.this.width = GridControl.engrid(Box.this.width);
@@ -240,7 +239,7 @@ public class Box implements Shape {
                     }
 
                     @Override
-                    public void dragHasFinished(List<Shape> elements) {
+                    public void dragHasFinished(Collection<Shape> shapes) {
                         Box.this.x = GridControl.engrid(Box.this.x);
                         Box.this.y = GridControl.engrid(Box.this.y);
                         Box.this.width = GridControl.engrid(Box.this.width);
