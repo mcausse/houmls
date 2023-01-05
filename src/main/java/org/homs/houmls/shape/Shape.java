@@ -3,6 +3,7 @@ package org.homs.houmls.shape;
 import org.homs.houmls.GridControl;
 
 import java.awt.*;
+import java.util.Collection;
 
 public interface Shape extends Draggable {
 
@@ -12,7 +13,14 @@ public interface Shape extends Draggable {
 
     void setAttributesText(String attributesText);
 
-    Draggable findTranslatableByPos(double mousex, double mousey);
+    /**
+     * @param elements the list of {@link Shape}s, needed when a box is resized and we should update
+     *                 the linked {@link org.homs.houmls.shape.impl.Connector}s coordinates.
+     * @param mousex
+     * @param mousey
+     * @return
+     */
+    Draggable findTranslatableByPos(Collection<Shape> elements, double mousex, double mousey);
 
     void draw(Graphics g);
 

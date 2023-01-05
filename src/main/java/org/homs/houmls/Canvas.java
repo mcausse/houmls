@@ -15,6 +15,7 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Function;
 
 import static org.homs.houmls.LookAndFeel.basicStroke;
 
@@ -317,7 +318,7 @@ public class Canvas extends JPanel {
         for (int i = elements.size() - 1; i >= 0; i--) {
             var shape = elements.get(i);
             if (Connector.class.isAssignableFrom(shape.getClass())) {
-                var translatable = shape.findTranslatableByPos(mousePos.getX(), mousePos.getY());
+                var translatable = shape.findTranslatableByPos(elements, mousePos.getX(), mousePos.getY());
                 if (translatable != null) {
                     return translatable;
                 }
@@ -326,7 +327,7 @@ public class Canvas extends JPanel {
         for (int i = elements.size() - 1; i >= 0; i--) {
             var shape = elements.get(i);
             if (!Connector.class.isAssignableFrom(shape.getClass())) {
-                var translatable = shape.findTranslatableByPos(mousePos.getX(), mousePos.getY());
+                var translatable = shape.findTranslatableByPos(elements, mousePos.getX(), mousePos.getY());
                 if (translatable != null) {
                     return translatable;
                 }
@@ -349,7 +350,7 @@ public class Canvas extends JPanel {
         for (int i = elements.size() - 1; i >= 0; i--) {
             var shape = elements.get(i);
             if (Connector.class.isAssignableFrom(shape.getClass())) {
-                var translatable = shape.findTranslatableByPos(mousePos.getX(), mousePos.getY());
+                var translatable = shape.findTranslatableByPos(elements, mousePos.getX(), mousePos.getY());
                 if (translatable != null) {
                     return shape; // <======================
                 }
@@ -358,7 +359,7 @@ public class Canvas extends JPanel {
         for (int i = elements.size() - 1; i >= 0; i--) {
             var shape = elements.get(i);
             if (!Connector.class.isAssignableFrom(shape.getClass())) {
-                var translatable = shape.findTranslatableByPos(mousePos.getX(), mousePos.getY());
+                var translatable = shape.findTranslatableByPos(elements, mousePos.getX(), mousePos.getY());
                 if (translatable != null) {
                     return shape; // <======================
                 }
@@ -366,5 +367,19 @@ public class Canvas extends JPanel {
         }
         return null;
     }
+
+//    public Collection<Connector> findConnectorsBy(Function<Connector, Boolean> filter) {
+//        var r = new ArrayList<Connector>();
+//        for (int i = elements.size() - 1; i >= 0; i--) {
+//            var shape = elements.get(i);
+//            if (Connector.class.isAssignableFrom(shape.getClass())) {
+//                Connector c = (Connector) shape;
+//                if (filter.apply((Connector) shape)) {
+//                    r.add(c);
+//                }
+//            }
+//        }
+//        return r;
+//    }
 
 }

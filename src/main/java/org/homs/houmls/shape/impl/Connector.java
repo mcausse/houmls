@@ -18,8 +18,8 @@ import static org.homs.houmls.shape.impl.Connector.Type.*;
 public class Connector implements Shape {
 
     public static final double DIAMOND_SIZE = 13.0;
-    public static final int BOX_EXTRA_LINKABLE_BORDER = GridControl.GRID_SIZE-2; // / 2; // 5;
-    public static final int SELECTION_BOX_SIZE = 16;
+    public static final int BOX_EXTRA_LINKABLE_BORDER = GridControl.GRID_SIZE - 2; // / 2; // 5;
+    public static final int SELECTION_BOX_SIZE = GridControl.GRID_SIZE; //16;
 
     public enum Type {
         DEFAULT(""),
@@ -173,7 +173,6 @@ public class Connector implements Shape {
         String lt = props.getOrDefault("lt", "-");
         String m1 = props.getOrDefault("m1", "");
         String m2 = props.getOrDefault("m2", "");
-//        String text = props.getOrDefault("", "");// TODO
 
         startPoint.text = m1;
         endPoint.text = m2;
@@ -198,7 +197,7 @@ public class Connector implements Shape {
     }
 
     @Override
-    public Draggable findTranslatableByPos(double mousex, double mousey) {
+    public Draggable findTranslatableByPos(Collection<Shape> elements, double mousex, double mousey) {
 
         /*
          * START

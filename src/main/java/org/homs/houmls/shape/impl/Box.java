@@ -8,6 +8,7 @@ import org.homs.houmls.shape.Draggable;
 import org.homs.houmls.shape.Shape;
 
 import java.awt.*;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
@@ -20,6 +21,7 @@ public class Box implements Shape {
 
     static final int FONT_X_CORRECTION = 5;
     static final int FONT_Y_CORRECTION = 6;
+    static final double BOX_MIN_SIZE = GridControl.GRID_SIZE * 4;
 
     double x;
     double y;
@@ -162,7 +164,7 @@ public class Box implements Shape {
     }
 
     @Override
-    public Draggable findTranslatableByPos(double mousex, double mousey) {
+    public Draggable findTranslatableByPos(Collection<Shape> elements, double mousex, double mousey) {
         // TODO borders
 //        SELECTION_BOX_SIZE
 
@@ -187,14 +189,22 @@ public class Box implements Shape {
 
                     @Override
                     public void translate(double dx, double dy) {
-                        Box.this.x += dx;
-                        Box.this.y += dy;
-                        Box.this.width -= dx;
-                        Box.this.height -= dy;
+                        if (Box.this.width - dx >= BOX_MIN_SIZE) {
+                            Box.this.x += dx;
+                            Box.this.width -= dx;
+                        }
+                        if (Box.this.height - dy >= BOX_MIN_SIZE) {
+                            Box.this.height -= dy;
+                            Box.this.y += dy;
+                        }
                     }
 
                     @Override
                     public void dragHasFinished(List<Shape> elements) {
+                        Box.this.x = GridControl.engrid(Box.this.x);
+                        Box.this.y = GridControl.engrid(Box.this.y);
+                        Box.this.width = GridControl.engrid(Box.this.width);
+                        Box.this.height = GridControl.engrid(Box.this.height);
                     }
                 };
             }
@@ -220,13 +230,21 @@ public class Box implements Shape {
 
                     @Override
                     public void translate(double dx, double dy) {
-                        Box.this.y += dy;
-                        Box.this.width += dx;
-                        Box.this.height -= dy;
+                        if (Box.this.width + dx >= BOX_MIN_SIZE) {
+                            Box.this.width += dx;
+                        }
+                        if (Box.this.height - dy >= BOX_MIN_SIZE) {
+                            Box.this.y += dy;
+                            Box.this.height -= dy;
+                        }
                     }
 
                     @Override
                     public void dragHasFinished(List<Shape> elements) {
+                        Box.this.x = GridControl.engrid(Box.this.x);
+                        Box.this.y = GridControl.engrid(Box.this.y);
+                        Box.this.width = GridControl.engrid(Box.this.width);
+                        Box.this.height = GridControl.engrid(Box.this.height);
                     }
                 };
             }
