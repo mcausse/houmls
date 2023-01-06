@@ -1,9 +1,6 @@
 package org.homs.houmls.shape.impl;
 
-import org.homs.houmls.GridControl;
-import org.homs.houmls.LookAndFeel;
-import org.homs.houmls.PropsParser;
-import org.homs.houmls.StringMetrics;
+import org.homs.houmls.*;
 import org.homs.houmls.shape.Draggable;
 import org.homs.houmls.shape.Shape;
 
@@ -20,7 +17,7 @@ public class Box implements Shape {
 
     static final int FONT_X_CORRECTION = 5;
     static final int FONT_Y_CORRECTION = 6;
-    static final double BOX_MIN_SIZE = GridControl.GRID_SIZE * 4;
+    static final double BOX_MIN_SIZE = GridControl.GRID_SIZE * 2;
 
     double x;
     double y;
@@ -151,34 +148,34 @@ public class Box implements Shape {
     }
 
     @Override
-    public void translate(double dx, double dy) {
+    public void translate(Diagram diagram, double dx, double dy) {
         this.x += dx;
         this.y += dy;
     }
 
     @Override
-    public void dragHasFinished(Collection<Shape> shapes) {
+    public void dragHasFinished(Diagram diagram) {
         this.x = GridControl.engrid(this.x);
         this.y = GridControl.engrid(this.y);
     }
 
     @Override
-    public Draggable findTranslatableByPos(Collection<Shape> connectors, double mousex, double mousey) {
+    public Draggable findDraggableByPos(Collection<Shape> connectors, double mousex, double mousey) {
         // TODO borders
-//        SELECTION_BOX_SIZE
 
-        // NW
+        // S
         {
             Supplier<Rectangle> boxSupplier = () -> new Rectangle(
-                    (int) this.x - SELECTION_BOX_SIZE,
-                    (int) this.y - SELECTION_BOX_SIZE,
-                    SELECTION_BOX_SIZE * 2,
+                    (int) this.x,
+                    (int) (this.y + this.height - SELECTION_BOX_SIZE),
+                    (int) this.width,
                     SELECTION_BOX_SIZE * 2);
             if (boxSupplier.get().contains(mousex, mousey)) {
                 return new Draggable() {
+
                     @Override
                     public Cursor getTranslationCursor() {
-                        return Cursor.getPredefinedCursor(Cursor.NW_RESIZE_CURSOR);
+                        return Cursor.getPredefinedCursor(Cursor.S_RESIZE_CURSOR);
                     }
 
                     @Override
@@ -187,67 +184,80 @@ public class Box implements Shape {
                     }
 
                     @Override
-                    public void translate(double dx, double dy) {
-                        if (Box.this.width - dx >= BOX_MIN_SIZE) {
-                            Box.this.x += dx;
-                            Box.this.width -= dx;
-                        }
-                        if (Box.this.height - dy >= BOX_MIN_SIZE) {
-                            Box.this.height -= dy;
-                            Box.this.y += dy;
+                    public void translate(Diagram diagram, double dx, double dy) {
+                        if (Box.this.height + dy >= BOX_MIN_SIZE) {
+
+                            // Busca els connectors linkats a aquest objecte abans de canviar de mides
+                            diagram.findConnectorsBy(
+                                    c -> c.getStartPoint().linkedShape == Box.this && c.getStartPoint().posy > Box.this.height / 2)
+                                    .forEach(c -> c.getStartPoint().posy += dy);
+
+                            diagram.findConnectorsBy(
+                                    c -> c.getEndPoint().linkedShape == Box.this && c.getEndPoint().posy > Box.this.height / 2)
+                                    .forEach(c -> c.getEndPoint().posy += dy);
+
+                            Box.this.height += dy;
                         }
                     }
 
                     @Override
-                    public void dragHasFinished(Collection<Shape> shapes) {
+                    public void dragHasFinished(Diagram diagram) {
                         Box.this.x = GridControl.engrid(Box.this.x);
                         Box.this.y = GridControl.engrid(Box.this.y);
                         Box.this.width = GridControl.engrid(Box.this.width);
                         Box.this.height = GridControl.engrid(Box.this.height);
+
+                        diagram.findConnectorsBy(
+                                c -> c.getStartPoint().linkedShape == Box.this && c.getStartPoint().posy > Box.this.height / 2)
+                                .forEach(c -> c.getStartPoint().engrida());
+
+                        diagram.findConnectorsBy(
+                                c -> c.getEndPoint().linkedShape == Box.this && c.getEndPoint().posy > Box.this.height / 2)
+                                .forEach(c -> c.getEndPoint().engrida());
                     }
                 };
             }
         }
-        // NE
-        {
-            Supplier<Rectangle> boxSupplier = () -> new Rectangle(
-                    (int) (this.x + this.width) - SELECTION_BOX_SIZE,
-                    (int) this.y - SELECTION_BOX_SIZE,
-                    SELECTION_BOX_SIZE * 2,
-                    SELECTION_BOX_SIZE * 2);
-            if (boxSupplier.get().contains(mousex, mousey)) {
-                return new Draggable() {
-                    @Override
-                    public Cursor getTranslationCursor() {
-                        return Cursor.getPredefinedCursor(Cursor.NE_RESIZE_CURSOR);
-                    }
-
-                    @Override
-                    public Rectangle getRectangle() {
-                        return boxSupplier.get();
-                    }
-
-                    @Override
-                    public void translate(double dx, double dy) {
-                        if (Box.this.width + dx >= BOX_MIN_SIZE) {
-                            Box.this.width += dx;
-                        }
-                        if (Box.this.height - dy >= BOX_MIN_SIZE) {
-                            Box.this.y += dy;
-                            Box.this.height -= dy;
-                        }
-                    }
-
-                    @Override
-                    public void dragHasFinished(Collection<Shape> shapes) {
-                        Box.this.x = GridControl.engrid(Box.this.x);
-                        Box.this.y = GridControl.engrid(Box.this.y);
-                        Box.this.width = GridControl.engrid(Box.this.width);
-                        Box.this.height = GridControl.engrid(Box.this.height);
-                    }
-                };
-            }
-        }
+//        // NE
+//        {
+//            Supplier<Rectangle> boxSupplier = () -> new Rectangle(
+//                    (int) (this.x + this.width) - SELECTION_BOX_SIZE,
+//                    (int) this.y - SELECTION_BOX_SIZE,
+//                    SELECTION_BOX_SIZE * 2,
+//                    SELECTION_BOX_SIZE * 2);
+//            if (boxSupplier.get().contains(mousex, mousey)) {
+//                return new Draggable() {
+//                    @Override
+//                    public Cursor getTranslationCursor() {
+//                        return Cursor.getPredefinedCursor(Cursor.NE_RESIZE_CURSOR);
+//                    }
+//
+//                    @Override
+//                    public Rectangle getRectangle() {
+//                        return boxSupplier.get();
+//                    }
+//
+//                    @Override
+//                    public void translate(double dx, double dy) {
+//                        if (Box.this.width + dx >= BOX_MIN_SIZE) {
+//                            Box.this.width += dx;
+//                        }
+//                        if (Box.this.height - dy >= BOX_MIN_SIZE) {
+//                            Box.this.y += dy;
+//                            Box.this.height -= dy;
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void dragHasFinished(Diagram diagram) {
+//                        Box.this.x = GridControl.engrid(Box.this.x);
+//                        Box.this.y = GridControl.engrid(Box.this.y);
+//                        Box.this.width = GridControl.engrid(Box.this.width);
+//                        Box.this.height = GridControl.engrid(Box.this.height);
+//                    }
+//                };
+//            }
+//        }
 
         if (this.x <= mousex && mousex <= this.x + this.width && this.y <= mousey && mousey <= this.y + this.height) {
             return this;

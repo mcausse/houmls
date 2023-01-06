@@ -20,7 +20,7 @@ public interface Shape extends Draggable {
      * @param mousey
      * @return
      */
-    Draggable findTranslatableByPos(Collection<Shape> connectors, double mousex, double mousey);
+    Draggable findDraggableByPos(Collection<Shape> connectors, double mousex, double mousey);
 
     void draw(Graphics g);
 

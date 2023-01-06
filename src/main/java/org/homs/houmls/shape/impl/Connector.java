@@ -136,6 +136,14 @@ public class Connector implements Shape {
         setAttributesText(attributes);
     }
 
+    public ConnectorPoint getStartPoint() {
+        return startPoint;
+    }
+
+    public ConnectorPoint getEndPoint() {
+        return endPoint;
+    }
+
     @Override
     public Shape duplicate() {
         var r = new Connector(
@@ -197,7 +205,7 @@ public class Connector implements Shape {
     }
 
     @Override
-    public Draggable findTranslatableByPos(Collection<Shape> connectors, double mousex, double mousey) {
+    public Draggable findDraggableByPos(Collection<Shape> connectors, double mousex, double mousey) {
 
         /*
          * START
@@ -221,20 +229,20 @@ public class Connector implements Shape {
                     }
 
                     @Override
-                    public void translate(double dx, double dy) {
+                    public void translate(Diagram diagram, double dx, double dy) {
                         startPoint.posx += dx;
                         startPoint.posy += dy;
                     }
 
                     @Override
-                    public void dragHasFinished(Collection<Shape> shapes) {
+                    public void dragHasFinished(Diagram diagram) {
 
                         // Engrida, excepte si és un comentari de membre, que millor deixar-lo lliure
                         if (startPoint.type != Type.MEMBER_COMMENT && endPoint.type != Type.MEMBER_COMMENT) {
                             startPoint.engrida();
                         }
 
-                        startPoint.manageLink(shapes);
+                        startPoint.manageLink(diagram.getShapes());
                     }
                 };
             }
@@ -261,20 +269,20 @@ public class Connector implements Shape {
                     }
 
                     @Override
-                    public void translate(double dx, double dy) {
+                    public void translate(Diagram diagram, double dx, double dy) {
                         endPoint.posx += dx;
                         endPoint.posy += dy;
                     }
 
                     @Override
-                    public void dragHasFinished(Collection<Shape> shapes) {
+                    public void dragHasFinished(Diagram diagram) {
 
                         // Engrida, excepte si és un comentari de membre, que millor deixar-lo lliure
                         if (startPoint.type != Type.MEMBER_COMMENT && endPoint.type != Type.MEMBER_COMMENT) {
                             endPoint.engrida();
                         }
 
-                        endPoint.manageLink(shapes);
+                        endPoint.manageLink(diagram.getShapes());
                     }
                 };
             }
@@ -299,12 +307,12 @@ public class Connector implements Shape {
                     }
 
                     @Override
-                    public void translate(double dx, double dy) {
+                    public void translate(Diagram diagram, double dx, double dy) {
                         middlePoint.translate((int) dx, (int) dy);
                     }
 
                     @Override
-                    public void dragHasFinished(Collection<Shape> shapes) {
+                    public void dragHasFinished(Diagram diagram) {
                         middlePoint.setLocation(
                                 GridControl.engrid(middlePoint.getX()),
                                 GridControl.engrid(middlePoint.getY())
@@ -322,11 +330,11 @@ public class Connector implements Shape {
     }
 
     @Override
-    public void translate(double dx, double dy) {
+    public void translate(Diagram diagram, double dx, double dy) {
     }
 
     @Override
-    public void dragHasFinished(Collection<Shape> shapes) {
+    public void dragHasFinished(Diagram diagram) {
     }
 
     @Override

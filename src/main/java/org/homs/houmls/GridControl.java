@@ -13,11 +13,19 @@ public class GridControl {
     }
 
     public static int engrid(double c) {
-        int part = (int) c % GRID_SIZE;
+//        int part = (int)c % GRID_SIZE;
+//        if (part <= GRID_SIZE / 2) {
+//            return (int) c - part;
+//        } else {
+//            return (int) c - part + GRID_SIZE;
+//        }
+
+        int cc = ((int) Math.round(c));
+        int part = cc % GRID_SIZE;
         if (part <= GRID_SIZE / 2) {
-            return (int) c - part;
+            return cc - part;
         } else {
-            return (int) c - part + GRID_SIZE;
+            return cc - part + GRID_SIZE;
         }
     }
 }

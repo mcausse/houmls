@@ -21,8 +21,9 @@ import static org.homs.houmls.LookAndFeel.basicStroke;
 public class Canvas extends JPanel {
 
     // TODO canviar a List per permetre multi-sel.lecció
-    Shape selectedShape = null;
     String diagramAttributesText = "Welcome to Houmls, the superb and open-source UML tool.";
+    Shape selectedShape = null;
+    Draggable draggableUnderMouse = null;
 
     class ObjectSelectorListener extends MouseAdapter {
 
@@ -141,7 +142,7 @@ public class Canvas extends JPanel {
                     // DRAGGA OBJECTE
                     double translateToX = (e.getX() - lastDragPoint.x) / diagram.zoom;
                     double translateToY = (e.getY() - lastDragPoint.y) / diagram.zoom;
-                    selectedDraggable.translate(translateToX, translateToY);
+                    selectedDraggable.translate(diagram, translateToX, translateToY);
                 }
                 lastDragPoint.x = e.getX();
                 lastDragPoint.y = e.getY();
@@ -154,7 +155,7 @@ public class Canvas extends JPanel {
             setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             if (lastDragPoint != null) {
                 if (selectedDraggable != null) {
-                    selectedDraggable.dragHasFinished(diagram.getShapes());
+                    selectedDraggable.dragHasFinished(diagram);
                 }
                 repaint();
             }
@@ -165,6 +166,12 @@ public class Canvas extends JPanel {
         @Override
         public void mouseMoved(MouseEvent e) {
             var draggable = findDraggableByMousePosition(e.getX(), e.getY());
+
+            if (Canvas.this.draggableUnderMouse != draggable) {
+                repaint();
+            }
+            Canvas.this.draggableUnderMouse = draggable;
+
             if (draggable == null) {
                 setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             } else {
@@ -258,6 +265,13 @@ public class Canvas extends JPanel {
                 element.draw(g);
             }
         }
+
+        if (Canvas.this.draggableUnderMouse != null) {
+            var r = Canvas.this.draggableUnderMouse.getRectangle();
+            g2.setColor(Color.RED);
+            g2.setStroke(new BasicStroke(3));
+            g2.drawRoundRect(r.x, r.y, r.width, r.height, 6, 6);
+        }
     }
 
     void drawGrid(Graphics g) {
@@ -298,18 +312,18 @@ public class Canvas extends JPanel {
         List<Shape> connectorsList = diagram.getShapesBy(shape -> Connector.class.isAssignableFrom(shape.getClass()));
         for (var connector : connectorsList) {
             if (Connector.class.isAssignableFrom(connector.getClass())) {
-                var translatable = connector.findTranslatableByPos(Collections.emptyList(), mousePos.getX(), mousePos.getY());
-                if (translatable != null) {
-                    return translatable;
+                var draggable = connector.findDraggableByPos(Collections.emptyList(), mousePos.getX(), mousePos.getY());
+                if (draggable != null) {
+                    return draggable;
                 }
             }
         }
         var nonConnectorsList = diagram.getShapesBy(shape -> !Connector.class.isAssignableFrom(shape.getClass()));
         for (var nonconnector : nonConnectorsList) {
             if (!Connector.class.isAssignableFrom(nonconnector.getClass())) {
-                var translatable = nonconnector.findTranslatableByPos(connectorsList, mousePos.getX(), mousePos.getY());
-                if (translatable != null) {
-                    return translatable;
+                var draggable = nonconnector.findDraggableByPos(connectorsList, mousePos.getX(), mousePos.getY());
+                if (draggable != null) {
+                    return draggable;
                 }
             }
         }
@@ -329,16 +343,16 @@ public class Canvas extends JPanel {
         // TODO evitar duplicar els bucles
         List<Shape> connectorsList = diagram.getShapesBy(shape -> Connector.class.isAssignableFrom(shape.getClass()));
         for (var connector : connectorsList) {
-            var translatable = connector.findTranslatableByPos(Collections.emptyList(), mousePos.getX(), mousePos.getY());
-            if (translatable != null) {
+            var draggable = connector.findDraggableByPos(Collections.emptyList(), mousePos.getX(), mousePos.getY());
+            if (draggable != null) {
                 return connector; // <======================
             }
         }
 
         var nonConnectorsList = diagram.getShapesBy(shape -> !Connector.class.isAssignableFrom(shape.getClass()));
         for (var nonconnector : nonConnectorsList) {
-            var translatable = nonconnector.findTranslatableByPos(connectorsList, mousePos.getX(), mousePos.getY());
-            if (translatable != null) {
+            var draggable = nonconnector.findDraggableByPos(connectorsList, mousePos.getX(), mousePos.getY());
+            if (draggable != null) {
                 return nonconnector; // <======================
             }
         }
