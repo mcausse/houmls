@@ -161,7 +161,6 @@ public class Box implements Shape {
 
     @Override
     public Draggable findDraggableByPos(Collection<Shape> connectors, double mousex, double mousey) {
-        // TODO borders
 
         // S
         {
@@ -218,46 +217,203 @@ public class Box implements Shape {
                 };
             }
         }
-//        // NE
-//        {
-//            Supplier<Rectangle> boxSupplier = () -> new Rectangle(
-//                    (int) (this.x + this.width) - SELECTION_BOX_SIZE,
-//                    (int) this.y - SELECTION_BOX_SIZE,
-//                    SELECTION_BOX_SIZE * 2,
-//                    SELECTION_BOX_SIZE * 2);
-//            if (boxSupplier.get().contains(mousex, mousey)) {
-//                return new Draggable() {
-//                    @Override
-//                    public Cursor getTranslationCursor() {
-//                        return Cursor.getPredefinedCursor(Cursor.NE_RESIZE_CURSOR);
-//                    }
-//
-//                    @Override
-//                    public Rectangle getRectangle() {
-//                        return boxSupplier.get();
-//                    }
-//
-//                    @Override
-//                    public void translate(double dx, double dy) {
-//                        if (Box.this.width + dx >= BOX_MIN_SIZE) {
-//                            Box.this.width += dx;
-//                        }
-//                        if (Box.this.height - dy >= BOX_MIN_SIZE) {
-//                            Box.this.y += dy;
-//                            Box.this.height -= dy;
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void dragHasFinished(Diagram diagram) {
-//                        Box.this.x = GridControl.engrid(Box.this.x);
-//                        Box.this.y = GridControl.engrid(Box.this.y);
-//                        Box.this.width = GridControl.engrid(Box.this.width);
-//                        Box.this.height = GridControl.engrid(Box.this.height);
-//                    }
-//                };
-//            }
-//        }
+        // E
+        {
+            Supplier<Rectangle> boxSupplier = () -> new Rectangle(
+                    (int) (this.x + this.width - SELECTION_BOX_SIZE),
+                    (int) (this.y),
+                    SELECTION_BOX_SIZE * 2,
+                    (int) this.height
+            );
+            if (boxSupplier.get().contains(mousex, mousey)) {
+                return new Draggable() {
+
+                    @Override
+                    public Cursor getTranslationCursor() {
+                        return Cursor.getPredefinedCursor(Cursor.E_RESIZE_CURSOR);
+                    }
+
+                    @Override
+                    public Rectangle getRectangle() {
+                        return boxSupplier.get();
+                    }
+
+                    @Override
+                    public void translate(Diagram diagram, double dx, double dy) {
+                        if (Box.this.width + dx >= BOX_MIN_SIZE) {
+
+                            // Busca els connectors linkats a aquest objecte abans de canviar de mides
+                            diagram.findConnectorsBy(
+                                    c -> c.getStartPoint().linkedShape == Box.this && c.getStartPoint().posx > Box.this.width / 2)
+                                    .forEach(c -> c.getStartPoint().posx += dx);
+
+                            diagram.findConnectorsBy(
+                                    c -> c.getEndPoint().linkedShape == Box.this && c.getEndPoint().posx > Box.this.width / 2)
+                                    .forEach(c -> c.getEndPoint().posx += dx);
+
+                            Box.this.width += dx;
+                        }
+                    }
+
+                    @Override
+                    public void dragHasFinished(Diagram diagram) {
+                        Box.this.x = GridControl.engrid(Box.this.x);
+                        Box.this.y = GridControl.engrid(Box.this.y);
+                        Box.this.width = GridControl.engrid(Box.this.width);
+                        Box.this.height = GridControl.engrid(Box.this.height);
+
+                        diagram.findConnectorsBy(
+                                c -> c.getStartPoint().linkedShape == Box.this && c.getStartPoint().posx > Box.this.width / 2)
+                                .forEach(c -> c.getStartPoint().engrida());
+
+                        diagram.findConnectorsBy(
+                                c -> c.getEndPoint().linkedShape == Box.this && c.getEndPoint().posx > Box.this.width / 2)
+                                .forEach(c -> c.getEndPoint().engrida());
+                    }
+                };
+            }
+        }
+        // W
+        {
+            Supplier<Rectangle> boxSupplier = () -> new Rectangle(
+                    (int) (this.x - SELECTION_BOX_SIZE),
+                    (int) (this.y),
+                    SELECTION_BOX_SIZE * 2,
+                    (int) this.height
+            );
+            if (boxSupplier.get().contains(mousex, mousey)) {
+                return new Draggable() {
+
+                    @Override
+                    public Cursor getTranslationCursor() {
+                        return Cursor.getPredefinedCursor(Cursor.W_RESIZE_CURSOR);
+                    }
+
+                    @Override
+                    public Rectangle getRectangle() {
+                        return boxSupplier.get();
+                    }
+
+                    @Override
+                    public void translate(Diagram diagram, double dx, double dy) {
+                        if (Box.this.width - dx >= BOX_MIN_SIZE) {
+
+                            // Busca els connectors linkats a aquest objecte abans de canviar de mides
+                            diagram.findConnectorsBy(
+                                    c -> c.getStartPoint().linkedShape == Box.this)
+                                    .forEach(c -> {
+                                        if (c.getStartPoint().posx < Box.this.width / 2) {
+                                            // ja es mou amb el posx
+                                            // c.getStartPoint().posx += dx;
+                                        } else {
+                                            c.getStartPoint().posx -= dx;
+                                        }
+                                    });
+
+                            diagram.findConnectorsBy(
+                                    c -> c.getEndPoint().linkedShape == Box.this)
+                                    .forEach(c -> {
+                                        if (c.getEndPoint().posx < Box.this.width / 2) {
+                                            // ja es mou amb el posx
+                                            // c.getEndPoint().posx += dx;
+                                        } else {
+                                            c.getEndPoint().posx -= dx;
+                                        }
+                                    });
+
+                            Box.this.x += dx;
+                            Box.this.width -= dx;
+                        }
+                    }
+
+                    @Override
+                    public void dragHasFinished(Diagram diagram) {
+                        Box.this.x = GridControl.engrid(Box.this.x);
+                        Box.this.y = GridControl.engrid(Box.this.y);
+                        Box.this.width = GridControl.engrid(Box.this.width);
+                        Box.this.height = GridControl.engrid(Box.this.height);
+
+                        diagram.findConnectorsBy(
+                                c -> c.getStartPoint().linkedShape == Box.this && c.getStartPoint().posx < Box.this.width / 2)
+                                .forEach(c -> c.getStartPoint().engrida());
+
+                        diagram.findConnectorsBy(
+                                c -> c.getEndPoint().linkedShape == Box.this && c.getEndPoint().posx < Box.this.width / 2)
+                                .forEach(c -> c.getEndPoint().engrida());
+                    }
+                };
+            }
+        }
+
+        // N
+        {
+            Supplier<Rectangle> boxSupplier = () -> new Rectangle(
+                    (int) (this.x),
+                    (int) (this.y - SELECTION_BOX_SIZE),
+                    (int) this.width,
+                    SELECTION_BOX_SIZE * 2
+            );
+            if (boxSupplier.get().contains(mousex, mousey)) {
+                return new Draggable() {
+
+                    @Override
+                    public Cursor getTranslationCursor() {
+                        return Cursor.getPredefinedCursor(Cursor.N_RESIZE_CURSOR);
+                    }
+
+                    @Override
+                    public Rectangle getRectangle() {
+                        return boxSupplier.get();
+                    }
+
+                    @Override
+                    public void translate(Diagram diagram, double dx, double dy) {
+                        if (Box.this.height - dy >= BOX_MIN_SIZE) {
+
+                            // Busca els connectors linkats a aquest objecte abans de canviar de mides
+                            diagram.findConnectorsBy(
+                                    c -> c.getStartPoint().linkedShape == Box.this)
+                                    .forEach(c -> {
+                                        if (c.getStartPoint().posy < Box.this.height / 2) {
+                                            // ja es mou sol
+                                        } else {
+                                            c.getStartPoint().posy -= dy;
+                                        }
+                                    });
+
+                            diagram.findConnectorsBy(
+                                    c -> c.getEndPoint().linkedShape == Box.this)
+                                    .forEach(c -> {
+                                        if (c.getEndPoint().posy < Box.this.height / 2) {
+                                            // ja es mou sol
+                                        } else {
+                                            c.getEndPoint().posy -= dy;
+                                        }
+                                    });
+
+                            Box.this.y += dy;
+                            Box.this.height -= dy;
+                        }
+                    }
+
+                    @Override
+                    public void dragHasFinished(Diagram diagram) {
+                        Box.this.x = GridControl.engrid(Box.this.x);
+                        Box.this.y = GridControl.engrid(Box.this.y);
+                        Box.this.width = GridControl.engrid(Box.this.width);
+                        Box.this.height = GridControl.engrid(Box.this.height);
+
+                        diagram.findConnectorsBy(
+                                c -> c.getStartPoint().linkedShape == Box.this && c.getStartPoint().posy < Box.this.height / 2)
+                                .forEach(c -> c.getStartPoint().engrida());
+
+                        diagram.findConnectorsBy(
+                                c -> c.getEndPoint().linkedShape == Box.this && c.getEndPoint().posy < Box.this.height / 2)
+                                .forEach(c -> c.getEndPoint().engrida());
+                    }
+                };
+            }
+        }
 
         if (this.x <= mousex && mousex <= this.x + this.width && this.y <= mousey && mousey <= this.y + this.height) {
             return this;
@@ -267,10 +423,10 @@ public class Box implements Shape {
 
     @Override
     public void drawSelection(Graphics g) {
-        int borderPx = 8;
+        int borderPx = 5;
         var rect = getRectangle();
         rect.grow(borderPx, borderPx);
-        g.fillRect(rect.x, rect.y, rect.width, rect.height);
+        g.fillRoundRect(rect.x, rect.y, rect.width, rect.height, 10, 10);
     }
 
 }

@@ -17,7 +17,7 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *
  * <pre>
  *     X nou listener per a seleccionar elements => info al JTextArea
- *     - resizar boxes
+ *     X resizar boxes
  *     X editar info JTextArea i en component es parseja i s'estila!
  *     X parser de text tipo MarkDown amb aligments
  *
@@ -48,7 +48,7 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *      - + Generics <T>
  *      - + moñeco
  *      - + required --o)-- provided
- *      - + altyres tiopos de caixes a base de diferents turtles... veure diagrames de activitat
+ *      - + altres tipos de caixes a base de diferents turtles... veure diagrames de activitat
  *      - + caixes amb rounded corners
  *
  *      - apastelar colors, o admetre RGB a més de noms

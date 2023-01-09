@@ -18,7 +18,7 @@ public interface Draggable {
      * Necessari per a engidar les coordenades que han canviat, linkar/deslinkar connectors, etc.
      *
      * @param diagram necessari per als {@link Connector}s, per tal
-     *                 de poder-se linkar amb altres {@link Shape}s.
+     *                de poder-se linkar amb altres {@link Shape}s.
      * @param diagram
      */
     void dragHasFinished(Diagram diagram);

@@ -19,7 +19,7 @@ public class Connector implements Shape {
 
     public static final double DIAMOND_SIZE = 13.0;
     public static final int BOX_EXTRA_LINKABLE_BORDER = GridControl.GRID_SIZE - 2;
-    public static final int SELECTION_BOX_SIZE = GridControl.GRID_SIZE;
+    public static final int SELECTION_BOX_SIZE = GridControl.GRID_SIZE * 3 / 4;
 
     public enum Type {
         DEFAULT(""),

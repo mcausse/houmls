@@ -241,11 +241,6 @@ public class Canvas extends JPanel {
         drawGrid(g);
         g.setFont(LookAndFeel.regularFont());
 
-//        if (selectedShape != null) {
-//            g.setColor(Color.CYAN);
-//            selectedShape.drawSelection(g);
-//        }
-
         // aquesta separació assegura que les fletxes mai siguin tapades per cap caixa
         for (var element : diagram.getShapes()) {
             if (!Connector.class.isAssignableFrom(element.getClass())) {
