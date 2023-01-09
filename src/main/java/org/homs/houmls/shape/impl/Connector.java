@@ -35,7 +35,11 @@ public class Connector implements Shape {
         // http://www2.cs.uregina.ca/~bernatja/crowsfoot.html
         //
         TO_ONE_OPTIONAL("|o"), TO_ONE_MANDATORY("||"),
-        TO_MANY_OPTIONAL(">o"), TO_MANY_MANDATORY(">|");
+        TO_MANY_OPTIONAL(">o"), TO_MANY_MANDATORY(">|"),
+
+        REQUIRED(")"), PROVIDED("o"),
+
+        INNER_CLASS("+");
 
         private final String code;
 
@@ -503,6 +507,52 @@ public class Connector implements Shape {
                 drawCrowsFootNotation(g, type, firstPoint.getX(), firstPoint.getY(), angle);
                 break;
 
+            case INNER_CLASS: {
+                var innerClassRadiusPx = 10;
+                var turtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);
+                turtle.jump(innerClassRadiusPx);
+                g.setColor(Color.WHITE);
+                turtle.fillCircle(g, innerClassRadiusPx);
+                g.setColor(Color.BLACK);
+                turtle.drawCircle(g, innerClassRadiusPx);
+
+                int plusSignRAdius = innerClassRadiusPx - 3;
+                turtle.walk(plusSignRAdius);
+                turtle.walk(-plusSignRAdius);
+                turtle.rotate(90);
+                turtle.walk(plusSignRAdius);
+                turtle.walk(-plusSignRAdius);
+                turtle.rotate(90);
+                turtle.walk(plusSignRAdius);
+                turtle.walk(-plusSignRAdius);
+                turtle.rotate(90);
+                turtle.walk(plusSignRAdius);
+                turtle.walk(-plusSignRAdius);
+                turtle.drawPolyline(g);
+            }
+            break;
+            case REQUIRED: {
+                var requiredRadiusPx = 6;
+                var turtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);
+                turtle.walk(-requiredRadiusPx);
+                Point p = turtle.getPosition();
+                g.drawArc((int) (p.x - requiredRadiusPx),
+                        (int) (p.y - requiredRadiusPx),
+                        requiredRadiusPx * 2,
+                        requiredRadiusPx * 2,
+                        90 - (int) Math.toDegrees(angle), -180);
+            }
+            break;
+            case PROVIDED: {
+                var providedRadiusPx = 6;
+                var turtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);
+                turtle.walk(providedRadiusPx);
+                g.setColor(Color.WHITE);
+                turtle.fillCircle(g, providedRadiusPx);
+                g.setColor(Color.BLACK);
+                turtle.drawCircle(g, providedRadiusPx);
+            }
+            break;
             default:
                 throw new RuntimeException(type.name());
         }

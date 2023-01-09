@@ -47,7 +47,7 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *      - + cercles, elipses
  *      - + Generics <T>
  *      - + moñeco
- *      - + required --o)-- provided
+ *      X + required --o)-- provided
  *      - + altres tipos de caixes a base de diferents turtles... veure diagrames de activitat
  *      - + caixes amb rounded corners
  *
