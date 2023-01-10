@@ -536,8 +536,8 @@ public class Connector implements Shape {
                 var turtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);
                 turtle.walk(-requiredRadiusPx);
                 Point p = turtle.getPosition();
-                g.drawArc((int) (p.x - requiredRadiusPx),
-                        (int) (p.y - requiredRadiusPx),
+                g.drawArc(p.x - requiredRadiusPx,
+                        p.y - requiredRadiusPx,
                         requiredRadiusPx * 2,
                         requiredRadiusPx * 2,
                         90 - (int) Math.toDegrees(angle), -180);

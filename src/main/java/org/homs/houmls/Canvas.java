@@ -134,6 +134,7 @@ public class Canvas extends JPanel {
             } else {
                 if (selectedDraggable == null) {
                     // DRAGGA TOT
+                    setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
                     double translateToX = (e.getX() - lastDragPoint.x) / diagram.zoom;
                     double translateToY = (e.getY() - lastDragPoint.y) / diagram.zoom;
                     diagram.offsetX += translateToX;

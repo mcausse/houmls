@@ -1,9 +1,7 @@
 package org.homs.houmls.xml;
 
 import org.homs.houmls.shape.Shape;
-import org.homs.houmls.shape.impl.Box;
-import org.homs.houmls.shape.impl.Comment;
-import org.homs.houmls.shape.impl.Connector;
+import org.homs.houmls.shape.impl.*;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -65,10 +63,6 @@ public class UxfFileLoader {
 
                 if (id.equals("UMLNote")) {
                     Comment comment = new Comment(
-//                            Integer.parseInt(xval),
-//                            Integer.parseInt(yval),
-//                            Integer.parseInt(wval),
-//                            Integer.parseInt(hval),
                             zoomCorrecter.apply(xval),
                             zoomCorrecter.apply(yval),
                             zoomCorrecter.apply(wval),
@@ -76,13 +70,8 @@ public class UxfFileLoader {
                             attributes
                     );
                     r.add(comment);
-
                 } else if (id.equals("UMLClass")) {
                     Box box = new Box(
-//                            Integer.parseInt(xval),
-//                            Integer.parseInt(yval),
-//                            Integer.parseInt(wval),
-//                            Integer.parseInt(hval),
                             zoomCorrecter.apply(xval),
                             zoomCorrecter.apply(yval),
                             zoomCorrecter.apply(wval),
@@ -90,6 +79,25 @@ public class UxfFileLoader {
                             attributes
                     );
                     r.add(box);
+                } else if ("UMLUseCase".equals(id)) {
+                    Ellipse box = new Ellipse(
+                            zoomCorrecter.apply(xval),
+                            zoomCorrecter.apply(yval),
+                            zoomCorrecter.apply(wval),
+                            zoomCorrecter.apply(hval),
+                            attributes
+                    );
+                    r.add(box);
+                } else if ("UMLState".equals(id)) {
+                    RoundedBox box = new RoundedBox(
+                            zoomCorrecter.apply(xval),
+                            zoomCorrecter.apply(yval),
+                            zoomCorrecter.apply(wval),
+                            zoomCorrecter.apply(hval),
+                            attributes
+                    );
+                    r.add(box);
+
                 } else if (id.equals("Relation")) {
 
                     int x = Integer.parseInt(xval);
@@ -117,6 +125,8 @@ public class UxfFileLoader {
                         connector.getMiddlePoints().add(points.get(j));
                     }
                     r.add(connector);
+                } else {
+                    System.out.println("unrecognized element: " + id);
                 }
 
             }

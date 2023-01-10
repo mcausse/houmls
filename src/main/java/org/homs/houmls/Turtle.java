@@ -32,6 +32,7 @@ public class Turtle {
         this.xs.push(this.xs.peek() + distance * Math.cos(angle));
         this.ys.push(this.ys.peek() + distance * Math.sin(angle));
     }
+
     public void jump(double distance) {
         this.xs.push(this.xs.pop() + distance * Math.cos(angle));
         this.ys.push(this.ys.pop() + distance * Math.sin(angle));
