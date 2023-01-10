@@ -27,7 +27,8 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *     X duplicar element amb double-click
  *
  *     - crear/esborrar elements + toolbox panel
- *     - crear/eliminar points intermitjos de connectors.
+ *     x crear points intermitjos de connectors.
+ *     - eliminar points intermitjos de connectors.
  *     - punt per a moure la fletcha sencera, deslinkant rollo UMLet
  *
  *     - menú general (operacions de fitxer, about, etc).
@@ -48,8 +49,8 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *      - + Generics <T>
  *      - + moñeco
  *      X + required --o)-- provided
- *      - + altres tipos de caixes a base de diferents turtles... veure diagrames de activitat
- *      - + caixes amb rounded corners
+ *      X + altres tipos de caixes a base de diferents turtles... veure diagrames de activitat
+ *      X + caixes amb rounded corners
  *
  *      - apastelar colors, o admetre RGB a més de noms
  *

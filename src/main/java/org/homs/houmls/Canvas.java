@@ -7,6 +7,8 @@ import org.homs.houmls.shape.impl.Connector;
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import javax.swing.event.PopupMenuEvent;
+import javax.swing.event.PopupMenuListener;
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.geom.AffineTransform;
@@ -17,6 +19,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.homs.houmls.LookAndFeel.basicStroke;
+import static org.homs.houmls.shape.impl.Connector.SELECTION_BOX_SIZE;
 
 public class Canvas extends JPanel {
 
@@ -59,12 +62,107 @@ public class Canvas extends JPanel {
         }
 
         @Override
-        public void mousePressed(MouseEvent e) {
-            selectedShape = findShapeByMousePosition(e.getX(), e.getY());
+        public void mousePressed(MouseEvent mouseEvent) {
+            selectedShape = findShapeByMousePosition(mouseEvent.getX(), mouseEvent.getY());
             if (selectedShape == null) {
                 editorTextPaneRef.setText(diagramAttributesText);
             } else {
                 editorTextPaneRef.setText(selectedShape.getAttributesText());
+
+                // Popup menu
+                if (mouseEvent.getButton() == MouseEvent.BUTTON3) {
+
+                    var at = getAffineTransform();
+                    final Point2D mousePos;
+                    try {
+                        mousePos = at.inverseTransform(new Point(mouseEvent.getX(), mouseEvent.getY()), null);
+                    } catch (NoninvertibleTransformException e) {
+                        e.printStackTrace();
+                        return;
+                    }
+
+
+                    JPopupMenu pm = new JPopupMenu();
+
+                    if (Connector.class.isAssignableFrom(selectedShape.getClass())) {
+                        JMenuItem toFront = new JMenuItem("add new point");
+                        pm.add(toFront);
+                        toFront.addActionListener(new ActionListener() {
+                            public void actionPerformed(ActionEvent e) {
+                                Connector conn = (Connector) selectedShape;
+
+                                List<Point> points = conn.getListOfAbsolutePoints();
+                                for (var i = 0; i < points.size(); i++) {
+                                    Point p = points.get(i);
+                                    Rectangle pointSelectionBox = new Rectangle(p.x - SELECTION_BOX_SIZE, p.y - SELECTION_BOX_SIZE, SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
+                                    if (pointSelectionBox.contains(mousePos.getX(), mousePos.getY())) {
+
+                                        /*
+                                         * CREATES A NEW MIDDLE POINT IN THE CONNECTOR
+                                         */
+                                        int indexOfClickedPoint = points.indexOf(p);
+                                        final Point otherPoint;
+                                        if (indexOfClickedPoint == points.size() - 1) {
+                                            otherPoint = points.get(points.size() - 2);
+                                        } else {
+                                            otherPoint = points.get(indexOfClickedPoint + 1);
+                                        }
+                                        Point middlePointToCreate = new Point(
+                                                (p.x + otherPoint.x) / 2,
+                                                (p.y + otherPoint.y) / 2
+                                        );
+
+                                        if (indexOfClickedPoint >= conn.getMiddlePoints().size()) {
+                                            conn.getMiddlePoints().add(middlePointToCreate);
+                                        } else {
+                                            conn.getMiddlePoints().add(indexOfClickedPoint, middlePointToCreate);
+                                        }
+                                        break;
+                                    }
+                                }
+
+
+                                repaint();
+                            }
+                        });
+                    }
+
+                    JMenuItem toFront = new JMenuItem("to front");
+                    pm.add(toFront);
+                    toFront.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            diagram.sendToFront(selectedShape);
+                            repaint();
+                        }
+                    });
+
+                    JMenuItem toBack = new JMenuItem("to back");
+                    pm.add(toBack);
+                    toBack.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            diagram.sendToBack(selectedShape);
+                            repaint();
+                        }
+                    });
+
+                    pm.show(Canvas.this, mouseEvent.getX(), mouseEvent.getY());
+                    pm.addPopupMenuListener(new PopupMenuListener() {
+                        @Override
+                        public void popupMenuWillBecomeVisible(PopupMenuEvent e) {
+
+                        }
+
+                        @Override
+                        public void popupMenuWillBecomeInvisible(PopupMenuEvent e) {
+                            repaint();
+                        }
+
+                        @Override
+                        public void popupMenuCanceled(PopupMenuEvent e) {
+                            repaint();
+                        }
+                    });
+                }
             }
             repaint();
         }

@@ -75,4 +75,14 @@ public class Diagram {
         }
         return new Rectangle(minx, miny, maxx - minx, maxy - miny);
     }
+
+    public void sendToFront(Shape shape) {
+        shapes.remove(shape);
+        shapes.add(shape);
+    }
+
+    public void sendToBack(Shape shape) {
+        shapes.remove(shape);
+        shapes.add(0, shape);
+    }
 }

@@ -61,7 +61,7 @@ public class Connector implements Shape {
         }
     }
 
-    static class ConnectorPoint {
+    public static class ConnectorPoint {
 
         public Shape linkedShape;
         public Type type;
@@ -215,12 +215,9 @@ public class Connector implements Shape {
          * START
          */
         {
-            Supplier<Rectangle> boxSupplier = () -> {
-                Point p = startPoint.getAbsolutePoint();
-                Rectangle box = new Rectangle(p.x - SELECTION_BOX_SIZE, p.y - SELECTION_BOX_SIZE, SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
-                return box;
-            };
-            if (boxSupplier.get().contains(mousex, mousey)) {
+//            Supplier<Rectangle> boxSupplier = () -> getPointSelectionBox(startPoint);
+
+            if (getPointSelectionBox(startPoint).contains(mousex, mousey)) {
                 return new Draggable() {
                     @Override
                     public Cursor getTranslationCursor() {
@@ -229,7 +226,7 @@ public class Connector implements Shape {
 
                     @Override
                     public Rectangle getRectangle() {
-                        return boxSupplier.get();
+                        return getPointSelectionBox(startPoint);
                     }
 
                     @Override
@@ -255,12 +252,9 @@ public class Connector implements Shape {
          * END
          */
         {
-            Supplier<Rectangle> boxSupplier = () -> {
-                Point p = endPoint.getAbsolutePoint();
-                Rectangle box = new Rectangle(p.x - SELECTION_BOX_SIZE, p.y - SELECTION_BOX_SIZE, SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
-                return box;
-            };
-            if (boxSupplier.get().contains(mousex, mousey)) {
+//            Supplier<Rectangle> boxSupplier = () -> getPointSelectionBox(endPoint);
+
+            if (getPointSelectionBox(endPoint).contains(mousex, mousey)) {
                 return new Draggable() {
                     @Override
                     public Cursor getTranslationCursor() {
@@ -269,7 +263,7 @@ public class Connector implements Shape {
 
                     @Override
                     public Rectangle getRectangle() {
-                        return boxSupplier.get();
+                        return getPointSelectionBox(endPoint);
                     }
 
                     @Override
@@ -328,6 +322,12 @@ public class Connector implements Shape {
         return null;
     }
 
+    protected Rectangle getPointSelectionBox(ConnectorPoint connectorPoint) {
+        Point p = connectorPoint.getAbsolutePoint();
+        Rectangle box = new Rectangle(p.x - SELECTION_BOX_SIZE, p.y - SELECTION_BOX_SIZE, SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
+        return box;
+    }
+
     @Override
     public Cursor getTranslationCursor() {
         return null;
@@ -354,7 +354,7 @@ public class Connector implements Shape {
         return new Rectangle(minx, miny, maxx - minx, maxy - miny);
     }
 
-    List<Point> getListOfAbsolutePoints() {
+    public List<Point> getListOfAbsolutePoints() {
         List<Point> r = new ArrayList<>();
         r.add(startPoint.getAbsolutePoint());
         r.addAll(this.middlePoints);
