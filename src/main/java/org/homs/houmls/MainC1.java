@@ -22,13 +22,14 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *     X parser de text tipo MarkDown amb aligments
  *
  *     X text a les arrows, cardinalitat (1..2, 0..*) rols, etc...
- *     - layers?
+ *     X layers?
  *     X box de comment (+ pergamino?)
  *     X duplicar element amb double-click
  *
- *     - crear/esborrar elements + toolbox panel
- *     x crear points intermitjos de connectors.
- *     - eliminar points intermitjos de connectors.
+ *     - crear elements + toolbox panel
+ *     X esborrar elements
+ *     X crear points intermitjos de connectors.
+ *     X eliminar points intermitjos de connectors.
  *     - punt per a moure la fletcha sencera, deslinkant rollo UMLet
  *
  *     - menú general (operacions de fitxer, about, etc).
@@ -45,9 +46,9 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *      - importar els diagrams que tinc en GitLab de Roche
  *      - veure com crear un XML (veure DriverEngine...)
  *
- *      - + cercles, elipses
+ *      X + cercles, elipses
  *      - + Generics <T>
- *      - + moñeco
+ *      X + moñeco
  *      X + required --o)-- provided
  *      X + altres tipos de caixes a base de diferents turtles... veure diagrames de activitat
  *      X + caixes amb rounded corners

@@ -30,7 +30,7 @@ public class LookAndFeel {
             0, new float[]{5}, 0);
 
 
-    public static final Boolean BOXES_WITH_SHADOW = false;
+    public static final Boolean BOXES_WITH_SHADOW = true;
 }
 
 

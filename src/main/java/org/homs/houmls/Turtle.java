@@ -8,34 +8,34 @@ public class Turtle {
     final Stack<Double> xs = new Stack<>();
     final Stack<Double> ys = new Stack<>();
 
-    double angle;
+    double angleInRads;
 
-    public Turtle(double x, double y, double angle) {
+    public Turtle(double x, double y, double angleInRads) {
         this.xs.push(x);
         this.ys.push(y);
-        this.angle = angle;
+        this.angleInRads = angleInRads;
     }
 
     public void rotate(double degrees) {
-        this.angle += Math.toRadians(degrees);
+        this.angleInRads += Math.toRadians(degrees);
     }
 
     public void setAngle(int degrees) {
-        this.angle = Math.toRadians(degrees);
+        this.angleInRads = Math.toRadians(degrees);
     }
 
     public void setAngle(double rads) {
-        this.angle = rads;
+        this.angleInRads = rads;
     }
 
     public void walk(double distance) {
-        this.xs.push(this.xs.peek() + distance * Math.cos(angle));
-        this.ys.push(this.ys.peek() + distance * Math.sin(angle));
+        this.xs.push(this.xs.peek() + distance * Math.cos(angleInRads));
+        this.ys.push(this.ys.peek() + distance * Math.sin(angleInRads));
     }
 
     public void jump(double distance) {
-        this.xs.push(this.xs.pop() + distance * Math.cos(angle));
-        this.ys.push(this.ys.pop() + distance * Math.sin(angle));
+        this.xs.push(this.xs.pop() + distance * Math.cos(angleInRads));
+        this.ys.push(this.ys.pop() + distance * Math.sin(angleInRads));
     }
 
     public void drawPolyline(Graphics g) {

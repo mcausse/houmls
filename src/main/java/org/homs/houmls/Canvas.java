@@ -81,69 +81,60 @@ public class Canvas extends JPanel {
                         return;
                     }
 
-
                     JPopupMenu pm = new JPopupMenu();
 
-                    if (Connector.class.isAssignableFrom(selectedShape.getClass())) {
-                        JMenuItem toFront = new JMenuItem("add new point");
+                    if (!Connector.class.isAssignableFrom(selectedShape.getClass())) {
+                        /*
+                         * POPUP MENU: BOX
+                         */
+
+                        JMenuItem deleteBox = new JMenuItem("remove");
+                        pm.add(deleteBox);
+                        deleteBox.addActionListener(new ActionListener() {
+                            public void actionPerformed(ActionEvent e) {
+                                diagram.getShapes().remove(selectedShape);
+                                selectedShape = null;
+                                repaint();
+                            }
+                        });
+
+                        JMenuItem toFront = new JMenuItem("to front");
                         pm.add(toFront);
                         toFront.addActionListener(new ActionListener() {
                             public void actionPerformed(ActionEvent e) {
-                                Connector conn = (Connector) selectedShape;
+                                diagram.sendToFront(selectedShape);
+                                repaint();
+                            }
+                        });
 
-                                List<Point> points = conn.getListOfAbsolutePoints();
-                                for (var i = 0; i < points.size(); i++) {
-                                    Point p = points.get(i);
-                                    Rectangle pointSelectionBox = new Rectangle(p.x - SELECTION_BOX_SIZE, p.y - SELECTION_BOX_SIZE, SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
-                                    if (pointSelectionBox.contains(mousePos.getX(), mousePos.getY())) {
+                        JMenuItem toBack = new JMenuItem("to back");
+                        pm.add(toBack);
+                        toBack.addActionListener(new ActionListener() {
+                            public void actionPerformed(ActionEvent e) {
+                                diagram.sendToBack(selectedShape);
+                                repaint();
+                            }
+                        });
 
-                                        /*
-                                         * CREATES A NEW MIDDLE POINT IN THE CONNECTOR
-                                         */
-                                        int indexOfClickedPoint = points.indexOf(p);
-                                        final Point otherPoint;
-                                        if (indexOfClickedPoint == points.size() - 1) {
-                                            otherPoint = points.get(points.size() - 2);
-                                        } else {
-                                            otherPoint = points.get(indexOfClickedPoint + 1);
-                                        }
-                                        Point middlePointToCreate = new Point(
-                                                (p.x + otherPoint.x) / 2,
-                                                (p.y + otherPoint.y) / 2
-                                        );
+                    } else if (Connector.class.isAssignableFrom(selectedShape.getClass())) {
 
-                                        if (indexOfClickedPoint >= conn.getMiddlePoints().size()) {
-                                            conn.getMiddlePoints().add(middlePointToCreate);
-                                        } else {
-                                            conn.getMiddlePoints().add(indexOfClickedPoint, middlePointToCreate);
-                                        }
-                                        break;
-                                    }
-                                }
+                        /*
+                         * POPUP MENU: CONNECTOR
+                         */
+                        popupMenuForConnector_CreateMiddlePoint(mousePos, pm);
+                        popupMenuForConnector_DeleteMiddlePoint(mousePos, pm);
 
-
+                        JMenuItem toBack = new JMenuItem("delete connector");
+                        pm.add(toBack);
+                        toBack.addActionListener(new ActionListener() {
+                            public void actionPerformed(ActionEvent e) {
+                                diagram.getShapes().remove(selectedShape);
+                                selectedShape = null;
                                 repaint();
                             }
                         });
                     }
 
-                    JMenuItem toFront = new JMenuItem("to front");
-                    pm.add(toFront);
-                    toFront.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            diagram.sendToFront(selectedShape);
-                            repaint();
-                        }
-                    });
-
-                    JMenuItem toBack = new JMenuItem("to back");
-                    pm.add(toBack);
-                    toBack.addActionListener(new ActionListener() {
-                        public void actionPerformed(ActionEvent e) {
-                            diagram.sendToBack(selectedShape);
-                            repaint();
-                        }
-                    });
 
                     pm.show(Canvas.this, mouseEvent.getX(), mouseEvent.getY());
                     pm.addPopupMenuListener(new PopupMenuListener() {
@@ -165,6 +156,92 @@ public class Canvas extends JPanel {
                 }
             }
             repaint();
+        }
+
+        private void popupMenuForConnector_CreateMiddlePoint(Point2D mousePos, JPopupMenu pm) {
+            JMenuItem toFront = new JMenuItem("add new point");
+            pm.add(toFront);
+            toFront.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    Connector conn = (Connector) selectedShape;
+
+                    List<Point> points = conn.getListOfAbsolutePoints();
+                    for (var i = 0; i < points.size(); i++) {
+                        Point p = points.get(i);
+                        Rectangle pointSelectionBox = new Rectangle(p.x - SELECTION_BOX_SIZE, p.y - SELECTION_BOX_SIZE, SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
+                        if (pointSelectionBox.contains(mousePos.getX(), mousePos.getY())) {
+
+                            /*
+                             * CREATES A NEW MIDDLE POINT IN THE CONNECTOR
+                             */
+                            int indexOfClickedPoint = points.indexOf(p);
+                            final Point otherPoint;
+                            if (indexOfClickedPoint == points.size() - 1) {
+                                otherPoint = points.get(points.size() - 2);
+                            } else {
+                                otherPoint = points.get(indexOfClickedPoint + 1);
+                            }
+                            Point middlePointToCreate = new Point(
+                                    (p.x + otherPoint.x) / 2,
+                                    (p.y + otherPoint.y) / 2
+                            );
+
+                            if (indexOfClickedPoint >= conn.getMiddlePoints().size()) {
+                                conn.getMiddlePoints().add(middlePointToCreate);
+                            } else {
+                                conn.getMiddlePoints().add(indexOfClickedPoint, middlePointToCreate);
+                            }
+                            break;
+                        }
+                    }
+
+
+                    repaint();
+                }
+            });
+        }
+
+        private void popupMenuForConnector_DeleteMiddlePoint(Point2D mousePos, JPopupMenu pm) {
+            JMenuItem toFront = new JMenuItem("delete point");
+            pm.add(toFront);
+            toFront.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    Connector conn = (Connector) selectedShape;
+
+                    List<Point> points = conn.getListOfAbsolutePoints();
+                    if (points.size() <= 2) {
+                        return;
+                    }
+                    for (var i = 0; i < points.size(); i++) {
+                        Point p = points.get(i);
+                        Rectangle pointSelectionBox = new Rectangle(p.x - SELECTION_BOX_SIZE, p.y - SELECTION_BOX_SIZE, SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
+                        if (pointSelectionBox.contains(mousePos.getX(), mousePos.getY())) {
+
+                            if (i == 0) {
+                                // remove first point
+                                conn.getStartPoint().linkedShape = null;
+                                conn.getStartPoint().posx = conn.getMiddlePoints().get(0).x;
+                                conn.getStartPoint().posy = conn.getMiddlePoints().get(0).y;
+                                conn.getMiddlePoints().remove(0);
+                            } else if (i == points.size() - 1) {
+                                // remove last point
+                                conn.getEndPoint().linkedShape = null;
+                                conn.getEndPoint().posx = conn.getMiddlePoints().get(conn.getMiddlePoints().size() - 1).x;
+                                conn.getEndPoint().posy = conn.getMiddlePoints().get(conn.getMiddlePoints().size() - 1).y;
+                                conn.getMiddlePoints().remove(conn.getMiddlePoints().size() - 1);
+                            } else {
+                                // remove middle point
+                                conn.getMiddlePoints().remove(i - 1);
+                            }
+
+                            break;
+                        }
+                    }
+
+
+                    repaint();
+                }
+            });
         }
 
         @Override

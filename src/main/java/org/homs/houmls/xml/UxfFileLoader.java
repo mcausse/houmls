@@ -88,6 +88,13 @@ public class UxfFileLoader {
                             attributes
                     );
                     r.add(box);
+                } else if ("UMLActor".equals(id)) {
+                    Moneco box = new Moneco(
+                            zoomCorrecter.apply(xval),
+                            zoomCorrecter.apply(yval),
+                            attributes
+                    );
+                    r.add(box);
                 } else if ("UMLState".equals(id)) {
                     RoundedBox box = new RoundedBox(
                             zoomCorrecter.apply(xval),
