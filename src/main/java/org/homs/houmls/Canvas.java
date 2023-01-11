@@ -490,7 +490,8 @@ public class Canvas extends JPanel {
             }
         }
         var nonConnectorsList = diagram.getShapesBy(shape -> !Connector.class.isAssignableFrom(shape.getClass()));
-        for (var nonconnector : nonConnectorsList) {
+        for (int i = nonConnectorsList.size() - 1; i >= 0; i--) {
+            Shape nonconnector = nonConnectorsList.get(i);
             if (!Connector.class.isAssignableFrom(nonconnector.getClass())) {
                 var draggable = nonconnector.findDraggableByPos(connectorsList, mousePos.getX(), mousePos.getY());
                 if (draggable != null) {
@@ -521,33 +522,14 @@ public class Canvas extends JPanel {
         }
 
         var nonConnectorsList = diagram.getShapesBy(shape -> !Connector.class.isAssignableFrom(shape.getClass()));
-        for (var nonconnector : nonConnectorsList) {
+        for (int i = nonConnectorsList.size() - 1; i >= 0; i--) {
+            Shape nonconnector = nonConnectorsList.get(i);
             var draggable = nonconnector.findDraggableByPos(connectorsList, mousePos.getX(), mousePos.getY());
             if (draggable != null) {
                 return nonconnector; // <======================
             }
         }
-//
-//
-//        for (int i = diagram.shapes.size() - 1; i >= 0; i--) {
-//            var shape = diagram.shapes.get(i);
-//            if (Connector.class.isAssignableFrom(shape.getClass())) {
-//                var translatable = shape.findTranslatableByPos(diagram.shapes, mousePos.getX(), mousePos.getY());
-//                if (translatable != null) {
-//                    return shape; // <======================
-//                }
-//            }
-//        }
-//
-//        for (int i = diagram.shapes.size() - 1; i >= 0; i--) {
-//            var shape = diagram.shapes.get(i);
-//            if (!Connector.class.isAssignableFrom(shape.getClass())) {
-//                var translatable = shape.findTranslatableByPos(diagram.shapes, mousePos.getX(), mousePos.getY());
-//                if (translatable != null) {
-//                    return shape; // <======================
-//                }
-//            }
-//        }
+
         return null;
     }
 

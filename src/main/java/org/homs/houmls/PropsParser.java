@@ -13,7 +13,7 @@ public class PropsParser {
         String[] lines = text.split("\\n");
         for (var line : lines) {
             var pos = line.indexOf("=");
-            if (pos < 1) {
+            if (pos < 1 || line.trim().indexOf(' ') > 0) {
                 general.append(line).append("\n");
             } else {
                 var propName = line.substring(0, pos);
