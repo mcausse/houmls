@@ -433,11 +433,22 @@ public class Connector implements Shape {
         switch (type) {
             case DEFAULT:
                 break;
-            case MEMBER_COMMENT:
+            case MEMBER_COMMENT: {
                 int MEMBER_COMMENT_BOX_RADIUS = 3;
-                g.fillRoundRect(firstPoint.x - MEMBER_COMMENT_BOX_RADIUS, firstPoint.y - MEMBER_COMMENT_BOX_RADIUS,
-                        MEMBER_COMMENT_BOX_RADIUS * 2, MEMBER_COMMENT_BOX_RADIUS * 2, 2, 2);
-                break;
+
+                g.setColor(Color.BLACK);
+                var turtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);
+                turtle.walk(GridControl.GRID_SIZE);
+                turtle.drawPolyline(g);
+
+                g.setColor(Color.WHITE);
+                g.fillOval(firstPoint.x - MEMBER_COMMENT_BOX_RADIUS, firstPoint.y - MEMBER_COMMENT_BOX_RADIUS,
+                        MEMBER_COMMENT_BOX_RADIUS * 2, MEMBER_COMMENT_BOX_RADIUS * 2);
+                g.setColor(Color.BLACK);
+                g.drawOval(firstPoint.x - MEMBER_COMMENT_BOX_RADIUS, firstPoint.y - MEMBER_COMMENT_BOX_RADIUS,
+                        MEMBER_COMMENT_BOX_RADIUS * 2, MEMBER_COMMENT_BOX_RADIUS * 2);
+            }
+            break;
             case AGGREGATION:
             case COMPOSITION: {
                 var turtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);

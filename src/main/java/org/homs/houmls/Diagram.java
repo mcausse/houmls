@@ -16,7 +16,21 @@ public class Diagram {
     public double zoom = 1.0;
     public double offsetX = 0.0;
     public double offsetY = 0.0;
+
+    private String diagramAttributesText;
     private final List<Shape> shapes = new ArrayList<>();
+
+    public Diagram() {
+        reset();
+    }
+
+    public void reset() {
+        this.zoom = 1.0;
+        this.offsetX = 0.0;
+        this.offsetY = 0.0;
+        this.diagramAttributesText = "";
+        this.shapes.clear();
+    }
 
     public void addShape(Shape element) {
         this.shapes.add(element);
@@ -84,5 +98,13 @@ public class Diagram {
     public void sendToBack(Shape shape) {
         shapes.remove(shape);
         shapes.add(0, shape);
+    }
+
+    public String getDiagramAttributesText() {
+        return diagramAttributesText;
+    }
+
+    public void setDiagramAttributesText(String diagramAttributesText) {
+        this.diagramAttributesText = diagramAttributesText;
     }
 }

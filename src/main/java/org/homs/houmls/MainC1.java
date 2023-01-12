@@ -1,9 +1,14 @@
 package org.homs.houmls;
 
-import org.homs.houmls.xml.UxfFileLoader;
+import org.homs.houmls.xml.UxfFileManager;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
+import java.io.File;
+import java.net.URL;
+import java.util.Arrays;
 
 import static org.homs.houmls.LookAndFeel.yellowMartin;
 
@@ -14,6 +19,7 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  * Houmls
  * MartinLet
  * MartinUML
+ * JouLet
  *
  * <pre>
  *     X nou listener per a seleccionar elements => info al JTextArea
@@ -26,17 +32,17 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *     X box de comment (+ pergamino?)
  *     X duplicar element amb double-click
  *
- *     - crear elements + toolbox panel
+ *     X crear elements + toolbox panel
  *     X esborrar elements
  *     X crear points intermitjos de connectors.
  *     X eliminar points intermitjos de connectors.
  *     - punt per a moure la fletcha sencera, deslinkant rollo UMLet
  *
- *     - menú general (operacions de fitxer, about, etc).
+ *     P menú general (operacions de fitxer, about, etc).
  *     X llegir XMLs de UMLet
- *     - poder exportar XMLs de UMLet
+ *     X guardar XMLs de UMLet
  *     - pestanyes? bah, no cal.
- *     - exportar a PNG, etc...
+ *     P exportar a PNG, etc... nou main, amb parsing de parameters variats.... {@see org.homs.houmls.ExportAsPng}
  *
  *     - undo
  *     - multisellecció + moure en grup!
@@ -44,7 +50,8 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *
  *      - llegir "UML Distilled" (Martin Fowler) i apendre UML pràctic d'una puta vegada
  *      - importar els diagrams que tinc en GitLab de Roche
- *      - veure com crear un XML (veure DriverEngine...)
+ *
+ *      x veure com crear un XML (veure DriverEngine...)
  *
  *      X + cercles, elipses
  *      - + Generics <T>
@@ -53,12 +60,19 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *      X + altres tipos de caixes a base de diferents turtles... veure diagrames de activitat
  *      X + caixes amb rounded corners
  *
- *      - apastelar colors, o admetre RGB a més de noms
+ *      - apastelar colors, o admetre RGB a més de noms, paleta...
+ *      - icones al Popupmenu
+ *      - millorar el tema MarkDown
+ *
+ *      - caixa amb codi turtle: recordar com era en QuickBasic. Demo amb turtle
+ *
+ *      - millorar turtle a lo QBasic?
+ *        http://www.antonis.de/qbebooks/gwbasman/draw.html#:~:text=The%20DRAW%20statement%20combines%20most,valid%20only%20in%20graphics%20mode.
+ *      - nou connector amb relleno, que es pugui enganxar a caixa i fer bocadillos!
  *
  * </pre>
  */
 public class MainC1 {
-
 
     public static void main(String[] args) throws Exception {
 
@@ -69,64 +83,8 @@ public class MainC1 {
         shapeTextEditor.setBackground(yellowMartin);
 
         var canvas = new Canvas(shapeTextEditor);
-//        {
-//
-//            Box class1 = new Box(GRID_SIZE * 10, GRID_SIZE * 5, GRID_SIZE * 10, GRID_SIZE * 10, "._<<@Component>>\n.*MartinCanvas\n---\n---\nvoid paint(Graphics g)\n---");
-//            Box class2 = new Box(GRID_SIZE * 25, GRID_SIZE * 5, GRID_SIZE * 10, GRID_SIZE * 10, "*11111\n---\n233333\n---");
-//            Connector connector1 = new Connector(class1, Connector.Type.AGGREGATION, GRID_SIZE * 10, GRID_SIZE * 3, class2, Connector.Type.ARROW, 0, GRID_SIZE * 3);
-//            Connector connector2 = new Connector(class1, Connector.Type.COMPOSITION, GRID_SIZE * 10, GRID_SIZE * 6, class2, Connector.Type.ARROW, 0, GRID_SIZE * 6);
-////            arrow.getMiddlePoints().add(new Point(150, 100));
-//            canvas.addElement(connector1);
-//            canvas.addElement(connector2);
-//            canvas.addElement(class1);
-//            canvas.addElement(class2);
-//
-//        }
-//        {
-//            Box target = new Box(GRID_SIZE * 10, GRID_SIZE * 20, GRID_SIZE * 10, GRID_SIZE * 10, "._<<interface>>\n.*Target\n---\n---\noperation()\n---");
-//            Box adapter = new Box(GRID_SIZE * 10, GRID_SIZE * 35, GRID_SIZE * 10, GRID_SIZE * 10, ".*Adapter\n---\n---\noperation()\n---");
-//            Connector connector = new Connector(adapter, Connector.Type.DEFAULT, GRID_SIZE * 5, GRID_SIZE * 0, target, Connector.Type.INHERITANCE, GRID_SIZE * 5, GRID_SIZE * 10);
-//            var comment = new Comment(GRID_SIZE * 30, GRID_SIZE * 35, GRID_SIZE * 10, GRID_SIZE * 5, "This is just a \nsimple comment!");
-//            Connector commentConnector = new Connector(
-//                    adapter, Connector.Type.MEMBER_COMMENT, GRID_SIZE * 10 - 10, GRID_SIZE * 2 + 8,
-//                    comment, Connector.Type.DEFAULT, GRID_SIZE * 0, GRID_SIZE * 2 + 8);
-//            canvas.addElement(connector);
-//            canvas.addElement(target);
-//            canvas.addElement(adapter);
-//            canvas.addElement(commentConnector);
-//            canvas.addElement(comment);
-//        }
-//        {
-//            Box b1 = new Box(GRID_SIZE * 10, GRID_SIZE * 50, GRID_SIZE * 10, GRID_SIZE * 10, ".*Target\n---");
-//            Box b2 = new Box(GRID_SIZE * 30, GRID_SIZE * 50, GRID_SIZE * 10, GRID_SIZE * 10, ".*Target\n---");
-//
-//            Connector c1 = new Connector(
-//                    b1, Connector.Type.TO_ONE_OPTIONAL, GRID_SIZE * 10, GRID_SIZE * 3,
-//                    b2, Connector.Type.TO_MANY_OPTIONAL, GRID_SIZE * 0, GRID_SIZE * 3);
-//            Connector c2 = new Connector(
-//                    b1, Connector.Type.TO_ONE_MANDATORY, GRID_SIZE * 10, GRID_SIZE * 6,
-//                    b2, Connector.Type.TO_MANY_MANDATORY, GRID_SIZE * 0, GRID_SIZE * 6);
-//            canvas.addElement(b1);
-//            canvas.addElement(b2);
-//            canvas.addElement(c1);
-//            canvas.addElement(c2);
-//
-//            c1.setAttributesText(
-//                    "label\n" +
-//                            "lt=||-o|\n" +
-//                            "m1=jou\n" +
-//                            "m2=juas\n"
-//            );
-//            c2.setAttributesText(
-//                    "label\n" +
-//                            "lt=>|-o<\n" +
-//                            "m1=jou\n" +
-//                            "m2=juas\n" +
-//                            "\n"
-//            );
-//        }
 
-        canvas.addShapes(UxfFileLoader.loadFile());
+        canvas.diagram = UxfFileManager.loadFile("OrderEntrance.uxf");
 
         //
         // LATERAL BAR
@@ -141,8 +99,114 @@ public class MainC1 {
 
 
         var f = new JFrame("Houmls");
+        f.setLayout(new BorderLayout());
+
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         f.addKeyListener(canvas.getOffsetAndZoomListener());
+
+        JToolBar toolBar = new JToolBar();
+        toolBar.setFloatable(false);
+
+        {
+            final JButton newButton;
+            final JButton openBbutton;
+            final JButton saveButton;
+            final JButton saveAsButton;
+
+            newButton = buildButton("icons/page.png", "New (^N)", "^n", "Control N", KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK), new AbstractAction() {
+                private static final long serialVersionUID = -1337580617687814477L;
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    canvas.diagram.reset();
+                    canvas.repaint();
+                }
+            });
+            // XXX ^O open file
+            openBbutton = buildButton("icons/folder_page.png", "Open (^O)", "^o", "Control O", KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK), new AbstractAction() {
+                private static final long serialVersionUID = -1337580617687814477L;
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    JFileChooser fc = new JFileChooser(new File("."));
+                    int returnVal = fc.showOpenDialog(f);
+                    if (returnVal == JFileChooser.APPROVE_OPTION) {
+                        File file = fc.getSelectedFile();
+                        try {
+                            Diagram diagram = UxfFileManager.loadFile(file.toString());
+                            canvas.diagram = diagram;
+                        } catch (Exception e2) {
+                            e2.printStackTrace();
+                        }
+                    }
+                }
+            });
+            // XXX ^S save current file
+            saveButton = buildButton("icons/disk.png", "Save (^S)", "^s", "Control S", KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK), new AbstractAction() {
+                private static final long serialVersionUID = -1337580617687814477L;
+
+                @Override
+                public void actionPerformed(ActionEvent e) {
+//                    String fileName = getSelectedFilename();
+//                    HomsTextEditor currentEditorComponent = (HomsTextEditor) tabbedPane.getSelectedComponent();
+//
+//                    if (fileName != null) {
+//                        TextFileUtils.write(new File(fileName), TextFileUtils.UTF8, currentEditorComponent.getText());
+//                        onTextChanges.accept(currentEditorComponent, false);
+//                    } else {
+                    JFileChooser fc = new JFileChooser(new File("."));
+                    int returnVal = fc.showSaveDialog(f);
+                    if (returnVal == JFileChooser.APPROVE_OPTION) {
+                        File file = fc.getSelectedFile();
+                        try {
+                            UxfFileManager.writeFile(canvas.diagram.getShapes(), file.toString());
+                        } catch (Exception e2) {
+                            e2.printStackTrace();
+                        }
+//                        TextFileUtils.write(file, TextFileUtils.UTF8, currentEditorComponent.getText());
+//                        tabbedPane.setToolTipTextAt(tabbedPane.getSelectedIndex(), file.toString());
+//                        tabbedPane.setTitleAt(tabbedPane.getSelectedIndex(), file.getName());
+//                        onTextChanges.accept(currentEditorComponent, false);
+                    }
+//                    }
+                }
+
+            });
+
+            // XXX ^D Save as...
+            saveAsButton = buildButton("icons/page_save.png", "Save As... (^D)", "^d", "Control D", KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK),
+                    new AbstractAction() {
+                        private static final long serialVersionUID = -1337580617687814477L;
+
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+//                            HomsTextEditor currentEditorComponent = (HomsTextEditor) tabbedPane.getSelectedComponent();
+//
+                            JFileChooser fc = new JFileChooser(new File("."));
+                            int returnVal = fc.showSaveDialog(saveButton);
+                            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                                File file = fc.getSelectedFile();
+//                                TextFileUtils.write(file, TextFileUtils.UTF8, currentEditorComponent.getText());
+//                                tabbedPane.setToolTipTextAt(tabbedPane.getSelectedIndex(), file.toString());
+//                                tabbedPane.setTitleAt(tabbedPane.getSelectedIndex(), file.getName());
+//                                onTextChanges.accept(currentEditorComponent, false);
+                                try {
+                                    UxfFileManager.writeFile(canvas.diagram.getShapes(), file.toString());
+                                } catch (Exception e2) {
+                                    e2.printStackTrace();
+                                }
+                            }
+                        }
+                    });
+
+            toolBar.add(newButton);
+            toolBar.add(openBbutton);
+            toolBar.add(saveButton);
+            toolBar.add(saveAsButton);
+            toolBar.addSeparator();
+        }
+
+        f.add(toolBar, BorderLayout.NORTH);
 
         JSplitPane sl = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, canvas, lateralBar);
         f.add(sl);
@@ -157,11 +221,35 @@ public class MainC1 {
         shapeTextEditor.addKeyListener(canvas.getOffsetAndZoomListener());
         sl.addKeyListener(canvas.getOffsetAndZoomListener());
         toolBoxSplitPane.addKeyListener(canvas.getOffsetAndZoomListener());
+        toolBar.addKeyListener(canvas.getOffsetAndZoomListener());
+        Arrays.stream(toolBar.getComponents()).forEach(c -> c.addKeyListener(canvas.getOffsetAndZoomListener()));
 
         f.setVisible(true);
         SwingUtilities.invokeLater(() -> {
             sl.setDividerLocation(0.7);
             toolBoxSplitPane.setDividerLocation(0.5);
         });
+    }
+
+    protected static JButton buildButton(String imageName, String toolTipText, String shortCut, String actionCommand, KeyStroke keyStroke, Action action) {
+
+        JButton button = new JButton();
+        button.setLayout(new GridLayout(2, 1));
+
+        if (keyStroke != null) {
+            button.getInputMap(JComponent.WHEN_IN_FOCUSED_WINDOW).put(keyStroke, actionCommand);
+            button.getActionMap().put(actionCommand, action);
+        }
+        button.setAction(action);
+
+        URL resource = MainC1.class.getResource(imageName);
+        if (resource == null) {
+            throw new RuntimeException("file not found: " + imageName);
+        }
+        Image ico = Toolkit.getDefaultToolkit().getImage(resource);
+        button.setIcon(new ImageIcon(ico));
+        button.setToolTipText(toolTipText);
+
+        return button;
     }
 }
