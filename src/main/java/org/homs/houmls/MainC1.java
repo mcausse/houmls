@@ -136,6 +136,7 @@ public class MainC1 {
                         try {
                             Diagram diagram = UxfFileManager.loadFile(file.toString());
                             canvas.diagram = diagram;
+                            canvas.repaint();
                         } catch (Exception e2) {
                             e2.printStackTrace();
                         }
@@ -160,7 +161,7 @@ public class MainC1 {
                     if (returnVal == JFileChooser.APPROVE_OPTION) {
                         File file = fc.getSelectedFile();
                         try {
-                            UxfFileManager.writeFile(canvas.diagram.getShapes(), file.toString());
+                            UxfFileManager.writeFile(canvas.diagram, file.toString());
                         } catch (Exception e2) {
                             e2.printStackTrace();
                         }
@@ -192,7 +193,7 @@ public class MainC1 {
 //                                tabbedPane.setTitleAt(tabbedPane.getSelectedIndex(), file.getName());
 //                                onTextChanges.accept(currentEditorComponent, false);
                                 try {
-                                    UxfFileManager.writeFile(canvas.diagram.getShapes(), file.toString());
+                                    UxfFileManager.writeFile(canvas.diagram, file.toString());
                                 } catch (Exception e2) {
                                     e2.printStackTrace();
                                 }

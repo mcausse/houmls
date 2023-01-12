@@ -3,8 +3,12 @@ package org.homs.houmls;
 import java.awt.*;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class PropsParser {
+
+    static Pattern p = Pattern.compile("(\\w+)\\=(.*)");
 
     public static Map<String, String> parseProperties(String text) {
         var r = new LinkedHashMap<String, String>();
@@ -12,14 +16,22 @@ public class PropsParser {
 
         String[] lines = text.split("\\n");
         for (var line : lines) {
-            var pos = line.indexOf("=");
-            if (pos < 1 || line.trim().indexOf(' ') > 0) {
-                general.append(line).append("\n");
-            } else {
-                var propName = line.substring(0, pos);
-                var propValue = line.substring(pos + 1);
+            Matcher m = p.matcher(line);
+            if (m.matches()) {
+                var propName = m.group(1);
+                var propValue = m.group(2);
                 r.put(propName, propValue);
+            } else {
+                general.append(line).append("\n");
             }
+//            var pos = line.indexOf("=");
+//            if (pos < 1 || line.trim().indexOf(' ') > 0) {
+//                general.append(line).append("\n");
+//            } else {
+//                var propName = line.substring(0, pos);
+//                var propValue = line.substring(pos + 1);
+//                r.put(propName, propValue);
+//            }
         }
 
         r.put("", general.toString());

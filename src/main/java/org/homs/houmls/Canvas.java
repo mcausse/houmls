@@ -246,12 +246,11 @@ public class Canvas extends JPanel {
                         });
                     }
 
-
+                repaint();
                 pm.show(Canvas.this, mouseEvent.getX(), mouseEvent.getY());
                 pm.addPopupMenuListener(new PopupMenuListener() {
                     @Override
                     public void popupMenuWillBecomeVisible(PopupMenuEvent e) {
-
                     }
 
                     @Override

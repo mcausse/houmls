@@ -12,9 +12,9 @@ class UxfFileManagerTest {
     @Test
     void name() throws Exception {
 
-        var f = UxfFileManager.loadFile("OrderEntrance.uxf");
-        UxfFileManager.writeFile(f.getShapes(), "OrderEntrance.uxf2");
-        var f2 = UxfFileManager.loadFile("OrderEntrance.uxf2");
+        var d = UxfFileManager.loadFile("OrderEntrance.uxf");
+        UxfFileManager.writeFile(d, "OrderEntrance.uxf2");
+        var d2 = UxfFileManager.loadFile("OrderEntrance.uxf2");
 
 
         var inputXml = ResourceHelper.resourceToString("OrderEntrance.uxf");

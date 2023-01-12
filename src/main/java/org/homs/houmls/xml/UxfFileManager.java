@@ -19,19 +19,26 @@ import java.util.StringJoiner;
 public class UxfFileManager {
 
     // TODO que treballi amb Diagram, no amb List<Shape> shapes...
-    public static void writeFile(List<Shape> shapes, String fileName) throws Exception {
+    public static void writeFile(Diagram diagram, String fileName) throws Exception {
 
         String xmlRoot = "diagram";
 
+        List<Shape> shapes = diagram.getShapes();
+
         Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
 
-        Element customerProductInventory = doc.createElement(xmlRoot);
-        customerProductInventory.setAttribute("program", "houmls");
-        customerProductInventory.setAttribute("version", "0.0.1");
-        doc.appendChild(customerProductInventory);
+//        Element customerProductInventory = doc.createElement(xmlRoot);
+//        customerProductInventory.setAttribute("program", "houmls");
+//        customerProductInventory.setAttribute("version", "0.0.1");
+//        doc.appendChild(customerProductInventory);
 
         XmlDocumentBuilder xmlBuilder = new XmlDocumentBuilder(doc);
-        xmlBuilder.withPrefix(xmlRoot).set("/zoom_level", "10");
+        xmlBuilder.set(xmlRoot, "[@program='houmls'][@version='0.0.1']", "");
+
+        xmlBuilder.withPrefix(xmlRoot)
+                .set("/zoom_level", "10")
+                .set("/help_text", diagram.getDiagramAttributesText())
+        ;
 
         int numShape = 1;
         for (var shape : shapes) {

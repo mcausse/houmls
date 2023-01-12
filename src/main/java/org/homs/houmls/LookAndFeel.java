@@ -29,7 +29,7 @@ public class LookAndFeel {
     public static final Stroke dashedStroke = new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL,
             0, new float[]{5}, 0);
 
-    public static final Boolean BOXES_WITH_SHADOW = false;
+    public static final Boolean BOXES_WITH_SHADOW = true;
 }
 
 
