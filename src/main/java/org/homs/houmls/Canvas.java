@@ -68,8 +68,10 @@ public class Canvas extends JPanel {
             selectedShape = findShapeByMousePosition(mouseEvent.getX(), mouseEvent.getY());
             if (selectedShape == null) {
                 editorTextPaneRef.setText(diagram.getDiagramAttributesText());
+                editorTextPaneRef.setCaretPosition(0);
             } else {
                 editorTextPaneRef.setText(selectedShape.getAttributesText());
+                editorTextPaneRef.setCaretPosition(0);
             }
 
 

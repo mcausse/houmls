@@ -81,6 +81,7 @@ public class MainC1 {
 
         var shapeTextEditor = new JTextArea();
         shapeTextEditor.setBackground(yellowMartin);
+        JScrollPane scrollShapeTextEditor = new JScrollPane(shapeTextEditor, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
 
         var canvas = new Canvas(shapeTextEditor);
 
@@ -94,7 +95,7 @@ public class MainC1 {
         var shapesCatalog = new JPanel();
 
 
-        JSplitPane toolBoxSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, shapesCatalog, shapeTextEditor);
+        JSplitPane toolBoxSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, shapesCatalog, scrollShapeTextEditor);
         lateralBar.add(toolBoxSplitPane);
 
 

@@ -47,11 +47,4 @@ public class PropsParserTest {
         assertThat(PropsParser.reverseArrowStyle("12345")).isEqualTo("54321");
         assertThat(PropsParser.reverseArrowStyle(">>>>>")).isEqualTo("<<<<<");
     }
-
-//    @Test
-//    void name() {
-//        System.out.println(170/10);
-//        System.out.println(102/6);
-//        System.out.println(102*10/6);
-//    }
 }
