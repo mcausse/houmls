@@ -21,6 +21,8 @@ public class UxfFileManager {
     // TODO que treballi amb Diagram, no amb List<Shape> shapes...
     public static void writeFile(Diagram diagram, String fileName) throws Exception {
 
+        diagram.setName(fileName);
+
         String xmlRoot = "diagram";
 
         List<Shape> shapes = diagram.getShapes();
@@ -50,6 +52,8 @@ public class UxfFileManager {
                 id = "UMLState";
             } else if (shape.getClass() == Connector.class) {
                 id = "Relation";
+            } else if (shape.getClass() == BocadilloConnector.class) {
+                id = "Bocadillo";
             } else {
                 throw new RuntimeException(shape.getClass().getName());
             }
@@ -81,6 +85,8 @@ public class UxfFileManager {
     public static Diagram loadFile(String fileName) throws Exception {
 
         Diagram diagram = new Diagram();
+
+        diagram.setName(fileName);
 
         File xmlFile = new File(fileName);
 
@@ -133,7 +139,7 @@ public class UxfFileManager {
                 } else if ("UMLState".equals(id)) {
                     RoundedBox box = new RoundedBox(x, y, w, h, attributes);
                     diagram.addShape(box);
-                } else if (id.equals("Relation")) {
+                } else if (id.equals("Relation") || id.equals("Bocadillo")) {
 
                     List<Point> points = new ArrayList<>();
 
@@ -147,7 +153,15 @@ public class UxfFileManager {
 
                     Point firstPoint = points.get(0);
                     Point lastPoint = points.get(points.size() - 1);
-                    var connector = new Connector(firstPoint.x, firstPoint.y, lastPoint.x, lastPoint.y, attributes);
+
+                    final Connector connector;
+                    if (id.equals("Relation")) {
+                        connector = new Connector(firstPoint.x, firstPoint.y, lastPoint.x, lastPoint.y, attributes);
+                    } else if (id.equals("Bocadillo")) {
+                        connector = new BocadilloConnector(firstPoint.x, firstPoint.y, lastPoint.x, lastPoint.y, attributes);
+                    } else {
+                        throw new RuntimeException();
+                    }
                     for (j = 1; j < points.size() - 1; j++) {
                         connector.getMiddlePoints().add(points.get(j));
                     }

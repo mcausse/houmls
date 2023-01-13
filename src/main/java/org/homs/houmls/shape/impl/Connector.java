@@ -1,7 +1,7 @@
 package org.homs.houmls.shape.impl;
 
-import org.homs.houmls.*;
 import org.homs.houmls.FontMetrics;
+import org.homs.houmls.*;
 import org.homs.houmls.shape.Draggable;
 import org.homs.houmls.shape.Shape;
 
@@ -58,7 +58,7 @@ public class Connector implements Shape {
                     return type;
                 }
             }
-            return DEFAULT; //TODO throw?
+            return DEFAULT;
         }
     }
 

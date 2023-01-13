@@ -17,6 +17,7 @@ public class Diagram {
     public double offsetX = 0.0;
     public double offsetY = 0.0;
 
+    private String name;
     private String diagramAttributesText;
     private final List<Shape> shapes = new ArrayList<>();
 
@@ -28,6 +29,7 @@ public class Diagram {
         this.zoom = 1.0;
         this.offsetX = 0.0;
         this.offsetY = 0.0;
+        this.name = null;
         this.diagramAttributesText = "";
         this.shapes.clear();
     }
@@ -106,5 +108,13 @@ public class Diagram {
 
     public void setDiagramAttributesText(String diagramAttributesText) {
         this.diagramAttributesText = diagramAttributesText;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

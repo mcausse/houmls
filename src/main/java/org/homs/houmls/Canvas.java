@@ -15,7 +15,6 @@ import java.awt.event.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
@@ -180,61 +179,80 @@ public class Canvas extends JPanel {
                             repaint();
                         }
                     });
-                } else                    if (!Connector.class.isAssignableFrom(selectedShape.getClass())) {
-                        /*
-                         * POPUP MENU: BOX
-                         */
+                    JMenuItem createBocadillo = new JMenuItem("create bocadillo");
+                    pm.add(createBocadillo);
+                    createBocadillo.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            final BocadilloConnector bocadillo = new BocadilloConnector(
+                                    (int) (mousePos.getX()),
+                                    (int) (mousePos.getY()),
+                                    (int) (mousePos.getX()) + 18 * GridControl.GRID_SIZE,
+                                    (int) (mousePos.getY()),
+                                    "lt=-\n"
+                            );
+                            bocadillo.getMiddlePoints().add(new Point(
+                                    (int) (mousePos.getX() + GridControl.GRID_SIZE * 6),
+                                    (int) (mousePos.getY() + GridControl.GRID_SIZE * 6)
+                            ));
+                            diagram.addShape(bocadillo);
+                            repaint();
+                        }
+                    });
+                } else if (!Connector.class.isAssignableFrom(selectedShape.getClass())) {
+                    /*
+                     * POPUP MENU: BOX
+                     */
 
-                        JMenuItem toFront = new JMenuItem("to front");
-                        pm.add(toFront);
-                        toFront.addActionListener(new ActionListener() {
-                            public void actionPerformed(ActionEvent e) {
-                                diagram.sendToFront(selectedShape);
-                                repaint();
-                            }
-                        });
+                    JMenuItem toFront = new JMenuItem("to front");
+                    pm.add(toFront);
+                    toFront.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            diagram.sendToFront(selectedShape);
+                            repaint();
+                        }
+                    });
 
-                        JMenuItem toBack = new JMenuItem("to back");
-                        pm.add(toBack);
-                        toBack.addActionListener(new ActionListener() {
-                            public void actionPerformed(ActionEvent e) {
-                                diagram.sendToBack(selectedShape);
-                                repaint();
-                            }
-                        });
+                    JMenuItem toBack = new JMenuItem("to back");
+                    pm.add(toBack);
+                    toBack.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            diagram.sendToBack(selectedShape);
+                            repaint();
+                        }
+                    });
 
-                        pm.addSeparator();
+                    pm.addSeparator();
 
-                        JMenuItem deleteBox = new JMenuItem("remove");
-                        pm.add(deleteBox);
-                        deleteBox.addActionListener(new ActionListener() {
-                            public void actionPerformed(ActionEvent e) {
-                                diagram.getShapes().remove(selectedShape);
-                                selectedShape = null;
-                                repaint();
-                            }
-                        });
+                    JMenuItem deleteBox = new JMenuItem("remove");
+                    pm.add(deleteBox);
+                    deleteBox.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            diagram.getShapes().remove(selectedShape);
+                            selectedShape = null;
+                            repaint();
+                        }
+                    });
 
-                    } else if (Connector.class.isAssignableFrom(selectedShape.getClass())) {
+                } else if (Connector.class.isAssignableFrom(selectedShape.getClass())) {
 
-                        /*
-                         * POPUP MENU: CONNECTOR
-                         */
-                        popupMenuForConnector_CreateMiddlePoint(mousePos, pm);
-                        popupMenuForConnector_DeleteMiddlePoint(mousePos, pm);
+                    /*
+                     * POPUP MENU: CONNECTOR
+                     */
+                    popupMenuForConnector_CreateMiddlePoint(mousePos, pm);
+                    popupMenuForConnector_DeleteMiddlePoint(mousePos, pm);
 
-                        pm.addSeparator();
+                    pm.addSeparator();
 
-                        JMenuItem toBack = new JMenuItem("delete connector");
-                        pm.add(toBack);
-                        toBack.addActionListener(new ActionListener() {
-                            public void actionPerformed(ActionEvent e) {
-                                diagram.getShapes().remove(selectedShape);
-                                selectedShape = null;
-                                repaint();
-                            }
-                        });
-                    }
+                    JMenuItem toBack = new JMenuItem("delete connector");
+                    pm.add(toBack);
+                    toBack.addActionListener(new ActionListener() {
+                        public void actionPerformed(ActionEvent e) {
+                            diagram.getShapes().remove(selectedShape);
+                            selectedShape = null;
+                            repaint();
+                        }
+                    });
+                }
 
                 repaint();
                 pm.show(Canvas.this, mouseEvent.getX(), mouseEvent.getY());
@@ -495,12 +513,7 @@ public class Canvas extends JPanel {
 
         Graphics2D g2 = (Graphics2D) g;
 
-        g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);
-        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-        g2.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
-        g2.setRenderingHint(RenderingHints.KEY_FRACTIONALMETRICS, RenderingHints.VALUE_FRACTIONALMETRICS_ON);
-        g2.setRenderingHint(RenderingHints.KEY_COLOR_RENDERING, RenderingHints.VALUE_COLOR_RENDER_QUALITY);
-        g2.setRenderingHint(RenderingHints.KEY_DITHERING, RenderingHints.VALUE_DITHER_ENABLE);
+        LookAndFeel.setRenderingHints(g2);
 
         g2.setStroke(basicStroke);
 
@@ -626,5 +639,11 @@ public class Canvas extends JPanel {
         return null;
     }
 
+    public String getDiagramName() {
+        return diagram.getName();
+    }
 
+    public void setDiagramName(String name) {
+        diagram.setName(name);
+    }
 }

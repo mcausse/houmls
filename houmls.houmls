@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?><diagram program="houmls" version="0.0.1">
     <zoom_level>10</zoom_level>
-    <help_text/>
+    <help_text>houmls is powered with bocadillos
+
+bg=yellow</help_text>
     <element>
         <id>UMLClass</id>
         <coordinates>
@@ -164,12 +166,14 @@ m2=*</panel_attributes>
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>820</x>
-            <y>310</y>
+            <x>910</x>
+            <y>170</y>
             <w>140</w>
             <h>70</h>
         </coordinates>
-        <panel_attributes>houmls is the better
+        <panel_attributes>
+.Houmls is powered 
+.with bocadillos
 bg=yellow</panel_attributes>
         <additional_attributes/>
     </element>
@@ -178,11 +182,11 @@ bg=yellow</panel_attributes>
         <coordinates>
             <x>730</x>
             <y>340</y>
-            <w>90</w>
+            <w>50</w>
             <h>0</h>
         </coordinates>
         <panel_attributes>lt=.</panel_attributes>
-        <additional_attributes>90;0;0;0</additional_attributes>
+        <additional_attributes>50;0;0;0</additional_attributes>
     </element>
     <element>
         <id>UMLClass</id>
@@ -581,5 +585,56 @@ m2=                      [subdepartment]
         <panel_attributes>lt=-&gt;
 </panel_attributes>
         <additional_attributes>0;0;110;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLState</id>
+        <coordinates>
+            <x>160</x>
+            <y>600</y>
+            <w>620</w>
+            <h>40</h>
+        </coordinates>
+        <panel_attributes>.*Adapter pattern
+
+fontsize=24
+bg=orange</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Bocadillo</id>
+        <coordinates>
+            <x>230</x>
+            <y>640</y>
+            <w>50</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=-
+bg=orange</panel_attributes>
+        <additional_attributes>0;0;-30;40;50;0</additional_attributes>
+    </element>
+    <element>
+        <id>Bocadillo</id>
+        <coordinates>
+            <x>950</x>
+            <y>240</y>
+            <w>50</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=-
+bg=yellow
+</panel_attributes>
+        <additional_attributes>0;0;60;40;50;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLActor</id>
+        <coordinates>
+            <x>1010</x>
+            <y>260</y>
+            <w>50</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>
+</panel_attributes>
+        <additional_attributes/>
     </element>
 </diagram>

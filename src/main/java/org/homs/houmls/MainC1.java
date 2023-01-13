@@ -10,6 +10,7 @@ import java.awt.event.KeyEvent;
 import java.io.File;
 import java.net.URL;
 import java.util.Arrays;
+import java.util.function.Consumer;
 
 import static org.homs.houmls.LookAndFeel.yellowMartin;
 
@@ -75,6 +76,9 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  */
 public class MainC1 {
 
+    public static final String FRAME_TITLE = "Houmls -- ";
+    public static final String UNNAMED_FILENAME = "Unnamed";
+
     public static void main(String[] args) throws Exception {
 
         JFrame.setDefaultLookAndFeelDecorated(true);
@@ -86,7 +90,8 @@ public class MainC1 {
 
         var canvas = new Canvas(shapeTextEditor);
 
-        canvas.diagram = UxfFileManager.loadFile("OrderEntrance.houmls");
+        // TODO
+        canvas.diagram = UxfFileManager.loadFile("welcome.houmls");
 
         //
         // LATERAL BAR
@@ -100,8 +105,13 @@ public class MainC1 {
         lateralBar.add(toolBoxSplitPane);
 
 
-        var f = new JFrame("Houmls -- the UML King");
+        var f = new JFrame();
         f.setLayout(new BorderLayout());
+
+        Consumer<String> currentDiagramFileNameConsumer = (fileName) -> f.setTitle(
+                FRAME_TITLE + (fileName == null ? UNNAMED_FILENAME : fileName)
+        );
+        currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
 
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         f.addKeyListener(canvas.getOffsetAndZoomListener());
@@ -124,6 +134,7 @@ public class MainC1 {
                 public void actionPerformed(ActionEvent e) {
                     canvas.diagram.reset();
                     canvas.repaint();
+                    currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
                 }
             });
             // XXX ^O open file
@@ -145,6 +156,7 @@ public class MainC1 {
                             e2.printStackTrace();
                         }
                     }
+                    currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
                 }
             });
             // XXX ^S save current file
@@ -153,31 +165,28 @@ public class MainC1 {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-//                    String fileName = getSelectedFilename();
-//                    HomsTextEditor currentEditorComponent = (HomsTextEditor) tabbedPane.getSelectedComponent();
-//
-//                    if (fileName != null) {
-//                        TextFileUtils.write(new File(fileName), TextFileUtils.UTF8, currentEditorComponent.getText());
-//                        onTextChanges.accept(currentEditorComponent, false);
-//                    } else {
-                    JFileChooser fc = new JFileChooser(new File("."));
-                    fc.setFileFilter(filter);
-                    int returnVal = fc.showSaveDialog(f);
-                    if (returnVal == JFileChooser.APPROVE_OPTION) {
-                        File file = fc.getSelectedFile();
+                    String fileName = canvas.getDiagramName();
+                    if (fileName == null) {
+                        JFileChooser fc = new JFileChooser(new File("."));
+                        fc.setFileFilter(filter);
+                        int returnVal = fc.showSaveDialog(f);
+                        if (returnVal == JFileChooser.APPROVE_OPTION) {
+                            File file = fc.getSelectedFile();
+                            try {
+                                UxfFileManager.writeFile(canvas.diagram, file.toString());
+                            } catch (Exception e2) {
+                                e2.printStackTrace();
+                            }
+                        }
+                    } else {
                         try {
-                            UxfFileManager.writeFile(canvas.diagram, file.toString());
+                            UxfFileManager.writeFile(canvas.diagram, fileName);
                         } catch (Exception e2) {
                             e2.printStackTrace();
                         }
-//                        TextFileUtils.write(file, TextFileUtils.UTF8, currentEditorComponent.getText());
-//                        tabbedPane.setToolTipTextAt(tabbedPane.getSelectedIndex(), file.toString());
-//                        tabbedPane.setTitleAt(tabbedPane.getSelectedIndex(), file.getName());
-//                        onTextChanges.accept(currentEditorComponent, false);
                     }
-//                    }
+                    currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
                 }
-
             });
 
             // XXX ^D Save as...
@@ -187,23 +196,19 @@ public class MainC1 {
 
                         @Override
                         public void actionPerformed(ActionEvent e) {
-//                            HomsTextEditor currentEditorComponent = (HomsTextEditor) tabbedPane.getSelectedComponent();
-//
+
                             JFileChooser fc = new JFileChooser(new File("."));
                             fc.setFileFilter(filter);
                             int returnVal = fc.showSaveDialog(saveButton);
                             if (returnVal == JFileChooser.APPROVE_OPTION) {
                                 File file = fc.getSelectedFile();
-//                                TextFileUtils.write(file, TextFileUtils.UTF8, currentEditorComponent.getText());
-//                                tabbedPane.setToolTipTextAt(tabbedPane.getSelectedIndex(), file.toString());
-//                                tabbedPane.setTitleAt(tabbedPane.getSelectedIndex(), file.getName());
-//                                onTextChanges.accept(currentEditorComponent, false);
                                 try {
                                     UxfFileManager.writeFile(canvas.diagram, file.toString());
                                 } catch (Exception e2) {
                                     e2.printStackTrace();
                                 }
                             }
+                            currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
                         }
                     });
 
