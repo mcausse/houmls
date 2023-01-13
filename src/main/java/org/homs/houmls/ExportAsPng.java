@@ -26,15 +26,12 @@ public class ExportAsPng {
         Canvas canvas = new Canvas(new JTextArea());
         canvas.diagram = UxfFileManager.loadFile(inputFileName);
         Rectangle diagramBounds = canvas.diagram.getDiagramBounds();
-        diagramBounds.grow(150, 150);
-
-        canvas.diagram.offsetX = (diagramBounds.width * zoom - diagramBounds.width) / 2;
-        canvas.diagram.offsetY = (diagramBounds.height * zoom - diagramBounds.height) / 2;
-//        canvas.diagram.offsetX = diagramBounds.width / 2;
-//        canvas.diagram.offsetY = diagramBounds.height / 2;
-        canvas.diagram.zoom = zoom;
+        diagramBounds.grow(100, 100);
 
         canvas.setSize((int) (diagramBounds.width * zoom), (int) (diagramBounds.height * zoom));
+        canvas.centerDiagram();
+        canvas.diagram.zoom = zoom;
+
         BufferedImage bi = new BufferedImage((int) (diagramBounds.width * zoom), (int) (diagramBounds.height * zoom), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = bi.createGraphics();
 

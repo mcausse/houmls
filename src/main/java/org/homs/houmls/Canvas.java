@@ -502,6 +502,20 @@ public class Canvas extends JPanel {
         return offsetAndZoomListener;
     }
 
+    public void centerDiagram() {
+        Dimension canvasSize = getSize();
+        Rectangle diagramBounds = diagram.getDiagramBounds();
+
+        Point canvasCenter = new Point(canvasSize.width / 2, canvasSize.height / 2);
+        Point diagramCenter = new Point(diagramBounds.x + diagramBounds.width / 2, diagramBounds.y + diagramBounds.height / 2);
+
+        this.diagram.zoom = 1.0;
+        this.diagram.offsetX = (canvasCenter.x - diagramCenter.x);
+        this.diagram.offsetY = (canvasCenter.y - diagramCenter.y);
+
+        repaint();
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -509,7 +523,6 @@ public class Canvas extends JPanel {
         Dimension dim = getSize();
         g.setColor(Color.WHITE);
         g.fillRect(0, 0, dim.width, dim.height);
-
 
         Graphics2D g2 = (Graphics2D) g;
 
@@ -554,8 +567,9 @@ public class Canvas extends JPanel {
     void drawGrid(Graphics g) {
         Rectangle diagramBounds = diagram.getDiagramBounds();
         g.setColor(GridControl.GRID_COLOR);
-        for (int x = diagramBounds.x - 500; x < diagramBounds.x + diagramBounds.width + 500; x += GridControl.GRID_SIZE) {
-            for (int y = diagramBounds.y - 500; y < diagramBounds.y + diagramBounds.height + 500; y += GridControl.GRID_SIZE) {
+        diagramBounds.grow(500, 500);
+        for (int x = diagramBounds.x; x < diagramBounds.x + diagramBounds.width; x += GridControl.GRID_SIZE) {
+            for (int y = diagramBounds.y; y < diagramBounds.y + diagramBounds.height; y += GridControl.GRID_SIZE) {
                 int gx = GridControl.engrid(x);
                 int gy = GridControl.engrid(y);
                 g.drawLine(gx, gy, gx, gy);

@@ -48,6 +48,7 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *
  *     - undo
  *     - multisellecció + moure en grup!
+ *     - copy/cutty/paste!
  *     - accions de teclat
  *
  *      - llegir "UML Distilled" (Martin Fowler) i apendre UML pràctic d'una puta vegada
@@ -70,7 +71,7 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *      - caixa amb codi turtle: recordar com era en QuickBasic. Demo amb turtle
  *      - millorar turtle a lo QBasic?
  *        http://www.antonis.de/qbebooks/gwbasman/draw.html#:~:text=The%20DRAW%20statement%20combines%20most,valid%20only%20in%20graphics%20mode.
- *      - nou connector amb relleno, que es pugui enganxar a caixa i fer bocadillos!
+ *      X nou connector amb relleno, que es pugui enganxar a caixa i fer bocadillos!
  *
  * </pre>
  */
@@ -124,6 +125,7 @@ public class MainC1 {
             final JButton openBbutton;
             final JButton saveButton;
             final JButton saveAsButton;
+            final JButton centerDiagram;
 
             FileNameExtensionFilter filter = new FileNameExtensionFilter("Houmls files", "houmls", "uxf");
 
@@ -212,17 +214,30 @@ public class MainC1 {
                         }
                     });
 
+
+            centerDiagram = buildButton("icons/arrow_out.png", "Center diagram", null, null, null,
+                    new AbstractAction() {
+                        private static final long serialVersionUID = -1337580617687814477L;
+
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            canvas.centerDiagram();
+                        }
+                    });
+
             toolBar.add(newButton);
             toolBar.add(openBbutton);
             toolBar.add(saveButton);
             toolBar.add(saveAsButton);
             toolBar.addSeparator();
+            toolBar.add(centerDiagram);
         }
 
         f.add(toolBar, BorderLayout.NORTH);
 
         JSplitPane sl = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, canvas, lateralBar);
         f.add(sl);
+
         {
             GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
             Rectangle frameBounds = env.getMaximumWindowBounds();
