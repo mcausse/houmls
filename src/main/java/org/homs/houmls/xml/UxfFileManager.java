@@ -27,11 +27,6 @@ public class UxfFileManager {
 
         Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
 
-//        Element customerProductInventory = doc.createElement(xmlRoot);
-//        customerProductInventory.setAttribute("program", "houmls");
-//        customerProductInventory.setAttribute("version", "0.0.1");
-//        doc.appendChild(customerProductInventory);
-
         XmlDocumentBuilder xmlBuilder = new XmlDocumentBuilder(doc);
         xmlBuilder.set(xmlRoot, "[@program='houmls'][@version='0.0.1']", "");
 
@@ -79,8 +74,6 @@ public class UxfFileManager {
 
             numShape++;
         }
-
-//        System.out.println(XmlHelper.xmlToString(doc));
 
         XmlHelper.save(doc, fileName);
     }
@@ -140,7 +133,6 @@ public class UxfFileManager {
                 } else if ("UMLState".equals(id)) {
                     RoundedBox box = new RoundedBox(x, y, w, h, attributes);
                     diagram.addShape(box);
-
                 } else if (id.equals("Relation")) {
 
                     List<Point> points = new ArrayList<>();
@@ -164,7 +156,6 @@ public class UxfFileManager {
                 } else {
                     System.out.println("unrecognized element: " + id);
                 }
-
             }
         }
 

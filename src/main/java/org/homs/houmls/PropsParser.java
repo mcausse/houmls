@@ -24,14 +24,6 @@ public class PropsParser {
             } else {
                 general.append(line).append("\n");
             }
-//            var pos = line.indexOf("=");
-//            if (pos < 1 || line.trim().indexOf(' ') > 0) {
-//                general.append(line).append("\n");
-//            } else {
-//                var propName = line.substring(0, pos);
-//                var propValue = line.substring(pos + 1);
-//                r.put(propName, propValue);
-//            }
         }
 
         r.put("", general.toString());

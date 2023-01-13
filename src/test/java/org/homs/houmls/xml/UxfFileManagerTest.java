@@ -5,22 +5,18 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-// TODO
-@Disabled
 class UxfFileManagerTest {
 
     @Test
     void name() throws Exception {
 
-        var d = UxfFileManager.loadFile("OrderEntrance.uxf");
-        UxfFileManager.writeFile(d, "OrderEntrance.uxf2");
-        var d2 = UxfFileManager.loadFile("OrderEntrance.uxf2");
+        // Act
+        var d = UxfFileManager.loadFile("houmls.uxf");
+        UxfFileManager.writeFile(d, "houmls.houmls");
 
 
-        var inputXml = ResourceHelper.resourceToString("OrderEntrance.uxf");
-        var expectedOutputHl7 = ResourceHelper.resourceToString("OrderEntrance.uxf2");
-
-        // TODO
+        var inputXml = ResourceHelper.resourceToString("houmls.uxf");
+        var expectedOutputHl7 = ResourceHelper.resourceToString("houmls.houmls");
         assertThat(XmlHelper.normalizeXml(expectedOutputHl7)).isEqualTo(XmlHelper.normalizeXml(inputXml));
     }
 

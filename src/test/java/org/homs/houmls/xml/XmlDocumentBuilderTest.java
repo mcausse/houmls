@@ -3,14 +3,14 @@ package org.homs.houmls.xml;
 import org.junit.jupiter.api.Test;
 
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.xpath.XPathExpressionException;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.fail;
 
 class XmlDocumentBuilderTest {
 
     @Test
-    void createEmptyDocument0() throws ParserConfigurationException, XPathExpressionException {
+    void createEmptyDocument0() throws ParserConfigurationException {
 
         // Act
         XmlDocumentBuilder xmlBuilder = new XmlDocumentBuilder();
@@ -21,7 +21,22 @@ class XmlDocumentBuilderTest {
     }
 
     @Test
-    void createTagsInDocument0() throws ParserConfigurationException, XPathExpressionException {
+    void createEmptyExpression() throws ParserConfigurationException {
+
+        XmlDocumentBuilder xmlBuilder = new XmlDocumentBuilder();
+
+        try {
+            // Act
+            xmlBuilder.set("", "LIS");
+
+            fail("an exception should be thrown");
+        } catch (RuntimeException e) {
+            assertThat(e.getMessage()).isEqualTo("the expression is empty");
+        }
+    }
+
+    @Test
+    void createTagsInDocument0() throws ParserConfigurationException {
 
         XmlDocumentBuilder xmlBuilder = new XmlDocumentBuilder();
 
@@ -34,7 +49,7 @@ class XmlDocumentBuilderTest {
     }
 
     @Test
-    void createTagsInDocument1() throws ParserConfigurationException, XPathExpressionException {
+    void createTagsInDocument1() throws ParserConfigurationException {
 
         XmlDocumentBuilder xmlBuilder = new XmlDocumentBuilder();
 
@@ -52,7 +67,7 @@ class XmlDocumentBuilderTest {
     }
 
     @Test
-    void createTagsInDocument2() throws ParserConfigurationException, XPathExpressionException {
+    void createTagsInDocument2() throws ParserConfigurationException {
 
         XmlDocumentBuilder xmlBuilder = new XmlDocumentBuilder();
 

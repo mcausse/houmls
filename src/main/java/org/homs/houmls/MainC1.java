@@ -3,6 +3,7 @@ package org.homs.houmls;
 import org.homs.houmls.xml.UxfFileManager;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -42,11 +43,11 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *     X llegir XMLs de UMLet
  *     X guardar XMLs de UMLet
  *     - pestanyes? bah, no cal.
- *     P exportar a PNG, etc... nou main, amb parsing de parameters variats.... {@see org.homs.houmls.ExportAsPng}
+ *     X exportar a PNG, etc... nou main, amb parsing de parameters variats.... {@see org.homs.houmls.ExportAsPng}
  *
  *     - undo
  *     - multisellecció + moure en grup!
- *
+ *     - accions de teclat
  *
  *      - llegir "UML Distilled" (Martin Fowler) i apendre UML pràctic d'una puta vegada
  *      - importar els diagrams que tinc en GitLab de Roche
@@ -60,12 +61,12 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *      X + altres tipos de caixes a base de diferents turtles... veure diagrames de activitat
  *      X + caixes amb rounded corners
  *
- *      - apastelar colors, o admetre RGB a més de noms, paleta...
+ *      - apastelar colors, paleta...
+ *      - admetre RGB a més de noms: UMLet: "bg=#00aa70"
  *      - icones al Popupmenu
  *      - millorar el tema MarkDown
  *
  *      - caixa amb codi turtle: recordar com era en QuickBasic. Demo amb turtle
- *
  *      - millorar turtle a lo QBasic?
  *        http://www.antonis.de/qbebooks/gwbasman/draw.html#:~:text=The%20DRAW%20statement%20combines%20most,valid%20only%20in%20graphics%20mode.
  *      - nou connector amb relleno, que es pugui enganxar a caixa i fer bocadillos!
@@ -85,7 +86,7 @@ public class MainC1 {
 
         var canvas = new Canvas(shapeTextEditor);
 
-        canvas.diagram = UxfFileManager.loadFile("OrderEntrance.uxf");
+        canvas.diagram = UxfFileManager.loadFile("OrderEntrance.houmls");
 
         //
         // LATERAL BAR
@@ -99,7 +100,7 @@ public class MainC1 {
         lateralBar.add(toolBoxSplitPane);
 
 
-        var f = new JFrame("Houmls");
+        var f = new JFrame("Houmls -- the UML King");
         f.setLayout(new BorderLayout());
 
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -113,6 +114,8 @@ public class MainC1 {
             final JButton openBbutton;
             final JButton saveButton;
             final JButton saveAsButton;
+
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Houmls files", "houmls", "uxf");
 
             newButton = buildButton("icons/page.png", "New (^N)", "^n", "Control N", KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK), new AbstractAction() {
                 private static final long serialVersionUID = -1337580617687814477L;
@@ -130,6 +133,7 @@ public class MainC1 {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     JFileChooser fc = new JFileChooser(new File("."));
+                    fc.setFileFilter(filter);
                     int returnVal = fc.showOpenDialog(f);
                     if (returnVal == JFileChooser.APPROVE_OPTION) {
                         File file = fc.getSelectedFile();
@@ -157,6 +161,7 @@ public class MainC1 {
 //                        onTextChanges.accept(currentEditorComponent, false);
 //                    } else {
                     JFileChooser fc = new JFileChooser(new File("."));
+                    fc.setFileFilter(filter);
                     int returnVal = fc.showSaveDialog(f);
                     if (returnVal == JFileChooser.APPROVE_OPTION) {
                         File file = fc.getSelectedFile();
@@ -185,6 +190,7 @@ public class MainC1 {
 //                            HomsTextEditor currentEditorComponent = (HomsTextEditor) tabbedPane.getSelectedComponent();
 //
                             JFileChooser fc = new JFileChooser(new File("."));
+                            fc.setFileFilter(filter);
                             int returnVal = fc.showSaveDialog(saveButton);
                             if (returnVal == JFileChooser.APPROVE_OPTION) {
                                 File file = fc.getSelectedFile();

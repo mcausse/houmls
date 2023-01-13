@@ -1,29 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?><diagram program="houmls" version="0.0.1">
     <zoom_level>10</zoom_level>
-    <help_text>// Uncomment the following line to change the fontsize and font:
-// fontsize=14
-// fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-
-//////////////////////////////////////////////////////////////////////////////////////////////
-// Welcome to UMLet!
-//
-// Double-click on elements to add them to the diagram, or to copy them
-// Edit elements by modifying the text in this panel
-// Hold Ctrl to select multiple elements
-// Use Ctrl+mouse to select via lasso
-//
-// Use +/- or Ctrl+mouse wheel to zoom
-// Drag a whole relation at its central square icon
-//
-// Press Ctrl+C to copy the whole diagram to the system clipboard (then just paste it to, eg, Word)
-// Edit the files in the "palettes" directory to create your own element palettes
-//
-// Select "Custom Elements &gt; New..." to create new element types
-//////////////////////////////////////////////////////////////////////////////////////////////
+    <help_text>      This is the 
+    VENTANA Connect
+   big class diagram</help_text>
+    <element>
+        <id>UMLState</id>
+        <coordinates>
+            <x>1920</x>
+            <y>1090</y>
+            <w>470</w>
+            <h>550</h>
+        </coordinates>
+        <panel_attributes>.Event Handlers
 
 
-// This text will be stored with each diagram;  use it for notes.</help_text>
+
+
+bg=LIGHT_GRAY
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLState</id>
+        <coordinates>
+            <x>1120</x>
+            <y>940</y>
+            <w>230</w>
+            <h>150</h>
+        </coordinates>
+        <panel_attributes>.DE messages entrypoint
+
+
+
+
+bg=green
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
     <element>
         <id>UMLClass</id>
         <coordinates>
@@ -77,7 +92,7 @@ fontsize=10</panel_attributes>
             <x>2720</x>
             <y>1420</y>
             <w>1080</w>
-            <h>410</h>
+            <h>390</h>
         </coordinates>
         <panel_attributes>* ACK table*
 
@@ -96,10 +111,7 @@ fontsize=10</panel_attributes>
 
 
 
-valign=top
-halign=left
-
-bg=gray
+bg=LIGHT_GRAY
 fontsize=25
 </panel_attributes>
         <additional_attributes/>
@@ -110,7 +122,7 @@ fontsize=25
             <x>2720</x>
             <y>790</y>
             <w>1080</w>
-            <h>560</h>
+            <h>550</h>
         </coordinates>
         <panel_attributes>* Queue Tables (Messages &amp; Events)*
 
@@ -129,10 +141,7 @@ fontsize=25
 
 
 
-valign=top
-halign=left
-
-bg=gray
+bg=LIGHT_GRAY
 fontsize=25
 </panel_attributes>
         <additional_attributes/>
@@ -161,7 +170,7 @@ fontsize=10</panel_attributes>
             <w>310</w>
             <h>150</h>
         </coordinates>
-        <panel_attributes>HL7/WS messages entrypoint
+        <panel_attributes>.HL7/WS messages entrypoint
 
 
 
@@ -179,7 +188,8 @@ fontsize=18
             <w>310</w>
             <h>200</h>
         </coordinates>
-        <panel_attributes>ImportRouter
+        <panel_attributes>.ImportRouter
+
 
 
 
@@ -360,8 +370,8 @@ fontsize=10</panel_attributes>
             <w>200</w>
             <h>130</h>
         </coordinates>
-        <panel_attributes>This is the
-*M A I N   E N T R A N C E*
+        <panel_attributes>.This is the
+.*M A I N   E N T R A N C E
 
 Saves the TCPIP incoming message 
 in the IN queue.
@@ -455,7 +465,7 @@ fontsize=10</panel_attributes>
             <w>290</w>
             <h>110</h>
         </coordinates>
-        <panel_attributes>*HL7 messages only*
+        <panel_attributes>.*HL7 messages only*
 Parses the %Stream message
 and builds the msg.LIS
 
@@ -1647,12 +1657,11 @@ bg=#00aa70</panel_attributes>
             <w>260</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>ws.ext.VANTAGEWS.VCToVANTAGEWSService
+        <panel_attributes>
 --
+
 --
-ProcessApplicationACK()
-ProcessPatientUpdate()
-...
+
 --
 bg=#00aa70
 fontsize=10
@@ -1965,14 +1974,16 @@ transparency=0</panel_attributes>
             <x>1610</x>
             <y>1670</y>
             <w>280</w>
-            <h>100</h>
+            <h>140</h>
         </coordinates>
-        <panel_attributes>lt=.
-Somethimes the event is created directly here, 
-without calling the ImportRouter and Handlers package.
-See 
-"hca.WS.UpathCloud.chcaUpathCloudImp
-#ProcessAssignedPathologistUpdate()"
+        <panel_attributes>
+
+
+       Somethimes the event is created directly here, 
+       without calling the ImportRouter and Handlers package.
+       See 
+       "hca.WS.UpathCloud.chcaUpathCloudImp
+       #ProcessAssignedPathologistUpdate()"
 fontsize=10</panel_attributes>
         <additional_attributes/>
     </element>
@@ -2428,9 +2439,7 @@ bg=magenta
 .the 
 .*VENTANA Connect
 .big class diagram
-
 bg=yellow
-halign=center
 fontsize=20</panel_attributes>
         <additional_attributes/>
     </element>
@@ -2678,24 +2687,6 @@ fontsize=10</panel_attributes>
         <additional_attributes>200;100;0;0</additional_attributes>
     </element>
     <element>
-        <id>UMLState</id>
-        <coordinates>
-            <x>1120</x>
-            <y>940</y>
-            <w>230</w>
-            <h>150</h>
-        </coordinates>
-        <panel_attributes>DE messages entrypoint
-
-
-
-
-bg=green
-fontsize=18
-</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
         <id>UMLClass</id>
         <coordinates>
             <x>810</x>
@@ -2806,7 +2797,7 @@ fontsize=10</panel_attributes>
             <x>2960</x>
             <y>1110</y>
             <w>160</w>
-            <h>210</h>
+            <h>200</h>
         </coordinates>
         <panel_attributes>*thcaMessageQueueIN*
 --
@@ -2836,8 +2827,8 @@ fontsize=10</panel_attributes>
             <w>80</w>
             <h>0</h>
         </coordinates>
-        <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-m2=*
+        <panel_attributes>lt=|o-|&lt;
+
 </panel_attributes>
         <additional_attributes>80;0;0;0</additional_attributes>
     </element>
@@ -2849,8 +2840,8 @@ m2=*
             <w>80</w>
             <h>0</h>
         </coordinates>
-        <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-m2=*</panel_attributes>
+        <panel_attributes>lt=|o-|&lt;
+</panel_attributes>
         <additional_attributes>80;0;0;0</additional_attributes>
     </element>
     <element>
@@ -2954,8 +2945,7 @@ fontsize=10</panel_attributes>
             <w>70</w>
             <h>0</h>
         </coordinates>
-        <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-m2=*
+        <panel_attributes>lt=|o-|&lt;
 </panel_attributes>
         <additional_attributes>70;0;0;0</additional_attributes>
     </element>
@@ -2967,8 +2957,7 @@ m2=*
             <w>70</w>
             <h>0</h>
         </coordinates>
-        <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-m2=*
+        <panel_attributes>lt=|o-|&lt;
 </panel_attributes>
         <additional_attributes>70;0;0;0</additional_attributes>
     </element>
@@ -2980,8 +2969,8 @@ m2=*
             <w>520</w>
             <h>0</h>
         </coordinates>
-        <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-m2=1</panel_attributes>
+        <panel_attributes>lt=|o-o&lt;
+</panel_attributes>
         <additional_attributes>0;0;520;0</additional_attributes>
     </element>
     <element>
@@ -3013,10 +3002,10 @@ layer=1</panel_attributes>
             <x>3270</x>
             <y>950</y>
             <w>0</w>
-            <h>120</h>
+            <h>113</h>
         </coordinates>
         <panel_attributes>lt=.</panel_attributes>
-        <additional_attributes>0;120;0;0</additional_attributes>
+        <additional_attributes>0;113;0;0</additional_attributes>
     </element>
     <element>
         <id>UMLClass</id>
@@ -3051,16 +3040,15 @@ layer=1</panel_attributes>
             <w>160</w>
             <h>350</h>
         </coordinates>
-        <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-
-m2=*</panel_attributes>
+        <panel_attributes>lt=|o-|&lt;</panel_attributes>
         <additional_attributes>160;0;160;350;0;350</additional_attributes>
     </element>
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>3010</x>
+            <x>2980</x>
             <y>1460</y>
-            <w>90</w>
+            <w>120</w>
             <h>70</h>
         </coordinates>
         <panel_attributes>ACKType:
@@ -3082,7 +3070,7 @@ layer=1</panel_attributes>
         <coordinates>
             <x>3090</x>
             <y>1670</y>
-            <w>460</w>
+            <w>360</w>
             <h>110</h>
         </coordinates>
         <panel_attributes>the "thcaACK" table stores the ControlID value of the sent 
@@ -3125,10 +3113,10 @@ layer=1</panel_attributes>
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>2940</x>
+            <x>2900</x>
             <y>1550</y>
-            <w>160</w>
-            <h>40</h>
+            <w>200</w>
+            <h>50</h>
         </coordinates>
         <panel_attributes>column "MessageReceiversIN"
 is never used

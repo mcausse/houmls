@@ -28,8 +28,6 @@ public class Canvas extends JPanel {
     Shape selectedShape = null;
     Draggable draggableUnderMouse = null;
 
-//    String diagramAttributesText = "Welcome to Houmls, the superb and open-source UML tool.";
-
     class ObjectSelectorListener extends MouseAdapter {
 
         final JTextArea editorTextPaneRef;
@@ -89,10 +87,6 @@ public class Canvas extends JPanel {
 
                 JPopupMenu pm = new JPopupMenu();
 
-
-                // NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW
-                // NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW
-                // NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW
                 if (selectedShape == null) {
                     JMenuItem createConnector = new JMenuItem("create connector");
                     pm.add(createConnector);
@@ -186,11 +180,7 @@ public class Canvas extends JPanel {
                             repaint();
                         }
                     });
-                } else
-                    // NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW
-                    // NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW
-                    // NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW  NEW
-                    if (!Connector.class.isAssignableFrom(selectedShape.getClass())) {
+                } else                    if (!Connector.class.isAssignableFrom(selectedShape.getClass())) {
                         /*
                          * POPUP MENU: BOX
                          */
@@ -347,7 +337,6 @@ public class Canvas extends JPanel {
                         }
                     }
 
-
                     repaint();
                 }
             });
@@ -467,7 +456,6 @@ public class Canvas extends JPanel {
         }
     }
 
-
     Diagram diagram = new Diagram();
 
     final JTextArea editorTextPaneRef;
@@ -490,10 +478,6 @@ public class Canvas extends JPanel {
 
     public void addShape(Shape shape) {
         this.diagram.addShape(shape);
-    }
-
-    public void addShapes(Collection<Shape> shapes) {
-        this.diagram.addShapes(shapes);
     }
 
     public OffsetAndZoomListener getOffsetAndZoomListener() {

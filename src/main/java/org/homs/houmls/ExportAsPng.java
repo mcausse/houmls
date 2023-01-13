@@ -10,12 +10,21 @@ import java.io.File;
 
 public class ExportAsPng {
 
+    // OrderEntrance.houmls --zoom=5.1 --format=png
     public static void main(String[] args) throws Exception {
 
-        double zoom = 5.4;// TODO
+        final CmdArgumentsProcessor argsProcessor = new CmdArgumentsProcessor(args);
+        argsProcessor.processArgs();
+
+        double zoom = Double.parseDouble(argsProcessor.modifiers.getOrDefault("zoom", "1.0"));
+        String outputFileFormat = argsProcessor.modifiers.getOrDefault("format", "png");
+        String inputFileName = argsProcessor.files.get(0);
+        String outputFileName = inputFileName + "." + outputFileFormat;
+
+        //
 
         Canvas canvas = new Canvas(new JTextArea());
-        canvas.diagram = UxfFileManager.loadFile("OrderEntrance.uxf");
+        canvas.diagram = UxfFileManager.loadFile(inputFileName);
         Rectangle diagramBounds = canvas.diagram.getDiagramBounds();
         diagramBounds.grow(150, 150);
 
@@ -29,7 +38,7 @@ public class ExportAsPng {
 
         canvas.paintComponent(g2);
 
-        ImageIO.write(bi, "PNG", new File("yourImageName_" + (int) zoom + ".PNG"));
+        ImageIO.write(bi, outputFileFormat.toUpperCase(), new File(outputFileName));
     }
 }
 

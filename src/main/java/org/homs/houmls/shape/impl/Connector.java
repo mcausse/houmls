@@ -1,6 +1,7 @@
 package org.homs.houmls.shape.impl;
 
 import org.homs.houmls.*;
+import org.homs.houmls.FontMetrics;
 import org.homs.houmls.shape.Draggable;
 import org.homs.houmls.shape.Shape;
 
@@ -90,10 +91,11 @@ public class Connector implements Shape {
             }
         }
 
-        public void manageLink(Collection<Shape> shapes) {
+        public void manageLink(List<Shape> shapes) {
             Point p = getAbsolutePoint();
             Shape isLinkedTo = null;
-            for (var shape : shapes) {
+            for (int i = shapes.size() - 1; i >= 0; i--) {
+                var shape = shapes.get(i);
                 if (shape instanceof Connector) {
                     // evita linkar fletxes a altres fletxes!
                     continue;
@@ -163,7 +165,7 @@ public class Connector implements Shape {
         return middlePoints;
     }
 
-    public void manageLink(Collection<Shape> elements) {
+    public void manageLink(List<Shape> elements) {
         startPoint.manageLink(elements);
         endPoint.manageLink(elements);
     }
@@ -384,7 +386,7 @@ public class Connector implements Shape {
             double angle = Math.atan2(y, x);
 
             g.setFont(LookAndFeel.regularFont());
-            var sm = new StringMetrics((Graphics2D) g);
+            var sm = new FontMetrics((Graphics2D) g);
             Rectangle rect = sm.getBounds(text).getBounds();
 
 
@@ -419,7 +421,7 @@ public class Connector implements Shape {
         //
         {
             g.setFont(LookAndFeel.regularFont());
-            var sm = new StringMetrics((Graphics2D) g);
+            var sm = new FontMetrics((Graphics2D) g);
             Rectangle rect = sm.getBounds(text).getBounds();
 
             var textTurtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);

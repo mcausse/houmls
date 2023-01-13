@@ -1,6 +1,7 @@
 package org.homs.houmls.shape.impl;
 
 import org.homs.houmls.*;
+import org.homs.houmls.FontMetrics;
 import org.homs.houmls.shape.Draggable;
 import org.homs.houmls.shape.Shape;
 
@@ -83,7 +84,7 @@ public class Box implements Shape {
         var g2 = (Graphics2D) g;
 
         g.setFont(LookAndFeel.regularFont(fontSize));
-        int fontHeigth = new StringMetrics(g2).getHeight("aaaAA0");
+        int fontHeigth = new FontMetrics(g2).getHeight("aaaAA0");
 
         String[] textLines = this.text.split("\\n");
         int y = iy;
@@ -96,7 +97,7 @@ public class Box implements Shape {
                 int alignCorrectionXPx = FONT_X_CORRECTION;
                 if (line.startsWith(".")) {
                     line = line.substring(1);
-                    int textLineWidthPx = (int) new StringMetrics(g2).getWidth(line);
+                    int textLineWidthPx = (int) new FontMetrics(g2).getWidth(line);
                     int boxWidthPx = (int) this.width;
                     alignCorrectionXPx += boxWidthPx / 2 - textLineWidthPx / 2;
                 }

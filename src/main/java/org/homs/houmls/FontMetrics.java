@@ -4,12 +4,12 @@ import java.awt.*;
 import java.awt.font.FontRenderContext;
 import java.awt.geom.Rectangle2D;
 
-public class StringMetrics {
+public class FontMetrics {
 
     final Font font;
     final FontRenderContext context;
 
-    public StringMetrics(Graphics2D g2) {
+    public FontMetrics(Graphics2D g2) {
         font = g2.getFont();
         context = g2.getFontRenderContext();
     }

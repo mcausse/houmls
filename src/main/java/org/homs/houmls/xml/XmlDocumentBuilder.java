@@ -40,7 +40,12 @@ public class XmlDocumentBuilder {
     }
 
     public XmlDocumentBuilder set(String path, String attributes, Object value) {
-        String[] pathParts = (this.prefix + path).split("\\/");
+
+        if (path == null || path.isEmpty()) {
+            throw new RuntimeException("the expression is empty");
+        }
+
+        final String[] pathParts = (this.prefix + path).split("\\/");
 
         Element n = null;
         for (int i = 0; i < pathParts.length; i++) {
@@ -79,6 +84,10 @@ public class XmlDocumentBuilder {
             }
 
             n = current;
+        }
+
+        if (n == null) {
+            throw new RuntimeException("the expression is empty");
         }
         n.appendChild(document.createTextNode(String.valueOf(value)));
 
