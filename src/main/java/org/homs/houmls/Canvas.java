@@ -1,6 +1,7 @@
 package org.homs.houmls;
 
 import org.homs.houmls.shape.Draggable;
+import org.homs.houmls.shape.MultiSelectedGroupDraggable;
 import org.homs.houmls.shape.Shape;
 import org.homs.houmls.shape.impl.Box;
 import org.homs.houmls.shape.impl.*;
@@ -15,6 +16,7 @@ import java.awt.event.*;
 import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -24,7 +26,7 @@ import static org.homs.houmls.shape.impl.Connector.SELECTION_BOX_SIZE;
 public class Canvas extends JPanel {
 
     // TODO canviar a List per permetre multi-sel.lecció
-    Shape selectedShape = null;
+    List<Shape> selectedShapes = new ArrayList<>();
     Draggable draggableUnderMouse = null;
 
     class ObjectSelectorListener extends MouseAdapter {
@@ -50,10 +52,10 @@ public class Canvas extends JPanel {
                 }
 
                 void update(DocumentEvent e) {
-                    if (selectedShape == null) {
+                    if (selectedShapes.isEmpty()) {
                         diagram.setDiagramAttributesText(editorTextPaneRef.getText());
-                    } else {
-                        selectedShape.setAttributesText(editorTextPaneRef.getText());
+                    } else if (selectedShapes.size() == 1) {
+                        selectedShapes.get(0).setAttributesText(editorTextPaneRef.getText());
                         repaint();
                     }
                 }
@@ -62,11 +64,41 @@ public class Canvas extends JPanel {
 
         @Override
         public void mousePressed(MouseEvent mouseEvent) {
-            selectedShape = findShapeByMousePosition(mouseEvent.getX(), mouseEvent.getY());
+
+            boolean controlPressed = offsetAndZoomListener != null && offsetAndZoomListener.controlPressed;
+
+            var selectedShape = findShapeByMousePosition(mouseEvent.getX(), mouseEvent.getY());
             if (selectedShape == null) {
+                selectedShapes.clear();
                 editorTextPaneRef.setText(diagram.getDiagramAttributesText());
             } else {
-                editorTextPaneRef.setText(selectedShape.getAttributesText());
+                if (controlPressed) {
+                    /*
+                     * si es clicka sobre una Shape amb Control, s'afegeix/esborra
+                     * de la llista de sel.lecció múltiple.
+                     */
+                    if (selectedShapes.contains(selectedShape)) {
+                        selectedShapes.remove(selectedShape);
+                    } else {
+                        selectedShapes.add(selectedShape);
+                    }
+                } else {
+                    /*
+                     * Es clicka una Shape sense Control:
+                     * - si forma part de la sel.lecció => no fer res, segurament s'ha començat a draggar!
+                     * - si no forma partt de les shapes sel.leccionades, reiniciar la multisel.lecció
+                     */
+                    if (selectedShapes.contains(selectedShape)) {
+                        // es deu començar a draggar
+                    } else {
+                        selectedShapes.clear();
+                        selectedShapes.add(selectedShape);
+                    }
+                }
+
+                if (selectedShapes.size() == 1) {
+                    editorTextPaneRef.setText(selectedShapes.get(0).getAttributesText());
+                }
             }
             editorTextPaneRef.setCaretPosition(0);
 
@@ -171,7 +203,7 @@ public class Canvas extends JPanel {
                                 GridControl.engrid(mousePos.getY()),
                                 "lt=-\n"
                         );
-                        bocadillo.getMiddlePoints().add(new Point(
+                        bocadillo.getMiddlePoints().add(new Connector.DoublePoint(
                                 GridControl.engrid(mousePos.getX() + GridControl.GRID_SIZE * 6),
                                 GridControl.engrid(mousePos.getY() + GridControl.GRID_SIZE * 6)
                         ));
@@ -199,11 +231,11 @@ public class Canvas extends JPanel {
 
                     pm.addSeparator();
 
-                    JMenuItem deleteBox = new JMenuItem("remove");
+                    JMenuItem deleteBox = new JMenuItem("remove"); // TODO
                     pm.add(deleteBox);
                     deleteBox.addActionListener(e -> {
-                        diagram.getShapes().remove(selectedShape);
-                        selectedShape = null;
+                        diagram.getShapes().removeAll(selectedShapes);
+                        selectedShapes.clear();
                         repaint();
                     });
 
@@ -217,11 +249,11 @@ public class Canvas extends JPanel {
 
                     pm.addSeparator();
 
-                    JMenuItem toBack = new JMenuItem("delete connector");
+                    JMenuItem toBack = new JMenuItem("delete connector"); // TODO
                     pm.add(toBack);
                     toBack.addActionListener(e -> {
-                        diagram.getShapes().remove(selectedShape);
-                        selectedShape = null;
+                        diagram.getShapes().removeAll(selectedShapes);
+                        selectedShapes.clear();
                         repaint();
                     });
                 }
@@ -244,14 +276,18 @@ public class Canvas extends JPanel {
                     }
                 });
             }
+
             repaint();
         }
 
         private void popupMenuForConnector_CreateMiddlePoint(Point2D mousePos, JPopupMenu pm) {
+            if (selectedShapes.size() != 1) {
+                return;
+            }
             JMenuItem toFront = new JMenuItem("add new point");
             pm.add(toFront);
             toFront.addActionListener(e -> {
-                Connector conn = (Connector) selectedShape;
+                Connector conn = (Connector) selectedShapes.get(1);
 
                 List<Point> points = conn.getListOfAbsolutePoints();
                 for (var i = 0; i < points.size(); i++) {
@@ -269,7 +305,7 @@ public class Canvas extends JPanel {
                         } else {
                             otherPoint = points.get(indexOfClickedPoint + 1);
                         }
-                        Point middlePointToCreate = new Point(
+                        var middlePointToCreate = new Connector.DoublePoint(
                                 (p.x + otherPoint.x) / 2,
                                 (p.y + otherPoint.y) / 2
                         );
@@ -287,10 +323,15 @@ public class Canvas extends JPanel {
         }
 
         private void popupMenuForConnector_DeleteMiddlePoint(Point2D mousePos, JPopupMenu pm) {
+
+            if (selectedShapes.size() != 1) {
+                return;
+            }
+
             JMenuItem toFront = new JMenuItem("delete point");
             pm.add(toFront);
             toFront.addActionListener(e -> {
-                Connector conn = (Connector) selectedShape;
+                Connector conn = (Connector) selectedShapes.get(1);
 
                 List<Point> points = conn.getListOfAbsolutePoints();
                 if (points.size() <= 2) {
@@ -385,12 +426,20 @@ public class Canvas extends JPanel {
 
         @Override
         public void mouseDragged(MouseEvent e) {
+
             if (lastDragPoint == null) {
                 lastDragPoint = e.getPoint();
-                selectedDraggable = findDraggableByMousePosition(e.getX(), e.getY());
+
+                if (selectedShapes.size() <= 1) {
+                    selectedDraggable = findDraggableByMousePosition(e.getX(), e.getY());
+                } else {
+                    // lo que s'ha de draggar és
+                    // tot lo actualment multi-sel.leccionat!
+                    selectedDraggable = new MultiSelectedGroupDraggable(selectedShapes);
+                }
             } else {
                 if (selectedDraggable == null) {
-                    // DRAGGA TOT
+                    // DRAGGA TOT EL DIAGRAM (BÉ, MODIFICA L'OFFSET)
                     setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
                     double translateToX = (e.getX() - lastDragPoint.x) / diagram.zoom;
                     double translateToY = (e.getY() - lastDragPoint.y) / diagram.zoom;
@@ -438,6 +487,7 @@ public class Canvas extends JPanel {
                 }
             }
         }
+
     }
 
     Diagram diagram = new Diagram();
@@ -505,18 +555,18 @@ public class Canvas extends JPanel {
         // aquesta separació assegura que les fletxes mai siguin tapades per cap caixa
         for (var element : diagram.getShapes()) {
             if (!Connector.class.isAssignableFrom(element.getClass())) {
-                if (element == selectedShape) {
+                if (selectedShapes.contains(element)) {
                     g.setColor(Color.CYAN);
-                    selectedShape.drawSelection(g);
+                    element.drawSelection(g);
                 }
                 element.draw(g);
             }
         }
         for (var element : diagram.getShapes()) {
             if (Connector.class.isAssignableFrom(element.getClass())) {
-                if (element == selectedShape) {
+                if (selectedShapes.contains(element)) {
                     g.setColor(Color.CYAN);
-                    selectedShape.drawSelection(g);
+                    element.drawSelection(g);
                 }
                 element.draw(g);
             }

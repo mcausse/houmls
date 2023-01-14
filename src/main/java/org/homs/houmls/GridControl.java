@@ -8,17 +8,15 @@ public class GridControl {
 
     public static final Color GRID_COLOR = Color.GRAY;
 
-    public static int engrid(int c) {
-        return c - c % GRID_SIZE;
+    static int roundToMultiple(double x, int m) {
+        return (int) (m * (Math.round(x / m)));
     }
 
-    public static int engrid(double c) {
-        int cc = ((int) Math.round(c));
-        int part = cc % GRID_SIZE;
-        if (part <= GRID_SIZE / 2) {
-            return cc - part;
-        } else {
-            return cc - part + GRID_SIZE;
-        }
+    public static int engrid(int x) {
+        return roundToMultiple(x, GRID_SIZE);
+    }
+
+    public static int engrid(double x) {
+        return roundToMultiple(x, GRID_SIZE);
     }
 }

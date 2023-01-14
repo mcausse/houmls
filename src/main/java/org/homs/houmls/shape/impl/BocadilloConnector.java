@@ -23,7 +23,7 @@ public class BocadilloConnector extends Connector {
                 endPoint.getAbsolutePoint().x + DUPLICATE_OFFSET_PX, endPoint.getAbsolutePoint().y + DUPLICATE_OFFSET_PX,
                 getAttributesText()
         );
-        middlePoints.forEach(p -> r.getMiddlePoints().add(new Point(p.x + DUPLICATE_OFFSET_PX, p.y + DUPLICATE_OFFSET_PX)));
+        middlePoints.forEach(p -> r.getMiddlePoints().add(new DoublePoint(p.x + DUPLICATE_OFFSET_PX, p.y + DUPLICATE_OFFSET_PX)));
         return r;
     }
 

@@ -15,7 +15,7 @@ public interface Draggable {
 
     /**
      * Es crida en acabar d'arrossegar el component.
-     * Necessari per a engidar les coordenades que han canviat, linkar/deslinkar connectors, etc.
+     * Necessari per a engridar les coordenades que han canviat, linkar/deslinkar connectors, etc.
      *
      * @param diagram necessari per als {@link Connector}s, per tal
      *                de poder-se linkar amb altres {@link Shape}s.

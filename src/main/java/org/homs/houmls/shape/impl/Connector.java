@@ -6,6 +6,7 @@ import org.homs.houmls.shape.Draggable;
 import org.homs.houmls.shape.Shape;
 
 import java.awt.*;
+import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -119,6 +120,11 @@ public class Connector implements Shape {
             }
         }
 
+        public void translate(double dx, double dy) {
+            this.posx += dx;
+            this.posy += dy;
+        }
+
         public void engrida() {
             this.posx = GridControl.engrid(this.posx);
             this.posy = GridControl.engrid(this.posy);
@@ -128,7 +134,22 @@ public class Connector implements Shape {
     final ConnectorPoint startPoint;
     final ConnectorPoint endPoint;
 
-    final List<Point> middlePoints;
+    final List<DoublePoint> middlePoints;
+
+    public static class DoublePoint extends Point2D.Double {
+        public DoublePoint(double x, double y) {
+            super(x, y);
+        }
+
+        public void translate(double dx, double dy) {
+            this.x += dx;
+            this.y += dy;
+        }
+
+        public Point toPoint() {
+            return new Point((int) this.x, (int) this.y);
+        }
+    }
 
     String attributesText;
 
@@ -157,11 +178,11 @@ public class Connector implements Shape {
                 endPoint.getAbsolutePoint().x + DUPLICATE_OFFSET_PX, endPoint.getAbsolutePoint().y + DUPLICATE_OFFSET_PX,
                 attributesText
         );
-        middlePoints.forEach(p -> r.getMiddlePoints().add(new Point(p.x + DUPLICATE_OFFSET_PX, p.y + DUPLICATE_OFFSET_PX)));
+        middlePoints.forEach(p -> r.middlePoints.add(new DoublePoint(p.x + DUPLICATE_OFFSET_PX, p.y + DUPLICATE_OFFSET_PX)));
         return r;
     }
 
-    public List<Point> getMiddlePoints() {
+    public List<DoublePoint> getMiddlePoints() {
         return middlePoints;
     }
 
@@ -292,7 +313,7 @@ public class Connector implements Shape {
          * N-MIDDLE POINTS!
          */
         for (var middlePoint : middlePoints) {
-            Supplier<Rectangle> boxSupplier = () -> new Rectangle(middlePoint.x - SELECTION_BOX_SIZE, middlePoint.y - SELECTION_BOX_SIZE,
+            Supplier<Rectangle> boxSupplier = () -> new Rectangle((int) middlePoint.x - SELECTION_BOX_SIZE, (int) middlePoint.y - SELECTION_BOX_SIZE,
                     SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
             if (boxSupplier.get().contains(mousex, mousey)) {
                 return new Draggable() {
@@ -308,7 +329,7 @@ public class Connector implements Shape {
 
                     @Override
                     public void translate(Diagram diagram, double dx, double dy) {
-                        middlePoint.translate((int) dx, (int) dy);
+                        middlePoint.translate(dx, dy);
                     }
 
                     @Override
@@ -337,10 +358,29 @@ public class Connector implements Shape {
 
     @Override
     public void translate(Diagram diagram, double dx, double dy) {
+        // Traslladar només els middle-points, i els extrems que no estiguin linkats a una box.
+        if (startPoint.linkedShape == null) {
+            startPoint.translate(dx, dy);
+        }
+        if (endPoint.linkedShape == null) {
+            endPoint.translate(dx, dy);
+        }
+        middlePoints.forEach(p -> p.translate(dx, dy));
     }
 
     @Override
     public void dragHasFinished(Diagram diagram) {
+        // Engridar només els middle-points, i els extrems que no estiguin linkats a una box.
+        if (startPoint.linkedShape == null) {
+            startPoint.engrida();
+        }
+        if (endPoint.linkedShape == null) {
+            endPoint.engrida();
+        }
+        middlePoints.forEach(p ->
+                p.setLocation(
+                        GridControl.engrid(p.getX()),
+                        GridControl.engrid(p.getY())));
     }
 
     @Override
@@ -359,7 +399,9 @@ public class Connector implements Shape {
     public List<Point> getListOfAbsolutePoints() {
         List<Point> r = new ArrayList<>();
         r.add(startPoint.getAbsolutePoint());
-        r.addAll(this.middlePoints);
+        for (var doublePoint : getMiddlePoints()) {
+            r.add(new Point((int) doublePoint.x, (int) doublePoint.y));
+        }
         r.add(endPoint.getAbsolutePoint());
         return r;
     }
@@ -392,7 +434,7 @@ public class Connector implements Shape {
 
             var turtle = new Turtle(x, y, angle);
             turtle.rotate(-90);
-            turtle.walk(DIAMOND_SIZE * 2); // TODO posicionar depenent de "angle"!
+            turtle.walk(DIAMOND_SIZE * 2);
 
             Point turtlePos = turtle.getPosition();
             g.drawString(text, turtlePos.x - rect.width / 2, turtlePos.y + rect.height / 2 - 4);

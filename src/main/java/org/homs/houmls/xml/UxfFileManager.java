@@ -10,7 +10,6 @@ import org.w3c.dom.NodeList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.awt.*;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +17,6 @@ import java.util.StringJoiner;
 
 public class UxfFileManager {
 
-    // TODO que treballi amb Diagram, no amb List<Shape> shapes...
     public static void writeFile(Diagram diagram, String fileName) throws Exception {
 
         diagram.setName(fileName);
@@ -152,18 +150,18 @@ public class UxfFileManager {
                     case "Relation":
                     case "Bocadillo":
 
-                        List<Point> points = new ArrayList<>();
+                        List<Connector.DoublePoint> points = new ArrayList<>();
 
                         String[] parts = additionalAttributes.split(";");
                         int j = 0;
                         while (j < parts.length) {
                             int deltax = (int) Double.parseDouble(parts[j++]);
                             int deltay = (int) Double.parseDouble(parts[j++]);
-                            points.add(new Point(x + deltax, y + deltay));
+                            points.add(new Connector.DoublePoint(x + deltax, y + deltay));
                         }
 
-                        Point firstPoint = points.get(0);
-                        Point lastPoint = points.get(points.size() - 1);
+                        Connector.DoublePoint firstPoint = points.get(0);
+                        Connector.DoublePoint lastPoint = points.get(points.size() - 1);
 
                         final Connector connector;
                         if (id.equals("Relation")) {
