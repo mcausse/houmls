@@ -1,4 +1,4 @@
-package org.homs.houmls.shape.impl;
+package org.homs.houmls.shape.impl.connector;
 
 import org.homs.houmls.FontMetrics;
 import org.homs.houmls.*;
@@ -15,7 +15,7 @@ import java.util.function.Supplier;
 
 import static org.homs.houmls.LookAndFeel.basicStroke;
 import static org.homs.houmls.LookAndFeel.dashedStroke;
-import static org.homs.houmls.shape.impl.Connector.Type.*;
+import static org.homs.houmls.shape.impl.connector.Type.*;
 
 public class Connector implements Shape {
 
@@ -23,117 +23,8 @@ public class Connector implements Shape {
     public static final int BOX_EXTRA_LINKABLE_BORDER = GridControl.GRID_SIZE - 2;
     public static final int SELECTION_BOX_SIZE = GridControl.GRID_SIZE * 3 / 4;
 
-    public enum Type {
-        DEFAULT(""),
-        ARROW("<"),
-        INHERITANCE("<<"),
-        INHERITANCE_BLACKFILLED("<<<"),
-        AGGREGATION("<<<<"),
-        COMPOSITION("<<<<<"),
-        MEMBER_COMMENT("m"),
-        //
-        // Crow’s Foot Notation
-        // https://vertabelo.com/blog/crow-s-foot-notation/
-        // http://www2.cs.uregina.ca/~bernatja/crowsfoot.html
-        //
-        TO_ONE_OPTIONAL("|o"), TO_ONE_MANDATORY("||"),
-        TO_MANY_OPTIONAL(">o"), TO_MANY_MANDATORY(">|"),
-
-        REQUIRED(")"), PROVIDED("o"),
-
-        INNER_CLASS("+");
-
-        private final String code;
-
-        Type(String code) {
-            this.code = code;
-        }
-
-        public String getCode() {
-            return code;
-        }
-
-        public static Type findByCode(String code) {
-            for (Type type : Type.values()) {
-                if (code.equals(type.getCode())) {
-                    return type;
-                }
-            }
-            return DEFAULT;
-        }
-    }
-
-    public static class ConnectorPoint {
-
-        public Shape linkedShape;
-        public Type type;
-        public double posx;
-        public double posy;
-
-        public String text = "";
-
-        public ConnectorPoint(Shape linkedShape, Type type, double posx, double posy) {
-            this.linkedShape = linkedShape;
-            this.type = type;
-            this.posx = posx;
-            this.posy = posy;
-        }
-
-        /**
-         * @return les coordenades absolutes del punt, tenint en compte que el punt en si es pot guardar
-         * en (posx, posy) en absoluta si no hi ha link amb un component, o bé en relatives al component linkat.
-         */
-        public Point getAbsolutePoint() {
-            if (linkedShape == null) {
-                return new Point((int) posx, (int) posy);
-            } else {
-                var rect = linkedShape.getRectangle();
-                return new Point((int) (rect.x + posx), (int) (rect.y + posy));
-            }
-        }
-
-        public void manageLink(List<Shape> shapes) {
-            Point p = getAbsolutePoint();
-            Shape isLinkedTo = null;
-            for (int i = shapes.size() - 1; i >= 0; i--) {
-                var shape = shapes.get(i);
-                if (shape instanceof Connector) {
-                    // evita linkar fletxes a altres fletxes!
-                    continue;
-                }
-                var rectangle = shape.getRectangle();
-                rectangle.grow(BOX_EXTRA_LINKABLE_BORDER, BOX_EXTRA_LINKABLE_BORDER);
-                if (rectangle.contains(p.getX(), p.getY())) {
-                    isLinkedTo = shape;
-                    break;
-                }
-            }
-            // Linka-deslinka
-            if (isLinkedTo == null) {
-                this.posx = p.getX();
-                this.posy = p.getY();
-                this.linkedShape = null;
-            } else {
-                this.posx = p.getX() - isLinkedTo.getRectangle().getX();
-                this.posy = p.getY() - isLinkedTo.getRectangle().getY();
-                this.linkedShape = isLinkedTo;
-            }
-        }
-
-        public void translate(double dx, double dy) {
-            this.posx += dx;
-            this.posy += dy;
-        }
-
-        public void engrida() {
-            this.posx = GridControl.engrid(this.posx);
-            this.posy = GridControl.engrid(this.posy);
-        }
-    }
-
     final ConnectorPoint startPoint;
     final ConnectorPoint endPoint;
-
     final List<DoublePoint> middlePoints;
 
     public static class DoublePoint extends Point2D.Double {
@@ -238,8 +129,6 @@ public class Connector implements Shape {
          * START
          */
         {
-//            Supplier<Rectangle> boxSupplier = () -> getPointSelectionBox(startPoint);
-
             if (getPointSelectionBox(startPoint).contains(mousex, mousey)) {
                 return new Draggable() {
                     @Override
@@ -275,8 +164,6 @@ public class Connector implements Shape {
          * END
          */
         {
-//            Supplier<Rectangle> boxSupplier = () -> getPointSelectionBox(endPoint);
-
             if (getPointSelectionBox(endPoint).contains(mousex, mousey)) {
                 return new Draggable() {
                     @Override

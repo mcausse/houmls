@@ -1,4 +1,4 @@
-package org.homs.houmls.shape.impl;
+package org.homs.houmls.shape.impl.connector;
 
 import org.homs.houmls.PropsParser;
 import org.homs.houmls.shape.Shape;

@@ -2,7 +2,9 @@ package org.homs.houmls.xml;
 
 import org.homs.houmls.Diagram;
 import org.homs.houmls.shape.Shape;
-import org.homs.houmls.shape.impl.*;
+import org.homs.houmls.shape.impl.box.*;
+import org.homs.houmls.shape.impl.connector.BocadilloConnector;
+import org.homs.houmls.shape.impl.connector.Connector;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;

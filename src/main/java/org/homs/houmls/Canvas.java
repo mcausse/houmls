@@ -3,8 +3,10 @@ package org.homs.houmls;
 import org.homs.houmls.shape.Draggable;
 import org.homs.houmls.shape.MultiSelectedGroupDraggable;
 import org.homs.houmls.shape.Shape;
-import org.homs.houmls.shape.impl.Box;
-import org.homs.houmls.shape.impl.*;
+import org.homs.houmls.shape.impl.box.Box;
+import org.homs.houmls.shape.impl.box.*;
+import org.homs.houmls.shape.impl.connector.BocadilloConnector;
+import org.homs.houmls.shape.impl.connector.Connector;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -21,7 +23,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.homs.houmls.LookAndFeel.basicStroke;
-import static org.homs.houmls.shape.impl.Connector.SELECTION_BOX_SIZE;
+import static org.homs.houmls.shape.impl.connector.Connector.SELECTION_BOX_SIZE;
 
 public class Canvas extends JPanel {
 

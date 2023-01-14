@@ -1,4 +1,4 @@
-package org.homs.houmls.shape.impl;
+package org.homs.houmls.shape.impl.box;
 
 import org.homs.houmls.GridControl;
 import org.homs.houmls.Turtle;

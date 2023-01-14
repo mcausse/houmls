@@ -1,4 +1,4 @@
-package org.homs.houmls.shape.impl;
+package org.homs.houmls.shape.impl.box;
 
 import org.homs.houmls.FontMetrics;
 import org.homs.houmls.*;
@@ -12,7 +12,7 @@ import java.util.function.Supplier;
 
 import static org.homs.houmls.LookAndFeel.BOXES_WITH_SHADOW;
 import static org.homs.houmls.LookAndFeel.basicStroke;
-import static org.homs.houmls.shape.impl.Connector.SELECTION_BOX_SIZE;
+import static org.homs.houmls.shape.impl.connector.Connector.SELECTION_BOX_SIZE;
 
 public class Box implements Shape {
 

@@ -1,7 +1,7 @@
 package org.homs.houmls;
 
 import org.homs.houmls.shape.Shape;
-import org.homs.houmls.shape.impl.Connector;
+import org.homs.houmls.shape.impl.connector.Connector;
 
 import java.awt.*;
 import java.util.ArrayList;
