@@ -124,51 +124,64 @@ public class UxfFileManager {
                 String attributes = elementElement.getElementsByTagName("panel_attributes").item(0).getTextContent();
                 String additionalAttributes = elementElement.getElementsByTagName("additional_attributes").item(0).getTextContent();
 
-                if (id.equals("UMLNote")) {
-                    Comment comment = new Comment(x, y, w, h, attributes);
-                    diagram.addShape(comment);
-                } else if (id.equals("UMLClass")) {
-                    Box box = new Box(x, y, w, h, attributes);
-                    diagram.addShape(box);
-                } else if ("UMLUseCase".equals(id)) {
-                    Ellipse box = new Ellipse(x, y, w, h, attributes);
-                    diagram.addShape(box);
-                } else if ("UMLActor".equals(id)) {
-                    Moneco box = new Moneco(x, y, attributes);
-                    diagram.addShape(box);
-                } else if ("UMLState".equals(id)) {
-                    RoundedBox box = new RoundedBox(x, y, w, h, attributes);
-                    diagram.addShape(box);
-                } else if (id.equals("Relation") || id.equals("Bocadillo")) {
-
-                    List<Point> points = new ArrayList<>();
-
-                    String[] parts = additionalAttributes.split(";");
-                    int j = 0;
-                    while (j < parts.length) {
-                        int deltax = (int) Double.parseDouble(parts[j++]);
-                        int deltay = (int) Double.parseDouble(parts[j++]);
-                        points.add(new Point(x + deltax, y + deltay));
+                switch (id) {
+                    case "UMLNote":
+                        Comment comment = new Comment(x, y, w, h, attributes);
+                        diagram.addShape(comment);
+                        break;
+                    case "UMLClass": {
+                        Box box = new Box(x, y, w, h, attributes);
+                        diagram.addShape(box);
+                        break;
                     }
-
-                    Point firstPoint = points.get(0);
-                    Point lastPoint = points.get(points.size() - 1);
-
-                    final Connector connector;
-                    if (id.equals("Relation")) {
-                        connector = new Connector(firstPoint.x, firstPoint.y, lastPoint.x, lastPoint.y, attributes);
-                    } else if (id.equals("Bocadillo")) {
-                        connector = new BocadilloConnector(firstPoint.x, firstPoint.y, lastPoint.x, lastPoint.y, attributes);
-                    } else {
-                        throw new RuntimeException();
+                    case "UMLUseCase": {
+                        Ellipse box = new Ellipse(x, y, w, h, attributes);
+                        diagram.addShape(box);
+                        break;
                     }
-                    for (j = 1; j < points.size() - 1; j++) {
-                        connector.getMiddlePoints().add(points.get(j));
+                    case "UMLActor": {
+                        Moneco box = new Moneco(x, y, attributes);
+                        diagram.addShape(box);
+                        break;
                     }
+                    case "UMLState": {
+                        RoundedBox box = new RoundedBox(x, y, w, h, attributes);
+                        diagram.addShape(box);
+                        break;
+                    }
+                    case "Relation":
+                    case "Bocadillo":
 
-                    diagram.addShape(connector);
-                } else {
-                    System.out.println("unrecognized element: " + id);
+                        List<Point> points = new ArrayList<>();
+
+                        String[] parts = additionalAttributes.split(";");
+                        int j = 0;
+                        while (j < parts.length) {
+                            int deltax = (int) Double.parseDouble(parts[j++]);
+                            int deltay = (int) Double.parseDouble(parts[j++]);
+                            points.add(new Point(x + deltax, y + deltay));
+                        }
+
+                        Point firstPoint = points.get(0);
+                        Point lastPoint = points.get(points.size() - 1);
+
+                        final Connector connector;
+                        if (id.equals("Relation")) {
+                            connector = new Connector(firstPoint.x, firstPoint.y, lastPoint.x, lastPoint.y, attributes);
+                        } else if (id.equals("Bocadillo")) {
+                            connector = new BocadilloConnector(firstPoint.x, firstPoint.y, lastPoint.x, lastPoint.y, attributes);
+                        } else {
+                            throw new RuntimeException();
+                        }
+                        for (j = 1; j < points.size() - 1; j++) {
+                            connector.getMiddlePoints().add(points.get(j));
+                        }
+
+                        diagram.addShape(connector);
+                        break;
+                    default:
+                        System.out.println("unrecognized element: " + id);
+                        break;
                 }
             }
         }

@@ -43,6 +43,8 @@ public class LookAndFeel {
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
         g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
     }
+
+    public static final boolean markDraggablePartsAsRed = false;
 }
 
 

@@ -38,30 +38,27 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *     X esborrar elements
  *     X crear points intermitjos de connectors.
  *     X eliminar points intermitjos de connectors.
- *     - punt per a moure la fletcha sencera, deslinkant rollo UMLet
+ *     ? punt per a moure la fletcha sencera, deslinkant rollo UMLet
  *
  *     P menú general (operacions de fitxer, about, etc).
  *     X llegir XMLs de UMLet
  *     X guardar XMLs de UMLet
- *     - pestanyes? bah, no cal.
+ *     ? pestanyes? bah, no cal.
  *     X exportar a PNG, etc... nou main, amb parsing de parameters variats.... {@see org.homs.houmls.ExportAsPng}
- *
- *     - undo
- *     - multisellecció + moure en grup!
- *     - copy/cutty/paste!
- *     - accions de teclat
- *
- *      - llegir "UML Distilled" (Martin Fowler) i apendre UML pràctic d'una puta vegada
- *      - importar els diagrams que tinc en GitLab de Roche
  *
  *      x veure com crear un XML (veure DriverEngine...)
  *
  *      X + cercles, elipses
- *      - + Generics <T>
+ *      X + Generics <T>
  *      X + moñeco
  *      X + required --o)-- provided
  *      X + altres tipos de caixes a base de diferents turtles... veure diagrames de activitat
  *      X + caixes amb rounded corners
+ *
+ *      - undo
+ *      - multisellecció + moure en grup!
+ *      - copy/cutty/paste!
+ *      - accions de teclat
  *
  *      - apastelar colors, paleta...
  *      - admetre RGB a més de noms: UMLet: "bg=#00aa70"
@@ -72,6 +69,10 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *      - millorar turtle a lo QBasic?
  *        http://www.antonis.de/qbebooks/gwbasman/draw.html#:~:text=The%20DRAW%20statement%20combines%20most,valid%20only%20in%20graphics%20mode.
  *      X nou connector amb relleno, que es pugui enganxar a caixa i fer bocadillos!
+ *
+ *      - llegir "UML Distilled" (Martin Fowler) i apendre UML pràctic d'una puta vegada
+ *      X importar els diagrams que tinc en GitLab de Roche
+ *
  *
  * </pre>
  */

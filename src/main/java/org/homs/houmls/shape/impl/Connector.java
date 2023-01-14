@@ -223,7 +223,7 @@ public class Connector implements Shape {
                 return new Draggable() {
                     @Override
                     public Cursor getTranslationCursor() {
-                        return Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR);
+                        return Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR);
                     }
 
                     @Override
@@ -260,7 +260,7 @@ public class Connector implements Shape {
                 return new Draggable() {
                     @Override
                     public Cursor getTranslationCursor() {
-                        return Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR);
+                        return Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR);
                     }
 
                     @Override
@@ -298,7 +298,7 @@ public class Connector implements Shape {
                 return new Draggable() {
                     @Override
                     public Cursor getTranslationCursor() {
-                        return Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR);
+                        return Cursor.getPredefinedCursor(Cursor.CROSSHAIR_CURSOR);
                     }
 
                     @Override

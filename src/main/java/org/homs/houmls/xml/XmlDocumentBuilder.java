@@ -48,8 +48,7 @@ public class XmlDocumentBuilder {
         final String[] pathParts = (this.prefix + path).split("\\/");
 
         Element n = null;
-        for (int i = 0; i < pathParts.length; i++) {
-            String pathPart = pathParts[i];
+        for (String pathPart : pathParts) {
 
             // the part should be "ElementName" or "ElementName[n]".
             Matcher m = pathPartPattern.matcher(pathPart);

@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 public class PropsParser {
 
-    static Pattern p = Pattern.compile("(\\w+)\\=(.*)");
+    final static Pattern p = Pattern.compile("(\\w+)\\=(.*)");
 
     public static Map<String, String> parseProperties(String text) {
         var r = new LinkedHashMap<String, String>();

@@ -97,7 +97,8 @@ public class Box implements Shape {
                 int alignCorrectionXPx = FONT_X_CORRECTION;
                 if (line.startsWith(".")) {
                     line = line.substring(1);
-                    int textLineWidthPx = (int) new FontMetrics(g2).getWidth(line);
+                    final FontMetrics fontMetrics = new FontMetrics(g2);
+                    int textLineWidthPx = (int) fontMetrics.getWidth(line);
                     int boxWidthPx = (int) this.width;
                     alignCorrectionXPx += boxWidthPx / 2 - textLineWidthPx / 2;
                 }

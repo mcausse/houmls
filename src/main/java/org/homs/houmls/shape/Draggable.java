@@ -19,7 +19,6 @@ public interface Draggable {
      *
      * @param diagram necessari per als {@link Connector}s, per tal
      *                de poder-se linkar amb altres {@link Shape}s.
-     * @param diagram
      */
     void dragHasFinished(Diagram diagram);
 

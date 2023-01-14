@@ -27,11 +27,6 @@ public class BocadilloConnector extends Connector {
         return r;
     }
 
-//    public List<Point> getMiddlePoints() {
-//        // Prevents to add/remove middle points
-//        return new ArrayList<>(middlePoints);
-//    }
-
     @Override
     public String getAttributesText() {
         return attributesText;
