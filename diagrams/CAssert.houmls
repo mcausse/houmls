@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?><diagram program="houmls" version="0.0.1">
+    <zoom_level>10</zoom_level>
+    <help_text/>
+    <element>
+        <id>UMLNote</id>
+        <coordinates>
+            <x>50</x>
+            <y>190</y>
+            <w>290</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>
+assert.That(result)
+   .IsNotNull()
+   .IsDataType()
+   .IsEqualsTo(3.14159)
+
+fontsize=12
+bg=yellow
+
+
+
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>50</x>
+            <y>300</y>
+            <w>200</w>
+            <h>140</h>
+        </coordinates>
+        <panel_attributes>.*Assert
+--
+MessageFormatter
+MessageConsumer
+--
+~That(o) As AssertionBuilder
+--
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>250</x>
+            <y>370</y>
+            <w>130</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;.
+&lt;&lt;produces&gt;&gt;</panel_attributes>
+        <additional_attributes>130;0;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>840</x>
+            <y>310</y>
+            <w>290</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>._&lt;&lt;interface&gt;&gt;
+.*MessageConsumer
+--
+--
+Consume(formattedMessage As %String)
+--
+
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>750</x>
+            <y>440</y>
+            <w>230</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*TestCaseMessageConsumer
+--
+%UnitTest.TestCase
+--
+--
+
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>860</x>
+            <y>390</y>
+            <w>50</w>
+            <h>50</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+        <additional_attributes>50;0;0;50</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>380</x>
+            <y>300</y>
+            <w>280</w>
+            <h>140</h>
+        </coordinates>
+        <panel_attributes>.*AssertPredicates
+--
+MessageFormatter
+MessageConsumer
+ObtainedValue
+--
+IsNull() As AssertPredicates
+IsEqualTo(expected) As AssertPredicates
+Fail(message) As AssertPredicates
+--
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>660</x>
+            <y>350</y>
+            <w>180</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;-</panel_attributes>
+        <additional_attributes>180;0;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>750</x>
+            <y>170</y>
+            <w>480</w>
+            <h>100</h>
+        </coordinates>
+        <panel_attributes>.*MessageFormatter
+--
+--
+FormatFailure(message As %String) As %String
+FormatSingleValueAssertion(expectedAttribute As %String, obtained) As %String
+FormatComparisonAssertion(expectedValue, obtainedValue) As %String
+--
+
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>660</x>
+            <y>250</y>
+            <w>90</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;-</panel_attributes>
+        <additional_attributes>90;0;0;80</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>1000</x>
+            <y>440</y>
+            <w>230</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*StatusExceptionMessageConsumer
+--
+--
+--
+
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>1060</x>
+            <y>390</y>
+            <w>50</w>
+            <h>50</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+        <additional_attributes>0;0;50;50</additional_attributes>
+    </element>
+    <element>
+        <id>UMLNote</id>
+        <coordinates>
+            <x>490</x>
+            <y>190</y>
+            <w>170</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>Formats an assertion 
+failure to the proper
+%String message
+
+bg=yellow
+style=wordwrap
+
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>660</x>
+            <y>220</y>
+            <w>90</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=.</panel_attributes>
+        <additional_attributes>90;0;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLNote</id>
+        <coordinates>
+            <x>1170</x>
+            <y>320</y>
+            <w>120</w>
+            <h>70</h>
+        </coordinates>
+        <panel_attributes>Registers an 
+assertion failure 
+to the Unit Test 
+framework
+
+bg=yellow
+style=wordwrap
+
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>1130</x>
+            <y>350</y>
+            <w>40</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=.</panel_attributes>
+        <additional_attributes>0;0;40;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>510</x>
+            <y>440</y>
+            <w>0</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;.
+&lt;&lt;uses&gt;&gt;</panel_attributes>
+        <additional_attributes>0;60;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>400</x>
+            <y>500</y>
+            <w>230</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*Matchers
+--
+
+--
+--
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLNote</id>
+        <coordinates>
+            <x>50</x>
+            <y>110</y>
+            <w>420</w>
+            <h>70</h>
+        </coordinates>
+        <panel_attributes>.AssertC - Fluent assertions for Caché
+fontsize=20
+bg=yellow
+valign=center
+halign=center</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>1330</x>
+            <y>310</y>
+            <w>230</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*%Exception.StatusException
+--
+--
+--
+
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>1330</x>
+            <y>440</y>
+            <w>230</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*AssertionFailureStatusException
+--
+--
+~Build(message As %String, innerException As %Exception.AbstractException = {$$$NULLOREF}) As AssertException
+GetMessage() As %String
+--
+
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>1440</x>
+            <y>390</y>
+            <w>0</w>
+            <h>50</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+        <additional_attributes>0;0;0;50</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>1230</x>
+            <y>480</y>
+            <w>100</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=.&gt;
+&lt;&lt;throws&gt;&gt;</panel_attributes>
+        <additional_attributes>0;0;100;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLNote</id>
+        <coordinates>
+            <x>50</x>
+            <y>500</y>
+            <w>270</w>
+            <h>200</h>
+        </coordinates>
+        <panel_attributes>*- %Datatypes:*
+   - %Boolean
+   - %String
+   - numerics
+*- $ListBuild:*
+*- %ListOfDataTypes/%ListOfObjects:*
+*- Objects:*
+
+%Status
+Exceptions
+AssertionFailureStatusException
+ResultSets
+
+fontsize=12
+bg=yellow
+
+
+
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>320</x>
+            <y>540</y>
+            <w>80</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=.</panel_attributes>
+        <additional_attributes>80;0;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLNote</id>
+        <coordinates>
+            <x>1070</x>
+            <y>550</y>
+            <w>120</w>
+            <h>30</h>
+        </coordinates>
+        <panel_attributes>the default impl
+
+bg=yellow
+style=wordwrap
+
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>1120</x>
+            <y>520</y>
+            <w>0</w>
+            <h>30</h>
+        </coordinates>
+        <panel_attributes>lt=.</panel_attributes>
+        <additional_attributes>0;0;0;30</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>400</x>
+            <y>620</y>
+            <w>230</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*StringUtils
+--
+--
+~Format(template As %String, args...)
+~ToString(o)
+--
+
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+</diagram>

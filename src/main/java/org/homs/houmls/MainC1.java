@@ -93,7 +93,7 @@ public class MainC1 {
         var canvas = new Canvas(shapeTextEditor);
 
         // TODO
-        canvas.diagram = UxfFileManager.loadFile("welcome.houmls");
+        canvas.diagram = UxfFileManager.loadFile("diagrams/src/welcome.houmls");
 
         //
         // LATERAL BAR
