@@ -56,12 +56,12 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *      X + caixes amb rounded corners
  *
  *      - undo
- *      - multisellecció + moure en grup!
+ *      X multisellecció + moure en grup!
  *      - copy/cutty/paste!
  *      - accions de teclat
  *
  *      - apastelar colors, paleta...
- *      - admetre RGB a més de noms: UMLet: "bg=#00aa70"
+ *      X admetre RGB a més de noms: UMLet: "bg=#00aa70"
  *      - icones al Popupmenu
  *      - millorar el tema MarkDown
  *
@@ -81,6 +81,8 @@ public class MainC1 {
     public static final String FRAME_TITLE = "Houmls -- ";
     public static final String UNNAMED_FILENAME = "Unnamed";
 
+    static final Image frameIcon = Toolkit.getDefaultToolkit().getImage(MainC1.class.getClassLoader().getResource("org/homs/houmls/houmls.png"));
+
     public static void main(String[] args) throws Exception {
 
         JFrame.setDefaultLookAndFeelDecorated(true);
@@ -93,7 +95,7 @@ public class MainC1 {
         var canvas = new Canvas(shapeTextEditor);
 
         // TODO
-        canvas.diagram = HoumsFileFormatManager.loadFile("diagrams/welcome.houmls");
+//        canvas.diagram = HoumsFileFormatManager.loadFile("diagrams/welcome.houmls");
 
         //
         // LATERAL BAR
@@ -108,6 +110,7 @@ public class MainC1 {
 
 
         var f = new JFrame();
+        f.setIconImage(frameIcon);
         f.setLayout(new BorderLayout());
 
         Consumer<String> currentDiagramFileNameConsumer = (fileName) -> f.setTitle(

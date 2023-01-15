@@ -74,8 +74,8 @@ shapes by Control+click</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>360</x>
-            <y>-40</y>
+            <x>610</x>
+            <y>320</y>
             <w>180</w>
             <h>80</h>
         </coordinates>
@@ -220,8 +220,8 @@ Ampliar testing
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>90</x>
-            <y>-50</y>
+            <x>360</x>
+            <y>-40</y>
             <w>180</w>
             <h>80</h>
         </coordinates>
@@ -268,6 +268,19 @@ bg=#00ff00</panel_attributes>
         </coordinates>
         <panel_attributes>._&lt;&lt;Colors&gt;&gt;
 - apastelar colors, paleta...
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>360</x>
+            <y>530</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>
+icona per a la app
 </panel_attributes>
         <additional_attributes/>
     </element>

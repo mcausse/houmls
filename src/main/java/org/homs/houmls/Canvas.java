@@ -459,12 +459,22 @@ public class Canvas extends JPanel {
                         throw new RuntimeException(nite);
                     }
 
-                    selectionBoxRectangle = new Rectangle(
-                            (int) (firstPoint.getX()),
-                            (int) (firstPoint.getY()),
-                            (int) ((lastPoint.getX() - firstPoint.getX())),
-                            (int) ((lastPoint.getY() - firstPoint.getY()))
-                    );
+                    var x = (int) (firstPoint.getX());
+                    var y = (int) (firstPoint.getY());
+                    var width = (int) ((lastPoint.getX() - firstPoint.getX()));
+                    var height = (int) ((lastPoint.getY() - firstPoint.getY()));
+
+                    // Un Rectangle no pot tenir width/Height negatius, així que per
+                    // a poder dibuixar-lo, es fa aquest canvi de cromos:
+                    if (width < 0) {
+                        width = -width;
+                        x -= width;
+                    }
+                    if (height < 0) {
+                        height = -height;
+                        y -= height;
+                    }
+                    selectionBoxRectangle = new Rectangle(x, y, width, height);
                     setAffectedShapesAsSelected();
 
                 } else if (selectedDraggable == null) {
