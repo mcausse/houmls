@@ -28,8 +28,7 @@ import static org.homs.houmls.shape.impl.connector.Connector.SELECTION_BOX_SIZE;
 
 public class Canvas extends JPanel {
 
-    // TODO canviar a List per permetre multi-sel.lecció
-    List<Shape> selectedShapes = new ArrayList<>();
+    final List<Shape> selectedShapes = new ArrayList<>();
     Draggable draggableUnderMouse = null;
 
     class ObjectSelectorListener extends MouseAdapter {
@@ -117,170 +116,7 @@ public class Canvas extends JPanel {
                     return;
                 }
 
-                JPopupMenu pm = new JPopupMenu();
-
-                if (selectedShape == null) {
-                    JMenuItem createConnector = new JMenuItem("create connector");
-                    pm.add(createConnector);
-                    createConnector.addActionListener(e -> {
-                        diagram.addShape(new Connector(
-                                GridControl.engrid(mousePos.getX()),
-                                GridControl.engrid(mousePos.getY()),
-                                GridControl.engrid(mousePos.getX()) + 18 * GridControl.GRID_SIZE,
-                                GridControl.engrid(mousePos.getY()),
-                                "lt=->\n"
-                        ));
-                        repaint();
-                    });
-
-                    pm.addSeparator();
-
-                    JMenuItem createClass = new JMenuItem("create class");
-                    pm.add(createClass);
-                    createClass.addActionListener(e -> {
-                        diagram.addShape(new Box(
-                                GridControl.engrid(mousePos.getX()),
-                                GridControl.engrid(mousePos.getY()),
-                                GridControl.engrid(18 * GridControl.GRID_SIZE),
-                                GridControl.engrid(8 * GridControl.GRID_SIZE),
-                                "._<<>>\n" +
-                                        ".*C\n" +
-                                        "--\n" +
-                                        "--\n"
-                        ));
-                        repaint();
-                    });
-                    JMenuItem createComment = new JMenuItem("create comment");
-                    pm.add(createComment);
-                    createComment.addActionListener(e -> {
-                        diagram.addShape(new Comment(
-                                GridControl.engrid(mousePos.getX()),
-                                GridControl.engrid(mousePos.getY()),
-                                GridControl.engrid(18 * GridControl.GRID_SIZE),
-                                GridControl.engrid(14 * GridControl.GRID_SIZE),
-                                "Note...\n"
-                        ));
-                        repaint();
-                    });
-                    JMenuItem createRoundedBox = new JMenuItem("create rounded box");
-                    pm.add(createRoundedBox);
-                    createRoundedBox.addActionListener(e -> {
-                        diagram.addShape(new RoundedBox(
-                                GridControl.engrid(mousePos.getX()),
-                                GridControl.engrid(mousePos.getY()),
-                                GridControl.engrid(18 * GridControl.GRID_SIZE),
-                                GridControl.engrid(14 * GridControl.GRID_SIZE),
-                                ".*Title\n--\nfontsize=24\n"
-                        ));
-                        repaint();
-                    });
-                    JMenuItem createEllipse = new JMenuItem("create ellipse");
-                    pm.add(createEllipse);
-                    createEllipse.addActionListener(e -> {
-                        diagram.addShape(new Ellipse(
-                                GridControl.engrid(mousePos.getX()),
-                                GridControl.engrid(mousePos.getY()),
-                                GridControl.engrid(18 * GridControl.GRID_SIZE),
-                                GridControl.engrid(14 * GridControl.GRID_SIZE),
-                                ".*Title\nfontsize=24\n"
-                        ));
-                        repaint();
-                    });
-                    JMenuItem createActor = new JMenuItem("create actor");
-                    pm.add(createActor);
-                    createActor.addActionListener(e -> {
-                        diagram.addShape(new Moneco(
-                                GridControl.engrid(mousePos.getX()),
-                                GridControl.engrid(mousePos.getY()),
-                                "  Actor\n"
-                        ));
-                        repaint();
-                    });
-                    JMenuItem createBocadillo = new JMenuItem("create bocadillo");
-                    pm.add(createBocadillo);
-                    createBocadillo.addActionListener(e -> {
-                        final BocadilloConnector bocadillo = new BocadilloConnector(
-                                GridControl.engrid(mousePos.getX()),
-                                GridControl.engrid(mousePos.getY()),
-                                GridControl.engrid(mousePos.getX() + 18 * GridControl.GRID_SIZE),
-                                GridControl.engrid(mousePos.getY()),
-                                "lt=-\n"
-                        );
-                        bocadillo.getMiddlePoints().add(new Connector.DoublePoint(
-                                GridControl.engrid(mousePos.getX() + GridControl.GRID_SIZE * 6),
-                                GridControl.engrid(mousePos.getY() + GridControl.GRID_SIZE * 6)
-                        ));
-                        diagram.addShape(bocadillo);
-                        repaint();
-                    });
-
-                    JMenuItem createTurtleBox = new JMenuItem("create turtle box");
-                    pm.add(createTurtleBox);
-                    createTurtleBox.addActionListener(e -> {
-                        final TurtleBox turtleBox = new TurtleBox(
-                                GridControl.engrid(mousePos.getX()),
-                                GridControl.engrid(mousePos.getY()),
-                                GridControl.engrid(18 * GridControl.GRID_SIZE),
-                                GridControl.engrid(8 * GridControl.GRID_SIZE),
-                                "rotate 90 jump 20 rotate -90\n" +
-                                        "rotate -45 walk 20 \n" +
-                                        "rotate 45 walk 50\n" +
-                                        "rotate 45 walk 20\n" +
-                                        "rotate 90 walk 55\n" +
-                                        "rotate 90 walk 55\n" +
-                                        "rotate 135 walk 76\n" +
-                                        "draw\n"
-                        );
-                        diagram.addShape(turtleBox);
-                        repaint();
-                    });
-                } else if (!Connector.class.isAssignableFrom(selectedShape.getClass())) {
-                    /*
-                     * POPUP MENU: BOX
-                     */
-
-                    JMenuItem toFront = new JMenuItem("to front");
-                    pm.add(toFront);
-                    toFront.addActionListener(e -> {
-                        diagram.sendToFront(selectedShape);
-                        repaint();
-                    });
-
-                    JMenuItem toBack = new JMenuItem("to back");
-                    pm.add(toBack);
-                    toBack.addActionListener(e -> {
-                        diagram.sendToBack(selectedShape);
-                        repaint();
-                    });
-
-                    pm.addSeparator();
-
-                    JMenuItem deleteBox = new JMenuItem("remove"); // TODO
-                    pm.add(deleteBox);
-                    deleteBox.addActionListener(e -> {
-                        diagram.getShapes().removeAll(selectedShapes);
-                        selectedShapes.clear();
-                        repaint();
-                    });
-
-                } else if (Connector.class.isAssignableFrom(selectedShape.getClass())) {
-
-                    /*
-                     * POPUP MENU: CONNECTOR
-                     */
-                    popupMenuForConnector_CreateMiddlePoint(mousePos, pm);
-                    popupMenuForConnector_DeleteMiddlePoint(mousePos, pm);
-
-                    pm.addSeparator();
-
-                    JMenuItem toBack = new JMenuItem("delete connector"); // TODO
-                    pm.add(toBack);
-                    toBack.addActionListener(e -> {
-                        diagram.getShapes().removeAll(selectedShapes);
-                        selectedShapes.clear();
-                        repaint();
-                    });
-                }
+                JPopupMenu pm = buildPopupMenu(selectedShape, mousePos);
 
                 repaint();
                 pm.show(Canvas.this, mouseEvent.getX(), mouseEvent.getY());
@@ -302,6 +138,174 @@ public class Canvas extends JPanel {
             }
 
             repaint();
+        }
+
+        protected JPopupMenu buildPopupMenu(Shape selectedShape, Point2D mousePos) {
+            JPopupMenu pm = new JPopupMenu();
+
+            if (selectedShape == null) {
+                JMenuItem createConnector = new JMenuItem("create connector");
+                pm.add(createConnector);
+                createConnector.addActionListener(e -> {
+                    diagram.addShape(new Connector(
+                            GridControl.engrid(mousePos.getX()),
+                            GridControl.engrid(mousePos.getY()),
+                            GridControl.engrid(mousePos.getX()) + 18 * GridControl.GRID_SIZE,
+                            GridControl.engrid(mousePos.getY()),
+                            "lt=->\n"
+                    ));
+                    repaint();
+                });
+
+                pm.addSeparator();
+
+                JMenuItem createClass = new JMenuItem("create class");
+                pm.add(createClass);
+                createClass.addActionListener(e -> {
+                    diagram.addShape(new Box(
+                            GridControl.engrid(mousePos.getX()),
+                            GridControl.engrid(mousePos.getY()),
+                            GridControl.engrid(18 * GridControl.GRID_SIZE),
+                            GridControl.engrid(8 * GridControl.GRID_SIZE),
+                            "._<<>>\n" +
+                                    ".*C\n" +
+                                    "--\n" +
+                                    "--\n"
+                    ));
+                    repaint();
+                });
+                JMenuItem createComment = new JMenuItem("create comment");
+                pm.add(createComment);
+                createComment.addActionListener(e -> {
+                    diagram.addShape(new Comment(
+                            GridControl.engrid(mousePos.getX()),
+                            GridControl.engrid(mousePos.getY()),
+                            GridControl.engrid(18 * GridControl.GRID_SIZE),
+                            GridControl.engrid(14 * GridControl.GRID_SIZE),
+                            "Note...\n"
+                    ));
+                    repaint();
+                });
+                JMenuItem createRoundedBox = new JMenuItem("create rounded box");
+                pm.add(createRoundedBox);
+                createRoundedBox.addActionListener(e -> {
+                    diagram.addShape(new RoundedBox(
+                            GridControl.engrid(mousePos.getX()),
+                            GridControl.engrid(mousePos.getY()),
+                            GridControl.engrid(18 * GridControl.GRID_SIZE),
+                            GridControl.engrid(14 * GridControl.GRID_SIZE),
+                            ".*Title\n--\nfontsize=24\n"
+                    ));
+                    repaint();
+                });
+                JMenuItem createEllipse = new JMenuItem("create ellipse");
+                pm.add(createEllipse);
+                createEllipse.addActionListener(e -> {
+                    diagram.addShape(new Ellipse(
+                            GridControl.engrid(mousePos.getX()),
+                            GridControl.engrid(mousePos.getY()),
+                            GridControl.engrid(18 * GridControl.GRID_SIZE),
+                            GridControl.engrid(14 * GridControl.GRID_SIZE),
+                            ".*Title\nfontsize=24\n"
+                    ));
+                    repaint();
+                });
+                JMenuItem createActor = new JMenuItem("create actor");
+                pm.add(createActor);
+                createActor.addActionListener(e -> {
+                    diagram.addShape(new Moneco(
+                            GridControl.engrid(mousePos.getX()),
+                            GridControl.engrid(mousePos.getY()),
+                            "  Actor\n"
+                    ));
+                    repaint();
+                });
+                JMenuItem createBocadillo = new JMenuItem("create bocadillo");
+                pm.add(createBocadillo);
+                createBocadillo.addActionListener(e -> {
+                    final BocadilloConnector bocadillo = new BocadilloConnector(
+                            GridControl.engrid(mousePos.getX()),
+                            GridControl.engrid(mousePos.getY()),
+                            GridControl.engrid(mousePos.getX() + 18 * GridControl.GRID_SIZE),
+                            GridControl.engrid(mousePos.getY()),
+                            "lt=-\n"
+                    );
+                    bocadillo.getMiddlePoints().add(new Connector.DoublePoint(
+                            GridControl.engrid(mousePos.getX() + GridControl.GRID_SIZE * 6),
+                            GridControl.engrid(mousePos.getY() + GridControl.GRID_SIZE * 6)
+                    ));
+                    diagram.addShape(bocadillo);
+                    repaint();
+                });
+
+                JMenuItem createTurtleBox = new JMenuItem("create turtle box");
+                pm.add(createTurtleBox);
+                createTurtleBox.addActionListener(e -> {
+                    final TurtleBox turtleBox = new TurtleBox(
+                            GridControl.engrid(mousePos.getX()),
+                            GridControl.engrid(mousePos.getY()),
+                            GridControl.engrid(18 * GridControl.GRID_SIZE),
+                            GridControl.engrid(8 * GridControl.GRID_SIZE),
+                            "rotate 90 jump 20 rotate -90\n" +
+                                    "rotate -45 walk 20 \n" +
+                                    "rotate 45 walk 50\n" +
+                                    "rotate 45 walk 20\n" +
+                                    "rotate 90 walk 55\n" +
+                                    "rotate 90 walk 55\n" +
+                                    "rotate 135 walk 76\n" +
+                                    "draw\n"
+                    );
+                    diagram.addShape(turtleBox);
+                    repaint();
+                });
+            } else if (!Connector.class.isAssignableFrom(selectedShape.getClass())) {
+                /*
+                 * POPUP MENU: BOX
+                 */
+
+                JMenuItem toFront = new JMenuItem("to front");
+                pm.add(toFront);
+                toFront.addActionListener(e -> {
+                    diagram.sendToFront(selectedShape);
+                    repaint();
+                });
+
+                JMenuItem toBack = new JMenuItem("to back");
+                pm.add(toBack);
+                toBack.addActionListener(e -> {
+                    diagram.sendToBack(selectedShape);
+                    repaint();
+                });
+
+                pm.addSeparator();
+
+                JMenuItem deleteBox = new JMenuItem("remove");
+                pm.add(deleteBox);
+                deleteBox.addActionListener(e -> {
+                    diagram.getShapes().removeAll(selectedShapes);
+                    selectedShapes.clear();
+                    repaint();
+                });
+
+            } else if (Connector.class.isAssignableFrom(selectedShape.getClass())) {
+
+                /*
+                 * POPUP MENU: CONNECTOR
+                 */
+                popupMenuForConnector_CreateMiddlePoint(mousePos, pm);
+                popupMenuForConnector_DeleteMiddlePoint(mousePos, pm);
+
+                pm.addSeparator();
+
+                JMenuItem toBack = new JMenuItem("remove");
+                pm.add(toBack);
+                toBack.addActionListener(e -> {
+                    diagram.getShapes().removeAll(selectedShapes);
+                    selectedShapes.clear();
+                    repaint();
+                });
+            }
+            return pm;
         }
 
         private void popupMenuForConnector_CreateMiddlePoint(Point2D mousePos, JPopupMenu pm) {
@@ -329,10 +333,7 @@ public class Canvas extends JPanel {
                         } else {
                             otherPoint = points.get(indexOfClickedPoint + 1);
                         }
-                        var middlePointToCreate = new Connector.DoublePoint(
-                                (p.x + otherPoint.x) / 2,
-                                (p.y + otherPoint.y) / 2
-                        );
+                        var middlePointToCreate = new Connector.DoublePoint((p.x + otherPoint.x) / 2, (p.y + otherPoint.y) / 2);
 
                         if (indexOfClickedPoint >= conn.getMiddlePoints().size()) {
                             conn.getMiddlePoints().add(middlePointToCreate);
@@ -731,7 +732,6 @@ public class Canvas extends JPanel {
             return null;
         }
 
-        // TODO evitar duplicar els bucles
         List<Shape> connectorsList = diagram.getShapesBy(shape -> Connector.class.isAssignableFrom(shape.getClass()));
         for (var connector : connectorsList) {
             var draggable = connector.findDraggableByPos(Collections.emptyList(), mousePos.getX(), mousePos.getY());

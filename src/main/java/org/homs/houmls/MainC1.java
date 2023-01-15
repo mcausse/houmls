@@ -94,21 +94,12 @@ public class MainC1 {
 
         var canvas = new Canvas(shapeTextEditor);
 
-        // TODO
-//        canvas.diagram = HoumsFileFormatManager.loadFile("diagrams/welcome.houmls");
-
         //
         // LATERAL BAR
         //
         var lateralBar = new JPanel();
         lateralBar.setLayout(new BorderLayout());
-//        var shapesCatalog = new JPanel();
-
-
-//        JSplitPane toolBoxSplitPane = new JSplitPane(JSplitPane.VERTICAL_SPLIT, shapesCatalog, scrollShapeTextEditor);
-//        lateralBar.add(toolBoxSplitPane);
         lateralBar.add(scrollShapeTextEditor);
-
 
         var f = new JFrame();
         f.setIconImage(frameIcon);
@@ -251,17 +242,14 @@ public class MainC1 {
         }
 
         lateralBar.addKeyListener(canvas.getOffsetAndZoomListener());
-//        shapesCatalog.addKeyListener(canvas.getOffsetAndZoomListener());
         shapeTextEditor.addKeyListener(canvas.getOffsetAndZoomListener());
         sl.addKeyListener(canvas.getOffsetAndZoomListener());
-//        toolBoxSplitPane.addKeyListener(canvas.getOffsetAndZoomListener());
         toolBar.addKeyListener(canvas.getOffsetAndZoomListener());
         Arrays.stream(toolBar.getComponents()).forEach(c -> c.addKeyListener(canvas.getOffsetAndZoomListener()));
 
         f.setVisible(true);
         SwingUtilities.invokeLater(() -> {
             sl.setDividerLocation(0.8);
-//            toolBoxSplitPane.setDividerLocation(0.5);
         });
     }
 
