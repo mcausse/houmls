@@ -45,6 +45,10 @@ public class LookAndFeel {
     }
 
     public static final boolean markDraggablePartsAsRed = false;
+
+    public static final Color SHAPE_SELECTED_COLOR = new Color(0, 142, 255);
+    public static final BasicStroke MULTI_SELECTION_STROKE = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL,
+            0, new float[]{5}, 0);
 }
 
 

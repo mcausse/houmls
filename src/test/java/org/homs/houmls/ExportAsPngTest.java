@@ -35,4 +35,15 @@ public class ExportAsPngTest {
     void CAssert() throws Exception {
         ExportAsPng.main(new String[]{basePath + "CAssert.houmls"});
     }
+
+
+    @Test
+    void kanban() throws Exception {
+        ExportAsPng.main(new String[]{"kanban.houmls", "--output=diagrams/kanban.png"});
+    }
+
+    @Test
+    void retroBoard() throws Exception {
+        ExportAsPng.main(new String[]{"retro-board.houmls", "--output=diagrams/retro-board.png"});
+    }
 }

@@ -1,6 +1,6 @@
 package org.homs.houmls.shape.impl.connector;
 
-public enum Type {
+public enum ConnectorType {
 
     DEFAULT(""),
     ARROW("<"),
@@ -23,7 +23,7 @@ public enum Type {
 
     private final String code;
 
-    Type(String code) {
+    ConnectorType(String code) {
         this.code = code;
     }
 
@@ -31,8 +31,8 @@ public enum Type {
         return code;
     }
 
-    public static Type findByCode(String code) {
-        for (Type type : Type.values()) {
+    public static ConnectorType findByCode(String code) {
+        for (ConnectorType type : ConnectorType.values()) {
             if (code.equals(type.getCode())) {
                 return type;
             }

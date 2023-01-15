@@ -1,6 +1,6 @@
 package org.homs.houmls;
 
-import org.homs.houmls.xml.UxfFileManager;
+import org.homs.houmls.xml.HoumsFileFormatManager;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -93,7 +93,7 @@ public class MainC1 {
         var canvas = new Canvas(shapeTextEditor);
 
         // TODO
-        canvas.diagram = UxfFileManager.loadFile("diagrams/welcome.houmls");
+        canvas.diagram = HoumsFileFormatManager.loadFile("diagrams/welcome.houmls");
 
         //
         // LATERAL BAR
@@ -152,8 +152,9 @@ public class MainC1 {
                     if (returnVal == JFileChooser.APPROVE_OPTION) {
                         File file = fc.getSelectedFile();
                         try {
-                            Diagram diagram = UxfFileManager.loadFile(file.toString());
+                            Diagram diagram = HoumsFileFormatManager.loadFile(file.toString());
                             canvas.diagram = diagram;
+                            canvas.centerDiagram();
                             canvas.repaint();
                         } catch (Exception e2) {
                             e2.printStackTrace();
@@ -176,14 +177,14 @@ public class MainC1 {
                         if (returnVal == JFileChooser.APPROVE_OPTION) {
                             File file = fc.getSelectedFile();
                             try {
-                                UxfFileManager.writeFile(canvas.diagram, file.toString());
+                                HoumsFileFormatManager.writeFile(canvas.diagram, file.toString());
                             } catch (Exception e2) {
                                 e2.printStackTrace();
                             }
                         }
                     } else {
                         try {
-                            UxfFileManager.writeFile(canvas.diagram, fileName);
+                            HoumsFileFormatManager.writeFile(canvas.diagram, fileName);
                         } catch (Exception e2) {
                             e2.printStackTrace();
                         }
@@ -206,7 +207,7 @@ public class MainC1 {
                             if (returnVal == JFileChooser.APPROVE_OPTION) {
                                 File file = fc.getSelectedFile();
                                 try {
-                                    UxfFileManager.writeFile(canvas.diagram, file.toString());
+                                    HoumsFileFormatManager.writeFile(canvas.diagram, file.toString());
                                 } catch (Exception e2) {
                                     e2.printStackTrace();
                                 }
@@ -255,7 +256,7 @@ public class MainC1 {
 
         f.setVisible(true);
         SwingUtilities.invokeLater(() -> {
-            sl.setDividerLocation(0.7);
+            sl.setDividerLocation(0.8);
             toolBoxSplitPane.setDividerLocation(0.5);
         });
     }

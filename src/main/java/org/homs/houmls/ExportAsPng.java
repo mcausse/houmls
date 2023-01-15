@@ -1,6 +1,6 @@
 package org.homs.houmls;
 
-import org.homs.houmls.xml.UxfFileManager;
+import org.homs.houmls.xml.HoumsFileFormatManager;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -24,7 +24,7 @@ public class ExportAsPng {
         System.out.print("Exporting: " + String.join(" ", args) + "...");
 
         Canvas canvas = new Canvas(new JTextArea());
-        canvas.diagram = UxfFileManager.loadFile(inputFileName);
+        canvas.diagram = HoumsFileFormatManager.loadFile(inputFileName);
         Rectangle diagramBounds = canvas.diagram.getDiagramBounds();
         diagramBounds.grow(100, 100);
 

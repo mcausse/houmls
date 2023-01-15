@@ -36,10 +36,18 @@ public class PropsParser {
     }
 
     public static Color getColorByName(String name) {
-        try {
-            return (Color) Color.class.getField(name.toUpperCase()).get(null);
-        } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
-            return null;
+        if (name.startsWith("#")) {
+            try {
+                return Color.decode(name);
+            } catch (Exception e) {
+                return null;
+            }
+        } else {
+            try {
+                return (Color) Color.class.getField(name.toUpperCase()).get(null);
+            } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
+                return null;
+            }
         }
     }
 

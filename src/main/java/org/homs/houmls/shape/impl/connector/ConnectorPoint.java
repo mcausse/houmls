@@ -11,13 +11,13 @@ import static org.homs.houmls.shape.impl.connector.Connector.BOX_EXTRA_LINKABLE_
 public class ConnectorPoint {
 
     public Shape linkedShape;
-    public Type type;
+    public ConnectorType type;
     public double posx;
     public double posy;
 
     public String text = "";
 
-    public ConnectorPoint(Shape linkedShape, Type type, double posx, double posy) {
+    public ConnectorPoint(Shape linkedShape, ConnectorType type, double posx, double posy) {
         this.linkedShape = linkedShape;
         this.type = type;
         this.posx = posx;

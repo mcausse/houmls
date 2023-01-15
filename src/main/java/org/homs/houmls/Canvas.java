@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import static org.homs.houmls.LookAndFeel.SHAPE_SELECTED_COLOR;
 import static org.homs.houmls.LookAndFeel.basicStroke;
 import static org.homs.houmls.shape.impl.connector.Connector.SELECTION_BOX_SIZE;
 
@@ -421,15 +422,21 @@ public class Canvas extends JPanel {
         }
     }
 
+    protected Rectangle selectionBoxRectangle = null;
+
     class DraggablesListener extends MouseAdapter implements MouseMotionListener {
 
+        Point firstDragPoint = null;
         Point lastDragPoint = null;
         Draggable selectedDraggable = null;
 
         @Override
         public void mouseDragged(MouseEvent e) {
 
+            boolean controlPressed = offsetAndZoomListener != null && offsetAndZoomListener.controlPressed;
+
             if (lastDragPoint == null) {
+                firstDragPoint = e.getPoint();
                 lastDragPoint = e.getPoint();
 
                 if (selectedShapes.size() <= 1) {
@@ -440,7 +447,27 @@ public class Canvas extends JPanel {
                     selectedDraggable = new MultiSelectedGroupDraggable(selectedShapes);
                 }
             } else {
-                if (selectedDraggable == null) {
+                if (controlPressed) {
+                    var at = getAffineTransform();
+
+                    final Point2D firstPoint;
+                    final Point2D lastPoint;
+                    try {
+                        firstPoint = at.inverseTransform(new Point(firstDragPoint.x, firstDragPoint.y), null);
+                        lastPoint = at.inverseTransform(new Point(lastDragPoint.x, lastDragPoint.y), null);
+                    } catch (NoninvertibleTransformException nite) {
+                        throw new RuntimeException(nite);
+                    }
+
+                    selectionBoxRectangle = new Rectangle(
+                            (int) (firstPoint.getX()),
+                            (int) (firstPoint.getY()),
+                            (int) ((lastPoint.getX() - firstPoint.getX())),
+                            (int) ((lastPoint.getY() - firstPoint.getY()))
+                    );
+                    setAffectedShapesAsSelected();
+
+                } else if (selectedDraggable == null) {
                     // DRAGGA TOT EL DIAGRAM (BÉ, MODIFICA L'OFFSET)
                     setCursor(Cursor.getPredefinedCursor(Cursor.MOVE_CURSOR));
                     double translateToX = (e.getX() - lastDragPoint.x) / diagram.zoom;
@@ -459,15 +486,29 @@ public class Canvas extends JPanel {
             }
         }
 
+        void setAffectedShapesAsSelected() {
+            selectedShapes.clear();
+            selectedShapes.addAll(diagram.getShapesBy(shape -> {
+                var rect = shape.getRectangle();
+                rect.grow(1, 1);
+                return rect.intersects(selectionBoxRectangle);
+            }));
+        }
+
         @Override
         public void mouseReleased(MouseEvent e) {
             setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+            if (selectionBoxRectangle != null) {
+                selectionBoxRectangle = null;
+                repaint();
+            }
             if (lastDragPoint != null) {
                 if (selectedDraggable != null) {
                     selectedDraggable.dragHasFinished(diagram);
                 }
                 repaint();
             }
+            firstDragPoint = null;
             lastDragPoint = null;
             selectedDraggable = null;
         }
@@ -504,6 +545,7 @@ public class Canvas extends JPanel {
         this.offsetAndZoomListener = new OffsetAndZoomListener();
         addMouseWheelListener(offsetAndZoomListener);
         addKeyListener(offsetAndZoomListener);
+
         var draggablesListener = new DraggablesListener();
         addMouseListener(draggablesListener);
         addMouseMotionListener(draggablesListener);
@@ -558,7 +600,7 @@ public class Canvas extends JPanel {
         for (var element : diagram.getShapes()) {
             if (!Connector.class.isAssignableFrom(element.getClass())) {
                 if (selectedShapes.contains(element)) {
-                    g.setColor(Color.CYAN);
+                    g.setColor(SHAPE_SELECTED_COLOR);
                     element.drawSelection(g);
                 }
                 element.draw(g);
@@ -567,7 +609,7 @@ public class Canvas extends JPanel {
         for (var element : diagram.getShapes()) {
             if (Connector.class.isAssignableFrom(element.getClass())) {
                 if (selectedShapes.contains(element)) {
-                    g.setColor(Color.CYAN);
+                    g.setColor(SHAPE_SELECTED_COLOR);
                     element.drawSelection(g);
                 }
                 element.draw(g);
@@ -581,6 +623,12 @@ public class Canvas extends JPanel {
                 g2.setStroke(new BasicStroke(3));
                 g2.drawRoundRect(r.x, r.y, r.width, r.height, 6, 6);
             }
+        }
+
+        if (selectionBoxRectangle != null) {
+            g2.setColor(Color.BLUE);
+            g2.setStroke(LookAndFeel.MULTI_SELECTION_STROKE);
+            g2.drawRect(selectionBoxRectangle.x, selectionBoxRectangle.y, selectionBoxRectangle.width, selectionBoxRectangle.height);
         }
     }
 

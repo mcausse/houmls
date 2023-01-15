@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-class UxfFileManagerTest {
+class HoumsFileFormatManagerTest {
 
     @Test
     void name() throws Exception {
@@ -12,8 +12,8 @@ class UxfFileManagerTest {
         String basePath = "diagrams/";
 
         // Act
-        var d = UxfFileManager.loadFile(basePath + "houmls.houmls");
-        UxfFileManager.writeFile(d, basePath + "houmls.houmls.bkp");
+        var d = HoumsFileFormatManager.loadFile(basePath + "houmls.houmls");
+        HoumsFileFormatManager.writeFile(d, basePath + "houmls.houmls.bkp");
 
         var inputXml = ResourceHelper.resourceToString(basePath + "houmls.houmls.bkp");
         var expectedOutputHl7 = ResourceHelper.resourceToString(basePath + "houmls.houmls");

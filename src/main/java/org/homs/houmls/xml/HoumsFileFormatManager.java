@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 
-public class UxfFileManager {
+public class HoumsFileFormatManager {
 
     public static void writeFile(Diagram diagram, String fileName) throws Exception {
 

@@ -15,7 +15,7 @@ import java.util.function.Supplier;
 
 import static org.homs.houmls.LookAndFeel.basicStroke;
 import static org.homs.houmls.LookAndFeel.dashedStroke;
-import static org.homs.houmls.shape.impl.connector.Type.*;
+import static org.homs.houmls.shape.impl.connector.ConnectorType.*;
 
 public class Connector implements Shape {
 
@@ -117,8 +117,8 @@ public class Connector implements Shape {
             String endStyle = lt.substring(lineStyleCharacterPos + 1);
             String revEndStyle = PropsParser.reverseArrowStyle(endStyle);
 
-            startPoint.type = Type.findByCode(startStyle);
-            endPoint.type = Type.findByCode(revEndStyle);
+            startPoint.type = ConnectorType.findByCode(startStyle);
+            endPoint.type = ConnectorType.findByCode(revEndStyle);
         }
     }
 
@@ -151,7 +151,7 @@ public class Connector implements Shape {
                     public void dragHasFinished(Diagram diagram) {
 
                         // Engrida, excepte si és un comentari de membre, que millor deixar-lo lliure
-                        if (startPoint.type != Type.MEMBER_COMMENT && endPoint.type != Type.MEMBER_COMMENT) {
+                        if (startPoint.type != ConnectorType.MEMBER_COMMENT && endPoint.type != ConnectorType.MEMBER_COMMENT) {
                             startPoint.engrida();
                         }
 
@@ -186,7 +186,7 @@ public class Connector implements Shape {
                     public void dragHasFinished(Diagram diagram) {
 
                         // Engrida, excepte si és un comentari de membre, que millor deixar-lo lliure
-                        if (startPoint.type != Type.MEMBER_COMMENT && endPoint.type != Type.MEMBER_COMMENT) {
+                        if (startPoint.type != ConnectorType.MEMBER_COMMENT && endPoint.type != ConnectorType.MEMBER_COMMENT) {
                             endPoint.engrida();
                         }
 
@@ -280,7 +280,8 @@ public class Connector implements Shape {
         int miny = Math.min(startp.y, endp.y);
         int maxy = Math.max(startp.y, endp.y);
 
-        return new Rectangle(minx, miny, maxx - minx, maxy - miny);
+        var r = new Rectangle(minx, miny, maxx - minx, maxy - miny);
+        return r;
     }
 
     public List<Point> getListOfAbsolutePoints() {
@@ -343,7 +344,7 @@ public class Connector implements Shape {
         }
     }
 
-    protected void drawEdgeOfArrow(Graphics g, Type type, Point firstPoint, double angle, String text) {
+    protected void drawEdgeOfArrow(Graphics g, ConnectorType type, Point firstPoint, double angle, String text) {
 
         //
         // LABEL
@@ -395,12 +396,12 @@ public class Connector implements Shape {
                 turtle.rotate(90 - degreesRomboide * 2);
                 turtle.walk(DIAMOND_SIZE);
 
-                if (type == Type.AGGREGATION) {
+                if (type == ConnectorType.AGGREGATION) {
                     g.setColor(Color.WHITE);
                     turtle.fillPolygon(g);
                     g.setColor(Color.BLACK);
                     turtle.drawPolyline(g);
-                } else if (type == Type.COMPOSITION) {
+                } else if (type == ConnectorType.COMPOSITION) {
                     g.setColor(Color.BLACK);
                     turtle.fillPolygon(g);
                 } else {
@@ -500,7 +501,7 @@ public class Connector implements Shape {
         }
     }
 
-    public void drawCrowsFootNotation(Graphics g, Type type, double posx, double posy, double angle) {
+    public void drawCrowsFootNotation(Graphics g, ConnectorType type, double posx, double posy, double angle) {
 
         double verticalSpace = DIAMOND_SIZE * 2.0 / 3.0;
         int degreesRomboide = 10;
