@@ -315,7 +315,7 @@ public class Canvas extends JPanel {
             JMenuItem toFront = new JMenuItem("add new point");
             pm.add(toFront);
             toFront.addActionListener(e -> {
-                Connector conn = (Connector) selectedShapes.get(1);
+                Connector conn = (Connector) selectedShapes.get(0);
 
                 List<Point> points = conn.getListOfAbsolutePoints();
                 for (var i = 0; i < points.size(); i++) {

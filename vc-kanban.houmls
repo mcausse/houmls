@@ -60,12 +60,12 @@ bg=l-l-green</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>-360</x>
-            <y>-40</y>
+            <x>-270</x>
+            <y>-80</y>
             <w>180</w>
-            <h>80</h>
+            <h>110</h>
         </coordinates>
-        <panel_attributes>._&lt;&lt;IRIS 2022 Kills issue&gt;&gt;
+        <panel_attributes>*IRIS 2022 Kills issue
 
 - Review Infinity docs
 - Ping Gullias
@@ -76,11 +76,11 @@ bg=l-l-green</panel_attributes>
         <id>UMLClass</id>
         <coordinates>
             <x>100</x>
-            <y>-40</y>
+            <y>10</y>
             <w>180</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>Ping Christian 
+        <panel_attributes>*Ping Christian 
 meeting OpenConnect
 
 </panel_attributes>
@@ -90,11 +90,11 @@ meeting OpenConnect
         <id>UMLClass</id>
         <coordinates>
             <x>100</x>
-            <y>60</y>
+            <y>110</y>
             <w>180</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>Review vulnerabilities Lori
+        <panel_attributes>*Review vulnerabilities Lori
 
 @see email
 
@@ -105,13 +105,14 @@ meeting OpenConnect
         <id>UMLClass</id>
         <coordinates>
             <x>100</x>
-            <y>160</y>
+            <y>210</y>
             <w>180</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>Support new Inventory
+        <panel_attributes>*Support new Inventory
 
 - installer @Raúl
+- UTs @Javi
 - PR
 </panel_attributes>
         <additional_attributes/>
@@ -120,11 +121,80 @@ meeting OpenConnect
         <id>UMLClass</id>
         <coordinates>
             <x>100</x>
-            <y>270</y>
+            <y>310</y>
             <w>180</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>SAD changes</panel_attributes>
+        <panel_attributes>*SAD changes
+
+- ask what to do with the 
+new version of .doc</panel_attributes>
         <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>100</x>
+            <y>-90</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>*Quim rampup
+
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>620</x>
+            <y>310</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>*SAD changes
+
+- rephrased sections
+- + new rationale sections</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>280</x>
+            <y>350</y>
+            <w>340</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=.
+</panel_attributes>
+        <additional_attributes>0;0;340;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>620</x>
+            <y>210</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>*Support new Inventory
+
+refactor JSON Mapper 
++ new UT
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>280</x>
+            <y>240</y>
+            <w>340</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=.
+</panel_attributes>
+        <additional_attributes>0;0;340;0</additional_attributes>
     </element>
 </diagram>

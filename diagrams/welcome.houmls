@@ -717,7 +717,8 @@ bg=#cfffcf</panel_attributes>
             <w>100</w>
             <h>20</h>
         </coordinates>
-        <panel_attributes>T: JSONObject</panel_attributes>
+        <panel_attributes>T: JSONObject
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
