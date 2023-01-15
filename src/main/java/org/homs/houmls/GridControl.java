@@ -9,7 +9,7 @@ public class GridControl {
     public static final Color GRID_COLOR = Color.GRAY;
 
     static int roundToMultiple(double x, int m) {
-        return (int) (m * (Math.round(x / m)));
+        return Math.round(m * (Math.round(x / m)));
     }
 
     public static int engrid(int x) {

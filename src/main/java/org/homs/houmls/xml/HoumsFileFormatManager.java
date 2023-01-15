@@ -54,6 +54,8 @@ public class HoumsFileFormatManager {
                 id = "Relation";
             } else if (shape.getClass() == BocadilloConnector.class) {
                 id = "Bocadillo";
+            } else if (shape.getClass() == TurtleBox.class) {
+                id = "TurtleBox";
             } else {
                 throw new RuntimeException(shape.getClass().getName());
             }
@@ -146,6 +148,11 @@ public class HoumsFileFormatManager {
                     }
                     case "UMLState": {
                         RoundedBox box = new RoundedBox(x, y, w, h, attributes);
+                        diagram.addShape(box);
+                        break;
+                    }
+                    case "TurtleBox": {
+                        TurtleBox box = new TurtleBox(x, y, w, h, attributes);
                         diagram.addShape(box);
                         break;
                     }

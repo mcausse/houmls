@@ -213,6 +213,27 @@ public class Canvas extends JPanel {
                         diagram.addShape(bocadillo);
                         repaint();
                     });
+
+                    JMenuItem createTurtleBox = new JMenuItem("create turtle box");
+                    pm.add(createTurtleBox);
+                    createTurtleBox.addActionListener(e -> {
+                        final TurtleBox turtleBox = new TurtleBox(
+                                GridControl.engrid(mousePos.getX()),
+                                GridControl.engrid(mousePos.getY()),
+                                GridControl.engrid(18 * GridControl.GRID_SIZE),
+                                GridControl.engrid(8 * GridControl.GRID_SIZE),
+                                "rotate 90 jump 20 rotate -90\n" +
+                                        "rotate -45 walk 20 \n" +
+                                        "rotate 45 walk 50\n" +
+                                        "rotate 45 walk 20\n" +
+                                        "rotate 90 walk 55\n" +
+                                        "rotate 90 walk 55\n" +
+                                        "rotate 135 walk 76\n" +
+                                        "draw\n"
+                        );
+                        diagram.addShape(turtleBox);
+                        repaint();
+                    });
                 } else if (!Connector.class.isAssignableFrom(selectedShape.getClass())) {
                     /*
                      * POPUP MENU: BOX

@@ -12,7 +12,7 @@
         <panel_attributes>.*Board
 --
 fontsize=24
-bg=orange</panel_attributes>
+bg=l-orange</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -45,7 +45,7 @@ bg=pink</panel_attributes>
     These items could'nt generate ActionItems,
     nothing to do here...
 
-bg=yellow</panel_attributes>
+bg=l-yellow</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -69,7 +69,7 @@ bg=yellow</panel_attributes>
 
 
 
-bg=yellow</panel_attributes>
+bg=l-yellow</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -88,11 +88,11 @@ Discuss the situation, to present the points of view... avoid by the moment to f
 The teammate will select the next related person for the turn.
 
 At the end of the round, discuss about the critical sticky groups. No voting here: all the groups will be important to consider.
-Agreement and ActionItem creation.
+ActionItem creation and final agreement.
 
 
 
-bg=green
+bg=l-l-green
 fontsize=18</panel_attributes>
         <additional_attributes/>
     </element>
@@ -107,7 +107,7 @@ fontsize=18</panel_attributes>
         <panel_attributes>.*Action Items
 --
 fontsize=24
-bg=pink</panel_attributes>
+bg=l-l-blue</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -119,7 +119,7 @@ bg=pink</panel_attributes>
             <h>0</h>
         </coordinates>
         <panel_attributes>lt=-
-bg=yellow</panel_attributes>
+bg=l-yellow</panel_attributes>
         <additional_attributes>0;0;140;50;110;0</additional_attributes>
     </element>
     <element>
@@ -131,7 +131,7 @@ bg=yellow</panel_attributes>
             <h>0</h>
         </coordinates>
         <panel_attributes>lt=-
-bg=yellow</panel_attributes>
+bg=l-yellow</panel_attributes>
         <additional_attributes>0;0;20;60;60;0</additional_attributes>
     </element>
     <element>

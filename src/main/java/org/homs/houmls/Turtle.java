@@ -16,6 +16,15 @@ public class Turtle {
         this.angleInRads = angleInRads;
     }
 
+    public void clear() {
+        var x = xs.peek();
+        var y = xs.peek();
+        this.xs.clear();
+        this.ys.clear();
+        this.xs.push(x);
+        this.ys.push(y);
+    }
+
     public void rotate(double degrees) {
         this.angleInRads += Math.toRadians(degrees);
     }
@@ -85,4 +94,5 @@ public class Turtle {
     public static double pitagoras(double a, double b) {
         return Math.sqrt(Math.pow(a, 2.0) + Math.pow(b, 2.0));
     }
+
 }

@@ -35,6 +35,25 @@ public class PropsParser {
         return getColorByName(propValue);
     }
 
+    static Color lighter(Color c, float factor) {
+        return blend(c, Color.WHITE, factor);
+    }
+
+    static Color blend(Color cFrom, Color cTo, float factor) {
+        if (factor < 0f || factor > 1f) {
+            throw new IllegalArgumentException("factor not between 0 and 1: " + factor);
+        }
+
+        float[] rgbaFrom = cFrom.getRGBComponents(null);
+        float[] rgbaTo = cTo.getRGBComponents(null);
+
+        rgbaFrom[0] += (rgbaTo[0] - rgbaFrom[0]) * factor;
+        rgbaFrom[1] += (rgbaTo[1] - rgbaFrom[1]) * factor;
+        rgbaFrom[2] += (rgbaTo[2] - rgbaFrom[2]) * factor;
+
+        return new Color(rgbaFrom[0], rgbaFrom[1], rgbaFrom[2], rgbaFrom[3]);
+    }
+
     public static Color getColorByName(String name) {
         if (name.startsWith("#")) {
             try {
@@ -44,7 +63,16 @@ public class PropsParser {
             }
         } else {
             try {
-                return (Color) Color.class.getField(name.toUpperCase()).get(null);
+                int lighter = 0;
+                while (name.startsWith("l-")) {
+                    lighter++;
+                    name = name.substring("l-".length());
+                }
+                var c = (Color) Color.class.getField(name.toUpperCase()).get(null);
+                for (int i = 0; i < lighter; i++) {
+                    c = lighter(c, 0.4f);
+                }
+                return c;
             } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
                 return null;
             }
