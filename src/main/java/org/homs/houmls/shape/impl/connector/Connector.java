@@ -63,13 +63,13 @@ public class Connector implements Shape {
     }
 
     @Override
-    public Shape duplicate() {
+    public Shape duplicate(int translatex, int translatey) {
         var r = new Connector(
-                startPoint.getAbsolutePoint().x + DUPLICATE_OFFSET_PX, startPoint.getAbsolutePoint().y + DUPLICATE_OFFSET_PX,
-                endPoint.getAbsolutePoint().x + DUPLICATE_OFFSET_PX, endPoint.getAbsolutePoint().y + DUPLICATE_OFFSET_PX,
+                startPoint.getAbsolutePoint().x + translatex, startPoint.getAbsolutePoint().y + translatey,
+                endPoint.getAbsolutePoint().x + translatex, endPoint.getAbsolutePoint().y + translatey,
                 attributesText
         );
-        middlePoints.forEach(p -> r.middlePoints.add(new DoublePoint(p.x + DUPLICATE_OFFSET_PX, p.y + DUPLICATE_OFFSET_PX)));
+        middlePoints.forEach(p -> r.middlePoints.add(new DoublePoint(p.x + translatex, p.y + translatey)));
         return r;
     }
 

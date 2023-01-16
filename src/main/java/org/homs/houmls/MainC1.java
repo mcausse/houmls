@@ -14,71 +14,21 @@ import java.util.function.Consumer;
 
 import static org.homs.houmls.LookAndFeel.yellowMartin;
 
-// XXX https://stackoverflow.com/questions/63583595/java-graphics2d-zoom-on-mouse-location
-// XXX https://medium.com/@benjamin.botto/zooming-at-the-mouse-coordinates-with-affine-transformations-86e7312fd50b
-
 /**
- * Houmls
- * MartinLet
- * MartinUML
- * JouLet
- *
  * <pre>
- *     X nou listener per a seleccionar elements => info al JTextArea
- *     X resizar boxes
- *     X editar info JTextArea i en component es parseja i s'estila!
- *     X parser de text tipo MarkDown amb aligments
- *
- *     X text a les arrows, cardinalitat (1..2, 0..*) rols, etc...
- *     X layers?
- *     X box de comment (+ pergamino?)
- *     X duplicar element amb double-click
- *
- *     X crear elements + toolbox panel
- *     X esborrar elements
- *     X crear points intermitjos de connectors.
- *     X eliminar points intermitjos de connectors.
- *     ? punt per a moure la fletcha sencera, deslinkant rollo UMLet
- *
- *     P menú general (operacions de fitxer, about, etc).
- *     X llegir XMLs de UMLet
- *     X guardar XMLs de UMLet
- *     ? pestanyes? bah, no cal.
- *     X exportar a PNG, etc... nou main, amb parsing de parameters variats.... {@see org.homs.houmls.ExportAsPng}
- *
- *      x veure com crear un XML (veure DriverEngine...)
- *
- *      X + cercles, elipses
- *      X + Generics <T>
- *      X + moñeco
- *      X + required --o)-- provided
- *      X + altres tipos de caixes a base de diferents turtles... veure diagrames de activitat
- *      X + caixes amb rounded corners
- *
- *      - undo
- *      X multisellecció + moure en grup!
- *      - copy/cutty/paste!
- *      - accions de teclat
- *
- *      - apastelar colors, paleta...
- *      X admetre RGB a més de noms: UMLet: "bg=#00aa70"
- *      - icones al Popupmenu
- *      - millorar el tema MarkDown
- *
- *      - caixa amb codi turtle: recordar com era en QuickBasic. Demo amb turtle
- *      - millorar turtle a lo QBasic?
- *        http://www.antonis.de/qbebooks/gwbasman/draw.html#:~:text=The%20DRAW%20statement%20combines%20most,valid%20only%20in%20graphics%20mode.
- *      X nou connector amb relleno, que es pugui enganxar a caixa i fer bocadillos!
- *
- *      - llegir "UML Distilled" (Martin Fowler) i apendre UML pràctic d'una puta vegada
- *      X importar els diagrams que tinc en GitLab de Roche
- *
+ *     _____ _____ _____ _____ __    _____
+ *    |  |  |     |  |  |     |  |  |   __|
+ *    |     |  |  |  |  | | | |  |__|__   |
+ *    |__|__|_____|_____|_|_|_|_____|_____|
+ *                (powered with bocadillos)
  *
  * </pre>
+ *
+ * @author mohms
  */
 public class MainC1 {
 
-    public static final String FRAME_TITLE = "Houmls -- ";
+    public static final String FRAME_TITLE = "Houmls (╯°o°）╯︵ ┻━┻  -- ";
     public static final String UNNAMED_FILENAME = "Unnamed";
 
     static final Image frameIcon = Toolkit.getDefaultToolkit().getImage(MainC1.class.getClassLoader().getResource("org/homs/houmls/houmls.png"));
@@ -113,6 +63,29 @@ public class MainC1 {
         f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         f.addKeyListener(canvas.getOffsetAndZoomListener());
 
+        JToolBar toolBar = buildToolBar(f, canvas, currentDiagramFileNameConsumer);
+        f.add(toolBar, BorderLayout.NORTH);
+
+        JSplitPane sl = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, canvas, lateralBar);
+        f.add(sl);
+
+        {
+            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
+            Rectangle frameBounds = env.getMaximumWindowBounds();
+            f.setSize(new Dimension(frameBounds.width, frameBounds.height));
+        }
+
+        lateralBar.addKeyListener(canvas.getOffsetAndZoomListener());
+        shapeTextEditor.addKeyListener(canvas.getOffsetAndZoomListener());
+        sl.addKeyListener(canvas.getOffsetAndZoomListener());
+        toolBar.addKeyListener(canvas.getOffsetAndZoomListener());
+        Arrays.stream(toolBar.getComponents()).forEach(c -> c.addKeyListener(canvas.getOffsetAndZoomListener()));
+
+        f.setVisible(true);
+        SwingUtilities.invokeLater(() -> sl.setDividerLocation(0.8));
+    }
+
+    static JToolBar buildToolBar(JFrame frame, Canvas canvas, Consumer<String> currentDiagramFileNameConsumer) {
         JToolBar toolBar = new JToolBar();
         toolBar.setFloatable(false);
 
@@ -143,7 +116,7 @@ public class MainC1 {
                 public void actionPerformed(ActionEvent e) {
                     JFileChooser fc = new JFileChooser(new File("."));
                     fc.setFileFilter(filter);
-                    int returnVal = fc.showOpenDialog(f);
+                    int returnVal = fc.showOpenDialog(frame);
                     if (returnVal == JFileChooser.APPROVE_OPTION) {
                         File file = fc.getSelectedFile();
                         try {
@@ -168,7 +141,7 @@ public class MainC1 {
                     if (fileName == null) {
                         JFileChooser fc = new JFileChooser(new File("."));
                         fc.setFileFilter(filter);
-                        int returnVal = fc.showSaveDialog(f);
+                        int returnVal = fc.showSaveDialog(frame);
                         if (returnVal == JFileChooser.APPROVE_OPTION) {
                             File file = fc.getSelectedFile();
                             try {
@@ -229,28 +202,7 @@ public class MainC1 {
             toolBar.addSeparator();
             toolBar.add(centerDiagram);
         }
-
-        f.add(toolBar, BorderLayout.NORTH);
-
-        JSplitPane sl = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, canvas, lateralBar);
-        f.add(sl);
-
-        {
-            GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
-            Rectangle frameBounds = env.getMaximumWindowBounds();
-            f.setSize(new Dimension(frameBounds.width, frameBounds.height));
-        }
-
-        lateralBar.addKeyListener(canvas.getOffsetAndZoomListener());
-        shapeTextEditor.addKeyListener(canvas.getOffsetAndZoomListener());
-        sl.addKeyListener(canvas.getOffsetAndZoomListener());
-        toolBar.addKeyListener(canvas.getOffsetAndZoomListener());
-        Arrays.stream(toolBar.getComponents()).forEach(c -> c.addKeyListener(canvas.getOffsetAndZoomListener()));
-
-        f.setVisible(true);
-        SwingUtilities.invokeLater(() -> {
-            sl.setDividerLocation(0.8);
-        });
+        return toolBar;
     }
 
     protected static JButton buildButton(String imageName, String toolTipText, String shortCut, String actionCommand, KeyStroke keyStroke, Action action) {

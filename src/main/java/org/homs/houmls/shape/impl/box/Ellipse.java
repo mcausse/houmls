@@ -13,8 +13,8 @@ public class Ellipse extends Box {
     }
 
     @Override
-    public Shape duplicate() {
-        var r = new Ellipse((int) x + DUPLICATE_OFFSET_PX, (int) y + DUPLICATE_OFFSET_PX, (int) width, (int) height, attributesText);
+    public Shape duplicate(int translatex, int translatey) {
+        var r = new Ellipse((int) x + translatex, (int) y + translatey, (int) width, (int) height, attributesText);
         r.setAttributesText(attributesText);
         return r;
     }

@@ -1,14 +1,11 @@
 package org.homs.houmls.shape;
 
-import org.homs.houmls.GridControl;
 import org.homs.houmls.shape.impl.connector.Connector;
 
 import java.awt.*;
 import java.util.Collection;
 
 public interface Shape extends Draggable {
-
-    int DUPLICATE_OFFSET_PX = GridControl.GRID_SIZE * 2;
 
     String getAttributesText();
 
@@ -27,5 +24,5 @@ public interface Shape extends Draggable {
 
     void drawSelection(Graphics g);
 
-    Shape duplicate();
+    Shape duplicate(int translatex, int translatey);
 }

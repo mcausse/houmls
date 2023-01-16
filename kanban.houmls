@@ -117,8 +117,8 @@ area</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>-270</x>
-            <y>-30</y>
+            <x>820</x>
+            <y>160</y>
             <w>180</w>
             <h>80</h>
         </coordinates>

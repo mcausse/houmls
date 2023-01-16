@@ -30,6 +30,10 @@ public class Canvas extends JPanel {
 
     final List<Shape> selectedShapes = new ArrayList<>();
     Draggable draggableUnderMouse = null;
+    final List<Shape> shapesClipboard = new ArrayList<>();
+
+    int mouseCurrentPosX = 0;
+    int mouseCurrentPosY = 0;
 
     class ObjectSelectorListener extends MouseAdapter {
 
@@ -394,10 +398,14 @@ public class Canvas extends JPanel {
 
         @Override
         public void mouseClicked(MouseEvent e) {
+            /*
+             * handles the double-click: duplicate
+             */
+            int DUPLICATE_OFFSET_PX = GridControl.GRID_SIZE * 2;
             if (e.getClickCount() >= 2 && e.getButton() == MouseEvent.BUTTON1) {
                 var shapeToDuplicate = findShapeByMousePosition(e.getX(), e.getY());
                 if (shapeToDuplicate != null) {
-                    addShape(shapeToDuplicate.duplicate());
+                    addShape(shapeToDuplicate.duplicate(DUPLICATE_OFFSET_PX, DUPLICATE_OFFSET_PX));
                     repaint();
                 }
             }
@@ -418,6 +426,51 @@ public class Canvas extends JPanel {
         public void keyPressed(KeyEvent e) {
             controlPressed = e.isControlDown();
             shiftPressed = e.isShiftDown();
+
+            // ^C - copy selection
+            if (controlPressed && (e.getKeyCode() == 'c' || e.getKeyCode() == 'C' || e.getKeyCode() == 'x' || e.getKeyCode() == 'X')) {
+                if (!selectedShapes.isEmpty()) {
+                    shapesClipboard.clear();
+                    Rectangle rect = null;
+                    for (var shape : selectedShapes) {
+                        if (rect == null) {
+                            rect = shape.getRectangle();
+                        } else {
+                            rect = rect.union(shape.getRectangle());
+                        }
+                    }
+                    for (var shape : selectedShapes) {
+                        var s = shape.duplicate(-rect.x, -rect.y);
+                        shapesClipboard.add(s);
+                    }
+                }
+
+                // ^X - cut selection
+                if (e.getKeyCode() == 'x' || e.getKeyCode() == 'X') {
+                    for (var shape : selectedShapes) {
+                        diagram.getShapes().remove(shape);
+                    }
+                    repaint();
+                }
+            }
+
+            // ^V - paste clipboard
+            if (controlPressed && (e.getKeyCode() == 'v' || e.getKeyCode() == 'V')) {
+                final Point2D mousePos;
+                try {
+                    var at = getAffineTransform();
+                    mousePos = at.inverseTransform(new Point(mouseCurrentPosX, mouseCurrentPosY), null);
+                } catch (NoninvertibleTransformException nite) {
+                    throw new RuntimeException(nite);
+                }
+                selectedShapes.clear();
+                for (var shape : shapesClipboard) {
+                    var dupShape = shape.duplicate((int) mousePos.getX(), (int) mousePos.getY());
+                    diagram.addShape(dupShape);
+                    selectedShapes.add(dupShape);
+                }
+                repaint();
+            }
         }
 
         @Override
@@ -548,6 +601,9 @@ public class Canvas extends JPanel {
         @Override
         public void mouseMoved(MouseEvent e) {
             var draggable = findDraggableByMousePosition(e.getX(), e.getY());
+
+            mouseCurrentPosX = e.getX();
+            mouseCurrentPosY = e.getY();
 
             if (Canvas.this.draggableUnderMouse != draggable) {
                 repaint();

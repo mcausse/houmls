@@ -15,8 +15,8 @@ public class TurtleBox extends Box {
     }
 
     @Override
-    public Shape duplicate() {
-        var r = new TurtleBox((int) x + DUPLICATE_OFFSET_PX, (int) y + DUPLICATE_OFFSET_PX, (int) width, (int) height, attributesText);
+    public Shape duplicate(int translatex, int translatey) {
+        var r = new TurtleBox((int) x + translatex, (int) y + translatey, (int) width, (int) height, attributesText);
         r.setAttributesText(attributesText);
         return r;
     }

@@ -20,8 +20,8 @@ public class Moneco extends Box {
     }
 
     @Override
-    public Shape duplicate() {
-        return new Moneco((int) x + DUPLICATE_OFFSET_PX, (int) y + DUPLICATE_OFFSET_PX, attributesText);
+    public Shape duplicate(int translatex, int translatey) {
+        return new Moneco((int) x + translatex, (int) y + translatey, attributesText);
     }
 
     @Override
