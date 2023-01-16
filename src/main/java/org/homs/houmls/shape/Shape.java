@@ -1,9 +1,6 @@
 package org.homs.houmls.shape;
 
-import org.homs.houmls.shape.impl.connector.Connector;
-
 import java.awt.*;
-import java.util.Collection;
 
 public interface Shape extends Draggable {
 
@@ -11,14 +8,7 @@ public interface Shape extends Draggable {
 
     void setAttributesText(String attributesText);
 
-    /**
-     * @param connectors the list of {@link Connector}s, needed when a box
-     *                   is resized and we should update the linked coordinates.
-     * @param mousex
-     * @param mousey
-     * @return
-     */
-    Draggable findDraggableByPos(Collection<Shape> connectors, double mousex, double mousey);
+    Draggable findDraggableByPos(double mousex, double mousey);
 
     void draw(Graphics g);
 

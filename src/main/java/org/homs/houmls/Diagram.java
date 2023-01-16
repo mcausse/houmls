@@ -38,10 +38,6 @@ public class Diagram {
         this.shapes.add(element);
     }
 
-    public void addShapes(Collection<Shape> elements) {
-        this.shapes.addAll(elements);
-    }
-
     public List<Shape> getShapesBy(Predicate<? super Shape> predicate) {
         return shapes.stream().filter(predicate).collect(Collectors.toList());
     }

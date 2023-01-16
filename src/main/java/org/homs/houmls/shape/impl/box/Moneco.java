@@ -6,7 +6,6 @@ import org.homs.houmls.shape.Draggable;
 import org.homs.houmls.shape.Shape;
 
 import java.awt.*;
-import java.util.Collection;
 
 import static org.homs.houmls.LookAndFeel.basicStroke;
 
@@ -25,7 +24,7 @@ public class Moneco extends Box {
     }
 
     @Override
-    public Draggable findDraggableByPos(Collection<Shape> connectors, double mousex, double mousey) {
+    public Draggable findDraggableByPos(double mousex, double mousey) {
         if (this.x <= mousex && mousex <= this.x + this.width && this.y <= mousey && mousey <= this.y + this.height) {
             return this;
         }

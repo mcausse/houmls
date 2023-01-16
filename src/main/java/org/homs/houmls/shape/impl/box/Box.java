@@ -6,7 +6,6 @@ import org.homs.houmls.shape.Draggable;
 import org.homs.houmls.shape.Shape;
 
 import java.awt.*;
-import java.util.Collection;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -77,7 +76,6 @@ public class Box implements Shape {
         int ix = (int) x;
         int iy = (int) y;
         int iwidth = (int) width;
-        int iheight = (int) height;
 
         drawTheBox((Graphics2D) g);
 
@@ -162,7 +160,7 @@ public class Box implements Shape {
     }
 
     @Override
-    public Draggable findDraggableByPos(Collection<Shape> connectors, double mousex, double mousey) {
+    public Draggable findDraggableByPos(double mousex, double mousey) {
 
         // S
         {

@@ -19,7 +19,6 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static org.homs.houmls.LookAndFeel.SHAPE_SELECTED_COLOR;
@@ -44,20 +43,20 @@ public class Canvas extends JPanel {
             this.editorTextPaneRef.getDocument().addDocumentListener(new DocumentListener() {
                 @Override
                 public void insertUpdate(DocumentEvent e) {
-                    update(e);
+                    update();
                 }
 
                 @Override
                 public void removeUpdate(DocumentEvent e) {
-                    update(e);
+                    update();
                 }
 
                 @Override
                 public void changedUpdate(DocumentEvent e) {
-                    update(e);
+                    update();
                 }
 
-                void update(DocumentEvent e) {
+                void update() {
                     if (selectedShapes.isEmpty()) {
                         diagram.setDiagramAttributesText(editorTextPaneRef.getText());
                     } else if (selectedShapes.size() == 1) {
@@ -623,12 +622,8 @@ public class Canvas extends JPanel {
 
     Diagram diagram = new Diagram();
 
-    final JTextArea editorTextPaneRef;
-
     public Canvas(JTextArea editorTextPaneRef) {
         super(true);
-
-        this.editorTextPaneRef = editorTextPaneRef;
 
         this.offsetAndZoomListener = new OffsetAndZoomListener();
         addMouseWheelListener(offsetAndZoomListener);
@@ -759,7 +754,7 @@ public class Canvas extends JPanel {
         List<Shape> connectorsList = diagram.getShapesBy(shape -> Connector.class.isAssignableFrom(shape.getClass()));
         for (var connector : connectorsList) {
             if (Connector.class.isAssignableFrom(connector.getClass())) {
-                var draggable = connector.findDraggableByPos(Collections.emptyList(), mousePos.getX(), mousePos.getY());
+                var draggable = connector.findDraggableByPos(mousePos.getX(), mousePos.getY());
                 if (draggable != null) {
                     return draggable;
                 }
@@ -769,7 +764,7 @@ public class Canvas extends JPanel {
         for (int i = nonConnectorsList.size() - 1; i >= 0; i--) {
             Shape nonconnector = nonConnectorsList.get(i);
             if (!Connector.class.isAssignableFrom(nonconnector.getClass())) {
-                var draggable = nonconnector.findDraggableByPos(connectorsList, mousePos.getX(), mousePos.getY());
+                var draggable = nonconnector.findDraggableByPos(mousePos.getX(), mousePos.getY());
                 if (draggable != null) {
                     return draggable;
                 }
@@ -790,7 +785,7 @@ public class Canvas extends JPanel {
 
         List<Shape> connectorsList = diagram.getShapesBy(shape -> Connector.class.isAssignableFrom(shape.getClass()));
         for (var connector : connectorsList) {
-            var draggable = connector.findDraggableByPos(Collections.emptyList(), mousePos.getX(), mousePos.getY());
+            var draggable = connector.findDraggableByPos(mousePos.getX(), mousePos.getY());
             if (draggable != null) {
                 return connector; // <======================
             }
@@ -799,7 +794,7 @@ public class Canvas extends JPanel {
         var nonConnectorsList = diagram.getShapesBy(shape -> !Connector.class.isAssignableFrom(shape.getClass()));
         for (int i = nonConnectorsList.size() - 1; i >= 0; i--) {
             Shape nonconnector = nonConnectorsList.get(i);
-            var draggable = nonconnector.findDraggableByPos(connectorsList, mousePos.getX(), mousePos.getY());
+            var draggable = nonconnector.findDraggableByPos(mousePos.getX(), mousePos.getY());
             if (draggable != null) {
                 return nonconnector; // <======================
             }
@@ -810,9 +805,5 @@ public class Canvas extends JPanel {
 
     public String getDiagramName() {
         return diagram.getName();
-    }
-
-    public void setDiagramName(String name) {
-        diagram.setName(name);
     }
 }

@@ -8,7 +8,6 @@ import org.homs.houmls.shape.Shape;
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
@@ -35,10 +34,6 @@ public class Connector implements Shape {
         public void translate(double dx, double dy) {
             this.x += dx;
             this.y += dy;
-        }
-
-        public Point toPoint() {
-            return new Point((int) this.x, (int) this.y);
         }
     }
 
@@ -123,7 +118,7 @@ public class Connector implements Shape {
     }
 
     @Override
-    public Draggable findDraggableByPos(Collection<Shape> connectors, double mousex, double mousey) {
+    public Draggable findDraggableByPos(double mousex, double mousey) {
 
         /*
          * START

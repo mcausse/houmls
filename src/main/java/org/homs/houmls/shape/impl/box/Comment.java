@@ -28,7 +28,6 @@ public class Comment extends Box {
         int ix = (int) x;
         int iy = (int) y;
         int iwidth = (int) width;
-        int iheight = (int) height;
 
         g2.setStroke(basicStroke);
 
