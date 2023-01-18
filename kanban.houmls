@@ -141,8 +141,8 @@ add keyboard actions</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>-270</x>
-            <y>170</y>
+            <x>810</x>
+            <y>290</y>
             <w>180</w>
             <h>80</h>
         </coordinates>
@@ -246,19 +246,6 @@ stroke</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>UMLNote</id>
-        <coordinates>
-            <x>-380</x>
-            <y>-190</y>
-            <w>1430</w>
-            <h>60</h>
-        </coordinates>
-        <panel_attributes>.Martin Kanban
-fontsize=38
-bg=l-yellow</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
         <id>UMLClass</id>
         <coordinates>
             <x>820</x>
@@ -282,6 +269,61 @@ bg=l-yellow</panel_attributes>
         <panel_attributes>
 icona per a la app
 </panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>840</x>
+            <y>330</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*&lt;&lt;issue&gt;&gt;
+--
+after undo changes, the 
+connectors are unlinked 
+from the boxes</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLNote</id>
+        <coordinates>
+            <x>-380</x>
+            <y>-190</y>
+            <w>1430</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>.Martin Kanban
+fontsize=38
+bg=l-yellow</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>370</x>
+            <y>130</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*&lt;&lt;issue&gt;&gt;
+--
+Copy-paste from text area 
+causes a copy/paste in the 
+diagram.</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>-270</x>
+            <y>-30</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>
+pestañas</panel_attributes>
         <additional_attributes/>
     </element>
 </diagram>

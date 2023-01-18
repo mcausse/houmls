@@ -46,7 +46,7 @@ public class HoumsFileFormatManager {
                 id = "UMLClass";
             } else if (shape.getClass() == Ellipse.class) {
                 id = "UMLUseCase";
-            } else if (shape.getClass() == Moneco.class) {
+            } else if (shape.getClass() == Actor.class) {
                 id = "UMLActor";
             } else if (shape.getClass() == RoundedBox.class) {
                 id = "UMLState";
@@ -142,7 +142,7 @@ public class HoumsFileFormatManager {
                         break;
                     }
                     case "UMLActor": {
-                        Moneco box = new Moneco(x, y, attributes);
+                        Actor box = new Actor(x, y, attributes);
                         diagram.addShape(box);
                         break;
                     }
@@ -196,12 +196,9 @@ public class HoumsFileFormatManager {
         //
         // linka
         //
-        for (var element : diagram.getShapes()) {
-            if (Connector.class.isAssignableFrom(element.getClass())) {
-                ((Connector) element).manageLink(diagram.getShapes());
-            }
-        }
+        diagram.manageConnectorLinks();
 
         return diagram;
     }
+
 }

@@ -46,4 +46,10 @@ public class ExportAsPngTest {
     void retroBoard() throws Exception {
         ExportAsPng.main(new String[]{"retro-board.houmls", "--output=diagrams/retro-board.png"});
     }
+
+    @Test
+    void houmls_white_paper() throws Exception {
+        ExportAsPng.main(new String[]{basePath + "houmls-white-paper.houmls", "--output=diagrams/houmls-white-paper.png"});
+    }
+
 }

@@ -496,7 +496,7 @@ public class Connector implements Shape {
         }
     }
 
-    public void drawCrowsFootNotation(Graphics g, ConnectorType type, double posx, double posy, double angle) {
+    protected void drawCrowsFootNotation(Graphics g, ConnectorType type, double posx, double posy, double angle) {
 
         double verticalSpace = DIAMOND_SIZE * 2.0 / 3.0;
         int degreesRomboide = 10;

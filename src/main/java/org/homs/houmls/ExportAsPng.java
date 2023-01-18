@@ -24,13 +24,13 @@ public class ExportAsPng {
         System.out.print("Exporting: " + String.join(" ", args) + "...");
 
         Canvas canvas = new Canvas(new JTextArea());
-        canvas.diagram = HoumsFileFormatManager.loadFile(inputFileName);
-        Rectangle diagramBounds = canvas.diagram.getDiagramBounds();
+        canvas.setDiagram(HoumsFileFormatManager.loadFile(inputFileName));
+        Rectangle diagramBounds = canvas.getDiagram().getDiagramBounds();
         diagramBounds.grow(100, 100);
 
         canvas.setSize((int) (diagramBounds.width * zoom), (int) (diagramBounds.height * zoom));
         canvas.centerDiagram();
-        canvas.diagram.zoom = zoom;
+        canvas.getDiagram().zoom = zoom;
 
         BufferedImage bi = new BufferedImage((int) (diagramBounds.width * zoom), (int) (diagramBounds.height * zoom), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = bi.createGraphics();

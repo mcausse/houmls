@@ -20,6 +20,7 @@ import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 import static org.homs.houmls.LookAndFeel.SHAPE_SELECTED_COLOR;
 import static org.homs.houmls.LookAndFeel.basicStroke;
@@ -158,6 +159,7 @@ public class Canvas extends JPanel {
                             "lt=->\n"
                     ));
                     repaint();
+                    pushUndoCheckpoint();
                 });
 
                 pm.addSeparator();
@@ -176,6 +178,7 @@ public class Canvas extends JPanel {
                                     "--\n"
                     ));
                     repaint();
+                    pushUndoCheckpoint();
                 });
                 JMenuItem createComment = new JMenuItem("create comment");
                 pm.add(createComment);
@@ -188,6 +191,7 @@ public class Canvas extends JPanel {
                             "Note...\n"
                     ));
                     repaint();
+                    pushUndoCheckpoint();
                 });
                 JMenuItem createRoundedBox = new JMenuItem("create rounded box");
                 pm.add(createRoundedBox);
@@ -200,6 +204,7 @@ public class Canvas extends JPanel {
                             ".*Title\n--\nfontsize=24\n"
                     ));
                     repaint();
+                    pushUndoCheckpoint();
                 });
                 JMenuItem createEllipse = new JMenuItem("create ellipse");
                 pm.add(createEllipse);
@@ -212,16 +217,18 @@ public class Canvas extends JPanel {
                             ".*Title\nfontsize=24\n"
                     ));
                     repaint();
+                    pushUndoCheckpoint();
                 });
                 JMenuItem createActor = new JMenuItem("create actor");
                 pm.add(createActor);
                 createActor.addActionListener(e -> {
-                    diagram.addShape(new Moneco(
+                    diagram.addShape(new Actor(
                             GridControl.engrid(mousePos.getX()),
                             GridControl.engrid(mousePos.getY()),
                             "  Actor\n"
                     ));
                     repaint();
+                    pushUndoCheckpoint();
                 });
                 JMenuItem createBocadillo = new JMenuItem("create bocadillo");
                 pm.add(createBocadillo);
@@ -239,6 +246,7 @@ public class Canvas extends JPanel {
                     ));
                     diagram.addShape(bocadillo);
                     repaint();
+                    pushUndoCheckpoint();
                 });
 
                 JMenuItem createTurtleBox = new JMenuItem("create turtle box");
@@ -260,6 +268,7 @@ public class Canvas extends JPanel {
                     );
                     diagram.addShape(turtleBox);
                     repaint();
+                    pushUndoCheckpoint();
                 });
             } else if (!Connector.class.isAssignableFrom(selectedShape.getClass())) {
                 /*
@@ -271,6 +280,7 @@ public class Canvas extends JPanel {
                 toFront.addActionListener(e -> {
                     diagram.sendToFront(selectedShape);
                     repaint();
+                    pushUndoCheckpoint();
                 });
 
                 JMenuItem toBack = new JMenuItem("to back");
@@ -278,6 +288,7 @@ public class Canvas extends JPanel {
                 toBack.addActionListener(e -> {
                     diagram.sendToBack(selectedShape);
                     repaint();
+                    pushUndoCheckpoint();
                 });
 
                 pm.addSeparator();
@@ -287,6 +298,7 @@ public class Canvas extends JPanel {
                 deleteBox.addActionListener(e -> {
                     diagram.getShapes().removeAll(selectedShapes);
                     selectedShapes.clear();
+                    pushUndoCheckpoint();
                     repaint();
                 });
 
@@ -306,6 +318,7 @@ public class Canvas extends JPanel {
                     diagram.getShapes().removeAll(selectedShapes);
                     selectedShapes.clear();
                     repaint();
+                    pushUndoCheckpoint();
                 });
             }
             return pm;
@@ -340,8 +353,10 @@ public class Canvas extends JPanel {
 
                         if (indexOfClickedPoint >= conn.getMiddlePoints().size()) {
                             conn.getMiddlePoints().add(middlePointToCreate);
+                            pushUndoCheckpoint();
                         } else {
                             conn.getMiddlePoints().add(indexOfClickedPoint, middlePointToCreate);
+                            pushUndoCheckpoint();
                         }
                         break;
                     }
@@ -376,15 +391,18 @@ public class Canvas extends JPanel {
                             conn.getStartPoint().posx = conn.getMiddlePoints().get(0).x;
                             conn.getStartPoint().posy = conn.getMiddlePoints().get(0).y;
                             conn.getMiddlePoints().remove(0);
+                            pushUndoCheckpoint();
                         } else if (i == points.size() - 1) {
                             // remove last point
                             conn.getEndPoint().linkedShape = null;
                             conn.getEndPoint().posx = conn.getMiddlePoints().get(conn.getMiddlePoints().size() - 1).x;
                             conn.getEndPoint().posy = conn.getMiddlePoints().get(conn.getMiddlePoints().size() - 1).y;
                             conn.getMiddlePoints().remove(conn.getMiddlePoints().size() - 1);
+                            pushUndoCheckpoint();
                         } else {
                             // remove middle point
                             conn.getMiddlePoints().remove(i - 1);
+                            pushUndoCheckpoint();
                         }
 
                         break;
@@ -397,6 +415,14 @@ public class Canvas extends JPanel {
 
         @Override
         public void mouseClicked(MouseEvent e) {
+
+            // en clickar al Canvas, no agafa el focus, podent
+            // quedar en el JTextArea i causar pastes raros.
+            // => ja faig jo el canvi de focus
+            if (e.getSource() == Canvas.this) {
+                Canvas.this.requestFocus();
+            }
+
             /*
              * handles the double-click: duplicate
              */
@@ -406,9 +432,18 @@ public class Canvas extends JPanel {
                 if (shapeToDuplicate != null) {
                     addShape(shapeToDuplicate.duplicate(DUPLICATE_OFFSET_PX, DUPLICATE_OFFSET_PX));
                     repaint();
+                    pushUndoCheckpoint();
                 }
             }
         }
+    }
+
+    // ^Z
+    final Stack<Diagram> undoStack = new Stack<>();
+
+    // ^Z
+    public void pushUndoCheckpoint() {
+        this.undoStack.push(diagram.clone());
     }
 
     final OffsetAndZoomListener offsetAndZoomListener;
@@ -426,49 +461,72 @@ public class Canvas extends JPanel {
             controlPressed = e.isControlDown();
             shiftPressed = e.isShiftDown();
 
-            // ^C - copy selection
-            if (controlPressed && (e.getKeyCode() == 'c' || e.getKeyCode() == 'C' || e.getKeyCode() == 'x' || e.getKeyCode() == 'X')) {
-                if (!selectedShapes.isEmpty()) {
-                    shapesClipboard.clear();
-                    Rectangle rect = null;
-                    for (var shape : selectedShapes) {
-                        if (rect == null) {
-                            rect = shape.getRectangle();
-                        } else {
-                            rect = rect.union(shape.getRectangle());
-                        }
-                    }
-                    for (var shape : selectedShapes) {
-                        var s = shape.duplicate(-rect.x, -rect.y);
-                        shapesClipboard.add(s);
-                    }
-                }
+            //
+            // <<issue>> - Copy-paste from text area causes a copy/paste in the diagram.
+            //
+            // Evita ^Z/^C/^X/^V si ve del component TextArea de propietats de l'objecte.
+            //
+            if (e.getSource() != editorTextPaneRef) {
 
-                // ^X - cut selection
-                if (e.getKeyCode() == 'x' || e.getKeyCode() == 'X') {
-                    for (var shape : selectedShapes) {
-                        diagram.getShapes().remove(shape);
+                // ^Z
+                if (controlPressed && (e.getKeyCode() == 'z' || e.getKeyCode() == 'Z')) {
+                    if (undoStack.size() == 1) {
+                        diagram = undoStack.peek().clone();
+                    } else {
+                        diagram = undoStack.pop();
                     }
+                    selectedShapes.clear();
+                    diagram.manageConnectorLinks();
                     repaint();
                 }
-            }
 
-            // ^V - paste clipboard
-            if (controlPressed && (e.getKeyCode() == 'v' || e.getKeyCode() == 'V')) {
-                final Point2D mousePos;
-                try {
-                    var at = getAffineTransform();
-                    mousePos = at.inverseTransform(new Point(mouseCurrentPosX, mouseCurrentPosY), null);
-                } catch (NoninvertibleTransformException nite) {
-                    throw new RuntimeException(nite);
+                if (controlPressed && (e.getKeyCode() == 'c' || e.getKeyCode() == 'C' || e.getKeyCode() == 'x' || e.getKeyCode() == 'X')) {
+
+                    // ^C - copy selection
+                    if (!selectedShapes.isEmpty()) {
+                        shapesClipboard.clear();
+                        Rectangle rect = null;
+                        for (var shape : selectedShapes) {
+                            if (rect == null) {
+                                rect = shape.getRectangle();
+                            } else {
+                                rect = rect.union(shape.getRectangle());
+                            }
+                        }
+                        for (var shape : selectedShapes) {
+                            var s = shape.duplicate(-rect.x, -rect.y);
+                            shapesClipboard.add(s);
+                        }
+                    }
+
+                    // ^X - cut selection
+                    if (e.getKeyCode() == 'x' || e.getKeyCode() == 'X') {
+                        for (var shape : selectedShapes) {
+                            diagram.getShapes().remove(shape);
+                        }
+                        repaint();
+                        pushUndoCheckpoint();
+                    }
                 }
-                selectedShapes.clear();
-                for (var shape : shapesClipboard) {
-                    var dupShape = shape.duplicate((int) mousePos.getX(), (int) mousePos.getY());
-                    diagram.addShape(dupShape);
-                    selectedShapes.add(dupShape);
+
+                // ^V - paste clipboard
+                if (controlPressed && (e.getKeyCode() == 'v' || e.getKeyCode() == 'V')) {
+                    final Point2D mousePos;
+                    try {
+                        var at = getAffineTransform();
+                        mousePos = at.inverseTransform(new Point(mouseCurrentPosX, mouseCurrentPosY), null);
+                    } catch (NoninvertibleTransformException nite) {
+                        throw new RuntimeException(nite);
+                    }
+                    selectedShapes.clear();
+                    for (var shape : shapesClipboard) {
+                        var dupShape = shape.duplicate((int) mousePos.getX(), (int) mousePos.getY());
+                        diagram.addShape(dupShape);
+                        selectedShapes.add(dupShape);
+                    }
+                    repaint();
+                    pushUndoCheckpoint();
                 }
-                repaint();
             }
         }
 
@@ -585,12 +643,14 @@ public class Canvas extends JPanel {
             if (selectionBoxRectangle != null) {
                 selectionBoxRectangle = null;
                 repaint();
+                pushUndoCheckpoint();
             }
             if (lastDragPoint != null) {
                 if (selectedDraggable != null) {
                     selectedDraggable.dragHasFinished(diagram);
                 }
                 repaint();
+                pushUndoCheckpoint();
             }
             firstDragPoint = null;
             lastDragPoint = null;
@@ -620,10 +680,24 @@ public class Canvas extends JPanel {
 
     }
 
-    Diagram diagram = new Diagram();
+    private Diagram diagram;
+    private final JTextArea editorTextPaneRef;
+
+    public void setDiagram(Diagram diagram) {
+        this.diagram = diagram;
+        this.undoStack.clear();
+        pushUndoCheckpoint();
+    }
+
+    public Diagram getDiagram() {
+        return diagram;
+    }
 
     public Canvas(JTextArea editorTextPaneRef) {
         super(true);
+
+        this.diagram = new Diagram();
+        this.editorTextPaneRef = editorTextPaneRef;
 
         this.offsetAndZoomListener = new OffsetAndZoomListener();
         addMouseWheelListener(offsetAndZoomListener);
@@ -657,6 +731,7 @@ public class Canvas extends JPanel {
         this.diagram.offsetY = (canvasCenter.y - diagramCenter.y);
 
         repaint();
+        pushUndoCheckpoint();
     }
 
     @Override

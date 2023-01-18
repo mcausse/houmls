@@ -3,6 +3,18 @@
     <help_text>Welcome to Houmls
 </help_text>
     <element>
+        <id>UMLActor</id>
+        <coordinates>
+            <x>740</x>
+            <y>-530</y>
+            <w>50</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
         <id>UMLState</id>
         <coordinates>
             <x>1410</x>
@@ -423,7 +435,7 @@ return</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>2520</x>
+            <x>2050</x>
             <y>-310</y>
             <w>180</w>
             <h>100</h>
@@ -438,7 +450,7 @@ bg=l-l-l-magenta</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>2610</x>
+            <x>2140</x>
             <y>-270</y>
             <w>90</w>
             <h>60</h>
@@ -759,7 +771,7 @@ bg=#cfffcf</panel_attributes>
         <id>Relation</id>
         <coordinates>
             <x>1930</x>
-            <y>0</y>
+            <y>20</y>
             <w>180</w>
             <h>0</h>
         </coordinates>
@@ -932,8 +944,8 @@ bg=l-l-l-red</panel_attributes>
     <element>
         <id>UMLState</id>
         <coordinates>
-            <x>2080</x>
-            <y>-360</y>
+            <x>2400</x>
+            <y>-380</y>
             <w>170</w>
             <h>90</h>
         </coordinates>
@@ -949,8 +961,8 @@ bg=l-yellow</panel_attributes>
     <element>
         <id>Bocadillo</id>
         <coordinates>
-            <x>2190</x>
-            <y>-270</y>
+            <x>2510</x>
+            <y>-290</y>
             <w>30</w>
             <h>0</h>
         </coordinates>
@@ -961,8 +973,8 @@ bg=l-yellow</panel_attributes>
     <element>
         <id>UMLActor</id>
         <coordinates>
-            <x>2220</x>
-            <y>-250</y>
+            <x>2540</x>
+            <y>-270</y>
             <w>50</w>
             <h>80</h>
         </coordinates>
@@ -973,8 +985,8 @@ bg=l-yellow</panel_attributes>
     <element>
         <id>UMLActor</id>
         <coordinates>
-            <x>2290</x>
-            <y>-250</y>
+            <x>2610</x>
+            <y>-270</y>
             <w>50</w>
             <h>80</h>
         </coordinates>
@@ -985,8 +997,8 @@ bg=l-yellow</panel_attributes>
     <element>
         <id>UMLState</id>
         <coordinates>
-            <x>2300</x>
-            <y>-310</y>
+            <x>2620</x>
+            <y>-330</y>
             <w>150</w>
             <h>60</h>
         </coordinates>
@@ -1000,8 +1012,8 @@ bg=l-yellow</panel_attributes>
     <element>
         <id>Bocadillo</id>
         <coordinates>
-            <x>2360</x>
-            <y>-250</y>
+            <x>2680</x>
+            <y>-270</y>
             <w>30</w>
             <h>0</h>
         </coordinates>
@@ -1649,8 +1661,8 @@ bg=l-l-l-cyan
     <element>
         <id>UMLState</id>
         <coordinates>
-            <x>710</x>
-            <y>-520</y>
+            <x>720</x>
+            <y>-590</y>
             <w>60</w>
             <h>60</h>
         </coordinates>
@@ -1662,8 +1674,8 @@ fontsize=15
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>730</x>
-            <y>-500</y>
+            <x>740</x>
+            <y>-570</y>
             <w>20</w>
             <h>20</h>
         </coordinates>
@@ -1671,5 +1683,17 @@ fontsize=15
 
 </panel_attributes>
         <additional_attributes/>
+    </element>
+    <element>
+        <id>Bocadillo</id>
+        <coordinates>
+            <x>740</x>
+            <y>-530</y>
+            <w>20</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=-
+bg=green</panel_attributes>
+        <additional_attributes>0;0;20;20;20;0</additional_attributes>
     </element>
 </diagram>

@@ -14,7 +14,6 @@ public class ConnectorPoint {
     public ConnectorType type;
     public double posx;
     public double posy;
-
     public String text = "";
 
     public ConnectorPoint(Shape linkedShape, ConnectorType type, double posx, double posy) {

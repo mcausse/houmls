@@ -6,13 +6,13 @@
     <element>
         <id>UMLState</id>
         <coordinates>
-            <x>1920</x>
+            <x>1930</x>
             <y>1090</y>
             <w>470</w>
             <h>550</h>
         </coordinates>
         <panel_attributes>.Event Handlers
-
+--
 
 
 
@@ -30,7 +30,7 @@ fontsize=18
             <h>150</h>
         </coordinates>
         <panel_attributes>.DE messages entrypoint
-
+--
 
 
 
@@ -44,7 +44,7 @@ fontsize=18
         <coordinates>
             <x>1100</x>
             <y>2160</y>
-            <w>230</w>
+            <w>250</w>
             <h>80</h>
         </coordinates>
         <panel_attributes>
@@ -58,9 +58,9 @@ fontsize=10</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>1070</x>
+            <x>1050</x>
             <y>1680</y>
-            <w>220</w>
+            <w>260</w>
             <h>60</h>
         </coordinates>
         <panel_attributes>
@@ -94,7 +94,7 @@ fontsize=10</panel_attributes>
             <w>1080</w>
             <h>390</h>
         </coordinates>
-        <panel_attributes>* ACK table*
+        <panel_attributes>* ACK table
 
 
 
@@ -124,7 +124,7 @@ fontsize=25
             <w>1080</w>
             <h>550</h>
         </coordinates>
-        <panel_attributes>* Queue Tables (Messages &amp; Events)*
+        <panel_attributes>* Queue Tables (Messages &amp; Events)
 
 
 
@@ -171,7 +171,7 @@ fontsize=10</panel_attributes>
             <h>150</h>
         </coordinates>
         <panel_attributes>.HL7/WS messages entrypoint
-
+--
 
 
 
@@ -189,7 +189,7 @@ fontsize=18
             <h>200</h>
         </coordinates>
         <panel_attributes>.ImportRouter
-
+--
 
 
 
@@ -215,12 +215,12 @@ fontsize=18
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>2170</x>
+            <x>2200</x>
             <y>1330</y>
             <w>160</w>
             <h>60</h>
         </coordinates>
-        <panel_attributes>hca.imp.chcaAPAddOrder
+        <panel_attributes>.*hca.imp.chcaAPAddOrder
 --
 --
 OrderMainProcess()
@@ -233,10 +233,10 @@ fontsize=10</panel_attributes>
         <coordinates>
             <x>1960</x>
             <y>1330</y>
-            <w>160</w>
+            <w>180</w>
             <h>60</h>
         </coordinates>
-        <panel_attributes>hca.imp.chcaAPOrderHandler
+        <panel_attributes>.*hca.imp.chcaAPOrderHandler
 --
 --
 OrderEntrance()
@@ -248,13 +248,13 @@ fontsize=10</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>2120</x>
+            <x>2140</x>
             <y>1370</y>
-            <w>50</w>
+            <w>60</w>
             <h>0</h>
         </coordinates>
         <panel_attributes>lt=&lt;-</panel_attributes>
-        <additional_attributes>50;0;0;0</additional_attributes>
+        <additional_attributes>60;0;0;0</additional_attributes>
     </element>
     <element>
         <id>UMLClass</id>
@@ -264,7 +264,7 @@ fontsize=10</panel_attributes>
             <w>230</w>
             <h>120</h>
         </coordinates>
-        <panel_attributes>hca.imp.chcaImportRouter
+        <panel_attributes>.*hca.imp.chcaImportRouter
 --
 --
 ImportRouter()
@@ -292,7 +292,7 @@ transparency=0</panel_attributes>
             <w>160</w>
             <h>60</h>
         </coordinates>
-        <panel_attributes>hca.chcaCreateObjectAP
+        <panel_attributes>.*hca.chcaCreateObjectAP
 --
 --
 In()
@@ -320,7 +320,7 @@ fontsize=10</panel_attributes>
             <w>170</w>
             <h>60</h>
         </coordinates>
-        <panel_attributes>hca.chcaMessageRouter
+        <panel_attributes>.*hca.chcaMessageRouter
 --
 --
 ParserRouter()
@@ -333,10 +333,10 @@ fontsize=10</panel_attributes>
         <coordinates>
             <x>440</x>
             <y>1280</y>
-            <w>190</w>
+            <w>210</w>
             <h>70</h>
         </coordinates>
-        <panel_attributes>hca.mhl.chcaMessageReaderDaemon
+        <panel_attributes>.*hca.mhl.chcaMessageReaderDaemon
 --
 --
 MainReader()
@@ -354,7 +354,7 @@ bg=orange</panel_attributes>
             <w>190</w>
             <h>60</h>
         </coordinates>
-        <panel_attributes>hca.chcaMainEntrance
+        <panel_attributes>.*hca.chcaMainEntrance
 --
 --
 InMessage()
@@ -390,10 +390,10 @@ fontsize=10</panel_attributes>
         <coordinates>
             <x>1960</x>
             <y>1410</y>
-            <w>160</w>
+            <w>180</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>hca.imp.chcaAPPatientHandler
+        <panel_attributes>.*hca.imp.chcaAPPatientHandler
 --
 --
 PatientEntrance()
@@ -465,7 +465,7 @@ fontsize=10</panel_attributes>
             <w>290</w>
             <h>110</h>
         </coordinates>
-        <panel_attributes>.*HL7 messages only*
+        <panel_attributes>.*HL7 messages only
 Parses the %Stream message
 and builds the msg.LIS
 
@@ -512,12 +512,12 @@ fontsize=10</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>570</x>
+            <x>450</x>
             <y>2310</y>
-            <w>190</w>
+            <w>310</w>
             <h>140</h>
         </coordinates>
-        <panel_attributes>hca.mhl.chcaMessageEventDaemon
+        <panel_attributes>.*hca.mhl.chcaMessageEventDaemon
 --
 --
 ProcessAutoEvent()
@@ -561,7 +561,7 @@ fontsize=10</panel_attributes>
             <w>190</w>
             <h>60</h>
         </coordinates>
-        <panel_attributes>hca.exp.chcaAbleToSend
+        <panel_attributes>.*hca.exp.chcaAbleToSend
 --
 --
 AbleToSend() As %Boolean
@@ -583,19 +583,19 @@ fontsize=10</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>530</x>
-            <y>2380</y>
-            <w>40</w>
-            <h>10</h>
+            <x>370</x>
+            <y>2390</y>
+            <w>80</w>
+            <h>0</h>
         </coordinates>
         <panel_attributes>lt=.</panel_attributes>
-        <additional_attributes>40;10;0;0</additional_attributes>
+        <additional_attributes>80;0;0;0</additional_attributes>
     </element>
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>180</x>
-            <y>2340</y>
+            <x>20</x>
+            <y>2350</y>
             <w>350</w>
             <h>60</h>
         </coordinates>
@@ -616,7 +616,7 @@ fontsize=10</panel_attributes>
             <w>190</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>hca.chcaCreateOUTMessage
+        <panel_attributes>.*hca.chcaCreateOUTMessage
 --
 --
 GetMessage()
@@ -642,12 +642,12 @@ fontsize=10</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>1770</x>
+            <x>1750</x>
             <y>2100</y>
-            <w>190</w>
+            <w>210</w>
             <h>120</h>
         </coordinates>
-        <panel_attributes>hca.mhl.chcaMessageWriterDaemon
+        <panel_attributes>.*hca.mhl.chcaMessageWriterDaemon
 --
 --
 AutomaticEvent()
@@ -677,7 +677,7 @@ bg=orange</panel_attributes>
             <w>190</w>
             <h>100</h>
         </coordinates>
-        <panel_attributes>hca.mhl.cMessageHandlerManager
+        <panel_attributes>.*hca.mhl.cMessageHandlerManager
 --
 --
 SaveMsgOutReceivers()
@@ -730,7 +730,7 @@ fontsize=10</panel_attributes>
             <w>190</w>
             <h>60</h>
         </coordinates>
-        <panel_attributes>hca.exp.chcaExportUtils
+        <panel_attributes>.*hca.exp.chcaExportUtils
 --
 --
 BuildWhereToSend()
@@ -789,8 +789,8 @@ fontsize=10</panel_attributes>
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>2140</x>
-            <y>1150</y>
+            <x>2070</x>
+            <y>1140</y>
             <w>190</w>
             <h>160</h>
         </coordinates>
@@ -817,17 +817,18 @@ fontsize=10</panel_attributes>
         <id>UMLNote</id>
         <coordinates>
             <x>1280</x>
-            <y>710</y>
+            <y>690</y>
             <w>250</w>
-            <h>90</h>
+            <h>110</h>
         </coordinates>
         <panel_attributes>
-*IN THIS DIAGRAM, *
-* THE ARROWS INDICATES *
-* STATIC CALLS, *
-*NOT CLASS COLLABORATIONS.*
+*IN THIS DIAGRAM, 
+*THE ARROWS INDICATES 
+*STATIC CALLS, 
+*NOT CLASS COLLABORATIONS.
 
-bg=red
+
+bg=l-red
 halign=center
 fontsize=12</panel_attributes>
         <additional_attributes/>
@@ -840,7 +841,7 @@ fontsize=12</panel_attributes>
             <w>160</w>
             <h>60</h>
         </coordinates>
-        <panel_attributes>Rule.routing.RoutingEngine
+        <panel_attributes>.*Rule.routing.RoutingEngine
 --
 --
 ProcessHostMessage()
@@ -863,8 +864,8 @@ bg=pink</panel_attributes>
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>340</x>
-            <y>2660</y>
+            <x>170</x>
+            <y>2560</y>
             <w>430</w>
             <h>50</h>
         </coordinates>
@@ -879,13 +880,13 @@ fontsize=10</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>630</x>
+            <x>510</x>
             <y>2450</y>
             <w>0</w>
-            <h>210</h>
+            <h>110</h>
         </coordinates>
         <panel_attributes>lt=.</panel_attributes>
-        <additional_attributes>0;0;0;210</additional_attributes>
+        <additional_attributes>0;0;0;110</additional_attributes>
     </element>
     <element>
         <id>UMLNote</id>
@@ -955,8 +956,8 @@ fontsize=10</panel_attributes>
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>480</x>
-            <y>2470</y>
+            <x>300</x>
+            <y>2460</y>
             <w>100</w>
             <h>40</h>
         </coordinates>
@@ -1119,7 +1120,7 @@ fontsize=10</panel_attributes>
             <w>190</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>hca.exp.chcaCreateMSG
+        <panel_attributes>.*hca.exp.chcaCreateMSG
 --
 --
 HL7: CreateMSGLis()
@@ -1161,18 +1162,18 @@ fontsize=10</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>550</x>
+            <x>400</x>
             <y>2450</y>
-            <w>20</w>
-            <h>20</h>
+            <w>50</w>
+            <h>30</h>
         </coordinates>
         <panel_attributes>lt=.</panel_attributes>
-        <additional_attributes>20;0;0;20</additional_attributes>
+        <additional_attributes>50;0;0;30</additional_attributes>
     </element>
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>660</x>
+            <x>670</x>
             <y>1180</y>
             <w>140</w>
             <h>60</h>
@@ -1191,13 +1192,13 @@ fontsize=10</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>630</x>
+            <x>650</x>
             <y>1240</y>
-            <w>30</w>
+            <w>20</w>
             <h>40</h>
         </coordinates>
         <panel_attributes>lt=.</panel_attributes>
-        <additional_attributes>30;0;0;40</additional_attributes>
+        <additional_attributes>20;0;0;40</additional_attributes>
     </element>
     <element>
         <id>UMLNote</id>
@@ -1264,7 +1265,7 @@ fontsize=10</panel_attributes>
             <w>160</w>
             <h>60</h>
         </coordinates>
-        <panel_attributes>hca.WS.chcaHostRouter
+        <panel_attributes>.*hca.WS.chcaHostRouter
 --
 --
 In()
@@ -1287,12 +1288,12 @@ bg=#00aa70</panel_attributes>
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>640</x>
+            <x>620</x>
             <y>1540</y>
-            <w>110</w>
+            <w>130</w>
             <h>40</h>
         </coordinates>
-        <panel_attributes>*WS messages only*
+        <panel_attributes>*WS messages only
 
 bg=yellow
 
@@ -1329,7 +1330,7 @@ fontsize=10</panel_attributes>
             <w>160</w>
             <h>70</h>
         </coordinates>
-        <panel_attributes>co.sys.cEvents
+        <panel_attributes>.*co.sys.cEvents
 --
 --
 Add()
@@ -1366,13 +1367,13 @@ fontsize=10</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>1280</x>
+            <x>1300</x>
             <y>1470</y>
-            <w>250</w>
+            <w>230</w>
             <h>230</h>
         </coordinates>
         <panel_attributes>lt=&lt;-</panel_attributes>
-        <additional_attributes>250;0;40;0;40;230;0;230</additional_attributes>
+        <additional_attributes>230;0;20;0;20;230;0;230</additional_attributes>
     </element>
     <element>
         <id>UMLNote</id>
@@ -1397,8 +1398,8 @@ fontsize=10</panel_attributes>
             <w>200</w>
             <h>60</h>
         </coordinates>
-        <panel_attributes>&lt;&lt;interface&gt;&gt;
-hca.WS.chcaGenericHostImp
+        <panel_attributes>._&lt;&lt;interface&gt;&gt;
+.*hca.WS.chcaGenericHostImp
 --
 --
 HandleAsyncAction()
@@ -1421,12 +1422,12 @@ fontsize=10</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>1060</x>
+            <x>1040</x>
             <y>1670</y>
-            <w>220</w>
+            <w>260</w>
             <h>60</h>
         </coordinates>
-        <panel_attributes>hca.WS.VANTAGEWS.chcaVANTAGEWSImp
+        <panel_attributes>.*hca.WS.VANTAGEWS.chcaVANTAGEWSImp
 --
 --
 ConvertXXXToMsgLIS()
@@ -1491,8 +1492,8 @@ fontsize=10</panel_attributes>
             <w>210</w>
             <h>70</h>
         </coordinates>
-        <panel_attributes>&lt;&lt;abstract&gt;&gt;
-hca.WS.chcaGenericExp
+        <panel_attributes>._&lt;&lt;abstract&gt;&gt;
+.*hca.WS.chcaGenericExp
 --
 --
 CreateSerializedWSMsgLis
@@ -1517,10 +1518,10 @@ fontsize=10</panel_attributes>
         <coordinates>
             <x>1090</x>
             <y>2150</y>
-            <w>230</w>
+            <w>250</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>hca.WS.VANTAGEWS.chcaVANTAGEWSExp
+        <panel_attributes>.*hca.WS.VANTAGEWS.chcaVANTAGEWSExp
 --
 --
 CreateSerializedWSMsgLis  [VantageWS]
@@ -1560,12 +1561,12 @@ fontsize=10</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>1370</x>
+            <x>1410</x>
             <y>2130</y>
-            <w>250</w>
+            <w>300</w>
             <h>120</h>
         </coordinates>
-        <panel_attributes>hca.WS.VANTAGEWS.chcaVANTAGEWSExpFillers
+        <panel_attributes>.*hca.WS.VANTAGEWS.chcaVANTAGEWSExpFillers
 --
 --
 FillLabOrder()
@@ -1582,14 +1583,14 @@ fontsize=10</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>1330</x>
+            <x>1350</x>
             <y>2190</y>
-            <w>40</w>
+            <w>60</w>
             <h>0</h>
         </coordinates>
         <panel_attributes>lt=&lt;-
 </panel_attributes>
-        <additional_attributes>40;0;0;0</additional_attributes>
+        <additional_attributes>60;0;0;0</additional_attributes>
     </element>
     <element>
         <id>Relation</id>
@@ -1610,7 +1611,7 @@ fontsize=10</panel_attributes>
             <w>170</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>hca.chcaWSCaller
+        <panel_attributes>.*hca.chcaWSCaller
 --
 --
 SendMessage
@@ -1626,10 +1627,10 @@ bg=#00aa70</panel_attributes>
         <coordinates>
             <x>2330</x>
             <y>2530</y>
-            <w>150</w>
+            <w>180</w>
             <h>50</h>
         </coordinates>
-        <panel_attributes>ws.sys.wGenericWebClient
+        <panel_attributes>.*ws.sys.wGenericWebClient
 --
 --
 --
@@ -1642,18 +1643,18 @@ bg=#00aa70</panel_attributes>
         <coordinates>
             <x>2240</x>
             <y>2670</y>
-            <w>40</w>
+            <w>50</w>
             <h>0</h>
         </coordinates>
         <panel_attributes>lt=&lt;-
 </panel_attributes>
-        <additional_attributes>40;0;0;0</additional_attributes>
+        <additional_attributes>50;0;0;0</additional_attributes>
     </element>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>2280</x>
-            <y>2620</y>
+            <x>2300</x>
+            <y>2640</y>
             <w>260</w>
             <h>80</h>
         </coordinates>
@@ -1672,13 +1673,13 @@ transparency=0
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>2400</x>
+            <x>2420</x>
             <y>2580</y>
             <w>0</w>
-            <h>40</h>
+            <h>50</h>
         </coordinates>
         <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-        <additional_attributes>0;0;0;40</additional_attributes>
+        <additional_attributes>0;0;0;50</additional_attributes>
     </element>
     <element>
         <id>UMLClass</id>
@@ -1688,7 +1689,7 @@ transparency=0
             <w>150</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>hca.chcaWSModule
+        <panel_attributes>.*hca.chcaWSModule
 --
 --
 Send
@@ -1807,9 +1808,9 @@ fontsize=10</panel_attributes>
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>1950</x>
+            <x>1960</x>
             <y>2560</y>
-            <w>100</w>
+            <w>90</w>
             <h>20</h>
         </coordinates>
         <panel_attributes>+TransactionId
@@ -1831,12 +1832,12 @@ fontsize=10</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>1550</x>
+            <x>1530</x>
             <y>2640</y>
-            <w>160</w>
+            <w>180</w>
             <h>60</h>
         </coordinates>
-        <panel_attributes>hca.chcaConnectionsModule
+        <panel_attributes>.*hca.chcaConnectionsModule
 --
 --
 Activate()
@@ -1876,7 +1877,7 @@ fontsize=10
             <w>260</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>ws.ext.VANTAGEWS.VCToVANTAGEWSService
+        <panel_attributes>.*ws.ext.VANTAGEWS.VCToVANTAGEWSService
 --
 --
 ProcessApplicationACK()
@@ -1904,10 +1905,10 @@ fontsize=10
         <coordinates>
             <x>540</x>
             <y>1000</y>
-            <w>120</w>
+            <w>130</w>
             <h>60</h>
         </coordinates>
-        <panel_attributes>hca.chcaTCPIPModule
+        <panel_attributes>.*hca.chcaTCPIPModule
 --
 --
 --
@@ -1925,7 +1926,7 @@ transparency=0
             <w>120</w>
             <h>60</h>
         </coordinates>
-        <panel_attributes>hca.chcaWSModule
+        <panel_attributes>.*hca.chcaWSModule
 --
 --
 --
@@ -1960,13 +1961,13 @@ transparency=0</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>1280</x>
+            <x>1300</x>
             <y>1720</y>
-            <w>330</w>
+            <w>310</w>
             <h>0</h>
         </coordinates>
         <panel_attributes>lt=&lt;-</panel_attributes>
-        <additional_attributes>330;0;0;0</additional_attributes>
+        <additional_attributes>310;0;0;0</additional_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
@@ -2028,7 +2029,7 @@ fontsize=10</panel_attributes>
             <w>160</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>hca.imp.RequestWF
+        <panel_attributes>.*hca.imp.RequestWF
 --
 --
 ForwardToLIS()
@@ -2055,11 +2056,11 @@ bg=cyan</panel_attributes>
         <coordinates>
             <x>1800</x>
             <y>1600</y>
-            <w>120</w>
+            <w>130</w>
             <h>0</h>
         </coordinates>
         <panel_attributes>lt=&lt;-</panel_attributes>
-        <additional_attributes>120;0;0;0</additional_attributes>
+        <additional_attributes>130;0;0;0</additional_attributes>
     </element>
     <element>
         <id>UMLClass</id>
@@ -2071,7 +2072,7 @@ bg=cyan</panel_attributes>
         </coordinates>
         <panel_attributes>
 fontsize=10
-bg=magenta
+bg=l-l-magenta
 </panel_attributes>
         <additional_attributes/>
     </element>
@@ -2083,12 +2084,12 @@ bg=magenta
             <w>190</w>
             <h>40</h>
         </coordinates>
-        <panel_attributes>Oc.Drivers.DriversService
+        <panel_attributes>.*Oc.Drivers.DriversService
 --
 --
 --
 fontsize=10
-bg=magenta</panel_attributes>
+bg=l-l-magenta</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -2121,13 +2122,13 @@ bg=magenta</panel_attributes>
             <w>190</w>
             <h>60</h>
         </coordinates>
-        <panel_attributes>hca.exp.chcaCreateMSGDriver
+        <panel_attributes>.*hca.exp.chcaCreateMSGDriver
 --
 --
 OC:  CreateMSGLisForDriver
 --
 fontsize=10
-bg=magenta</panel_attributes>
+bg=l-l-magenta</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -2175,13 +2176,13 @@ fontsize=10</panel_attributes>
             <w>190</w>
             <h>60</h>
         </coordinates>
-        <panel_attributes>Oc.MessageController
+        <panel_attributes>.*Oc.MessageController
 --
 --
 ReceiveMessage()
 --
 fontsize=10
-bg=magenta
+bg=l-l-magenta
 transparency=0
 layer=1
 </panel_attributes>
@@ -2195,14 +2196,14 @@ layer=1
             <w>190</w>
             <h>90</h>
         </coordinates>
-        <panel_attributes>Oc.MessageControllerService
+        <panel_attributes>.*Oc.MessageControllerService
 --
 --
 EnqueueMessage()
 ProcessInboundMessage()
 --
 fontsize=10
-bg=magenta</panel_attributes>
+bg=l-l-magenta</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -2219,7 +2220,7 @@ bg=magenta</panel_attributes>
 - SaveObjectIn
 ValidateMessageControlID()
 ValidateFields()
-*ImportRouter()*
+*ImportRouter()
 Com/App ACKs responses
 
 
@@ -2246,13 +2247,13 @@ fontsize=10</panel_attributes>
             <w>190</w>
             <h>90</h>
         </coordinates>
-        <panel_attributes>Oc.AckManager
+        <panel_attributes>.*Oc.AckManager
 --
 --
 UpdateInfoACKReceived()
 --
 fontsize=10
-bg=magenta</panel_attributes>
+bg=l-l-magenta</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -2298,7 +2299,7 @@ fontsize=10</panel_attributes>
             <w>260</w>
             <h>90</h>
         </coordinates>
-        <panel_attributes>ws.ext.VANTAGEWS.VANTAGEWSToVCService
+        <panel_attributes>.*ws.ext.VANTAGEWS.VANTAGEWSToVCService
 --
 --
 ProcessApplicationACK()
@@ -2423,7 +2424,7 @@ bg=cyan
         <panel_attributes>OpenConnectivity points of interest
 
 fontsize=10
-bg=magenta
+bg=l-l-magenta
 </panel_attributes>
         <additional_attributes/>
     </element>
@@ -2464,8 +2465,8 @@ fontsize=10</panel_attributes>
         <coordinates>
             <x>1070</x>
             <y>2410</y>
-            <w>300</w>
-            <h>60</h>
+            <w>350</w>
+            <h>70</h>
         </coordinates>
         <panel_attributes>In case of a Driver, the HostType="STAINER"/"SCANNER".
 The call is delegated to the VSS's section: 
@@ -2473,7 +2474,7 @@ see ""STAINER":..AbleToSendVSS(".
 TODO: "SCANNER" is not routed yet.
 
 bg=magenta
-fontsize=10</panel_attributes>
+bg=l-l-magenta</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -2499,7 +2500,7 @@ fontsize=10</panel_attributes>
             <w>160</w>
             <h>60</h>
         </coordinates>
-        <panel_attributes>hca.msg.MsgLISExplorer
+        <panel_attributes>.*hca.msg.MsgLISExplorer
 --
 --
 ExploreMsgLisRecur()
@@ -2511,12 +2512,12 @@ bg=pink</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>1580</x>
+            <x>1630</x>
             <y>900</y>
             <w>230</w>
             <h>110</h>
         </coordinates>
-        <panel_attributes>hca.msg.MsgLISPropertyProcessor
+        <panel_attributes>.*hca.msg.MsgLISPropertyProcessor
 --
 --
 ProcessProperty(
@@ -2532,12 +2533,12 @@ bg=pink</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>1580</x>
+            <x>1600</x>
             <y>1070</y>
-            <w>230</w>
+            <w>300</w>
             <h>60</h>
         </coordinates>
-        <panel_attributes>Rule.routing.MsgLISPropertyRoutingFieldMatcher
+        <panel_attributes>.*Rule.routing.MsgLISPropertyRoutingFieldMatcher
 --
 --
 ExploreMsgLisRecur()
@@ -2549,7 +2550,7 @@ bg=pink</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>1700</x>
+            <x>1740</x>
             <y>1010</y>
             <w>0</w>
             <h>60</h>
@@ -2582,8 +2583,8 @@ bg=pink</panel_attributes>
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>1370</x>
-            <y>940</y>
+            <x>1380</x>
+            <y>960</y>
             <w>200</w>
             <h>50</h>
         </coordinates>
@@ -2598,20 +2599,20 @@ fontsize=10</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>1520</x>
-            <y>990</y>
-            <w>70</w>
-            <h>80</h>
+            <x>1530</x>
+            <y>1010</y>
+            <w>80</w>
+            <h>60</h>
         </coordinates>
         <panel_attributes>lt=.</panel_attributes>
-        <additional_attributes>70;80;0;0</additional_attributes>
+        <additional_attributes>80;60;0;0</additional_attributes>
     </element>
     <element>
         <id>UMLNote</id>
         <coordinates>
             <x>1610</x>
             <y>1270</y>
-            <w>280</w>
+            <w>300</w>
             <h>50</h>
         </coordinates>
         <panel_attributes>#Dim routingResult As list Of Rule.dt.RoutingAction = 
@@ -2665,13 +2666,13 @@ bg=pink</panel_attributes>
         <coordinates>
             <x>1530</x>
             <y>1100</y>
-            <w>50</w>
+            <w>70</w>
             <h>0</h>
         </coordinates>
         <panel_attributes>lt=&lt;-
-&lt;&lt;uses&gt;&gt;
+&lt;&lt;uses&gt;&gt;       
 fontsize=10</panel_attributes>
-        <additional_attributes>50;0;0;0</additional_attributes>
+        <additional_attributes>70;0;0;0</additional_attributes>
     </element>
     <element>
         <id>Relation</id>
@@ -2694,7 +2695,7 @@ fontsize=10</panel_attributes>
             <w>160</w>
             <h>90</h>
         </coordinates>
-        <panel_attributes>hca.MessageIdValidator
+        <panel_attributes>.*hca.MessageIdValidator
 --
 --
 ValidateMessageControlID()
@@ -2713,7 +2714,7 @@ fontsize=10</panel_attributes>
             <w>0</w>
             <h>40</h>
         </coordinates>
-        <panel_attributes>lt=&lt;-</panel_attributes>
+        <panel_attributes>lt=.</panel_attributes>
         <additional_attributes>0;0;0;40</additional_attributes>
     </element>
     <element>
@@ -2724,7 +2725,7 @@ fontsize=10</panel_attributes>
             <w>240</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>*Called by:*
+        <panel_attributes>*Called by:
 - hca.chcaCreateObjectAP (HL7)
 - hca.WS.VANTAGEWS.chcaVANTAGEWSImp
     (TransactionID)
@@ -2743,7 +2744,7 @@ fontsize=10</panel_attributes>
             <w>140</w>
             <h>230</h>
         </coordinates>
-        <panel_attributes>*thcaMessageReceiversIN*
+        <panel_attributes>*thcaMessageReceiversIN
 --
 AppACKSend
 ComACKSend
@@ -2774,7 +2775,7 @@ fontsize=10</panel_attributes>
             <w>160</w>
             <h>170</h>
         </coordinates>
-        <panel_attributes>*thcaMessageObjectIN*
+        <panel_attributes>*thcaMessageObjectIN
 --
 ID
 Sender
@@ -2799,7 +2800,7 @@ fontsize=10</panel_attributes>
             <w>160</w>
             <h>200</h>
         </coordinates>
-        <panel_attributes>*thcaMessageQueueIN*
+        <panel_attributes>*thcaMessageQueueIN
 --
 ID
 AllowReopen
@@ -2852,7 +2853,7 @@ fontsize=10</panel_attributes>
             <w>150</w>
             <h>230</h>
         </coordinates>
-        <panel_attributes>*thcaMessageReceiversOUT*
+        <panel_attributes>*thcaMessageReceiversOUT
 --
 ID
 AppACKReceived
@@ -2883,7 +2884,7 @@ fontsize=10</panel_attributes>
             <w>160</w>
             <h>320</h>
         </coordinates>
-        <panel_attributes>*thcaMessageObjectOUT*
+        <panel_attributes>*thcaMessageObjectOUT
 --
 ID
 CanceledRetry
@@ -2921,7 +2922,7 @@ fontsize=10</panel_attributes>
             <w>140</w>
             <h>150</h>
         </coordinates>
-        <panel_attributes>*thcaMessageQueueOUT*
+        <panel_attributes>*thcaMessageQueueOUT
 --
 ID
 CreationDate
@@ -3015,7 +3016,7 @@ layer=1</panel_attributes>
             <w>160</w>
             <h>150</h>
         </coordinates>
-        <panel_attributes>*thcaACK*
+        <panel_attributes>*thcaACK
 --
 ID
 ACKType
@@ -3141,267 +3142,27 @@ layer=1</panel_attributes>
         <additional_attributes>50;0;0;30</additional_attributes>
     </element>
     <element>
-        <id>Relation</id>
+        <id>UMLActor</id>
         <coordinates>
-            <x>310</x>
-            <y>240</y>
-            <w>160</w>
-            <h>0</h>
+            <x>230</x>
+            <y>830</y>
+            <w>50</w>
+            <h>80</h>
         </coordinates>
-        <panel_attributes>lt=&lt;-</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
+        <panel_attributes>
+</panel_attributes>
+        <additional_attributes/>
     </element>
     <element>
-        <id>Relation</id>
+        <id>Bocadillo</id>
         <coordinates>
-            <x>310</x>
-            <y>200</y>
-            <w>160</w>
+            <x>330</x>
+            <y>800</y>
+            <w>80</w>
             <h>0</h>
         </coordinates>
-        <panel_attributes>lt=-</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>310</x>
-            <y>320</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;&lt;&lt;-</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>310</x>
-            <y>400</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>310</x>
-            <y>360</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>540</x>
-            <y>240</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;.</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>540</x>
-            <y>200</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=.</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>540</x>
-            <y>320</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;&lt;&lt;.</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>540</x>
-            <y>400</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;.</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>540</x>
-            <y>360</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;&lt;&lt;&lt;.</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>310</x>
-            <y>280</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>540</x>
-            <y>280</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>760</x>
-            <y>200</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=)-</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>760</x>
-            <y>240</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=o-</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>760</x>
-            <y>280</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=+-</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>990</x>
-            <y>200</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=).</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>990</x>
-            <y>240</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=o.</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>990</x>
-            <y>280</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=+.</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>760</x>
-            <y>320</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=||-</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>760</x>
-            <y>360</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=|o-</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>760</x>
-            <y>400</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=&gt;|-</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>760</x>
-            <y>450</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=&gt;o-</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>310</x>
-            <y>450</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=m-</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>540</x>
-            <y>450</y>
-            <w>160</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=m.</panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
+        <panel_attributes>lt=-
+bg=yellow</panel_attributes>
+        <additional_attributes>0;0;-40;50;80;0</additional_attributes>
     </element>
 </diagram>

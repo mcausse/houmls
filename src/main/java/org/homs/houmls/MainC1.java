@@ -103,7 +103,7 @@ public class MainC1 {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    canvas.diagram.reset();
+                    canvas.setDiagram(new Diagram());
                     canvas.repaint();
                     currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
                 }
@@ -121,7 +121,7 @@ public class MainC1 {
                         File file = fc.getSelectedFile();
                         try {
                             Diagram diagram = HoumsFileFormatManager.loadFile(file.toString());
-                            canvas.diagram = diagram;
+                            canvas.setDiagram(diagram);
                             canvas.centerDiagram();
                             canvas.repaint();
                         } catch (Exception e2) {
@@ -145,14 +145,14 @@ public class MainC1 {
                         if (returnVal == JFileChooser.APPROVE_OPTION) {
                             File file = fc.getSelectedFile();
                             try {
-                                HoumsFileFormatManager.writeFile(canvas.diagram, file.toString());
+                                HoumsFileFormatManager.writeFile(canvas.getDiagram(), file.toString());
                             } catch (Exception e2) {
                                 e2.printStackTrace();
                             }
                         }
                     } else {
                         try {
-                            HoumsFileFormatManager.writeFile(canvas.diagram, fileName);
+                            HoumsFileFormatManager.writeFile(canvas.getDiagram(), fileName);
                         } catch (Exception e2) {
                             e2.printStackTrace();
                         }
@@ -175,7 +175,7 @@ public class MainC1 {
                             if (returnVal == JFileChooser.APPROVE_OPTION) {
                                 File file = fc.getSelectedFile();
                                 try {
-                                    HoumsFileFormatManager.writeFile(canvas.diagram, file.toString());
+                                    HoumsFileFormatManager.writeFile(canvas.getDiagram(), file.toString());
                                 } catch (Exception e2) {
                                     e2.printStackTrace();
                                 }

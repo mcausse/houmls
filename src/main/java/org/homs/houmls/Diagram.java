@@ -34,6 +34,19 @@ public class Diagram {
         this.shapes.clear();
     }
 
+    public Diagram clone() {
+        Diagram r = new Diagram();
+        r.zoom = this.zoom;
+        r.offsetX = this.offsetX;
+        r.offsetY = this.offsetY;
+        r.name = this.name;
+        r.diagramAttributesText = this.diagramAttributesText;
+        for (var shape : this.shapes) {
+            r.shapes.add(shape.duplicate(0, 0));
+        }
+        return r;
+    }
+
     public void addShape(Shape element) {
         this.shapes.add(element);
     }
@@ -113,4 +126,13 @@ public class Diagram {
     public void setName(String name) {
         this.name = name;
     }
+
+    public void manageConnectorLinks() {
+        for (var element : getShapes()) {
+            if (Connector.class.isAssignableFrom(element.getClass())) {
+                ((Connector) element).manageLink(getShapes());
+            }
+        }
+    }
+
 }

@@ -9,18 +9,18 @@ import java.awt.*;
 
 import static org.homs.houmls.LookAndFeel.basicStroke;
 
-public class Moneco extends Box {
+public class Actor extends Box {
 
     static final int MONECO_WIDTH = GridControl.GRID_SIZE * 5;
     static final int MONECO_HEIGTH = GridControl.GRID_SIZE * 8;
 
-    public Moneco(int x, int y, String attributes) {
+    public Actor(int x, int y, String attributes) {
         super(x, y, MONECO_WIDTH, MONECO_HEIGTH, attributes);
     }
 
     @Override
     public Shape duplicate(int translatex, int translatey) {
-        return new Moneco((int) x + translatex, (int) y + translatey, attributesText);
+        return new Actor((int) x + translatex, (int) y + translatey, attributesText);
     }
 
     @Override
