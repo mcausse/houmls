@@ -731,7 +731,18 @@ public class Canvas extends JPanel {
         this.diagram.offsetY = (canvasCenter.y - diagramCenter.y);
 
         repaint();
-        pushUndoCheckpoint();
+    }
+
+    public void fitZoomToWindow() {
+        centerDiagram();
+
+        Dimension canvasSize = getSize();
+        Rectangle diagramBounds = diagram.getDiagramBounds();
+        diagramBounds.grow(200, 200);
+
+        this.diagram.zoom = canvasSize.getWidth() / diagramBounds.getWidth();
+
+        repaint();
     }
 
     @Override

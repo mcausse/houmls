@@ -129,7 +129,7 @@ copy/cutty/paste!</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>-270</x>
+            <x>-220</x>
             <y>70</y>
             <w>180</w>
             <h>80</h>
@@ -302,8 +302,8 @@ bg=l-yellow</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>370</x>
-            <y>130</y>
+            <x>830</x>
+            <y>440</y>
             <w>180</w>
             <h>80</h>
         </coordinates>
@@ -317,13 +317,50 @@ diagram.</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>-270</x>
+            <x>-220</x>
             <y>-30</y>
             <w>180</w>
             <h>80</h>
         </coordinates>
         <panel_attributes>
 pestañas</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>TurtleBox</id>
+        <coordinates>
+            <x>-370</x>
+            <y>-70</y>
+            <w>90</w>
+            <h>70</h>
+        </coordinates>
+        <panel_attributes>
+rotate 90 jump 20 rotate -90
+rotate -45 walk 20 
+rotate 90 walk 20 
+rotate -90 walk 20 
+rotate 90 walk 20 
+rotate -90 walk 20
+rotate -135 walk 57 walk -57 rotate +135
+rotate 90 walk 20 
+rotate 135 walk 85
+rotate -135 walk 60
+rotate -90 walk 60
+
+draw</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>360</x>
+            <y>90</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*Fit to window
+--
+</panel_attributes>
         <additional_attributes/>
     </element>
 </diagram>

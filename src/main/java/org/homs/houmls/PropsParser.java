@@ -74,7 +74,7 @@ public class PropsParser {
                 }
                 return c;
             } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
-                return null;
+                return Color.WHITE;
             }
         }
     }

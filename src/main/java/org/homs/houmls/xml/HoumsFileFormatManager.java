@@ -131,6 +131,7 @@ public class HoumsFileFormatManager {
                         Comment comment = new Comment(x, y, w, h, attributes);
                         diagram.addShape(comment);
                         break;
+                    case "UMLGeneric":
                     case "UMLClass": {
                         Box box = new Box(x, y, w, h, attributes);
                         diagram.addShape(box);

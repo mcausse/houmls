@@ -51,7 +51,7 @@ fontsize=18
 --
 --
 --
-bg=#00aa70
+bg=l-l-l-blue
 fontsize=10</panel_attributes>
         <additional_attributes/>
     </element>
@@ -67,7 +67,7 @@ fontsize=10</panel_attributes>
 --
 --
 --
-bg=#00aa70
+bg=l-l-l-blue
 fontsize=10</panel_attributes>
         <additional_attributes/>
     </element>
@@ -158,7 +158,7 @@ fontsize=25
 --
 --
 --
-bg=#00aa70
+bg=l-l-l-blue
 fontsize=10</panel_attributes>
         <additional_attributes/>
     </element>
@@ -1271,7 +1271,7 @@ fontsize=10</panel_attributes>
 In()
 --
 fontsize=10
-bg=#00aa70</panel_attributes>
+bg=l-l-l-blue</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -1405,7 +1405,7 @@ fontsize=10</panel_attributes>
 HandleAsyncAction()
 --
 bg=#00aa70
-fontsize=10</panel_attributes>
+bg=l-l-l-blue</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -1432,9 +1432,9 @@ fontsize=10</panel_attributes>
 --
 ConvertXXXToMsgLIS()
 --
-bg=#00aa70
+bg=l-l-l-blue
 fontsize=10
-transparency=0</panel_attributes>
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -1498,7 +1498,7 @@ fontsize=10</panel_attributes>
 --
 CreateSerializedWSMsgLis
 --
-bg=#00aa70
+bg=l-l-l-blue
 fontsize=10</panel_attributes>
         <additional_attributes/>
     </element>
@@ -1528,9 +1528,9 @@ CreateSerializedWSMsgLis  [VantageWS]
 InsertDataInMsgLIS()
 ...
 --
-bg=#00aa70
+bg=l-l-l-blue
 fontsize=10
-transparency=0</panel_attributes>
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -1576,7 +1576,7 @@ FillListOfSuplementalInfo()
 FillPatient
 [...]
 --
-bg=#00aa70
+bg=l-l-l-blue
 fontsize=10</panel_attributes>
         <additional_attributes/>
     </element>
@@ -1619,7 +1619,7 @@ SendMessage
 ProcessVantageWSWebService
 --
 fontsize=10
-bg=#00aa70</panel_attributes>
+bg=l-l-l-blue</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -1635,7 +1635,7 @@ bg=#00aa70</panel_attributes>
 --
 --
 fontsize=10
-bg=#00aa70</panel_attributes>
+bg=l-l-l-blue</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -1664,7 +1664,7 @@ bg=#00aa70</panel_attributes>
 --
 
 --
-bg=#00aa70
+bg=l-l-l-blue
 fontsize=10
 transparency=0
 </panel_attributes>
@@ -1884,7 +1884,7 @@ ProcessApplicationACK()
 ProcessPatientUpdate()
 ...
 --
-bg=#00aa70
+bg=l-l-l-blue
 fontsize=10
 </panel_attributes>
         <additional_attributes/>
@@ -2306,9 +2306,8 @@ ProcessApplicationACK()
 ProcessAssignedPathologistUpdate()
 [...]
 --
-bg=#00aa70
+bg=l-l-l-blue
 fontsize=10
-transparency=0
 </panel_attributes>
         <additional_attributes/>
     </element>
@@ -2349,7 +2348,7 @@ bg=pink
         <panel_attributes>Web Service classes
 
 fontsize=10
-bg=#00aa70
+bg=l-l-l-blue
 </panel_attributes>
         <additional_attributes/>
     </element>

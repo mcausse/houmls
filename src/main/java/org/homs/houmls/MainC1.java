@@ -54,26 +54,27 @@ public class MainC1 {
         var f = new JFrame();
         f.setIconImage(frameIcon);
         f.setLayout(new BorderLayout());
+        f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
-        Consumer<String> currentDiagramFileNameConsumer = (fileName) -> f.setTitle(
+        Consumer<String> currentDiagramOnChangeFileNameListener = (fileName) -> f.setTitle(
                 FRAME_TITLE + (fileName == null ? UNNAMED_FILENAME : fileName)
         );
-        currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
-
-        f.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        f.addKeyListener(canvas.getOffsetAndZoomListener());
-
-        JToolBar toolBar = buildToolBar(f, canvas, currentDiagramFileNameConsumer);
-        f.add(toolBar, BorderLayout.NORTH);
-
-        JSplitPane sl = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, canvas, lateralBar);
-        f.add(sl);
-
         {
             GraphicsEnvironment env = GraphicsEnvironment.getLocalGraphicsEnvironment();
             Rectangle frameBounds = env.getMaximumWindowBounds();
             f.setSize(new Dimension(frameBounds.width, frameBounds.height));
         }
+
+        currentDiagramOnChangeFileNameListener.accept(canvas.getDiagramName());
+
+        f.addKeyListener(canvas.getOffsetAndZoomListener());
+
+        JToolBar toolBar = buildToolBar(f, canvas, currentDiagramOnChangeFileNameListener);
+        f.add(toolBar, BorderLayout.NORTH);
+
+        JSplitPane sl = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, canvas, lateralBar);
+        f.add(sl);
+
 
         lateralBar.addKeyListener(canvas.getOffsetAndZoomListener());
         shapeTextEditor.addKeyListener(canvas.getOffsetAndZoomListener());
@@ -82,7 +83,11 @@ public class MainC1 {
         Arrays.stream(toolBar.getComponents()).forEach(c -> c.addKeyListener(canvas.getOffsetAndZoomListener()));
 
         f.setVisible(true);
-        SwingUtilities.invokeLater(() -> sl.setDividerLocation(0.8));
+
+        SwingUtilities.invokeLater(() -> {
+            sl.setDividerLocation(0.8);
+            SwingUtilities.invokeLater(canvas::centerDiagram);
+        });
     }
 
     static JToolBar buildToolBar(JFrame frame, Canvas canvas, Consumer<String> currentDiagramFileNameConsumer) {
@@ -95,6 +100,7 @@ public class MainC1 {
             final JButton saveButton;
             final JButton saveAsButton;
             final JButton centerDiagram;
+            final JButton zoomTo1Diagram;
 
             FileNameExtensionFilter filter = new FileNameExtensionFilter("Houmls files", "houmls", "uxf");
 
@@ -104,6 +110,7 @@ public class MainC1 {
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     canvas.setDiagram(new Diagram());
+                    canvas.centerDiagram();
                     canvas.repaint();
                     currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
                 }
@@ -122,7 +129,7 @@ public class MainC1 {
                         try {
                             Diagram diagram = HoumsFileFormatManager.loadFile(file.toString());
                             canvas.setDiagram(diagram);
-                            canvas.centerDiagram();
+                            canvas.fitZoomToWindow();
                             canvas.repaint();
                         } catch (Exception e2) {
                             e2.printStackTrace();
@@ -185,7 +192,17 @@ public class MainC1 {
                     });
 
 
-            centerDiagram = buildButton("icons/arrow_out.png", "Center diagram", null, null, null,
+            centerDiagram = buildButton("icons/arrow_out.png", "Zoom to fit", null, null, null,
+                    new AbstractAction() {
+                        private static final long serialVersionUID = -1337580617687814477L;
+
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            canvas.fitZoomToWindow();
+                        }
+                    });
+
+            zoomTo1Diagram = buildButton("icons/zoom.png", "Zoom to 1:1 & Center", null, null, null,
                     new AbstractAction() {
                         private static final long serialVersionUID = -1337580617687814477L;
 
@@ -201,6 +218,7 @@ public class MainC1 {
             toolBar.add(saveAsButton);
             toolBar.addSeparator();
             toolBar.add(centerDiagram);
+            toolBar.add(zoomTo1Diagram);
         }
         return toolBar;
     }
