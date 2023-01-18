@@ -374,7 +374,7 @@ public class Canvas extends JPanel {
             JMenuItem toFront = new JMenuItem("delete point");
             pm.add(toFront);
             toFront.addActionListener(e -> {
-                Connector conn = (Connector) selectedShapes.get(1);
+                Connector conn = (Connector) selectedShapes.get(0);
 
                 List<Point> points = conn.getListOfAbsolutePoints();
                 if (points.size() <= 2) {

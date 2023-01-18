@@ -164,8 +164,8 @@ bg=l-orange</panel_attributes>
         </coordinates>
         <panel_attributes>.*ConnectorPoint
 --
-Shape linkedShape;
 ConnectorType type;
+Shape linkedShape;
 double posx;
 double posy;
 String text = "";
@@ -286,7 +286,7 @@ bg=l-orange</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>-70</x>
+            <x>-80</x>
             <y>620</y>
             <w>180</w>
             <h>80</h>
@@ -312,8 +312,8 @@ bg=l-orange</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>570</x>
-            <y>170</y>
+            <x>870</x>
+            <y>-150</y>
             <w>180</w>
             <h>80</h>
         </coordinates>
@@ -328,34 +328,34 @@ bg=l-orange</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>430</x>
-            <y>210</y>
-            <w>140</w>
-            <h>0</h>
+            <x>720</x>
+            <y>-110</y>
+            <w>150</w>
+            <h>80</h>
         </coordinates>
         <panel_attributes>lt=-&gt;
 m2=type</panel_attributes>
-        <additional_attributes>0;0;140;0</additional_attributes>
+        <additional_attributes>0;80;0;0;150;0</additional_attributes>
     </element>
     <element>
         <id>Relation</id>
         <coordinates>
             <x>430</x>
-            <y>310</y>
-            <w>400</w>
+            <y>290</y>
+            <w>440</w>
             <h>0</h>
         </coordinates>
         <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
 m2=*
 middlePoints         
 </panel_attributes>
-        <additional_attributes>0;0;400;0</additional_attributes>
+        <additional_attributes>0;0;440;0</additional_attributes>
     </element>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>830</x>
-            <y>270</y>
+            <x>870</x>
+            <y>250</y>
             <w>180</w>
             <h>80</h>
         </coordinates>
@@ -369,8 +369,8 @@ bg=l-orange</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>830</x>
-            <y>70</y>
+            <x>870</x>
+            <y>120</y>
             <w>180</w>
             <h>80</h>
         </coordinates>
@@ -384,14 +384,14 @@ bg=l-orange</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>920</x>
-            <y>150</y>
+            <x>960</x>
+            <y>200</y>
             <w>0</w>
-            <h>120</h>
+            <h>50</h>
         </coordinates>
         <panel_attributes>lt=-&gt;&gt;
 </panel_attributes>
-        <additional_attributes>0;120;0;0</additional_attributes>
+        <additional_attributes>0;50;0;0</additional_attributes>
     </element>
     <element>
         <id>Relation</id>
@@ -473,12 +473,12 @@ shapes
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>-30</x>
+            <x>-40</x>
             <y>720</y>
             <w>180</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>.*Actor
+        <panel_attributes>.*TurtleBox
 --
 --
 bg=l-orange</panel_attributes>
@@ -562,5 +562,101 @@ bg=l-yellow</panel_attributes>
         <panel_attributes>lt=.
 </panel_attributes>
         <additional_attributes>0;0;0;80</additional_attributes>
+    </element>
+    <element>
+        <id>UMLNote</id>
+        <coordinates>
+            <x>870</x>
+            <y>-10</y>
+            <w>180</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>if `null`, the coordinates are 
+absolute; else are relative
+to the `Shape` reference.
+
+bg=l-yellow</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>676</x>
+            <y>18</y>
+            <w>193</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=.m
+</panel_attributes>
+        <additional_attributes>193;0;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLNote</id>
+        <coordinates>
+            <x>-430</x>
+            <y>-330</y>
+            <w>180</w>
+            <h>50</h>
+        </coordinates>
+        <panel_attributes>This class encapsulates all
+the diagram state
+
+bg=l-yellow</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Bocadillo</id>
+        <coordinates>
+            <x>-380</x>
+            <y>-280</y>
+            <w>30</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=-
+bg=l-yellow</panel_attributes>
+        <additional_attributes>0;0;0;30;30;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLNote</id>
+        <coordinates>
+            <x>870</x>
+            <y>-380</y>
+            <w>180</w>
+            <h>190</h>
+        </coordinates>
+        <panel_attributes>DEFAULT(""),
+ARROW("&lt;"),
+INHERITANCE("&lt;&lt;"),
+INHERITANCE_BLACKFILLED("&lt;&lt;&lt;"),
+AGGREGATION("&lt;&lt;&lt;&lt;"),
+COMPOSITION("&lt;&lt;&lt;&lt;&lt;"),
+MEMBER_COMMENT("m"),
+
+TO_ONE_OPTIONAL("|o"), 
+TO_ONE_MANDATORY("||"),
+TO_MANY_OPTIONAL("&gt;o"), 
+TO_MANY_MANDATORY("&gt;|"),
+
+REQUIRED(")"), PROVIDED("o"),
+
+INNER_CLASS("+");
+
+
+
+bg=l-yellow
+fontsize=9</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>960</x>
+            <y>-190</y>
+            <w>0</w>
+            <h>40</h>
+        </coordinates>
+        <panel_attributes>lt=.
+</panel_attributes>
+        <additional_attributes>0;40;0;0</additional_attributes>
     </element>
 </diagram>
