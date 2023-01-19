@@ -9,8 +9,7 @@ import java.awt.*;
 import java.util.Map;
 import java.util.function.Supplier;
 
-import static org.homs.houmls.LookAndFeel.BOXES_WITH_SHADOW;
-import static org.homs.houmls.LookAndFeel.basicStroke;
+import static org.homs.houmls.LookAndFeel.*;
 import static org.homs.houmls.shape.impl.connector.Connector.SELECTION_BOX_SIZE;
 
 public class Box implements Shape {
@@ -79,6 +78,8 @@ public class Box implements Shape {
 
         drawTheBox((Graphics2D) g);
 
+        g.setColor(Color.BLACK);
+
         var g2 = (Graphics2D) g;
 
         g.setFont(LookAndFeel.regularFont(fontSize));
@@ -92,23 +93,29 @@ public class Box implements Shape {
                 g.drawLine(ix, y, ix + iwidth, y);
             } else {
 
-                int alignCorrectionXPx = FONT_X_CORRECTION;
+                boolean alignCentered = false;
                 if (line.startsWith(".")) {
                     line = line.substring(1);
-                    final FontMetrics fontMetrics = new FontMetrics(g2);
-                    int textLineWidthPx = (int) fontMetrics.getWidth(line);
-                    int boxWidthPx = (int) this.width;
-                    alignCorrectionXPx += boxWidthPx / 2 - textLineWidthPx / 2;
+                    alignCentered = true;
                 }
                 if (line.startsWith("*")) {
                     line = line.substring(1);
-                    g.setFont(LookAndFeel.regularFontBold(fontSize));
+                    g2.setFont(LookAndFeel.regularFontBold(fontSize));
                 } else if (line.startsWith("_")) {
                     line = line.substring(1);
-                    g.setFont(LookAndFeel.regularFontItalic(fontSize));
+                    g2.setFont(LookAndFeel.regularFontItalic(fontSize));
                 } else {
-                    g.setFont(LookAndFeel.regularFont(fontSize));
+                    g2.setFont(LookAndFeel.regularFont(fontSize));
                 }
+                final FontMetrics fontMetrics = new FontMetrics(g2);
+                int textLineWidthPx = (int) fontMetrics.getWidth(line);
+                int boxWidthPx = (int) this.width;
+
+                int alignCorrectionXPx = FONT_X_CORRECTION;
+                if (alignCentered) {
+                    alignCorrectionXPx = (boxWidthPx - textLineWidthPx) / 2;
+                }
+
                 y += fontHeigth;
                 g.drawString(line, ix + alignCorrectionXPx, y);
             }
@@ -132,8 +139,14 @@ public class Box implements Shape {
 
         // ombra fina
         if (BOXES_WITH_SHADOW) {
-            g2.drawLine(ix + iwidth + 1, iy + 1, ix + iwidth + 1, iy + iheight + 1);
-            g2.drawLine(ix + 1, iy + iheight + 1, ix + iwidth + 1, iy + iheight + 1);
+            g2.setColor(BOXES_SHADOW_COLOR);
+            if (BOXES_SHADOW_WIDTH == 1) {
+                g2.drawLine(ix + iwidth + 1, iy + 1, ix + iwidth + 1, iy + iheight + 1);
+                g2.drawLine(ix + 1, iy + iheight + 1, ix + iwidth + 1, iy + iheight + 1);
+            } else {
+                g2.fillRect(ix + iwidth + 1, iy + BOXES_SHADOW_WIDTH, BOXES_SHADOW_WIDTH, iheight + 1);
+                g2.fillRect(ix + BOXES_SHADOW_WIDTH, iy + iheight + 1, iwidth + 1, BOXES_SHADOW_WIDTH);
+            }
         }
     }
 

@@ -317,8 +317,8 @@ diagram.</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>-220</x>
-            <y>-30</y>
+            <x>90</x>
+            <y>10</y>
             <w>180</w>
             <h>80</h>
         </coordinates>
@@ -330,7 +330,7 @@ pestañas</panel_attributes>
         <id>TurtleBox</id>
         <coordinates>
             <x>-370</x>
-            <y>-70</y>
+            <y>-60</y>
             <w>90</w>
             <h>70</h>
         </coordinates>
@@ -353,8 +353,8 @@ draw</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>360</x>
-            <y>90</y>
+            <x>840</x>
+            <y>550</y>
             <w>180</w>
             <h>80</h>
         </coordinates>

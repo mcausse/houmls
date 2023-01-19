@@ -807,7 +807,7 @@ thcaHostConditions
 tapSupplementalInfo
 tComments
 
-bg=gray
+bg=l-l-gray
 
 
 fontsize=10</panel_attributes>
@@ -964,8 +964,7 @@ fontsize=10</panel_attributes>
         <panel_attributes>tEventsQueue
 
 
-bg=gray
-
+bg=l-l-gray
 
 fontsize=10</panel_attributes>
         <additional_attributes/>
@@ -1095,7 +1094,7 @@ fontsize=10</panel_attributes>
         </coordinates>
         <panel_attributes>thcaHostConfig
 
-bg=gray
+bg=l-l-gray
 
 
 fontsize=10</panel_attributes>
@@ -1153,7 +1152,7 @@ fontsize=10</panel_attributes>
 table for parsing
 
 
-bg=gray
+bg=l-l-gray
 
 
 fontsize=10</panel_attributes>
@@ -1183,7 +1182,7 @@ thcaMessageObjectIN
 thcaMessageQueueIN
 
 
-bg=gray
+bg=l-l-gray
 
 
 fontsize=10</panel_attributes>
@@ -1213,7 +1212,7 @@ thcaMessageObjectOUT
 thcaMessageQueueOUT
 
 
-bg=gray
+bg=l-l-gray
 
 
 fontsize=10</panel_attributes>
@@ -1396,7 +1395,7 @@ fontsize=10</panel_attributes>
             <x>1070</x>
             <y>1530</y>
             <w>200</w>
-            <h>60</h>
+            <h>80</h>
         </coordinates>
         <panel_attributes>._&lt;&lt;interface&gt;&gt;
 .*hca.WS.chcaGenericHostImp
@@ -1404,7 +1403,7 @@ fontsize=10</panel_attributes>
 --
 HandleAsyncAction()
 --
-bg=#00aa70
+fontsize=10
 bg=l-l-l-blue</panel_attributes>
         <additional_attributes/>
     </element>
@@ -1412,12 +1411,12 @@ bg=l-l-l-blue</panel_attributes>
         <id>Relation</id>
         <coordinates>
             <x>1170</x>
-            <y>1590</y>
+            <y>1610</y>
             <w>0</w>
-            <h>80</h>
+            <h>60</h>
         </coordinates>
         <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-        <additional_attributes>0;0;0;80</additional_attributes>
+        <additional_attributes>0;0;0;60</additional_attributes>
     </element>
     <element>
         <id>UMLClass</id>
@@ -2363,7 +2362,7 @@ bg=l-l-l-blue
         <panel_attributes>Database related table(s)
 
 fontsize=10
-bg=gray
+bg=l-l-gray
 </panel_attributes>
         <additional_attributes/>
     </element>

@@ -39,7 +39,7 @@ fontsize=28</panel_attributes>
             <w>580</w>
             <h>560</h>
         </coordinates>
-        <panel_attributes>* Related classes*
+        <panel_attributes>* Related classes
 fontsize=25
 valign=top
 halign=left</panel_attributes>
@@ -53,7 +53,7 @@ halign=left</panel_attributes>
             <w>850</w>
             <h>670</h>
         </coordinates>
-        <panel_attributes>* Involved database tables*
+        <panel_attributes>* Involved database tables
 
 
 
@@ -85,7 +85,7 @@ fontsize=25
             <w>640</w>
             <h>670</h>
         </coordinates>
-        <panel_attributes>* Related classes*
+        <panel_attributes>* Related classes
 fontsize=25
 valign=top
 halign=left</panel_attributes>
@@ -99,7 +99,7 @@ halign=left</panel_attributes>
             <w>1080</w>
             <h>560</h>
         </coordinates>
-        <panel_attributes>* Involved database tables*
+        <panel_attributes>* Involved database tables
 
 
 
@@ -284,7 +284,7 @@ fontsize=28
             <w>70</w>
             <h>140</h>
         </coordinates>
-        <panel_attributes>VC
+        <panel_attributes>.VC
 halign=center
 fontsize=18
 bg=green</panel_attributes>
@@ -324,7 +324,7 @@ fontsize=18</panel_attributes>
             <w>70</w>
             <h>140</h>
         </coordinates>
-        <panel_attributes>VC
+        <panel_attributes>.VC
 halign=center
 fontsize=18
 bg=green</panel_attributes>
@@ -339,8 +339,7 @@ bg=green</panel_attributes>
             <h>0</h>
         </coordinates>
         <panel_attributes>lt=&lt;-
-Message
-fontsize=18</panel_attributes>
+Message           </panel_attributes>
         <additional_attributes>100;0;0;0</additional_attributes>
     </element>
     <element>
@@ -363,7 +362,7 @@ fontsize=30</panel_attributes>
             <w>40</w>
             <h>40</h>
         </coordinates>
-        <panel_attributes>B
+        <panel_attributes>.B
 fontsize=30</panel_attributes>
         <additional_attributes/>
     </element>
@@ -376,7 +375,7 @@ fontsize=30</panel_attributes>
             <h>0</h>
         </coordinates>
         <panel_attributes>lt=&lt;-
-ACK
+ACK               
 fontsize=18</panel_attributes>
         <additional_attributes>0;0;100;0</additional_attributes>
     </element>
@@ -570,7 +569,7 @@ halign=left
             <w>140</w>
             <h>230</h>
         </coordinates>
-        <panel_attributes>*thcaMessageReceiversIN*
+        <panel_attributes>*thcaMessageReceiversIN
 --
 AppACKSend
 ComACKSend
@@ -601,7 +600,7 @@ fontsize=10</panel_attributes>
             <w>160</w>
             <h>170</h>
         </coordinates>
-        <panel_attributes>*thcaMessageObjectIN*
+        <panel_attributes>*thcaMessageObjectIN
 --
 ID
 Sender
@@ -626,7 +625,7 @@ fontsize=10</panel_attributes>
             <w>160</w>
             <h>210</h>
         </coordinates>
-        <panel_attributes>*thcaMessageQueueIN*
+        <panel_attributes>*thcaMessageQueueIN
 --
 ID
 AllowReopen
@@ -679,7 +678,7 @@ m2=*</panel_attributes>
             <w>150</w>
             <h>230</h>
         </coordinates>
-        <panel_attributes>*thcaMessageReceiversOUT*
+        <panel_attributes>*thcaMessageReceiversOUT
 --
 ID
 AppACKReceived
@@ -710,7 +709,7 @@ fontsize=10</panel_attributes>
             <w>160</w>
             <h>320</h>
         </coordinates>
-        <panel_attributes>*thcaMessageObjectOUT*
+        <panel_attributes>*thcaMessageObjectOUT
 --
 ID
 CanceledRetry
@@ -748,7 +747,7 @@ fontsize=10</panel_attributes>
             <w>140</w>
             <h>150</h>
         </coordinates>
-        <panel_attributes>*thcaMessageQueueOUT*
+        <panel_attributes>*thcaMessageQueueOUT
 --
 ID
 CreationDate
@@ -887,7 +886,7 @@ bg=green</panel_attributes>
             <w>160</w>
             <h>150</h>
         </coordinates>
-        <panel_attributes>*thcaACK*
+        <panel_attributes>*thcaACK
 --
 ID
 ACKType
@@ -1211,7 +1210,7 @@ layer=2</panel_attributes>
             <w>140</w>
             <h>230</h>
         </coordinates>
-        <panel_attributes>*thcaMessageReceiversIN*
+        <panel_attributes>*thcaMessageReceiversIN
 --
 AppACKSend
 ComACKSend
@@ -1243,7 +1242,7 @@ layer=1</panel_attributes>
             <w>150</w>
             <h>230</h>
         </coordinates>
-        <panel_attributes>*thcaMessageReceiversOUT*
+        <panel_attributes>*thcaMessageReceiversOUT
 --
 ID
 AppACKReceived
@@ -1291,7 +1290,7 @@ fontsize=28
             <w>70</w>
             <h>140</h>
         </coordinates>
-        <panel_attributes>VC
+        <panel_attributes>.VC
 halign=center
 fontsize=18
 bg=green</panel_attributes>
@@ -1318,8 +1317,7 @@ ACK</panel_attributes>
             <h>0</h>
         </coordinates>
         <panel_attributes>lt=&lt;-
-Message
-</panel_attributes>
+Message</panel_attributes>
         <additional_attributes>100;0;0;0</additional_attributes>
     </element>
     <element>
@@ -1330,7 +1328,7 @@ Message
             <w>70</w>
             <h>140</h>
         </coordinates>
-        <panel_attributes>VC
+        <panel_attributes>.VC
 halign=center
 fontsize=18
 bg=green</panel_attributes>
