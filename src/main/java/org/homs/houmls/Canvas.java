@@ -30,7 +30,7 @@ public class Canvas extends JPanel {
 
     final List<Shape> selectedShapes = new ArrayList<>();
     Draggable draggableUnderMouse = null;
-    final List<Shape> shapesClipboard = new ArrayList<>();
+    final List<Shape> shapesClipboard;
 
     int mouseCurrentPosX = 0;
     int mouseCurrentPosY = 0;
@@ -450,8 +450,8 @@ public class Canvas extends JPanel {
 
     class OffsetAndZoomListener extends KeyAdapter implements MouseWheelListener {
 
-        static final int MOUSE_WHEEL_ROTATION_PX_AMOUNT = 50;
-        static final double MOUSE_WHEEL_ROTATION_ZOOM_FACTOR = 0.10;
+        static final int MOUSE_WHEEL_ROTATION_PX_AMOUNT = 75;
+        static final double MOUSE_WHEEL_ROTATION_ZOOM_FACTOR = 0.20;
 
         boolean controlPressed = false;
         boolean shiftPressed = false;
@@ -523,6 +523,7 @@ public class Canvas extends JPanel {
                         var dupShape = shape.duplicate((int) mousePos.getX(), (int) mousePos.getY());
                         diagram.addShape(dupShape);
                         selectedShapes.add(dupShape);
+                        diagram.manageConnectorLinks();
                     }
                     repaint();
                     pushUndoCheckpoint();
@@ -664,9 +665,6 @@ public class Canvas extends JPanel {
             mouseCurrentPosX = e.getX();
             mouseCurrentPosY = e.getY();
 
-            if (Canvas.this.draggableUnderMouse != draggable) {
-                repaint();
-            }
             Canvas.this.draggableUnderMouse = draggable;
 
             if (draggable == null) {
@@ -693,11 +691,12 @@ public class Canvas extends JPanel {
         return diagram;
     }
 
-    public Canvas(JTextArea editorTextPaneRef) {
+    public Canvas(JTextArea editorTextPaneRef, List<Shape> shapesClipboard) {
         super(true);
 
         this.diagram = new Diagram();
         this.editorTextPaneRef = editorTextPaneRef;
+        this.shapesClipboard = shapesClipboard;
 
         this.offsetAndZoomListener = new OffsetAndZoomListener();
         addMouseWheelListener(offsetAndZoomListener);
@@ -892,4 +891,14 @@ public class Canvas extends JPanel {
     public String getDiagramName() {
         return diagram.getName();
     }
+
+    public String getDiagramShortName() {
+        var name = getDiagramName();
+        int pos = Math.max(
+                name.lastIndexOf('/'),
+                name.lastIndexOf('\\')
+        );
+        return name.substring(pos + 1);
+    }
+
 }

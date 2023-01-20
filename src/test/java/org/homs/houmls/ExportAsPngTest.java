@@ -52,4 +52,9 @@ public class ExportAsPngTest {
         ExportAsPng.main(new String[]{basePath + "houmls-white-paper.houmls", "--output=diagrams/houmls-white-paper.png"});
     }
 
+    @Test
+    void berbis() throws Exception {
+        ExportAsPng.main(new String[]{"berbis.houmls", "--output=diagrams/berbis.png"});
+    }
+
 }

@@ -7,6 +7,7 @@ public class LookAndFeel {
     public static final Color yellowMartin = new Color(0xff, 0xff, 0xda);
 
     protected static final String regularFontName = Font.SANS_SERIF;
+    //    protected static final String regularFontName = Font.MONOSPACED;
     public static final int regularFontSize = 12;
 
     public static Font regularFont() {

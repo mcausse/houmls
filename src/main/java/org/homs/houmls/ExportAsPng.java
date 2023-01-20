@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.Collections;
 
 public class ExportAsPng {
 
@@ -23,7 +24,7 @@ public class ExportAsPng {
         //
         System.out.print("Exporting: " + String.join(" ", args) + "...");
 
-        Canvas canvas = new Canvas(new JTextArea());
+        Canvas canvas = new Canvas(new JTextArea(), Collections.emptyList());
         canvas.setDiagram(HoumsFileFormatManager.loadFile(inputFileName));
         Rectangle diagramBounds = canvas.getDiagram().getDiagramBounds();
         diagramBounds.grow(100, 100);

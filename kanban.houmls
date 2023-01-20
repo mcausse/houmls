@@ -317,13 +317,16 @@ diagram.</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>90</x>
-            <y>10</y>
+            <x>370</x>
+            <y>90</y>
             <w>180</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>
-pestañas</panel_attributes>
+        <panel_attributes>*pestañas
+--
+JTabbedPane tp = 
+   new JTabbedPane();
+f.add(tabbedPane);</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -361,6 +364,17 @@ draw</panel_attributes>
         <panel_attributes>.*Fit to window
 --
 </panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>90</x>
+            <y>120</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>MD-style in boxes</panel_attributes>
         <additional_attributes/>
     </element>
 </diagram>
