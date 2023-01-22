@@ -47,4 +47,22 @@ public class PropsParserTest {
         assertThat(PropsParser.reverseArrowStyle("12345")).isEqualTo("54321");
         assertThat(PropsParser.reverseArrowStyle(">>>>>")).isEqualTo("<<<<<");
     }
+
+    @Test
+    void split0() {
+        var text = "jou";
+
+        var r = PropsParser.split(text, '`');
+
+        assertThat(r.toString()).isEqualTo("[jou]");
+    }
+
+    @Test
+    void split() {
+        var text = "`jou`juas`fi`";
+
+        var r = PropsParser.split(text, '`');
+
+        assertThat(r.toString()).isEqualTo("[, jou, juas, fi]");
+    }
 }

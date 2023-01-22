@@ -1,7 +1,9 @@
 package org.homs.houmls;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -121,5 +123,26 @@ public class PropsParser {
             }
         }
         return rev.toString();
+    }
+
+    public static List<String> split(String text, char sep) {
+        var r = new ArrayList<String>();
+        var s = new StringBuilder();
+
+        for (char c : text.toCharArray()) {
+            if (c == sep) {
+                r.add(s.toString());
+                s = new StringBuilder();
+            } else {
+                s.append(c);
+            }
+        }
+
+        // the tail
+        if (s.length() > 0) {
+            r.add(s.toString());
+        }
+
+        return r;
     }
 }

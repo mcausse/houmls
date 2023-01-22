@@ -1,13 +1,16 @@
 package org.homs.houmls;
 
 import java.awt.*;
+import java.awt.font.TextAttribute;
+import java.util.HashMap;
+import java.util.Map;
 
 public class LookAndFeel {
 
     public static final Color yellowMartin = new Color(0xff, 0xff, 0xda);
 
     protected static final String regularFontName = Font.SANS_SERIF;
-    //    protected static final String regularFontName = Font.MONOSPACED;
+    protected static final String monospaceFontName = Font.MONOSPACED;
     public static final int regularFontSize = 12;
 
     public static Font regularFont() {
@@ -24,6 +27,14 @@ public class LookAndFeel {
 
     public static Font regularFontItalic(int size) {
         return new Font(regularFontName, Font.ITALIC, size);
+    }
+
+    public static Font monospaceFont(int size) {
+        Map<TextAttribute, Integer> fontAttributes = new HashMap<TextAttribute, Integer>();
+        fontAttributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+        Font boldUnderline = new Font(monospaceFontName, Font.PLAIN, size).deriveFont(fontAttributes);
+        return boldUnderline;
+//        return new Font(monospaceFontName, Font.PLAIN, size);
     }
 
     public static final Stroke basicStroke = new BasicStroke(1);

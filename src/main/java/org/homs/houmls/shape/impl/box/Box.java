@@ -6,6 +6,7 @@ import org.homs.houmls.shape.Draggable;
 import org.homs.houmls.shape.Shape;
 
 import java.awt.*;
+import java.util.List;
 import java.util.Map;
 import java.util.function.Supplier;
 
@@ -82,7 +83,8 @@ public class Box implements Shape {
 
         var g2 = (Graphics2D) g;
 
-        g.setFont(LookAndFeel.regularFont(fontSize));
+        var regularFont = LookAndFeel.regularFont(fontSize);
+        g.setFont(regularFont);
         int fontHeigth = new FontMetrics(g2).getHeight("aaaAA0");
 
         String[] textLines = this.text.split("\\n");
@@ -98,14 +100,16 @@ public class Box implements Shape {
                     line = line.substring(1);
                     alignCentered = true;
                 }
+
+                final Font lineFont;
                 if (line.startsWith("*")) {
                     line = line.substring(1);
-                    g2.setFont(LookAndFeel.regularFontBold(fontSize));
+                    lineFont = LookAndFeel.regularFontBold(fontSize);
                 } else if (line.startsWith("_")) {
                     line = line.substring(1);
-                    g2.setFont(LookAndFeel.regularFontItalic(fontSize));
+                    lineFont = LookAndFeel.regularFontItalic(fontSize);
                 } else {
-                    g2.setFont(LookAndFeel.regularFont(fontSize));
+                    lineFont = regularFont;
                 }
                 final FontMetrics fontMetrics = new FontMetrics(g2);
                 int textLineWidthPx = (int) fontMetrics.getWidth(line);
@@ -117,7 +121,24 @@ public class Box implements Shape {
                 }
 
                 y += fontHeigth;
-                g.drawString(line, ix + alignCorrectionXPx, y);
+
+//                g.setFont(lineFont);
+//                g.drawString(line, ix + alignCorrectionXPx, y);
+
+                var monospaceFont = LookAndFeel.monospaceFont(fontSize);
+                List<String> parts = PropsParser.split(line, '`');
+                int ax = 0;
+                for (int i = 0; i < parts.size(); i++) {
+                    String part = parts.get(i);
+                    if (i % 2 == 0) {
+                        g.setFont(lineFont);
+                    } else {
+                        g.setFont(monospaceFont);
+                    }
+
+                    g.drawString(part, ix + alignCorrectionXPx + ax, y);
+                    ax += FontMetrics.getWidth(g2, part);
+                }
             }
         }
     }
