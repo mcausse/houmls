@@ -4,7 +4,7 @@ import org.homs.houmls.shape.Shape;
 
 import java.awt.*;
 
-import static org.homs.houmls.LookAndFeel.basicStroke;
+import static org.homs.houmls.LookAndFeel.*;
 
 public class Ellipse extends Box {
 
@@ -27,6 +27,14 @@ public class Ellipse extends Box {
         int iheight = (int) height;
 
         g2.setStroke(basicStroke);
+
+        /*
+         * PINTA OMBRA
+         */
+        if (BOXES_WITH_SHADOW) {
+            g2.setColor(BOXES_SHADOW_COLOR);
+            g2.fillOval(ix + BOXES_SHADOW_WIDTH, iy + BOXES_SHADOW_WIDTH, iwidth, iheight);
+        }
 
         g2.setColor(backgroundColor);
         g2.fillOval(ix, iy, iwidth, iheight);

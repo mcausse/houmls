@@ -33,6 +33,7 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
 public class MainC2 {
 
     public static final String FRAME_TITLE = "Houmls (╯°o°）╯︵ ┻━┻  -- ";
+
     public static final String UNNAMED_FILENAME = "Unnamed";
 
     static final Image frameIcon = Toolkit.getDefaultToolkit().getImage(MainC2.class.getClassLoader().getResource("org/homs/houmls/houmls.png"));
@@ -141,7 +142,8 @@ public class MainC2 {
                 );
                 return name.substring(pos + 1);
             } else {
-                return "New";
+                //return "New";
+                return null;
             }
         }
 
@@ -149,7 +151,8 @@ public class MainC2 {
             if (canvas.getDiagramName().isPresent()) {
                 return canvas.getDiagramName().get();
             } else {
-                return "New";
+//                return "New";
+                return null;
             }
         }
 
@@ -323,7 +326,7 @@ public class MainC2 {
         return toolBar;
     }
 
-     static void createNewDiagramTab(Consumer<String> currentDiagramFileNameConsumer, JTabbedPane tabbedPane) {
+    static void createNewDiagramTab(Consumer<String> currentDiagramFileNameConsumer, JTabbedPane tabbedPane) {
         DiagramTab diagramTab = createNewDiagramTab(currentDiagramFileNameConsumer);
         tabbedPane.addTab("New", diagramTab);
         tabbedPane.setSelectedComponent(diagramTab);
@@ -342,7 +345,7 @@ public class MainC2 {
         });
     }
 
-     static void loadDiagramIntoNewTab(File file, Consumer<String> currentDiagramFileNameConsumer, JTabbedPane tabbedPane) throws Exception {
+    static void loadDiagramIntoNewTab(File file, Consumer<String> currentDiagramFileNameConsumer, JTabbedPane tabbedPane) throws Exception {
         DiagramTab diagramTab = createNewDiagramTab(currentDiagramFileNameConsumer);
 
         var canvas = diagramTab.getCanvas();

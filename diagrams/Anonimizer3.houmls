@@ -1,447 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?><diagram program="houmls" version="0.0.1">
     <zoom_level>10</zoom_level>
-    <help_text>// Uncomment the following line to change the fontsize and font:
-fontsize=12
-// fontfamily=SansSerif //possible: SansSerif,Serif,Monospaced
-
-
-//////////////////////////////////////////////////////////////////////////////////////////////
-// Welcome to UMLet!
-//
-// Double-click on elements to add them to the diagram, or to copy them
-// Edit elements by modifying the text in this panel
-// Hold Ctrl to select multiple elements
-// Use Ctrl+mouse to select via lasso
-//
-// Use +/- or Ctrl+mouse wheel to zoom
-// Drag a whole relation at its central square icon
-//
-// Press Ctrl+C to copy the whole diagram to the system clipboard (then just paste it to, eg, Word)
-// Edit the files in the "palettes" directory to create your own element palettes
-//
-// Select "Custom Elements &gt; New..." to create new element types
-//////////////////////////////////////////////////////////////////////////////////////////////
-
-
-// This text will be stored with each diagram;  use it for notes.</help_text>
-    <element>
-        <id>UMLState</id>
-        <coordinates>
-            <x>0</x>
-            <y>1350</y>
-            <w>1510</w>
-            <h>1030</h>
-        </coordinates>
-        <panel_attributes>   FINAL VERSION
-
-valign=top
-halign=left
-fontsize=16</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>UMLState</id>
-        <coordinates>
-            <x>1110</x>
-            <y>900</y>
-            <w>1020</w>
-            <h>430</h>
-        </coordinates>
-        <panel_attributes>   VANTAGEWS LISLabOrderResponse entity tree example
-
-
-valign=top
-halign=left
-fontsize=16</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>UMLState</id>
-        <coordinates>
-            <x>1110</x>
-            <y>550</y>
-            <w>1020</w>
-            <h>320</h>
-        </coordinates>
-        <panel_attributes>   msg.LIS entity tree example
-
-valign=top
-halign=left
-fontsize=16</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>UMLState</id>
-        <coordinates>
-            <x>0</x>
-            <y>550</y>
-            <w>1020</w>
-            <h>780</h>
-        </coordinates>
-        <panel_attributes>   v2
-
-valign=top
-halign=left
-fontsize=16</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>UMLState</id>
-        <coordinates>
-            <x>0</x>
-            <y>0</y>
-            <w>1020</w>
-            <h>530</h>
-        </coordinates>
-        <panel_attributes>   v1
-
-valign=top
-halign=left
-fontsize=16</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>UMLClass</id>
-        <coordinates>
-            <x>310</x>
-            <y>270</y>
-            <w>170</w>
-            <h>60</h>
-        </coordinates>
-        <panel_attributes>*ReportService*
+    <help_text>*%Datatype.String*
 --
-GetAffectedMessages(Criteria)
-RunReportAsyncJob(Criteria)
---
---
-fontsize=10</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>UMLClass</id>
-        <coordinates>
-            <x>560</x>
-            <y>160</y>
-            <w>180</w>
-            <h>80</h>
-        </coordinates>
-        <panel_attributes>*MessagesRepository*
---
---
-GetMessages(Criteria) As %ResultSet
---
-fontsize=10</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>480</x>
-            <y>200</y>
-            <w>80</w>
-            <h>90</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;-</panel_attributes>
-        <additional_attributes>80;0;0;90</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>650</x>
-            <y>120</y>
-            <w>0</w>
-            <h>40</h>
-        </coordinates>
-        <panel_attributes>
-lt=&lt;-</panel_attributes>
-        <additional_attributes>0;0;0;40</additional_attributes>
-    </element>
-    <element>
-        <id>UMLClass</id>
-        <coordinates>
-            <x>560</x>
-            <y>260</y>
-            <w>180</w>
-            <h>70</h>
-        </coordinates>
-        <panel_attributes>*SensitiveFieldsRepository*
---
---
-GetMsgLisSensitiveFields()
-GetSensitiveFieldsForWSEntity(entityClassName As %String)
---
-fontsize=10</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>480</x>
-            <y>300</y>
-            <w>80</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;-</panel_attributes>
-        <additional_attributes>80;0;0;0</additional_attributes>
-    </element>
-    <element>
-        <id>UMLClass</id>
-        <coordinates>
-            <x>560</x>
-            <y>360</y>
-            <w>180</w>
-            <h>110</h>
-        </coordinates>
-        <panel_attributes>*FileReportRepository*
---
-file As %Stream
---
-Open(fileName)
-Insert(message)
-Close()
-Rename()
---
-fontsize=10</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>480</x>
-            <y>310</y>
-            <w>80</w>
-            <h>100</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;-</panel_attributes>
-        <additional_attributes>80;100;0;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>740</x>
-            <y>410</y>
-            <w>100</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>&lt;&lt;generates&gt;&gt;
-lt=&lt;.
-</panel_attributes>
-        <additional_attributes>100;0;0;0</additional_attributes>
-    </element>
-    <element>
-        <id>UMLNote</id>
-        <coordinates>
-            <x>840</x>
-            <y>380</y>
-            <w>100</w>
-            <h>70</h>
-        </coordinates>
-        <panel_attributes>Report file
-(plain TXT)
-</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>UMLNote</id>
-        <coordinates>
-            <x>300</x>
-            <y>350</y>
-            <w>190</w>
-            <h>80</h>
-        </coordinates>
-        <panel_attributes>iterates the %Resultset, 
-anonimizes every message, 
-and adds to the %FileStream
 
-(at any moment only one 
-message is loaded in memory)
-bg=yellow
-fontsize=10</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>UMLNote</id>
-        <coordinates>
-            <x>780</x>
-            <y>200</y>
-            <w>160</w>
-            <h>120</h>
-        </coordinates>
-        <panel_attributes>provides the list of msg.LIS 
-properties to anonimize:
-&lt;className&gt;#&lt;propertyName&gt;
-
-msg.LISPatient#LastName
-msg.LISPatient#FirstName
-msg.LISOrder#SampleID
-msg.LISSlide#SampleID
-msg.LISOrder#PathologistFN
-
-bg=yellow
-fontsize=10</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>740</x>
-            <y>290</y>
-            <w>40</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=.</panel_attributes>
-        <additional_attributes>0;0;40;0</additional_attributes>
-    </element>
-    <element>
-        <id>UMLNote</id>
-        <coordinates>
-            <x>750</x>
-            <y>40</y>
-            <w>230</w>
-            <h>100</h>
-        </coordinates>
-        <panel_attributes>SELECT * FROM ( 
-  SELECT ID, 'IN' As Dir,  CreationDate, SampleID, Sender, SenderID, 
-     MessageType, NULL As ChannelID,         rMessageQueue-&gt;ConnectionID,  
-     rMessageQueue-&gt;ConnectionType,  rMessageQueue-&gt;MessageBodyText 
-     FROM SQLUser.thcaMessageReceiversIN 
-  UNION ALL 
-  SELECT ID, 'OUT' As Dir, CreationDate, SampleID, Sender, SenderID, 
-     MessageType, rMessageObject-&gt;ChannelID, rMessageObject-&gt;ConnectionID, 
-     rMessageObject-&gt;ConnectionType, rMessageQueue-&gt;MessageBodyText 
-     FROM SQLUser.thcaMessageReceiversOUT 
-) ORDER BY CreationDate ASC 
-
-bg=yellow
-fontsize=6</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>740</x>
-            <y>140</y>
-            <w>10</w>
-            <h>20</h>
-        </coordinates>
-        <panel_attributes>lt=.</panel_attributes>
-        <additional_attributes>0;20;10;0</additional_attributes>
-    </element>
-    <element>
-        <id>UMLClass</id>
-        <coordinates>
-            <x>50</x>
-            <y>390</y>
-            <w>180</w>
-            <h>60</h>
-        </coordinates>
-        <panel_attributes>*SensitiveFieldsMsgLISProcessor*
---
 --
 --
 fontsize=10
-</panel_attributes>
+bg=l-l-green</help_text>
+    <element>
+        <id>UMLState</id>
+        <coordinates>
+            <x>-100</x>
+            <y>1320</y>
+            <w>1630</w>
+            <h>1220</h>
+        </coordinates>
+        <panel_attributes>*   FINAL VERSION
+
+valign=top
+halign=left
+fontsize=16</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLState</id>
+        <coordinates>
+            <x>960</x>
+            <y>850</y>
+            <w>1020</w>
+            <h>430</h>
+        </coordinates>
+        <panel_attributes>*   VANTAGEWS LISLabOrderResponse entity tree example
+
+
+valign=top
+halign=left
+fontsize=16</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLState</id>
+        <coordinates>
+            <x>-100</x>
+            <y>960</y>
+            <w>1020</w>
+            <h>320</h>
+        </coordinates>
+        <panel_attributes>*   msg.LIS entity tree example
+
+valign=top
+halign=left
+fontsize=16</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>50</x>
-            <y>270</y>
-            <w>180</w>
-            <h>60</h>
-        </coordinates>
-        <panel_attributes>&lt;&lt;interface&gt;&gt;
-*hca.msg.MsgLISPropertyProcessor*
---
---
---
-fontsize=9
-bg=orange</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>230</x>
-            <y>300</y>
-            <w>80</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;-</panel_attributes>
-        <additional_attributes>0;0;80;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>140</x>
-            <y>330</y>
-            <w>0</w>
-            <h>60</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;&lt;.</panel_attributes>
-        <additional_attributes>0;0;0;60</additional_attributes>
-    </element>
-    <element>
-        <id>UMLClass</id>
-        <coordinates>
-            <x>50</x>
-            <y>160</y>
-            <w>180</w>
-            <h>80</h>
-        </coordinates>
-        <panel_attributes>*ReportRestController*
---
---
-GetAffectedMessages(Criteria)
-RunReportAsyncJob(Criteria)
-GetHosts()
---
-fontsize=10</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>230</x>
-            <y>230</y>
-            <w>80</w>
-            <h>40</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;.
-&lt;&lt;calls&gt;&gt;</panel_attributes>
-        <additional_attributes>80;40;0;0</additional_attributes>
-    </element>
-    <element>
-        <id>UMLNote</id>
-        <coordinates>
-            <x>270</x>
-            <y>450</y>
-            <w>260</w>
-            <h>40</h>
-        </coordinates>
-        <panel_attributes>Given a list of the sensitive property names, gets the 
-list of sensitive values (by exploring the "msg.LIS" tree).
-bg=yellow
-fontsize=10</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>228</x>
-            <y>440</y>
-            <w>42</w>
-            <h>20</h>
-        </coordinates>
-        <panel_attributes>lt=.</panel_attributes>
-        <additional_attributes>0;0;42;20</additional_attributes>
-    </element>
-    <element>
-        <id>UMLClass</id>
-        <coordinates>
-            <x>1190</x>
-            <y>690</y>
+            <x>-20</x>
+            <y>1100</y>
             <w>170</w>
             <h>60</h>
         </coordinates>
@@ -449,14 +65,15 @@ fontsize=10</panel_attributes>
 --
 --
 --
-fontsize=10</panel_attributes>
+fontsize=10
+bg=l-l-green</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>1420</x>
-            <y>690</y>
+            <x>210</x>
+            <y>1100</y>
             <w>170</w>
             <h>60</h>
         </coordinates>
@@ -467,14 +84,15 @@ LastName As %String
 DateOfBirth As %Date
 --
 --
-fontsize=10</panel_attributes>
+fontsize=10
+bg=l-l-green</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>1640</x>
-            <y>690</y>
+            <x>430</x>
+            <y>1100</y>
             <w>170</w>
             <h>60</h>
         </coordinates>
@@ -484,14 +102,15 @@ SampleID As %String
 RegisterYear As %String
 --
 --
-fontsize=10</panel_attributes>
+fontsize=10
+bg=l-l-green</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>1590</x>
-            <y>720</y>
+            <x>380</x>
+            <y>1130</y>
             <w>50</w>
             <h>0</h>
         </coordinates>
@@ -501,8 +120,8 @@ fontsize=10</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>1360</x>
-            <y>720</y>
+            <x>150</x>
+            <y>1130</y>
             <w>60</w>
             <h>0</h>
         </coordinates>
@@ -512,8 +131,8 @@ fontsize=10</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>1420</x>
-            <y>610</y>
+            <x>210</x>
+            <y>1020</y>
             <w>170</w>
             <h>60</h>
         </coordinates>
@@ -521,14 +140,15 @@ fontsize=10</panel_attributes>
 --
 --
 --
-fontsize=10</panel_attributes>
+fontsize=10
+bg=l-l-green</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>1360</x>
-            <y>640</y>
+            <x>150</x>
+            <y>1050</y>
             <w>60</w>
             <h>70</h>
         </coordinates>
@@ -538,8 +158,8 @@ fontsize=10</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>1420</x>
-            <y>770</y>
+            <x>210</x>
+            <y>1180</y>
             <w>170</w>
             <h>60</h>
         </coordinates>
@@ -547,14 +167,15 @@ fontsize=10</panel_attributes>
 --
 --
 --
-fontsize=10</panel_attributes>
+fontsize=10
+bg=l-l-green</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>1360</x>
-            <y>730</y>
+            <x>150</x>
+            <y>1140</y>
             <w>60</w>
             <h>70</h>
         </coordinates>
@@ -564,8 +185,8 @@ fontsize=10</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>1860</x>
-            <y>690</y>
+            <x>650</x>
+            <y>1100</y>
             <w>170</w>
             <h>60</h>
         </coordinates>
@@ -573,14 +194,15 @@ fontsize=10</panel_attributes>
 --
 --
 --
-fontsize=10</panel_attributes>
+fontsize=10
+bg=l-l-green</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>1810</x>
-            <y>720</y>
+            <x>600</x>
+            <y>1130</y>
             <w>50</w>
             <h>0</h>
         </coordinates>
@@ -590,65 +212,8 @@ fontsize=10</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>310</x>
-            <y>160</y>
-            <w>170</w>
-            <h>80</h>
-        </coordinates>
-        <panel_attributes>*Criteria*
---
-sampleId: string
-from: timestamp,
-to: timestamp,
-hosts: List&lt;int&gt;
---
---
-fontsize=10</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>1350</x>
-            <y>240</y>
-            <w>120</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;-
-%Resultset</panel_attributes>
-        <additional_attributes>120;0;0;0</additional_attributes>
-    </element>
-    <element>
-        <id>UMLNote</id>
-        <coordinates>
-            <x>1740</x>
-            <y>210</y>
-            <w>100</w>
-            <h>60</h>
-        </coordinates>
-        <panel_attributes>Report file
-(plain TXT/MD)
-</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>1610</x>
-            <y>240</y>
-            <w>130</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>%FileStream
-lt=&lt;-
-fontsize=11</panel_attributes>
-        <additional_attributes>130;0;0;0</additional_attributes>
-    </element>
-    <element>
-        <id>UMLClass</id>
-        <coordinates>
-            <x>1140</x>
-            <y>1140</y>
+            <x>990</x>
+            <y>1090</y>
             <w>280</w>
             <h>60</h>
         </coordinates>
@@ -658,14 +223,15 @@ CaseId As %String
 Pathologist As ws.ext.VANTAGEWS.q1.Pathologist
 --
 --
-fontsize=10</panel_attributes>
+fontsize=10
+bg=l-l-green</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>1140</x>
-            <y>1250</y>
+            <x>990</x>
+            <y>1200</y>
             <w>280</w>
             <h>60</h>
         </coordinates>
@@ -674,14 +240,15 @@ fontsize=10</panel_attributes>
 IsAccepted As %Boolean
 --
 --
-fontsize=10</panel_attributes>
+fontsize=10
+bg=l-l-green</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>1490</x>
-            <y>1140</y>
+            <x>1340</x>
+            <y>1090</y>
             <w>280</w>
             <h>60</h>
         </coordinates>
@@ -690,14 +257,15 @@ fontsize=10</panel_attributes>
 
 --
 --
-fontsize=10</panel_attributes>
+fontsize=10
+bg=l-l-green</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>1420</x>
-            <y>1170</y>
+            <x>1270</x>
+            <y>1120</y>
             <w>70</w>
             <h>0</h>
         </coordinates>
@@ -707,8 +275,8 @@ fontsize=10</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>1490</x>
-            <y>1230</y>
+            <x>1340</x>
+            <y>1180</y>
             <w>280</w>
             <h>60</h>
         </coordinates>
@@ -717,14 +285,15 @@ fontsize=10</panel_attributes>
 
 --
 --
-fontsize=10</panel_attributes>
+fontsize=10
+bg=l-l-green</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>1420</x>
-            <y>1190</y>
+            <x>1270</x>
+            <y>1140</y>
             <w>70</w>
             <h>60</h>
         </coordinates>
@@ -734,8 +303,8 @@ fontsize=10</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>1490</x>
-            <y>1050</y>
+            <x>1340</x>
+            <y>1000</y>
             <w>280</w>
             <h>60</h>
         </coordinates>
@@ -744,14 +313,15 @@ fontsize=10</panel_attributes>
 
 --
 --
-fontsize=10</panel_attributes>
+fontsize=10
+bg=l-l-green</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>1830</x>
-            <y>1050</y>
+            <x>1680</x>
+            <y>1000</y>
             <w>280</w>
             <h>60</h>
         </coordinates>
@@ -760,14 +330,15 @@ fontsize=10</panel_attributes>
 
 --
 --
-fontsize=10</panel_attributes>
+fontsize=10
+bg=l-l-green</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>1830</x>
-            <y>940</y>
+            <x>1680</x>
+            <y>890</y>
             <w>280</w>
             <h>60</h>
         </coordinates>
@@ -776,14 +347,15 @@ fontsize=10</panel_attributes>
 
 --
 --
-fontsize=10</panel_attributes>
+fontsize=10
+bg=l-l-green</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>1970</x>
-            <y>1000</y>
+            <x>1820</x>
+            <y>950</y>
             <w>0</w>
             <h>50</h>
         </coordinates>
@@ -793,8 +365,8 @@ fontsize=10</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>1420</x>
-            <y>1080</y>
+            <x>1270</x>
+            <y>1030</y>
             <w>70</w>
             <h>70</h>
         </coordinates>
@@ -804,8 +376,8 @@ fontsize=10</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>1770</x>
-            <y>1080</y>
+            <x>1620</x>
+            <y>1030</y>
             <w>60</w>
             <h>0</h>
         </coordinates>
@@ -815,499 +387,12 @@ fontsize=10</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>320</x>
-            <y>1080</y>
-            <w>210</w>
-            <h>140</h>
-        </coordinates>
-        <panel_attributes>&lt;&lt;interface&gt;&gt;
-*hca.msg.PropertyProcessor*
---
---
-ProcessProperty(
-  instance, 
-  classDef As %Dictionary.ClassDefinition, 
-  propertyDef As %Dictionary.PropertyDefinition, 
-  propertyType As %String)
---
-fontsize=9
-bg=orange</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>270</x>
-            <y>1150</y>
-            <w>50</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-        <additional_attributes>50;0;0;0</additional_attributes>
-    </element>
-    <element>
-        <id>UMLClass</id>
-        <coordinates>
-            <x>20</x>
-            <y>1120</y>
-            <w>250</w>
-            <h>70</h>
-        </coordinates>
-        <panel_attributes>*SensitiveFieldsPropertyProcessor*
---
-Property SensitiveProperties As %ListOfDataTypes
-Property SensitiveValues As %ListOfDataTypes
---
---
-fontsize=10
-</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>UMLClass</id>
-        <coordinates>
-            <x>320</x>
-            <y>930</y>
-            <w>210</w>
-            <h>110</h>
-        </coordinates>
-        <panel_attributes>*hca.msg.EntityTreeExplorer*
---
---
-ExploreMsgLisRecur(
-  instance As %SerialObject, 
-  processor As hca.msg.PropertyProcessor)
--
-fontsize=10
-</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>430</x>
-            <y>1040</y>
-            <w>0</w>
-            <h>40</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;.
-&lt;&lt;uses&gt;&gt;</panel_attributes>
-        <additional_attributes>0;40;0;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>710</x>
-            <y>1190</y>
-            <w>0</w>
-            <h>50</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;.
-&lt;&lt;uses&gt;&gt;</panel_attributes>
-        <additional_attributes>0;50;0;0</additional_attributes>
-    </element>
-    <element>
-        <id>UMLClass</id>
-        <coordinates>
-            <x>580</x>
-            <y>1240</y>
-            <w>260</w>
-            <h>70</h>
-        </coordinates>
-        <panel_attributes>*AnnotationsParser*
---
---
-FindFor(text As %String, annotationName As %String)
-FindAll(text As %String, ByRef rmultiDim)
---
-fontsize=10
-</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>UMLClass</id>
-        <coordinates>
-            <x>580</x>
-            <y>1120</y>
-            <w>250</w>
-            <h>70</h>
-        </coordinates>
-        <panel_attributes>*CollectSensitivePropertiesProcessor*
---
-Property SensitiveProperties As %ListOfDataTypes
---
---
-fontsize=10
-</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>530</x>
-            <y>1150</y>
-            <w>50</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;&lt;-</panel_attributes>
-        <additional_attributes>0;0;50;0</additional_attributes>
-    </element>
-    <element>
-        <id>UMLClass</id>
-        <coordinates>
-            <x>340</x>
-            <y>830</y>
-            <w>170</w>
-            <h>60</h>
-        </coordinates>
-        <panel_attributes>*ReportService*
---
-GetAffectedMessages(Criteria)
-RunReportAsyncJob(Criteria)
---
---
-fontsize=10</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>UMLClass</id>
-        <coordinates>
-            <x>590</x>
-            <y>720</y>
-            <w>180</w>
-            <h>80</h>
-        </coordinates>
-        <panel_attributes>*MessagesRepository*
---
---
-GetMessages(Criteria) As %ResultSet
---
-fontsize=10</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>510</x>
-            <y>760</y>
-            <w>80</w>
-            <h>90</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;-</panel_attributes>
-        <additional_attributes>80;0;0;90</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>680</x>
-            <y>660</y>
-            <w>0</w>
-            <h>60</h>
-        </coordinates>
-        <panel_attributes>
-lt=&lt;-</panel_attributes>
-        <additional_attributes>0;0;0;60</additional_attributes>
-    </element>
-    <element>
-        <id>UMLClass</id>
-        <coordinates>
-            <x>590</x>
-            <y>950</y>
-            <w>180</w>
-            <h>70</h>
-        </coordinates>
-        <panel_attributes>*SensitiveFieldsRepository*
---
---
-GetMsgLisSensitiveFields()
-GetSensitiveFieldsForWSEntity(entityClassName As %String)
---
-fontsize=10</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>510</x>
-            <y>870</y>
-            <w>80</w>
-            <h>120</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;-</panel_attributes>
-        <additional_attributes>80;120;0;0</additional_attributes>
-    </element>
-    <element>
-        <id>UMLClass</id>
-        <coordinates>
-            <x>590</x>
-            <y>820</y>
-            <w>180</w>
-            <h>110</h>
-        </coordinates>
-        <panel_attributes>*FileReportRepository*
---
-file As %Stream
---
-Open(fileName)
-Insert(message)
-Close()
-Rename()
---
-fontsize=10</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>510</x>
-            <y>860</y>
-            <w>80</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;-</panel_attributes>
-        <additional_attributes>80;0;0;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>770</x>
-            <y>890</y>
-            <w>100</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>&lt;&lt;generates&gt;&gt;
-lt=&lt;.
-</panel_attributes>
-        <additional_attributes>100;0;0;0</additional_attributes>
-    </element>
-    <element>
-        <id>UMLNote</id>
-        <coordinates>
-            <x>870</x>
-            <y>860</y>
-            <w>100</w>
-            <h>70</h>
-        </coordinates>
-        <panel_attributes>Report file
-(plain TXT)
-</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>UMLNote</id>
-        <coordinates>
-            <x>350</x>
-            <y>700</y>
-            <w>150</w>
-            <h>90</h>
-        </coordinates>
-        <panel_attributes>iterates the %Resultset, 
-anonimizes every message, 
-and adds to the %FileStream
-
-(at any moment only one 
-message is loaded in memory)
-bg=yellow
-fontsize=10</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>UMLNote</id>
-        <coordinates>
-            <x>840</x>
-            <y>970</y>
-            <w>160</w>
-            <h>120</h>
-        </coordinates>
-        <panel_attributes>provides the list of msg.LIS 
-properties to anonimize:
-&lt;className&gt;#&lt;propertyName&gt;
-
-msg.LISPatient#LastName
-msg.LISPatient#FirstName
-msg.LISOrder#SampleID
-msg.LISSlide#SampleID
-msg.LISOrder#PathologistFN
-
-bg=yellow
-fontsize=10</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>770</x>
-            <y>980</y>
-            <w>70</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=.</panel_attributes>
-        <additional_attributes>0;0;70;0</additional_attributes>
-    </element>
-    <element>
-        <id>UMLNote</id>
-        <coordinates>
-            <x>770</x>
-            <y>570</y>
-            <w>230</w>
-            <h>100</h>
-        </coordinates>
-        <panel_attributes>SELECT * FROM ( 
-  SELECT ID, 'IN' As Dir,  CreationDate, SampleID, Sender, SenderID, 
-     MessageType, NULL As ChannelID,         rMessageQueue-&gt;ConnectionID,  
-     rMessageQueue-&gt;ConnectionType,  rMessageQueue-&gt;MessageBodyText 
-     FROM SQLUser.thcaMessageReceiversIN 
-  UNION ALL 
-  SELECT ID, 'OUT' As Dir, CreationDate, SampleID, Sender, SenderID, 
-     MessageType, rMessageObject-&gt;ChannelID, rMessageObject-&gt;ConnectionID, 
-     rMessageObject-&gt;ConnectionType, rMessageQueue-&gt;MessageBodyText 
-     FROM SQLUser.thcaMessageReceiversOUT 
-) ORDER BY CreationDate ASC 
-
-bg=yellow
-fontsize=6</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>770</x>
-            <y>670</y>
-            <w>50</w>
-            <h>50</h>
-        </coordinates>
-        <panel_attributes>lt=.</panel_attributes>
-        <additional_attributes>0;50;50;0</additional_attributes>
-    </element>
-    <element>
-        <id>UMLClass</id>
-        <coordinates>
-            <x>70</x>
-            <y>820</y>
-            <w>180</w>
-            <h>80</h>
-        </coordinates>
-        <panel_attributes>*ReportRestController*
---
---
-GetAffectedMessages(Criteria)
-RunReportAsyncJob(Criteria)
-GetHosts()
---
-fontsize=10</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>250</x>
-            <y>860</y>
-            <w>90</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;.
-&lt;&lt;calls&gt;&gt;</panel_attributes>
-        <additional_attributes>90;0;0;0</additional_attributes>
-    </element>
-    <element>
-        <id>UMLClass</id>
-        <coordinates>
-            <x>80</x>
-            <y>700</y>
-            <w>170</w>
-            <h>80</h>
-        </coordinates>
-        <panel_attributes>*Criteria*
---
-sampleId: string
-from: timestamp,
-to: timestamp,
-hosts: List&lt;int&gt;
---
---
-fontsize=10</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>UMLNote</id>
-        <coordinates>
-            <x>20</x>
-            <y>1230</y>
-            <w>260</w>
-            <h>40</h>
-        </coordinates>
-        <panel_attributes>Given a list of the sensitive property names, gets the 
-list of sensitive values (by exploring the "msg.LIS" tree).
-bg=yellow
-fontsize=10</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>140</x>
-            <y>1190</y>
-            <w>0</w>
-            <h>40</h>
-        </coordinates>
-        <panel_attributes>lt=.</panel_attributes>
-        <additional_attributes>0;0;0;40</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>420</x>
-            <y>790</y>
-            <w>0</w>
-            <h>40</h>
-        </coordinates>
-        <panel_attributes>lt=.</panel_attributes>
-        <additional_attributes>0;40;0;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>390</x>
-            <y>330</y>
-            <w>0</w>
-            <h>20</h>
-        </coordinates>
-        <panel_attributes>lt=.</panel_attributes>
-        <additional_attributes>0;0;0;20</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>680</x>
-            <y>1020</y>
-            <w>30</w>
-            <h>100</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;.
-&lt;&lt;uses&gt;&gt;</panel_attributes>
-        <additional_attributes>30;100;0;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>140</x>
-            <y>890</y>
-            <w>200</w>
-            <h>230</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;.
-&lt;&lt;uses&gt;&gt;</panel_attributes>
-        <additional_attributes>0;230;200;0</additional_attributes>
-    </element>
-    <element>
-        <id>UMLClass</id>
-        <coordinates>
             <x>20</x>
             <y>1570</y>
             <w>260</w>
             <h>110</h>
         </coordinates>
-        <panel_attributes>*DataPrivacy.controller.Router*
+        <panel_attributes>.*DataPrivacy.controller.Router
 --
 --
 GetHosts()
@@ -1315,7 +400,7 @@ GetAffectedMessages()
 RunReportAsyncJob()
 --
 fontsize=10
-</panel_attributes>
+bg=l-orange</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -1324,9 +409,9 @@ fontsize=10
             <x>350</x>
             <y>1510</y>
             <w>330</w>
-            <h>180</h>
+            <h>330</h>
         </coordinates>
-        <panel_attributes>*DataPrivacy.service.DataPrivacyService*
+        <panel_attributes>.*DataPrivacy.service.DataPrivacyService
 --
 Parameter ExportMessagesMaxLimit As %Integer = 300;
 --
@@ -1337,24 +422,32 @@ Property MessageAnonymizer As MessageAnonymizer;
 --
 GetAvailableHosts()
 GetExportMessagesMaxLimit()
-GetAffectedMessagesCount(hostsList As %List, sampleId As %String, fromTimestamp As %String, toTimestamp As %String)
-GenerateReportAsJob(hostsStringList As %String, sampleId As %String, fromTimestamp As %String, toTimestamp As %String)
+GetAffectedMessagesCount(
+   hostsList As %List, 
+   sampleId As %String, 
+   fromTimestamp As %String, 
+   toTimestamp As %String)
+GenerateReportAsJob(
+   hostsStringList As %String, 
+   sampleId As %String, 
+   fromTimestamp As %String, 
+   toTimestamp As %String)
 
 GetEntityTree(messageInfo As MessageInfoDt)
 --
 fontsize=10
-</panel_attributes>
+bg=l-orange</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>80</x>
-            <y>1810</y>
+            <x>-70</x>
+            <y>1880</y>
             <w>330</w>
-            <h>180</h>
+            <h>340</h>
         </coordinates>
-        <panel_attributes>*DataPrivacy.service.MessageAnonymizer*
+        <panel_attributes>.*DataPrivacy.service.MessageAnonymizer
 --
 --
 AnonymizeMessage(
@@ -1364,24 +457,37 @@ AnonymizeMessage(
    sensitiveObjects As %ListOfDataTypes, 
    forcedValues As %ArrayOfDataTypes)
 
-AnonymizeXmlMessageWithoutEntityTree(plainXmlMessage As %String)
-ReplaceInMessage(isHL7 As %Boolean, message As %String, sensitiveValue As %String, sensitiveReplacement As %String)
-ReplacePartialInMessage(isHL7 As %Boolean, message As %String, sensitiveValue As %String, sensitiveReplacement As %String) As %String
+AnonymizeXmlMessageWithoutEntityTree(
+   plainXmlMessage As %String)
+
+ReplaceInMessage(
+   isHL7 As %Boolean, 
+   message As %String, 
+   sensitiveValue As %String, 
+   sensitiveReplacement As %String)
+
+ReplacePartialInMessage(
+   isHL7 As %Boolean, 
+   message As %String, 
+   sensitiveValue As %String, 
+   sensitiveReplacement As %String
+) As %String
+
 AnonymizeValue(str) As %String
 --
 fontsize=10
-</panel_attributes>
+bg=l-orange</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>850</x>
-            <y>1990</y>
-            <w>280</w>
+            <x>790</x>
+            <y>2130</y>
+            <w>310</w>
             <h>90</h>
         </coordinates>
-        <panel_attributes>*DataPrivacy.service.SensitiveValuesPropertyProcessor*
+        <panel_attributes>.*DataPrivacy.service.SensitiveValuesPropertyProcessor
 --
 Property SensitiveValues As %ListOfDataTypes;
 Property SensitiveObjects As %ListOfObjects;
@@ -1391,18 +497,18 @@ Property ForcedValues As %ArrayOfDataTypes;
 
 --
 fontsize=10
-</panel_attributes>
+bg=l-orange</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>630</x>
-            <y>1810</y>
+            <x>590</x>
+            <y>1950</y>
             <w>210</w>
             <h>110</h>
         </coordinates>
-        <panel_attributes>*hca.msg.EntityTreeExplorer*
+        <panel_attributes>.*hca.msg.EntityTreeExplorer
 --
 --
 ExploreMsgLisRecur(
@@ -1410,19 +516,19 @@ ExploreMsgLisRecur(
   processor As hca.msg.PropertyProcessor)
 -
 fontsize=10
-</panel_attributes>
+bg=l-orange</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>880</x>
-            <y>1810</y>
+            <x>840</x>
+            <y>1950</y>
             <w>210</w>
             <h>110</h>
         </coordinates>
-        <panel_attributes>&lt;&lt;interface&gt;&gt;
-*hca.msg.PropertyProcessor*
+        <panel_attributes>._&lt;&lt;interface&gt;&gt;
+.*hca.msg.PropertyProcessor
 --
 --
 ProcessProperty(
@@ -1432,14 +538,14 @@ ProcessProperty(
   propertyType As %String) As %Boolean
 --
 fontsize=9
-bg=orange</panel_attributes>
+bg=pink</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>990</x>
-            <y>1920</y>
+            <x>950</x>
+            <y>2060</y>
             <w>0</w>
             <h>70</h>
         </coordinates>
@@ -1449,8 +555,8 @@ bg=orange</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>840</x>
-            <y>1860</y>
+            <x>800</x>
+            <y>2000</y>
             <w>40</w>
             <h>0</h>
         </coordinates>
@@ -1468,7 +574,7 @@ bg=orange</panel_attributes>
         <panel_attributes>
 DataPrivacy.service.MessageInfoDt
 
-bg=green
+bg=l-l-green
 
 fontsize=10</panel_attributes>
         <additional_attributes/>
@@ -1477,11 +583,11 @@ fontsize=10</panel_attributes>
         <id>UMLClass</id>
         <coordinates>
             <x>800</x>
-            <y>1610</y>
+            <y>1630</y>
             <w>260</w>
             <h>110</h>
         </coordinates>
-        <panel_attributes>*DataPrivacy.repository.FileReportRepository*
+        <panel_attributes>.*DataPrivacy.repository.FileReportRepository
 --
 file As %Stream
 --
@@ -1491,7 +597,7 @@ Close()
 Rename()
 --
 fontsize=10
-</panel_attributes>
+bg=l-orange</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -1499,10 +605,10 @@ fontsize=10
         <coordinates>
             <x>800</x>
             <y>1480</y>
-            <w>260</w>
+            <w>470</w>
             <h>110</h>
         </coordinates>
-        <panel_attributes>*DataPrivacy.repository.MessagesRepository*
+        <panel_attributes>.*DataPrivacy.repository.MessagesRepository
 --
 --
 ExistMessagesOfSampleId(sampleId As %String)
@@ -1510,7 +616,7 @@ GetMessages(listOfHosts As %List, caseID As %String, from As %String, to As %Str
 GetMessagesCount(listOfHosts As %List, caseID As %String, from As %String, to As %String)
 --
 fontsize=10
-</panel_attributes>
+bg=l-orange</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -1528,7 +634,7 @@ fontsize=10
         <id>Relation</id>
         <coordinates>
             <x>680</x>
-            <y>1640</y>
+            <y>1690</y>
             <w>120</w>
             <h>0</h>
         </coordinates>
@@ -1549,34 +655,34 @@ fontsize=10
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>370</x>
-            <y>1690</y>
-            <w>0</w>
-            <h>120</h>
+            <x>260</x>
+            <y>1840</y>
+            <w>140</w>
+            <h>150</h>
         </coordinates>
         <panel_attributes>lt=&lt;-</panel_attributes>
-        <additional_attributes>0;120;0;0</additional_attributes>
+        <additional_attributes>0;150;140;150;140;0</additional_attributes>
     </element>
     <element>
         <id>Relation</id>
         <coordinates>
             <x>660</x>
-            <y>1690</y>
+            <y>1840</y>
             <w>0</w>
-            <h>120</h>
+            <h>110</h>
         </coordinates>
         <panel_attributes>lt=&lt;-</panel_attributes>
-        <additional_attributes>0;120;0;0</additional_attributes>
+        <additional_attributes>0;110;0;0</additional_attributes>
     </element>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>860</x>
-            <y>2140</y>
-            <w>250</w>
+            <x>810</x>
+            <y>2280</y>
+            <w>290</w>
             <h>110</h>
         </coordinates>
-        <panel_attributes>*fn.AnnotationParser*
+        <panel_attributes>.*fn.AnnotationParser
 --
 Property AnnotationName As %String;
 Property Matcher As %Regex.Matcher;
@@ -1586,19 +692,19 @@ IsPresent(text As %String) As %Boolean
 Parse(text As %String) As %ListOfDataTypes
 --
 fontsize=10
-</panel_attributes>
+bg=l-orange</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>1120</x>
-            <y>1790</y>
+            <x>1130</x>
+            <y>1930</y>
             <w>370</w>
-            <h>140</h>
+            <h>170</h>
         </coordinates>
         <panel_attributes> /// @EntityExplorer:ForcedType("%String")
- Property OrderRequestType As ws.ext.VSS.tns.OrderRequestType(XMLNAME = "OrderRequest") [ Required ];
+ Property OrderRequestType As ws.ext.VSS.tns.OrderRequestType
 
  /// @SensitiveField()
  Property CaseID As %String(TRUNCATE = 1);
@@ -1606,13 +712,13 @@ fontsize=10
  /// @SensitiveField()
  /// @ForceFieldValue("Unknown")
  /// @EntityExplorer:ForcedType("%String")
- Property Gender As ws.ext.VSS.tns.GenderType(XMLNAME = "Gender") [ Required ];
+ Property Gender As ws.ext.VSS.tns.GenderType(XMLNAME = "Gender");
 
  /// @EntityExplorer:ForcedType("%Float")
  Property Value As %xsd.double(XMLNAME = "Value") [ Required ];
 
 
-bg=yellow
+bg=l-yellow
 fontsize=10</panel_attributes>
         <additional_attributes/>
     </element>
@@ -1629,7 +735,7 @@ fontsize=10</panel_attributes>
     &lt;Route Method="POST" 	Url="/export"		Call="RunReportAsyncJob" 	Cors="true" /&gt; 
 
 
-bg=yellow
+bg=l-yellow
 fontsize=10</panel_attributes>
         <additional_attributes/>
     </element>
@@ -1647,8 +753,8 @@ fontsize=10</panel_attributes>
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>1160</x>
-            <y>1640</y>
+            <x>1190</x>
+            <y>1660</y>
             <w>100</w>
             <h>70</h>
         </coordinates>
@@ -1661,84 +767,74 @@ fontsize=10</panel_attributes>
         <id>Relation</id>
         <coordinates>
             <x>1060</x>
-            <y>1670</y>
-            <w>100</w>
+            <y>1700</y>
+            <w>130</w>
             <h>0</h>
         </coordinates>
-        <panel_attributes>&lt;&lt;generates&gt;&gt;
-lt=&lt;.
+        <panel_attributes>lt=&lt;.
+&lt;&lt;generates&gt;&gt;
+
+
+
 </panel_attributes>
-        <additional_attributes>100;0;0;0</additional_attributes>
-    </element>
-    <element>
-        <id>Relation</id>
-        <coordinates>
-            <x>1060</x>
-            <y>1530</y>
-            <w>100</w>
-            <h>0</h>
-        </coordinates>
-        <panel_attributes>lt=&lt;-
-</panel_attributes>
-        <additional_attributes>100;0;0;0</additional_attributes>
+        <additional_attributes>130;0;0;0</additional_attributes>
     </element>
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>760</x>
-            <y>1740</y>
+            <x>720</x>
+            <y>1850</y>
             <w>180</w>
             <h>40</h>
         </coordinates>
         <panel_attributes>Given an entity tree, returns the 
 lists of the sensitive values.
 
-bg=yellow
+bg=l-yellow
 fontsize=10</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>800</x>
-            <y>1780</y>
+            <x>760</x>
+            <y>1890</y>
             <w>0</w>
-            <h>30</h>
+            <h>60</h>
         </coordinates>
         <panel_attributes>lt=.</panel_attributes>
-        <additional_attributes>0;0;0;30</additional_attributes>
+        <additional_attributes>0;0;0;60</additional_attributes>
     </element>
     <element>
         <id>UMLState</id>
         <coordinates>
-            <x>1530</x>
+            <x>1560</x>
             <y>1350</y>
-            <w>600</w>
+            <w>560</w>
             <h>330</h>
         </coordinates>
         <panel_attributes>
 
 
-             Execute a SQL query similar to the Message Monitoring one
+                Execute a SQL query similar to the Message Monitoring one
 
 
-             For each row:
+                For each row:
 
-                   Obtain the message’s entity tree ("msg.LIS"/"msg.LISWS") 
-             	      (@see ##class(DataPrivacy.service.DataPrivacyService).GetEntityTree())
-
-
-             	      Given the entity tree, extract the sensitive values
+                      Obtain the message’s entity tree ("msg.LIS"/"msg.LISWS") 
+             	         (@see ##class(DataPrivacy.service.DataPrivacyService).GetEntityTree())
 
 
-             	      Replace the sensitive values into the plain text message, with the 
-             	      anonymized values.
+             	         Given the entity tree, extract the sensitive values
+
+
+             	         Replace the sensitive values into the plain text message, with the 
+             	         anonymized values.
 
 
 
-valign=top
-halign=left
-fontsize=14</panel_attributes>
+fontsize=14
+bg=l-yellow</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -1752,7 +848,7 @@ fontsize=14</panel_attributes>
         <panel_attributes>Performs a query similar to 
 the MessageMonitoring
 
-bg=yellow
+bg=l-yellow
 fontsize=10</panel_attributes>
         <additional_attributes/>
     </element>
@@ -1770,8 +866,8 @@ fontsize=10</panel_attributes>
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>140</x>
-            <y>1710</y>
+            <x>-10</x>
+            <y>1750</y>
             <w>180</w>
             <h>50</h>
         </coordinates>
@@ -1779,20 +875,20 @@ fontsize=10</panel_attributes>
 and lists of the sensitive values, 
 anonymizes the message.
 
-bg=yellow
+bg=l-yellow
 fontsize=10</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>250</x>
-            <y>1760</y>
+            <x>100</x>
+            <y>1800</y>
             <w>0</w>
-            <h>50</h>
+            <h>80</h>
         </coordinates>
         <panel_attributes>lt=.</panel_attributes>
-        <additional_attributes>0;50;0;0</additional_attributes>
+        <additional_attributes>0;80;0;0</additional_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
@@ -1803,50 +899,54 @@ fontsize=10</panel_attributes>
             <h>40</h>
         </coordinates>
         <panel_attributes>.1
-fontsize=30</panel_attributes>
+fontsize=24
+bg=cyan</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>610</x>
-            <y>1700</y>
+            <x>720</x>
+            <y>1740</y>
             <w>40</w>
             <h>40</h>
         </coordinates>
         <panel_attributes>.2
-fontsize=30</panel_attributes>
+fontsize=24
+bg=cyan</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
             <x>610</x>
-            <y>1760</y>
+            <y>1890</y>
             <w>40</w>
             <h>40</h>
         </coordinates>
         <panel_attributes>.3
-fontsize=30</panel_attributes>
+fontsize=24
+bg=cyan</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>80</x>
-            <y>1760</y>
+            <x>270</x>
+            <y>1940</y>
             <w>40</w>
             <h>40</h>
         </coordinates>
         <panel_attributes>.4
-fontsize=30</panel_attributes>
+fontsize=24
+bg=cyan</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>1530</x>
-            <y>1720</y>
+            <x>1560</x>
+            <y>1770</y>
             <w>600</w>
             <h>310</h>
         </coordinates>
@@ -1885,56 +985,60 @@ fontsize=10</panel_attributes>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>1540</x>
+            <x>1570</x>
             <y>1390</y>
             <w>40</w>
             <h>40</h>
         </coordinates>
         <panel_attributes>.1
-fontsize=30</panel_attributes>
+fontsize=24
+bg=cyan</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>1540</x>
+            <x>1570</x>
             <y>1480</y>
             <w>40</w>
             <h>40</h>
         </coordinates>
         <panel_attributes>.2
-fontsize=30</panel_attributes>
+fontsize=24
+bg=cyan</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>1540</x>
-            <y>1540</y>
+            <x>1570</x>
+            <y>1550</y>
             <w>40</w>
             <h>40</h>
         </coordinates>
         <panel_attributes>.3
-fontsize=30</panel_attributes>
+fontsize=24
+bg=cyan</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>1540</x>
-            <y>1590</y>
+            <x>1570</x>
+            <y>1600</y>
             <w>40</w>
             <h>40</h>
         </coordinates>
         <panel_attributes>.4
-fontsize=30</panel_attributes>
+fontsize=24
+bg=cyan</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>610</x>
-            <y>2270</y>
+            <x>660</x>
+            <y>2420</y>
             <w>490</w>
             <h>90</h>
         </coordinates>
@@ -1945,27 +1049,27 @@ For every property found, the provided `hca.msg.PropertyProcessor` implementatio
 Is possible to ignore properties by annotating them by `@EntityExplorer:Ignore()`, and force its type with
 the `@EntityExplorer:ForcedType("%String")` (useful for enumerated types that extends from `%String`).
 
-bg=yellow
+bg=l-yellow
 fontsize=10</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>720</x>
-            <y>1920</y>
+            <x>710</x>
+            <y>2060</y>
             <w>0</w>
-            <h>350</h>
+            <h>360</h>
         </coordinates>
         <panel_attributes>lt=.</panel_attributes>
-        <additional_attributes>0;350;0;0</additional_attributes>
+        <additional_attributes>0;360;0;0</additional_attributes>
     </element>
     <element>
         <id>UMLNote</id>
         <coordinates>
             <x>1150</x>
-            <y>2090</y>
-            <w>330</w>
+            <y>2230</y>
+            <w>350</w>
             <h>160</h>
         </coordinates>
         <panel_attributes>This class is to retrieve annotation/decorators information from
@@ -1981,15 +1085,15 @@ Valid examples: `@author("mhoms")`, `@since("1.2.3")`,
 - Note that `@Inject()` and `@Inject("")` are equivalent.
 - Note that this class is not thread-safe, because the `%Regex.Matcher`.
 
-bg=yellow
+bg=l-yellow
 fontsize=10</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>990</x>
-            <y>2080</y>
+            <x>950</x>
+            <y>2220</y>
             <w>0</w>
             <h>60</h>
         </coordinates>
@@ -1999,8 +1103,8 @@ fontsize=10</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>810</x>
-            <y>1920</y>
+            <x>760</x>
+            <y>2060</y>
             <w>50</w>
             <h>270</h>
         </coordinates>
@@ -2010,13 +1114,13 @@ fontsize=10</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>1110</x>
-            <y>2190</y>
-            <w>40</w>
+            <x>1100</x>
+            <y>2330</y>
+            <w>50</w>
             <h>0</h>
         </coordinates>
         <panel_attributes>lt=.</panel_attributes>
-        <additional_attributes>0;0;40;0</additional_attributes>
+        <additional_attributes>0;0;50;0</additional_attributes>
     </element>
     <element>
         <id>Relation</id>
@@ -2027,18 +1131,18 @@ fontsize=10</panel_attributes>
             <h>60</h>
         </coordinates>
         <panel_attributes>lt=&lt;.
-&lt;&lt;uses&gt;&gt;</panel_attributes>
+           &lt;&lt;uses&gt;&gt;</panel_attributes>
         <additional_attributes>0;0;0;60</additional_attributes>
     </element>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>320</x>
-            <y>2030</y>
+            <x>300</x>
+            <y>2080</y>
             <w>330</w>
-            <h>190</h>
+            <h>340</h>
         </coordinates>
-        <panel_attributes>*DataPrivacy.service.ReportGenerator*
+        <panel_attributes>.*DataPrivacy.service.ReportGenerator
 --
 Property FileReportRepository As FileReportRepository;
 Property InternalErrorsRepository As tsysInternalErrorsRepository;
@@ -2047,37 +1151,60 @@ Method CreateReport(startProcessTs As %String)
 Method WriteLine(text As %String)
 Method Write(text As %String)
 Method CloseAndRenameTo(newFileName As %String)
-Method WriteMessageInfoToFile(messageInfo As MessageInfoDt, anonymizedMessage As %String, entityTree As %RegisteredObject, messagesCount As %Integer, regionalSettingsLIS As %String)
+Method WriteMessageInfoToFile(
+   messageInfo As MessageInfoDt, 
+   anonymizedMessage As %String, 
+   entityTree As %RegisteredObject, 
+   messagesCount As %Integer, 
+   regionalSettingsLIS As %String)
 Method WriteExceptionToFile(ex As %Exception.General) [ Private ]
-Method WriteMessageHeaderInformation(messageInfo As MessageInfoDt, messagesCount As %Integer, entityTree As %RegisteredObject, regionalSettingsLIS As %String)
+Method WriteMessageHeaderInformation(
+   messageInfo As MessageInfoDt, 
+   messagesCount As %Integer, 
+   entityTree As %RegisteredObject, 
+   regionalSettingsLIS As %String)
 Method WriteMessageErrorInformation(errorText As %String)
-
-Method IndentXMLText(text As %String, entityTree As %RegisteredObject) As %String
+Method IndentXMLText(
+   text As %String, 
+   entityTree As %RegisteredObject
+) As %String
 --
 fontsize=10
-</panel_attributes>
+bg=l-orange</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>500</x>
-            <y>1690</y>
+            <x>480</x>
+            <y>1840</y>
             <w>0</w>
-            <h>340</h>
+            <h>240</h>
         </coordinates>
         <panel_attributes>lt=&lt;-</panel_attributes>
-        <additional_attributes>0;340;0;0</additional_attributes>
+        <additional_attributes>0;240;0;0</additional_attributes>
     </element>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>1280</x>
-            <y>1200</y>
+            <x>1130</x>
+            <y>1150</y>
             <w>0</w>
             <h>50</h>
         </coordinates>
         <panel_attributes>lt=&lt;&lt;-</panel_attributes>
         <additional_attributes>0;0;0;50</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>588</x>
+            <y>1765</y>
+            <w>133</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=m.
+</panel_attributes>
+        <additional_attributes>0;0;133;0</additional_attributes>
     </element>
 </diagram>

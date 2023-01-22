@@ -21,6 +21,9 @@ public class ExportAsPng {
         String outputFileFormat = argsProcessor.modifiers.getOrDefault("format", "png");
         String outputFileName = argsProcessor.modifiers.getOrDefault("output", inputFileName + "." + outputFileFormat);
 
+        boolean drawGrid = Boolean.parseBoolean(argsProcessor.modifiers.getOrDefault("grid", "true"));
+        GridControl.drawGrid = drawGrid;
+
         //
         System.out.print("Exporting: " + String.join(" ", args) + "...");
 

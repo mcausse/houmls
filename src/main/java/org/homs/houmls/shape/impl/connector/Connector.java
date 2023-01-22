@@ -326,7 +326,7 @@ public class Connector implements Shape {
                 int lineWidth = (int) fontMetrics.getWidth(line);
                 g.drawString(
                         line,
-                        turtlePos.x /*+ rect.width / 2*/ - lineWidth / 2,
+                        turtlePos.x - lineWidth / 2,
                         turtlePos.y - (rect.height * textlines.length) / 2 + rect.height * (i + 1));
             }
         }

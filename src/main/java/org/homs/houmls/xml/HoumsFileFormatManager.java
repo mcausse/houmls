@@ -57,6 +57,8 @@ public class HoumsFileFormatManager {
                 id = "Bocadillo";
             } else if (shape.getClass() == TurtleBox.class) {
                 id = "TurtleBox";
+            } else if (shape.getClass() == FloatingText.class) {
+                id = "FloatingText";
             } else {
                 throw new RuntimeException(shape.getClass().getName());
             }
@@ -155,6 +157,11 @@ public class HoumsFileFormatManager {
                     }
                     case "TurtleBox": {
                         TurtleBox box = new TurtleBox(x, y, w, h, attributes);
+                        diagram.addShape(box);
+                        break;
+                    }
+                    case "FloatingText": {
+                        FloatingText box = new FloatingText(x, y, w, h, attributes);
                         diagram.addShape(box);
                         break;
                     }

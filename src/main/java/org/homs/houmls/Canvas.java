@@ -221,6 +221,19 @@ public class Canvas extends JPanel {
                     repaint();
                     pushUndoCheckpoint();
                 });
+                JMenuItem createTextBox = new JMenuItem("create text box");
+                pm.add(createTextBox);
+                createTextBox.addActionListener(e -> {
+                    diagram.addShape(new FloatingText(
+                            GridControl.engrid(mousePos.getX()),
+                            GridControl.engrid(mousePos.getY()),
+                            GridControl.engrid(18 * GridControl.GRID_SIZE),
+                            GridControl.engrid(14 * GridControl.GRID_SIZE),
+                            ".*Title\nfontsize=24\n"
+                    ));
+                    repaint();
+                    pushUndoCheckpoint();
+                });
                 JMenuItem createActor = new JMenuItem("create actor");
                 pm.add(createActor);
                 createActor.addActionListener(e -> {
@@ -763,7 +776,10 @@ public class Canvas extends JPanel {
         AffineTransform at = getAffineTransform();
         g2.setTransform(at);
 
-        drawGrid(g);
+        if (GridControl.drawGrid) {
+            drawGrid(g);
+        }
+
         g.setFont(LookAndFeel.regularFont());
 
         // aquesta separació assegura que les fletxes mai siguin tapades per cap caixa

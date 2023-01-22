@@ -129,25 +129,32 @@ public class Box implements Shape {
         int iwidth = (int) width;
         int iheight = (int) height;
 
+        /*
+         * PINTA BACKGROUND
+         */
         g2.setColor(backgroundColor);
         g2.fillRect(ix, iy, iwidth, iheight);
 
-        g2.setColor(Color.BLACK);
-        g2.setStroke(basicStroke);
-
-        g2.drawRect(ix, iy, iwidth, iheight);
-
-        // ombra fina
+        /*
+         * PINTA OMBRA DE LA CAIXA
+         */
         if (BOXES_WITH_SHADOW) {
             g2.setColor(BOXES_SHADOW_COLOR);
             if (BOXES_SHADOW_WIDTH == 1) {
                 g2.drawLine(ix + iwidth + 1, iy + 1, ix + iwidth + 1, iy + iheight + 1);
                 g2.drawLine(ix + 1, iy + iheight + 1, ix + iwidth + 1, iy + iheight + 1);
             } else {
-                g2.fillRect(ix + iwidth + 1, iy + BOXES_SHADOW_WIDTH, BOXES_SHADOW_WIDTH, iheight + 1);
-                g2.fillRect(ix + BOXES_SHADOW_WIDTH, iy + iheight + 1, iwidth + 1, BOXES_SHADOW_WIDTH);
+                g2.fillRect(ix + iwidth, iy + BOXES_SHADOW_WIDTH, BOXES_SHADOW_WIDTH, iheight);
+                g2.fillRect(ix + BOXES_SHADOW_WIDTH, iy + iheight, iwidth, BOXES_SHADOW_WIDTH);
             }
         }
+
+        /*
+         * PINTA BORDE DE CAIXA
+         */
+        g2.setColor(Color.BLACK);
+        g2.setStroke(basicStroke);
+        g2.drawRect(ix, iy, iwidth, iheight);
     }
 
     @Override

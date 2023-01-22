@@ -18,7 +18,17 @@ public class ExportAsPngTest {
 
     @Test
     void welcome() throws Exception {
-        ExportAsPng.main(new String[]{basePath + "welcome.houmls", "--zoom=3", "--format=png", "--output=welcome.png"});
+        ExportAsPng.main(new String[]{basePath + "welcome.houmls", "--zoom=3", "--format=png", "--output=welcome.png", "--grid=false"});
+    }
+
+    @Test
+    void welcome_lo() throws Exception {
+        ExportAsPng.main(new String[]{basePath + "welcome.houmls", "--zoom=2", "--format=png", "--output=welcome-lo.png", "--grid=false"});
+    }
+
+    @Test
+    void welcome_lo_lo() throws Exception {
+        ExportAsPng.main(new String[]{basePath + "welcome.houmls", "--zoom=1", "--format=png", "--output=welcome-lo-lo.png", "--grid=false"});
     }
 
     @Test
@@ -39,12 +49,12 @@ public class ExportAsPngTest {
 
     @Test
     void kanban() throws Exception {
-        ExportAsPng.main(new String[]{"kanban.houmls", "--output=diagrams/kanban.png"});
+        ExportAsPng.main(new String[]{basePath + "kanban.houmls", "--output=diagrams/kanban.png"});
     }
 
     @Test
     void retroBoard() throws Exception {
-        ExportAsPng.main(new String[]{"retro-board.houmls", "--output=diagrams/retro-board.png"});
+        ExportAsPng.main(new String[]{basePath + "retro-board.houmls", "--output=diagrams/retro-board.png"});
     }
 
     @Test
@@ -54,7 +64,7 @@ public class ExportAsPngTest {
 
     @Test
     void berbis() throws Exception {
-        ExportAsPng.main(new String[]{"berbis.houmls", "--output=diagrams/berbis.png"});
+        ExportAsPng.main(new String[]{basePath + "berbis.houmls", "--output=diagrams/berbis.png"});
     }
 
 }
