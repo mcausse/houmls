@@ -3,8 +3,5 @@
 
 
 ![alt text](welcome.png)
-
-
 ![alt text](diagrams/houmls-white-paper.png)
-![alt text](diagrams/kanban.png)
 
