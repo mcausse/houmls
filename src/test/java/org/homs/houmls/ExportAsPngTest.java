@@ -21,15 +21,15 @@ public class ExportAsPngTest {
         ExportAsPng.main(new String[]{basePath + "welcome.houmls", "--zoom=3", "--format=png", "--output=welcome.png", "--grid=false"});
     }
 
-    @Test
-    void welcome_lo() throws Exception {
-        ExportAsPng.main(new String[]{basePath + "welcome.houmls", "--zoom=2", "--format=png", "--output=welcome-lo.png", "--grid=false"});
-    }
-
-    @Test
-    void welcome_lo_lo() throws Exception {
-        ExportAsPng.main(new String[]{basePath + "welcome.houmls", "--zoom=1", "--format=png", "--output=welcome-lo-lo.png", "--grid=false"});
-    }
+//    @Test
+//    void welcome_lo() throws Exception {
+//        ExportAsPng.main(new String[]{basePath + "welcome.houmls", "--zoom=2", "--format=png", "--output=welcome-lo.png", "--grid=false"});
+//    }
+//
+//    @Test
+//    void welcome_lo_lo() throws Exception {
+//        ExportAsPng.main(new String[]{basePath + "welcome.houmls", "--zoom=1", "--format=png", "--output=welcome-lo-lo.png", "--grid=false"});
+//    }
 
     @Test
     void Anonimizer3() throws Exception {

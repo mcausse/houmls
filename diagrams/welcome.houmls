@@ -278,7 +278,7 @@ fontsize=24
         <panel_attributes>.*Player
 --
 --
-bg=#cfcfcf</panel_attributes>
+bg=l-l-l-cyan</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -292,7 +292,7 @@ bg=#cfcfcf</panel_attributes>
         <panel_attributes>.*Map
 --
 --
-bg=#cfcfcf</panel_attributes>
+bg=l-l-l-cyan</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -306,7 +306,7 @@ bg=#cfcfcf</panel_attributes>
         <panel_attributes>.*Session
 --
 --
-bg=#cfcfcf</panel_attributes>
+bg=l-l-l-cyan</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
