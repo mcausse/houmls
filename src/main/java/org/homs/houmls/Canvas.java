@@ -7,6 +7,7 @@ import org.homs.houmls.shape.impl.box.Box;
 import org.homs.houmls.shape.impl.box.*;
 import org.homs.houmls.shape.impl.connector.BocadilloConnector;
 import org.homs.houmls.shape.impl.connector.Connector;
+import org.homs.houmls.shape.impl.connector.DoublePoint;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -20,6 +21,7 @@ import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Stack;
 
 import static org.homs.houmls.LookAndFeel.SHAPE_SELECTED_COLOR;
@@ -240,7 +242,7 @@ public class Canvas extends JPanel {
                             GridControl.engrid(mousePos.getY()),
                             "lt=-\n"
                     );
-                    bocadillo.getMiddlePoints().add(new Connector.DoublePoint(
+                    bocadillo.getMiddlePoints().add(new DoublePoint(
                             GridControl.engrid(mousePos.getX() + GridControl.GRID_SIZE * 6),
                             GridControl.engrid(mousePos.getY() + GridControl.GRID_SIZE * 6)
                     ));
@@ -349,7 +351,7 @@ public class Canvas extends JPanel {
                         } else {
                             otherPoint = points.get(indexOfClickedPoint + 1);
                         }
-                        var middlePointToCreate = new Connector.DoublePoint((p.x + otherPoint.x) / 2, (p.y + otherPoint.y) / 2);
+                        var middlePointToCreate = new DoublePoint((p.x + otherPoint.x) / 2, (p.y + otherPoint.y) / 2);
 
                         if (indexOfClickedPoint >= conn.getMiddlePoints().size()) {
                             conn.getMiddlePoints().add(middlePointToCreate);
@@ -784,14 +786,14 @@ public class Canvas extends JPanel {
             }
         }
 
-        if (LookAndFeel.markDraggablePartsAsRed) {
-            if (Canvas.this.draggableUnderMouse != null) {
-                var r = Canvas.this.draggableUnderMouse.getRectangle();
-                g2.setColor(Color.RED);
-                g2.setStroke(new BasicStroke(3));
-                g2.drawRoundRect(r.x, r.y, r.width, r.height, 6, 6);
-            }
-        }
+//        if (LookAndFeel.markDraggablePartsAsRed) {
+//            if (Canvas.this.draggableUnderMouse != null) {
+//                var r = Canvas.this.draggableUnderMouse.getRectangle();
+//                g2.setColor(Color.RED);
+//                g2.setStroke(new BasicStroke(3));
+//                g2.drawRoundRect(r.x, r.y, r.width, r.height, 6, 6);
+//            }
+//        }
 
         if (selectionBoxRectangle != null) {
             g2.setColor(Color.BLUE);
@@ -888,17 +890,8 @@ public class Canvas extends JPanel {
         return null;
     }
 
-    public String getDiagramName() {
-        return diagram.getName();
-    }
-
-    public String getDiagramShortName() {
-        var name = getDiagramName();
-        int pos = Math.max(
-                name.lastIndexOf('/'),
-                name.lastIndexOf('\\')
-        );
-        return name.substring(pos + 1);
+    public Optional<String> getDiagramName() {
+        return Optional.ofNullable(diagram.getName());
     }
 
 }

@@ -695,52 +695,51 @@ halign=center</panel_attributes>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>940</x>
+            <x>950</x>
+            <y>540</y>
+            <w>20</w>
+            <h>20</h>
+        </coordinates>
+        <panel_attributes>.*1
+layer=2
+bg=cyan</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLUseCase</id>
+        <coordinates>
+            <x>950</x>
+            <y>670</y>
+            <w>20</w>
+            <h>20</h>
+        </coordinates>
+        <panel_attributes>.*2
+layer=2
+bg=cyan</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLUseCase</id>
+        <coordinates>
+            <x>1470</x>
+            <y>170</y>
+            <w>20</w>
+            <h>20</h>
+        </coordinates>
+        <panel_attributes>.*1
+
+bg=cyan</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLUseCase</id>
+        <coordinates>
+            <x>1470</x>
             <y>530</y>
-            <w>30</w>
-            <h>30</h>
+            <w>20</w>
+            <h>20</h>
         </coordinates>
-        <panel_attributes>*  1
-layer=2
-bg=cyan</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>UMLUseCase</id>
-        <coordinates>
-            <x>940</x>
-            <y>660</y>
-            <w>30</w>
-            <h>30</h>
-        </coordinates>
-        <panel_attributes>*  2
-layer=2
-bg=cyan</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>UMLUseCase</id>
-        <coordinates>
-            <x>1460</x>
-            <y>160</y>
-            <w>30</w>
-            <h>30</h>
-        </coordinates>
-        <panel_attributes>*  1
-layer=2
-bg=cyan</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>UMLUseCase</id>
-        <coordinates>
-            <x>1460</x>
-            <y>520</y>
-            <w>30</w>
-            <h>30</h>
-        </coordinates>
-        <panel_attributes>*  2
-layer=2
+        <panel_attributes>.*2
 bg=cyan</panel_attributes>
         <additional_attributes/>
     </element>

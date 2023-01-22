@@ -44,7 +44,6 @@ public class MainC2 {
         JFrame.setDefaultLookAndFeelDecorated(true);
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 
-
         var f = new JFrame();
         f.setIconImage(frameIcon);
         f.setLayout(new BorderLayout());
@@ -60,22 +59,23 @@ public class MainC2 {
         }
 
         JTabbedPane tabbedPane = new JTabbedPane();
+        tabbedPane.setFocusable(false);
         f.add(tabbedPane);
-        tabbedPane.addChangeListener(l -> {
-            DiagramTab diagramTab = (DiagramTab) ((JTabbedPane) l.getSource()).getSelectedComponent();
+
+        tabbedPane.addChangeListener(e -> {
+            DiagramTab diagramTab = (DiagramTab) ((JTabbedPane) e.getSource()).getSelectedComponent();
 
 //            diagramTab.getCanvas().repaint();
-//            currentDiagramOnChangeFileNameListener.accept(diagramTab.getCanvas().getDiagramName());
+//            diagramTab.getCanvas().requestFocus();
 
             SwingUtilities.invokeLater(() -> {
                 diagramTab.getCanvas().requestFocus();
                 diagramTab.getCanvas().repaint();
-                currentDiagramOnChangeFileNameListener.accept(diagramTab.getCanvas().getDiagramName());
+                currentDiagramOnChangeFileNameListener.accept(diagramTab.getDiagramName());
             });
         });
 
         //
-
 
         JToolBar toolBar = buildToolBar(f, tabbedPane, currentDiagramOnChangeFileNameListener);
         f.add(toolBar, BorderLayout.NORTH);
@@ -109,15 +109,16 @@ public class MainC2 {
 
         f.setVisible(true);
 
-        DiagramTab sl = createNewDiagramTab(currentDiagramOnChangeFileNameListener);
-        tabbedPane.addTab("New", sl);
-
-        Canvas canvas = sl.getCanvas();
-        SwingUtilities.invokeLater(() -> {
-            sl.setDividerLocation(0.8);
-            SwingUtilities.invokeLater(canvas::centerDiagram);
-            SwingUtilities.invokeLater(canvas::requestFocus);
-        });
+//        DiagramTab sl = createNewDiagramTab(currentDiagramOnChangeFileNameListener);
+//        tabbedPane.addTab("New", sl);
+//        Canvas canvas = sl.getCanvas();
+//        SwingUtilities.invokeLater(() -> {
+//            sl.setDividerLocation(0.8);
+//            SwingUtilities.invokeLater(canvas::centerDiagram);
+//            SwingUtilities.invokeLater(canvas::requestFocus);
+//        });
+        createNewDiagramTab(currentDiagramOnChangeFileNameListener, tabbedPane);
+        loadDiagramIntoNewTab(new File("diagrams/welcome.houmls"), currentDiagramOnChangeFileNameListener, tabbedPane);
     }
 
     static class DiagramTab extends JSplitPane {
@@ -129,6 +130,27 @@ public class MainC2 {
             super(JSplitPane.HORIZONTAL_SPLIT, canvas, lateralBar);
             this.canvas = canvas;
             this.lateralBar = lateralBar;
+        }
+
+        public String getDiagramShortName() {
+            if (canvas.getDiagramName().isPresent()) {
+                var name = canvas.getDiagramName().get();
+                int pos = Math.max(
+                        name.lastIndexOf('/'),
+                        name.lastIndexOf('\\')
+                );
+                return name.substring(pos + 1);
+            } else {
+                return "New";
+            }
+        }
+
+        public String getDiagramName() {
+            if (canvas.getDiagramName().isPresent()) {
+                return canvas.getDiagramName().get();
+            } else {
+                return "New";
+            }
         }
 
         public Canvas getCanvas() {
@@ -150,15 +172,15 @@ public class MainC2 {
         lateralBar.setLayout(new BorderLayout());
         lateralBar.add(scrollShapeTextEditor);
 
-        currentDiagramOnChangeFileNameListener.accept(canvas.getDiagramName());
 
-        DiagramTab sl = new DiagramTab(canvas, lateralBar);
+        DiagramTab diagramTab = new DiagramTab(canvas, lateralBar);
+        currentDiagramOnChangeFileNameListener.accept(diagramTab.getDiagramName());
 
         lateralBar.addKeyListener(canvas.getOffsetAndZoomListener());
         shapeTextEditor.addKeyListener(canvas.getOffsetAndZoomListener());
-        sl.addKeyListener(canvas.getOffsetAndZoomListener());
+        diagramTab.addKeyListener(canvas.getOffsetAndZoomListener());
 
-        return sl;
+        return diagramTab;
     }
 
     static JToolBar buildToolBar(JFrame frame, JTabbedPane tabbedPane, Consumer<String> currentDiagramFileNameConsumer) {
@@ -180,22 +202,7 @@ public class MainC2 {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    DiagramTab sl = createNewDiagramTab(currentDiagramFileNameConsumer);
-                    tabbedPane.addTab("New", sl);
-                    tabbedPane.setSelectedComponent(sl);
-
-                    DiagramTab diagramTab = (DiagramTab) tabbedPane.getSelectedComponent();
-                    Canvas canvas = diagramTab.getCanvas();
-
-                    //                    canvas.setDiagram(new Diagram());
-//                    canvas.centerDiagram();
-//                    canvas.repaint();
-//                    currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
-                    SwingUtilities.invokeLater(() -> {
-                        sl.setDividerLocation(0.8);
-                        SwingUtilities.invokeLater(canvas::centerDiagram);
-                        SwingUtilities.invokeLater(canvas::requestFocus);
-                    });
+                    createNewDiagramTab(currentDiagramFileNameConsumer, tabbedPane);
                 }
             });
             // XXX ^O open file
@@ -210,23 +217,7 @@ public class MainC2 {
                     if (returnVal == JFileChooser.APPROVE_OPTION) {
                         File file = fc.getSelectedFile();
                         try {
-                            DiagramTab sl = createNewDiagramTab(currentDiagramFileNameConsumer);
-
-                            var canvas = sl.getCanvas();
-
-                            Diagram diagram = HoumsFileFormatManager.loadFile(file.toString());
-                            canvas.setDiagram(diagram);
-                            currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
-
-                            tabbedPane.addTab("New", sl);
-                            tabbedPane.setSelectedComponent(sl);
-                            tabbedPane.setTitleAt(tabbedPane.getSelectedIndex(), canvas.getDiagramShortName());
-
-                            SwingUtilities.invokeLater(() -> {
-                                sl.setDividerLocation(0.8);
-                                SwingUtilities.invokeLater(canvas::centerDiagram);
-                                SwingUtilities.invokeLater(canvas::requestFocus);
-                            });
+                            loadDiagramIntoNewTab(file, currentDiagramFileNameConsumer, tabbedPane);
                         } catch (Exception e2) {
                             e2.printStackTrace();
                         }
@@ -242,7 +233,7 @@ public class MainC2 {
                     DiagramTab diagramTab = (DiagramTab) tabbedPane.getSelectedComponent();
                     Canvas canvas = diagramTab.getCanvas();
 
-                    String fileName = canvas.getDiagramName();
+                    String fileName = diagramTab.getDiagramName();
                     if (fileName == null) {
                         JFileChooser fc = new JFileChooser(new File("."));
                         fc.setFileFilter(filter);
@@ -254,6 +245,8 @@ public class MainC2 {
                             } catch (Exception e2) {
                                 e2.printStackTrace();
                             }
+                            tabbedPane.setTitleAt(tabbedPane.getSelectedIndex(), diagramTab.getDiagramShortName());
+                            currentDiagramFileNameConsumer.accept(diagramTab.getDiagramName());
                         }
                     } else {
                         try {
@@ -262,7 +255,7 @@ public class MainC2 {
                             e2.printStackTrace();
                         }
                     }
-                    currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
+//                    currentDiagramFileNameConsumer.accept(diagramTab.getDiagramName());
                 }
             });
 
@@ -286,8 +279,8 @@ public class MainC2 {
                                 } catch (Exception e2) {
                                     e2.printStackTrace();
                                 }
-                                tabbedPane.setTitleAt(tabbedPane.getSelectedIndex(), canvas.getDiagramShortName());
-                                currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
+                                tabbedPane.setTitleAt(tabbedPane.getSelectedIndex(), diagramTab.getDiagramShortName());
+                                currentDiagramFileNameConsumer.accept(diagramTab.getDiagramName());
                             }
                         }
                     });
@@ -328,6 +321,44 @@ public class MainC2 {
             toolBar.add(zoomTo1Diagram);
         }
         return toolBar;
+    }
+
+     static void createNewDiagramTab(Consumer<String> currentDiagramFileNameConsumer, JTabbedPane tabbedPane) {
+        DiagramTab diagramTab = createNewDiagramTab(currentDiagramFileNameConsumer);
+        tabbedPane.addTab("New", diagramTab);
+        tabbedPane.setSelectedComponent(diagramTab);
+
+//                    DiagramTab diagramTab = (DiagramTab) tabbedPane.getSelectedComponent();
+        Canvas canvas = diagramTab.getCanvas();
+
+        //                    canvas.setDiagram(new Diagram());
+//                    canvas.centerDiagram();
+//                    canvas.repaint();
+//                    currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
+        SwingUtilities.invokeLater(() -> {
+            diagramTab.setDividerLocation(0.8);
+            SwingUtilities.invokeLater(canvas::centerDiagram);
+            SwingUtilities.invokeLater(canvas::requestFocus);
+        });
+    }
+
+     static void loadDiagramIntoNewTab(File file, Consumer<String> currentDiagramFileNameConsumer, JTabbedPane tabbedPane) throws Exception {
+        DiagramTab diagramTab = createNewDiagramTab(currentDiagramFileNameConsumer);
+
+        var canvas = diagramTab.getCanvas();
+        Diagram diagram = HoumsFileFormatManager.loadFile(file.toString());
+        canvas.setDiagram(diagram);
+        currentDiagramFileNameConsumer.accept(diagramTab.getDiagramName());
+
+        tabbedPane.addTab("New", diagramTab);
+        tabbedPane.setSelectedComponent(diagramTab);
+        tabbedPane.setTitleAt(tabbedPane.getSelectedIndex(), diagramTab.getDiagramShortName());
+
+        SwingUtilities.invokeLater(() -> {
+            diagramTab.setDividerLocation(0.8);
+            SwingUtilities.invokeLater(canvas::fitZoomToWindow);
+            SwingUtilities.invokeLater(canvas::requestFocus);
+        });
     }
 
     protected static JButton buildButton(String imageName, String toolTipText, String shortCut, String

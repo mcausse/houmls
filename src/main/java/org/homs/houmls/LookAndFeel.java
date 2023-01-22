@@ -27,8 +27,7 @@ public class LookAndFeel {
     }
 
     public static final Stroke basicStroke = new BasicStroke(1);
-    public static final Stroke dashedStroke = new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL,
-            0, new float[]{5}, 0);
+    public static final Stroke dashedStroke = new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{5}, 0);
 
     public static final Boolean BOXES_WITH_SHADOW = true;
     public static final Color BOXES_SHADOW_COLOR = Color.GRAY;
@@ -47,7 +46,7 @@ public class LookAndFeel {
         g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
     }
 
-    public static final boolean markDraggablePartsAsRed = false;
+//    public static final boolean markDraggablePartsAsRed = false;
 
     public static final Color SHAPE_SELECTED_COLOR = new Color(0, 142, 255);
     public static final BasicStroke MULTI_SELECTION_STROKE = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL,

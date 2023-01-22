@@ -69,7 +69,7 @@ public class MainC1 {
             f.setSize(new Dimension(frameBounds.width, frameBounds.height));
         }
 
-        currentDiagramOnChangeFileNameListener.accept(canvas.getDiagramName());
+        currentDiagramOnChangeFileNameListener.accept(canvas.getDiagramName().get());
 
         f.addKeyListener(canvas.getOffsetAndZoomListener());
 
@@ -116,7 +116,7 @@ public class MainC1 {
                     canvas.setDiagram(new Diagram());
                     canvas.centerDiagram();
                     canvas.repaint();
-                    currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
+                    currentDiagramFileNameConsumer.accept(canvas.getDiagramName().get());
                 }
             });
             // XXX ^O open file
@@ -139,7 +139,7 @@ public class MainC1 {
                             e2.printStackTrace();
                         }
                     }
-                    currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
+                    currentDiagramFileNameConsumer.accept(canvas.getDiagramName().get());
                 }
             });
             // XXX ^S save current file
@@ -148,7 +148,7 @@ public class MainC1 {
 
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    String fileName = canvas.getDiagramName();
+                    String fileName = canvas.getDiagramName().get();
                     if (fileName == null) {
                         JFileChooser fc = new JFileChooser(new File("."));
                         fc.setFileFilter(filter);
@@ -168,7 +168,7 @@ public class MainC1 {
                             e2.printStackTrace();
                         }
                     }
-                    currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
+                    currentDiagramFileNameConsumer.accept(canvas.getDiagramName().get());
                 }
             });
 
@@ -191,7 +191,7 @@ public class MainC1 {
                                     e2.printStackTrace();
                                 }
                             }
-                            currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
+                            currentDiagramFileNameConsumer.accept(canvas.getDiagramName().get());
                         }
                     });
 

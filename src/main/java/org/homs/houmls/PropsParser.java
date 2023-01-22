@@ -44,14 +44,28 @@ public class PropsParser {
             throw new IllegalArgumentException("factor not between 0 and 1: " + factor);
         }
 
-        float[] rgbaFrom = cFrom.getRGBComponents(null);
-        float[] rgbaTo = cTo.getRGBComponents(null);
+//        float[] rgbaFrom = cFrom.getRGBComponents(null);
+//        float[] rgbaTo = cTo.getRGBComponents(null);
+//
+//        rgbaFrom[0] += (rgbaTo[0] - rgbaFrom[0]) * factor;
+//        rgbaFrom[1] += (rgbaTo[1] - rgbaFrom[1]) * factor;
+//        rgbaFrom[2] += (rgbaTo[2] - rgbaFrom[2]) * factor;
+//
+        //return new Color(rgbaFrom[0], rgbaFrom[1], rgbaFrom[2], rgbaFrom[3]);
 
-        rgbaFrom[0] += (rgbaTo[0] - rgbaFrom[0]) * factor;
-        rgbaFrom[1] += (rgbaTo[1] - rgbaFrom[1]) * factor;
-        rgbaFrom[2] += (rgbaTo[2] - rgbaFrom[2]) * factor;
+        int r = cFrom.getRed();
+        int g = cFrom.getGreen();
+        int b = cFrom.getBlue();
 
-        return new Color(rgbaFrom[0], rgbaFrom[1], rgbaFrom[2], rgbaFrom[3]);
+        int mixerr = cTo.getRed();
+        int mixerg = cTo.getGreen();
+        int mixerb = cTo.getBlue();
+
+        return new Color(
+                (int) (r + (mixerr - r) * factor),
+                (int) (g + (mixerg - g) * factor),
+                (int) (b + (mixerb - b) * factor)
+        );
     }
 
     public static Color getColorByName(String name) {
