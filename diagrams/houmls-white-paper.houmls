@@ -624,22 +624,22 @@ bg=l-l-yellow</panel_attributes>
             <w>180</w>
             <h>190</h>
         </coordinates>
-        <panel_attributes>DEFAULT(""),
-ARROW("&lt;"),
-INHERITANCE("&lt;&lt;"),
-INHERITANCE_BLACKFILLED("&lt;&lt;&lt;"),
-AGGREGATION("&lt;&lt;&lt;&lt;"),
-COMPOSITION("&lt;&lt;&lt;&lt;&lt;"),
-MEMBER_COMMENT("m"),
+        <panel_attributes>` DEFAULT(""),
+` ARROW("&lt;"),
+` INHERITANCE("&lt;&lt;"),
+` INHERITANCE_BLACKFILLED("&lt;&lt;&lt;"),
+` AGGREGATION("&lt;&lt;&lt;&lt;"),
+` COMPOSITION("&lt;&lt;&lt;&lt;&lt;"),
+` MEMBER_COMMENT("m"),
 
-TO_ONE_OPTIONAL("|o"), 
-TO_ONE_MANDATORY("||"),
-TO_MANY_OPTIONAL("&gt;o"), 
-TO_MANY_MANDATORY("&gt;|"),
+` TO_ONE_OPTIONAL("|o"), 
+` TO_ONE_MANDATORY("||"),
+` TO_MANY_OPTIONAL("&gt;o"), 
+` TO_MANY_MANDATORY("&gt;|"),
 
-REQUIRED(")"), PROVIDED("o"),
+` REQUIRED(")"), PROVIDED("o"),
 
-INNER_CLASS("+");
+` INNER_CLASS("+");
 
 
 

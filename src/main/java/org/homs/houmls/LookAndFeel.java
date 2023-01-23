@@ -30,9 +30,10 @@ public class LookAndFeel {
     }
 
     public static Font monospaceFont(int size) {
-        Map<TextAttribute, Integer> fontAttributes = new HashMap<>();
-        fontAttributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
-        return new Font(monospaceFontName, Font.BOLD, size).deriveFont(fontAttributes);
+//        Map<TextAttribute, Integer> fontAttributes = new HashMap<>();
+//        fontAttributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+//        return new Font(monospaceFontName, Font.BOLD, size).deriveFont(fontAttributes);
+        return new Font(monospaceFontName, Font.PLAIN, size);
     }
 
     public static final Stroke basicStroke = new BasicStroke(1);

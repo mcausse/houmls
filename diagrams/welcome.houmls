@@ -21,8 +21,8 @@ fontsize=24
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>880</x>
-            <y>-600</y>
+            <x>930</x>
+            <y>-800</y>
             <w>180</w>
             <h>80</h>
         </coordinates>
@@ -796,20 +796,20 @@ bg=#cfffcf</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>1530</x>
-            <y>-330</y>
-            <w>100</w>
-            <h>50</h>
+            <x>1570</x>
+            <y>-280</y>
+            <w>60</w>
+            <h>0</h>
         </coordinates>
         <panel_attributes>lt=-&gt;
 </panel_attributes>
-        <additional_attributes>0;0;100;50</additional_attributes>
+        <additional_attributes>0;0;60;0</additional_attributes>
     </element>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>1770</x>
-            <y>-380</y>
+            <x>1780</x>
+            <y>-330</y>
             <w>50</w>
             <h>20</h>
         </coordinates>
@@ -1888,8 +1888,8 @@ action</panel_attributes>
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>880</x>
-            <y>-530</y>
+            <x>930</x>
+            <y>-730</y>
             <w>520</w>
             <h>40</h>
         </coordinates>
@@ -1903,8 +1903,8 @@ fontsize=24
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>700</x>
-            <y>-690</y>
+            <x>750</x>
+            <y>-890</y>
             <w>170</w>
             <h>190</h>
         </coordinates>
@@ -2121,9 +2121,9 @@ fontsize=24
     <element>
         <id>UMLState</id>
         <coordinates>
-            <x>2070</x>
+            <x>1520</x>
             <y>-900</y>
-            <w>1050</w>
+            <w>1600</w>
             <h>440</h>
         </coordinates>
         <panel_attributes>.*Koch snowflake
@@ -2137,7 +2137,7 @@ fontsize=24
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>2090</x>
+            <x>1540</x>
             <y>-840</y>
             <w>370</w>
             <h>30</h>
@@ -2151,7 +2151,7 @@ fontsize=14
     <element>
         <id>LechugaScriptBox</id>
         <coordinates>
-            <x>2090</x>
+            <x>1540</x>
             <y>-780</y>
             <w>1010</w>
             <h>300</h>
@@ -2169,10 +2169,10 @@ fontsize=14
 ;;; 
 (defn koch [size n]
    (if (= n 0)
-      (*turtle* :walk (to-double size))
+      (*turtle* :walk size)
       (for-each [0 60 -120 60]
          (angle =&gt; (multi
-            (*turtle* :rotate (to-double angle))
+            (*turtle* :rotate angle)
             (koch (/ size 3) (- n 1)))))))
 
 (koch box-width 5)
@@ -2182,6 +2182,68 @@ fontsize=14
 
 (*graphics* :setColor (field-static :java.awt.Color :BLACK))
 (*turtle* :drawPolyline *graphics*)
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>FloatingText</id>
+        <coordinates>
+            <x>2590</x>
+            <y>-740</y>
+            <w>500</w>
+            <h>230</h>
+        </coordinates>
+        <panel_attributes>*Koch function definition, in Lechuga Script
+--
+
+`  (defn koch [size n]
+`     (if (= n 0)
+`        (*turtle* :walk size)
+`        (for-each [0 60 -120 60]
+`           (angle =&gt; (multi
+`              (*turtle* :rotate angle)
+`              (koch (/ size 3) (- n 1)))))))
+
+
+bg=l-yellow
+
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLState</id>
+        <coordinates>
+            <x>710</x>
+            <y>-600</y>
+            <w>680</w>
+            <h>140</h>
+        </coordinates>
+        <panel_attributes>.*Lechuga Script clock
+--
+fontsize=24
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>LechugaScriptBox</id>
+        <coordinates>
+            <x>840</x>
+            <y>-540</y>
+            <w>450</w>
+            <h>50</h>
+        </coordinates>
+        <panel_attributes>
+
+(*graphics* :setFont
+   (call-static :org.homs.houmls.LookAndFeel :monospaceFont 30)
+)
+
+(def sdf (new :java.text.SimpleDateFormat "yyyy-MM-dd HH:mm:ss:SSS"))
+(def now (sdf :format (new :java.util.Date)))
+
+(*graphics* :drawString now box-x (+ box-y 30))
+
 </panel_attributes>
         <additional_attributes/>
     </element>

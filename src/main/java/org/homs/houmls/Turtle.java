@@ -29,6 +29,10 @@ public class Turtle {
         this.angleInRads += Math.toRadians(degrees);
     }
 
+    public void rotate(int degrees) {
+        rotate((double) degrees);
+    }
+
     public void setAngle(int degrees) {
         this.angleInRads = Math.toRadians(degrees);
     }
@@ -42,9 +46,17 @@ public class Turtle {
         this.ys.push(this.ys.peek() + distance * Math.sin(angleInRads));
     }
 
+    public void walk(int distance) {
+        walk((double) distance);
+    }
+
     public void jump(double distance) {
         this.xs.push(this.xs.pop() + distance * Math.cos(angleInRads));
         this.ys.push(this.ys.pop() + distance * Math.sin(angleInRads));
+    }
+
+    public void jump(int distance) {
+        jump((double) distance);
     }
 
     public void drawPolyline(Graphics g) {
