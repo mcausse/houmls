@@ -23,6 +23,7 @@ public class LechugaScriptBox extends Box {
         try {
             this.interpreter = new Interpreter();
             this.env = interpreter.getStdEnvironment();
+            setAttributesText(attributesText);
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }

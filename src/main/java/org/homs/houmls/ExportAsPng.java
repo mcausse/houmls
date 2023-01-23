@@ -38,7 +38,8 @@ public class ExportAsPng {
         BufferedImage bi = new BufferedImage((int) (diagramBounds.width * zoom), (int) (diagramBounds.height * zoom), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = bi.createGraphics();
 
-        canvas.paintComponent(g2);
+        //canvas.paintComponent(g2);
+        canvas.paint(g2);
 
         ImageIO.write(bi, outputFileFormat.toUpperCase(), new File(outputFileName));
 

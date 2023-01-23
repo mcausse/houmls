@@ -300,6 +300,21 @@ public class Canvas extends JPanel {
                     repaint();
                     pushUndoCheckpoint();
                 });
+
+                JMenuItem imageBox = new JMenuItem("create image");
+                pm.add(imageBox);
+                imageBox.addActionListener(e -> {
+                    final ImageBox turtleBox = new ImageBox(
+                            GridControl.engrid(mousePos.getX()),
+                            GridControl.engrid(mousePos.getY()),
+                            GridControl.engrid(18 * GridControl.GRID_SIZE),
+                            GridControl.engrid(8 * GridControl.GRID_SIZE),
+                            "image=\n"
+                    );
+                    diagram.addShape(turtleBox);
+                    repaint();
+                    pushUndoCheckpoint();
+                });
             } else if (!Connector.class.isAssignableFrom(selectedShape.getClass())) {
                 /*
                  * POPUP MENU: BOX

@@ -61,6 +61,8 @@ public class HoumsFileFormatManager {
                 id = "FloatingText";
             } else if (shape.getClass() == LechugaScriptBox.class) {
                 id = "LechugaScriptBox";
+            } else if (shape.getClass() == ImageBox.class) {
+                id = "ImageBox";
             } else {
                 throw new RuntimeException(shape.getClass().getName());
             }
@@ -172,6 +174,12 @@ public class HoumsFileFormatManager {
                         diagram.addShape(box);
                         break;
                     }
+                    case "ImageBox": {
+                        ImageBox box = new ImageBox(x, y, w, h, attributes);
+                        diagram.addShape(box);
+                        break;
+                    }
+
                     case "Relation":
                     case "Bocadillo":
 
