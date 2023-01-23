@@ -27,4 +27,10 @@ public class FontMetrics {
         Rectangle2D bounds = font.getStringBounds(message, context);
         return (int) bounds.getHeight();
     }
+
+    public static int getWidth(Graphics2D g2, String text) {
+        Font font = g2.getFont();
+        Rectangle2D bounds = font.getStringBounds(text, g2.getFontRenderContext());
+        return (int) bounds.getWidth();
+    }
 }

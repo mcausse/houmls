@@ -5,6 +5,7 @@ import org.homs.houmls.shape.Shape;
 import org.homs.houmls.shape.impl.box.*;
 import org.homs.houmls.shape.impl.connector.BocadilloConnector;
 import org.homs.houmls.shape.impl.connector.Connector;
+import org.homs.houmls.shape.impl.connector.DoublePoint;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -56,6 +57,12 @@ public class HoumsFileFormatManager {
                 id = "Bocadillo";
             } else if (shape.getClass() == TurtleBox.class) {
                 id = "TurtleBox";
+            } else if (shape.getClass() == FloatingText.class) {
+                id = "FloatingText";
+            } else if (shape.getClass() == LechugaScriptBox.class) {
+                id = "LechugaScriptBox";
+            } else if (shape.getClass() == ImageBox.class) {
+                id = "ImageBox";
             } else {
                 throw new RuntimeException(shape.getClass().getName());
             }
@@ -157,21 +164,37 @@ public class HoumsFileFormatManager {
                         diagram.addShape(box);
                         break;
                     }
+                    case "FloatingText": {
+                        FloatingText box = new FloatingText(x, y, w, h, attributes);
+                        diagram.addShape(box);
+                        break;
+                    }
+                    case "LechugaScriptBox": {
+                        LechugaScriptBox box = new LechugaScriptBox(x, y, w, h, attributes);
+                        diagram.addShape(box);
+                        break;
+                    }
+                    case "ImageBox": {
+                        ImageBox box = new ImageBox(x, y, w, h, attributes);
+                        diagram.addShape(box);
+                        break;
+                    }
+
                     case "Relation":
                     case "Bocadillo":
 
-                        List<Connector.DoublePoint> points = new ArrayList<>();
+                        List<DoublePoint> points = new ArrayList<>();
 
                         String[] parts = additionalAttributes.split(";");
                         int j = 0;
                         while (j < parts.length) {
                             int deltax = (int) Double.parseDouble(parts[j++]);
                             int deltay = (int) Double.parseDouble(parts[j++]);
-                            points.add(new Connector.DoublePoint(x + deltax, y + deltay));
+                            points.add(new DoublePoint(x + deltax, y + deltay));
                         }
 
-                        Connector.DoublePoint firstPoint = points.get(0);
-                        Connector.DoublePoint lastPoint = points.get(points.size() - 1);
+                        DoublePoint firstPoint = points.get(0);
+                        DoublePoint lastPoint = points.get(points.size() - 1);
 
                         final Connector connector;
                         if (id.equals("Relation")) {

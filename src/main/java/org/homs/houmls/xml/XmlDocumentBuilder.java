@@ -13,7 +13,7 @@ public class XmlDocumentBuilder {
     final Document document;
     final String prefix;
 
-    final Pattern pathPartPattern = Pattern.compile("([^\\[]+)(\\[(\\d+)\\])?");
+    final Pattern pathPartPattern = Pattern.compile("([^\\[]+)(\\[(\\d+)])?");
     final Pattern attributePattern = Pattern.compile("\\[@([a-zA-Z0-9]+)='([^']*)']");
 
     public XmlDocumentBuilder(Document document) {
@@ -45,7 +45,7 @@ public class XmlDocumentBuilder {
             throw new RuntimeException("the expression is empty");
         }
 
-        final String[] pathParts = (this.prefix + path).split("\\/");
+        final String[] pathParts = (this.prefix + path).split("/");
 
         Element n = null;
         for (String pathPart : pathParts) {

@@ -29,6 +29,10 @@ public class Turtle {
         this.angleInRads += Math.toRadians(degrees);
     }
 
+    public void rotate(int degrees) {
+        rotate((double) degrees);
+    }
+
     public void setAngle(int degrees) {
         this.angleInRads = Math.toRadians(degrees);
     }
@@ -42,9 +46,17 @@ public class Turtle {
         this.ys.push(this.ys.peek() + distance * Math.sin(angleInRads));
     }
 
+    public void walk(int distance) {
+        walk((double) distance);
+    }
+
     public void jump(double distance) {
         this.xs.push(this.xs.pop() + distance * Math.cos(angleInRads));
         this.ys.push(this.ys.pop() + distance * Math.sin(angleInRads));
+    }
+
+    public void jump(int distance) {
+        jump((double) distance);
     }
 
     public void drawPolyline(Graphics g) {
@@ -93,6 +105,31 @@ public class Turtle {
 
     public static double pitagoras(double a, double b) {
         return Math.sqrt(Math.pow(a, 2.0) + Math.pow(b, 2.0));
+    }
+
+    public static class PolylineFiller {
+        final Stack<Double> xs = new Stack<>();
+        final Stack<Double> ys = new Stack<>();
+
+        public void add(int x, int y) {
+            xs.push((double) x);
+            ys.push((double) y);
+        }
+
+        public void add(double x, double y) {
+            xs.push(x);
+            ys.push(y);
+        }
+
+        public void fill(Graphics g) {
+            int[] xsa = new int[xs.size()];
+            int[] ysa = new int[xs.size()];
+            for (int i = 0; i < xs.size(); i++) {
+                xsa[i] = (int) Math.round(xs.get(i));
+                ysa[i] = (int) Math.round(ys.get(i));
+            }
+            g.fillPolygon(xsa, ysa, xs.size());
+        }
     }
 
 }

@@ -6,7 +6,6 @@ import org.homs.houmls.shape.Draggable;
 import org.homs.houmls.shape.Shape;
 
 import java.awt.*;
-import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -25,17 +24,6 @@ public class Connector implements Shape {
     final ConnectorPoint startPoint;
     final ConnectorPoint endPoint;
     final List<DoublePoint> middlePoints;
-
-    public static class DoublePoint extends Point2D.Double {
-        public DoublePoint(double x, double y) {
-            super(x, y);
-        }
-
-        public void translate(double dx, double dy) {
-            this.x += dx;
-            this.y += dy;
-        }
-    }
 
     String attributesText;
 
@@ -229,8 +217,7 @@ public class Connector implements Shape {
 
     protected Rectangle getPointSelectionBox(ConnectorPoint connectorPoint) {
         Point p = connectorPoint.getAbsolutePoint();
-        Rectangle box = new Rectangle(p.x - SELECTION_BOX_SIZE, p.y - SELECTION_BOX_SIZE, SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
-        return box;
+        return new Rectangle(p.x - SELECTION_BOX_SIZE, p.y - SELECTION_BOX_SIZE, SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
     }
 
     @Override
@@ -275,15 +262,7 @@ public class Connector implements Shape {
         int miny = Math.min(startp.y, endp.y);
         int maxy = Math.max(startp.y, endp.y);
 
-//        for (var p : middlePoints) {
-//            minx = Math.min(minx, (int) p.x);
-//            maxx = Math.max(maxx, (int) p.x);
-//            miny = Math.min(miny, (int) p.y);
-//            maxy = Math.max(maxy, (int) p.y);
-//        }
-
-        var r = new Rectangle(minx, miny, maxx - minx, maxy - miny);
-        return r;
+        return new Rectangle(minx, miny, maxx - minx, maxy - miny);
     }
 
     public List<Point> getListOfAbsolutePoints() {
@@ -301,6 +280,9 @@ public class Connector implements Shape {
 
         ((Graphics2D) g).setStroke(this.stroke);
 
+        /*
+         * DRAW THE LINE
+         */
         List<Point> listOfAbsolutePoints = getListOfAbsolutePoints();
         g.setColor(Color.BLACK);
         for (var i = 1; i < listOfAbsolutePoints.size(); i++) {
@@ -309,29 +291,42 @@ public class Connector implements Shape {
             g.drawLine(p1.x, p1.y, p2.x, p2.y);
         }
 
-        //
-        // LABEL
-        //
+        /*
+         * DRAW THE CONNECTOR LABEL
+         */
         {
-            double x = (listOfAbsolutePoints.get(0).x + listOfAbsolutePoints.get(1).x) / 2.0;
-            double y = (listOfAbsolutePoints.get(0).y + listOfAbsolutePoints.get(1).y) / 2.0;
+            int middlePoint = listOfAbsolutePoints.size() / 2;
+            double x = (listOfAbsolutePoints.get(middlePoint - 1).x + listOfAbsolutePoints.get(middlePoint).x) / 2.0;
+            double y = (listOfAbsolutePoints.get(middlePoint - 1).y + listOfAbsolutePoints.get(middlePoint).y) / 2.0;
             double angle = Math.atan2(y, x);
 
             g.setFont(LookAndFeel.regularFont());
-            var sm = new FontMetrics((Graphics2D) g);
-            Rectangle rect = sm.getBounds(text).getBounds();
 
+            final FontMetrics fontMetrics = new FontMetrics((Graphics2D) g);
+            Rectangle rect = fontMetrics.getBounds(text).getBounds();
 
             var turtle = new Turtle(x, y, angle);
             turtle.rotate(-90);
-            turtle.walk(DIAMOND_SIZE * 2);
+            turtle.walk(DIAMOND_SIZE);
 
             Point turtlePos = turtle.getPosition();
-            g.drawString(text, turtlePos.x - rect.width / 2, turtlePos.y + rect.height / 2 - 4);
+
+            String[] textlines = text.split("\\n");
+            for (int i = 0; i < textlines.length; i++) {
+                final String line = textlines[i];
+                int lineWidth = (int) fontMetrics.getWidth(line);
+                g.drawString(
+                        line,
+                        turtlePos.x - lineWidth / 2,
+                        turtlePos.y - (rect.height * textlines.length) / 2 + rect.height * (i + 1));
+            }
         }
 
         ((Graphics2D) g).setStroke(basicStroke);
 
+        /*
+         * DRAW THE ARROWS & LABELS
+         */
         {
             Point firstPoint = listOfAbsolutePoints.get(0);
             Point secondPoint = listOfAbsolutePoints.get(1);

@@ -7,7 +7,7 @@
             <x>-380</x>
             <y>-110</y>
             <w>420</w>
-            <h>780</h>
+            <h>840</h>
         </coordinates>
         <panel_attributes>.*Backlog
 --
@@ -21,7 +21,7 @@ bg=l-l-l-blue</panel_attributes>
             <x>60</x>
             <y>-110</y>
             <w>250</w>
-            <h>780</h>
+            <h>840</h>
         </coordinates>
         <panel_attributes>.*Pending
 --
@@ -35,7 +35,7 @@ bg=l-l-red</panel_attributes>
             <x>330</x>
             <y>-110</y>
             <w>240</w>
-            <h>780</h>
+            <h>840</h>
         </coordinates>
         <panel_attributes>.*In Progress
 --
@@ -49,7 +49,7 @@ bg=l-orange</panel_attributes>
             <x>590</x>
             <y>-110</y>
             <w>460</w>
-            <h>780</h>
+            <h>840</h>
         </coordinates>
         <panel_attributes>.*Done
 --
@@ -261,8 +261,8 @@ stroke</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>610</x>
-            <y>520</y>
+            <x>620</x>
+            <y>510</y>
             <w>180</w>
             <h>80</h>
         </coordinates>
@@ -287,19 +287,6 @@ from the boxes</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>UMLNote</id>
-        <coordinates>
-            <x>-380</x>
-            <y>-190</y>
-            <w>1430</w>
-            <h>60</h>
-        </coordinates>
-        <panel_attributes>.Martin Kanban
-fontsize=38
-bg=l-yellow</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
         <id>UMLClass</id>
         <coordinates>
             <x>830</x>
@@ -317,13 +304,16 @@ diagram.</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>90</x>
-            <y>10</y>
+            <x>620</x>
+            <y>600</y>
             <w>180</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>
-pestañas</panel_attributes>
+        <panel_attributes>*pestañas
+--
+JTabbedPane tp = 
+   new JTabbedPane();
+f.add(tabbedPane);</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -361,6 +351,17 @@ draw</panel_attributes>
         <panel_attributes>.*Fit to window
 --
 </panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>-220</x>
+            <y>180</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>MD-style in boxes</panel_attributes>
         <additional_attributes/>
     </element>
 </diagram>

@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.Collections;
 
 public class ExportAsPng {
 
@@ -20,10 +21,12 @@ public class ExportAsPng {
         String outputFileFormat = argsProcessor.modifiers.getOrDefault("format", "png");
         String outputFileName = argsProcessor.modifiers.getOrDefault("output", inputFileName + "." + outputFileFormat);
 
+        GridControl.drawGrid = Boolean.parseBoolean(argsProcessor.modifiers.getOrDefault("grid", "true"));
+
         //
         System.out.print("Exporting: " + String.join(" ", args) + "...");
 
-        Canvas canvas = new Canvas(new JTextArea());
+        Canvas canvas = new Canvas(new JTextArea(), Collections.emptyList());
         canvas.setDiagram(HoumsFileFormatManager.loadFile(inputFileName));
         Rectangle diagramBounds = canvas.getDiagram().getDiagramBounds();
         diagramBounds.grow(100, 100);
@@ -35,7 +38,8 @@ public class ExportAsPng {
         BufferedImage bi = new BufferedImage((int) (diagramBounds.width * zoom), (int) (diagramBounds.height * zoom), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = bi.createGraphics();
 
-        canvas.paintComponent(g2);
+        //canvas.paintComponent(g2);
+        canvas.paint(g2);
 
         ImageIO.write(bi, outputFileFormat.toUpperCase(), new File(outputFileName));
 

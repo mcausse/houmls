@@ -1,14 +1,16 @@
 package org.homs.houmls;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class PropsParser {
 
-    final static Pattern p = Pattern.compile("(\\w+)\\=(.*)");
+    final static Pattern p = Pattern.compile("(\\w+)=(.*)");
 
     public static Map<String, String> parseProperties(String text) {
         var r = new LinkedHashMap<String, String>();
@@ -44,14 +46,19 @@ public class PropsParser {
             throw new IllegalArgumentException("factor not between 0 and 1: " + factor);
         }
 
-        float[] rgbaFrom = cFrom.getRGBComponents(null);
-        float[] rgbaTo = cTo.getRGBComponents(null);
+        int r = cFrom.getRed();
+        int g = cFrom.getGreen();
+        int b = cFrom.getBlue();
 
-        rgbaFrom[0] += (rgbaTo[0] - rgbaFrom[0]) * factor;
-        rgbaFrom[1] += (rgbaTo[1] - rgbaFrom[1]) * factor;
-        rgbaFrom[2] += (rgbaTo[2] - rgbaFrom[2]) * factor;
+        int mixerr = cTo.getRed();
+        int mixerg = cTo.getGreen();
+        int mixerb = cTo.getBlue();
 
-        return new Color(rgbaFrom[0], rgbaFrom[1], rgbaFrom[2], rgbaFrom[3]);
+        return new Color(
+                (int) (r + (mixerr - r) * factor),
+                (int) (g + (mixerg - g) * factor),
+                (int) (b + (mixerb - b) * factor)
+        );
     }
 
     public static Color getColorByName(String name) {
@@ -107,5 +114,26 @@ public class PropsParser {
             }
         }
         return rev.toString();
+    }
+
+    public static List<String> split(String text, char sep) {
+        var r = new ArrayList<String>();
+        var s = new StringBuilder();
+
+        for (char c : text.toCharArray()) {
+            if (c == sep) {
+                r.add(s.toString());
+                s = new StringBuilder();
+            } else {
+                s.append(c);
+            }
+        }
+
+        // the tail
+        if (s.length() > 0) {
+            r.add(s.toString());
+        }
+
+        return r;
     }
 }

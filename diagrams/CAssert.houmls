@@ -311,13 +311,17 @@ halign=center</panel_attributes>
         <coordinates>
             <x>1330</x>
             <y>440</y>
-            <w>230</w>
-            <h>80</h>
+            <w>250</w>
+            <h>160</h>
         </coordinates>
         <panel_attributes>.*AssertionFailureStatusException
 --
 --
-~Build(message As %String, innerException As %Exception.AbstractException = {$$$NULLOREF}) As AssertException
+~Build(
+   message As %String, 
+   innerException 
+      As %Exception.AbstractException = 
+      {$$$NULLOREF}) As AssertException
 GetMessage() As %String
 --
 

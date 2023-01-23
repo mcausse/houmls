@@ -73,7 +73,6 @@ public class TurtleBox extends Box {
                     break;
                 default:
                     //throw new RuntimeException("unexpected command: " + command);
-
             }
         }
     }

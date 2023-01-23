@@ -7,6 +7,7 @@ import org.homs.houmls.shape.impl.box.Box;
 import org.homs.houmls.shape.impl.box.*;
 import org.homs.houmls.shape.impl.connector.BocadilloConnector;
 import org.homs.houmls.shape.impl.connector.Connector;
+import org.homs.houmls.shape.impl.connector.DoublePoint;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -20,6 +21,7 @@ import java.awt.geom.NoninvertibleTransformException;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Stack;
 
 import static org.homs.houmls.LookAndFeel.SHAPE_SELECTED_COLOR;
@@ -29,8 +31,7 @@ import static org.homs.houmls.shape.impl.connector.Connector.SELECTION_BOX_SIZE;
 public class Canvas extends JPanel {
 
     final List<Shape> selectedShapes = new ArrayList<>();
-    Draggable draggableUnderMouse = null;
-    final List<Shape> shapesClipboard = new ArrayList<>();
+    final List<Shape> shapesClipboard;
 
     int mouseCurrentPosX = 0;
     int mouseCurrentPosY = 0;
@@ -219,6 +220,19 @@ public class Canvas extends JPanel {
                     repaint();
                     pushUndoCheckpoint();
                 });
+                JMenuItem createTextBox = new JMenuItem("create text box");
+                pm.add(createTextBox);
+                createTextBox.addActionListener(e -> {
+                    diagram.addShape(new FloatingText(
+                            GridControl.engrid(mousePos.getX()),
+                            GridControl.engrid(mousePos.getY()),
+                            GridControl.engrid(18 * GridControl.GRID_SIZE),
+                            GridControl.engrid(14 * GridControl.GRID_SIZE),
+                            ".*Title\nfontsize=24\n"
+                    ));
+                    repaint();
+                    pushUndoCheckpoint();
+                });
                 JMenuItem createActor = new JMenuItem("create actor");
                 pm.add(createActor);
                 createActor.addActionListener(e -> {
@@ -240,7 +254,7 @@ public class Canvas extends JPanel {
                             GridControl.engrid(mousePos.getY()),
                             "lt=-\n"
                     );
-                    bocadillo.getMiddlePoints().add(new Connector.DoublePoint(
+                    bocadillo.getMiddlePoints().add(new DoublePoint(
                             GridControl.engrid(mousePos.getX() + GridControl.GRID_SIZE * 6),
                             GridControl.engrid(mousePos.getY() + GridControl.GRID_SIZE * 6)
                     ));
@@ -265,6 +279,37 @@ public class Canvas extends JPanel {
                                     "rotate 90 walk 55\n" +
                                     "rotate 135 walk 76\n" +
                                     "draw\n"
+                    );
+                    diagram.addShape(turtleBox);
+                    repaint();
+                    pushUndoCheckpoint();
+                });
+
+                JMenuItem createLechugaBox = new JMenuItem("create lechuga box");
+                pm.add(createLechugaBox);
+                createLechugaBox.addActionListener(e -> {
+                    final LechugaScriptBox turtleBox = new LechugaScriptBox(
+                            GridControl.engrid(mousePos.getX()),
+                            GridControl.engrid(mousePos.getY()),
+                            GridControl.engrid(18 * GridControl.GRID_SIZE),
+                            GridControl.engrid(8 * GridControl.GRID_SIZE),
+                            "((field-static :java.lang.System :out) :print :jou)\n" +
+                                    "bg=green\n"
+                    );
+                    diagram.addShape(turtleBox);
+                    repaint();
+                    pushUndoCheckpoint();
+                });
+
+                JMenuItem imageBox = new JMenuItem("create image");
+                pm.add(imageBox);
+                imageBox.addActionListener(e -> {
+                    final ImageBox turtleBox = new ImageBox(
+                            GridControl.engrid(mousePos.getX()),
+                            GridControl.engrid(mousePos.getY()),
+                            GridControl.engrid(18 * GridControl.GRID_SIZE),
+                            GridControl.engrid(8 * GridControl.GRID_SIZE),
+                            "image=\n"
                     );
                     diagram.addShape(turtleBox);
                     repaint();
@@ -349,7 +394,7 @@ public class Canvas extends JPanel {
                         } else {
                             otherPoint = points.get(indexOfClickedPoint + 1);
                         }
-                        var middlePointToCreate = new Connector.DoublePoint((p.x + otherPoint.x) / 2, (p.y + otherPoint.y) / 2);
+                        var middlePointToCreate = new DoublePoint((p.x + otherPoint.x) / 2.0, (p.y + otherPoint.y) / 2.0);
 
                         if (indexOfClickedPoint >= conn.getMiddlePoints().size()) {
                             conn.getMiddlePoints().add(middlePointToCreate);
@@ -450,8 +495,8 @@ public class Canvas extends JPanel {
 
     class OffsetAndZoomListener extends KeyAdapter implements MouseWheelListener {
 
-        static final int MOUSE_WHEEL_ROTATION_PX_AMOUNT = 50;
-        static final double MOUSE_WHEEL_ROTATION_ZOOM_FACTOR = 0.10;
+        static final int MOUSE_WHEEL_ROTATION_PX_AMOUNT = 75;
+        static final double MOUSE_WHEEL_ROTATION_ZOOM_FACTOR = 0.20;
 
         boolean controlPressed = false;
         boolean shiftPressed = false;
@@ -523,6 +568,7 @@ public class Canvas extends JPanel {
                         var dupShape = shape.duplicate((int) mousePos.getX(), (int) mousePos.getY());
                         diagram.addShape(dupShape);
                         selectedShapes.add(dupShape);
+                        diagram.manageConnectorLinks();
                     }
                     repaint();
                     pushUndoCheckpoint();
@@ -664,11 +710,6 @@ public class Canvas extends JPanel {
             mouseCurrentPosX = e.getX();
             mouseCurrentPosY = e.getY();
 
-            if (Canvas.this.draggableUnderMouse != draggable) {
-                repaint();
-            }
-            Canvas.this.draggableUnderMouse = draggable;
-
             if (draggable == null) {
                 setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             } else {
@@ -693,11 +734,12 @@ public class Canvas extends JPanel {
         return diagram;
     }
 
-    public Canvas(JTextArea editorTextPaneRef) {
+    public Canvas(JTextArea editorTextPaneRef, List<Shape> shapesClipboard) {
         super(true);
 
         this.diagram = new Diagram();
         this.editorTextPaneRef = editorTextPaneRef;
+        this.shapesClipboard = shapesClipboard;
 
         this.offsetAndZoomListener = new OffsetAndZoomListener();
         addMouseWheelListener(offsetAndZoomListener);
@@ -762,7 +804,10 @@ public class Canvas extends JPanel {
         AffineTransform at = getAffineTransform();
         g2.setTransform(at);
 
-        drawGrid(g);
+        if (GridControl.drawGrid) {
+            drawGrid(g);
+        }
+
         g.setFont(LookAndFeel.regularFont());
 
         // aquesta separació assegura que les fletxes mai siguin tapades per cap caixa
@@ -782,15 +827,6 @@ public class Canvas extends JPanel {
                     element.drawSelection(g);
                 }
                 element.draw(g);
-            }
-        }
-
-        if (LookAndFeel.markDraggablePartsAsRed) {
-            if (Canvas.this.draggableUnderMouse != null) {
-                var r = Canvas.this.draggableUnderMouse.getRectangle();
-                g2.setColor(Color.RED);
-                g2.setStroke(new BasicStroke(3));
-                g2.drawRoundRect(r.x, r.y, r.width, r.height, 6, 6);
             }
         }
 
@@ -889,7 +925,8 @@ public class Canvas extends JPanel {
         return null;
     }
 
-    public String getDiagramName() {
-        return diagram.getName();
+    public Optional<String> getDiagramName() {
+        return Optional.ofNullable(diagram.getName());
     }
+
 }

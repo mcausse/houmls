@@ -1,5 +1,6 @@
 package org.homs.houmls;
 
+import org.homs.houmls.shape.Shape;
 import org.homs.houmls.xml.HoumsFileFormatManager;
 
 import javax.swing.*;
@@ -7,9 +8,12 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.function.Consumer;
 
 import static org.homs.houmls.LookAndFeel.yellowMartin;
@@ -26,30 +30,20 @@ import static org.homs.houmls.LookAndFeel.yellowMartin;
  *
  * @author mohms
  */
-public class MainC1 {
+public class MainC2 {
 
     public static final String FRAME_TITLE = "Houmls (╯°o°）╯︵ ┻━┻  -- ";
+
     public static final String UNNAMED_FILENAME = "Unnamed";
 
-    static final Image frameIcon = Toolkit.getDefaultToolkit().getImage(MainC1.class.getClassLoader().getResource("org/homs/houmls/houmls.png"));
+    static final Image frameIcon = Toolkit.getDefaultToolkit().getImage(MainC2.class.getClassLoader().getResource("org/homs/houmls/houmls.png"));
+
+    static final List<Shape> shapesClipboard = new ArrayList<>();
 
     public static void main(String[] args) throws Exception {
 
         JFrame.setDefaultLookAndFeelDecorated(true);
         UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-
-        var shapeTextEditor = new JTextArea();
-        shapeTextEditor.setBackground(yellowMartin);
-        JScrollPane scrollShapeTextEditor = new JScrollPane(shapeTextEditor, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
-
-        var canvas = new Canvas(shapeTextEditor);
-
-        //
-        // LATERAL BAR
-        //
-        var lateralBar = new JPanel();
-        lateralBar.setLayout(new BorderLayout());
-        lateralBar.add(scrollShapeTextEditor);
 
         var f = new JFrame();
         f.setIconImage(frameIcon);
@@ -65,32 +59,121 @@ public class MainC1 {
             f.setSize(new Dimension(frameBounds.width, frameBounds.height));
         }
 
-        currentDiagramOnChangeFileNameListener.accept(canvas.getDiagramName());
+        JTabbedPane tabbedPane = new JTabbedPane();
+        tabbedPane.setFocusable(false);
+        f.add(tabbedPane);
 
-        f.addKeyListener(canvas.getOffsetAndZoomListener());
+        tabbedPane.addChangeListener(e -> {
+            DiagramTab diagramTab = (DiagramTab) ((JTabbedPane) e.getSource()).getSelectedComponent();
 
-        JToolBar toolBar = buildToolBar(f, canvas, currentDiagramOnChangeFileNameListener);
+            SwingUtilities.invokeLater(() -> {
+                diagramTab.getCanvas().requestFocus();
+                diagramTab.getCanvas().repaint();
+                currentDiagramOnChangeFileNameListener.accept(diagramTab.getDiagramName());
+            });
+        });
+
+        //
+
+        JToolBar toolBar = buildToolBar(f, tabbedPane, currentDiagramOnChangeFileNameListener);
         f.add(toolBar, BorderLayout.NORTH);
 
-        JSplitPane sl = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, canvas, lateralBar);
-        f.add(sl);
+        var keyListener = new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                getActiveCanvas().getOffsetAndZoomListener().keyTyped(e);
+            }
 
+            @Override
+            public void keyPressed(KeyEvent e) {
+                getActiveCanvas().getOffsetAndZoomListener().keyPressed(e);
+            }
 
-        lateralBar.addKeyListener(canvas.getOffsetAndZoomListener());
-        shapeTextEditor.addKeyListener(canvas.getOffsetAndZoomListener());
-        sl.addKeyListener(canvas.getOffsetAndZoomListener());
-        toolBar.addKeyListener(canvas.getOffsetAndZoomListener());
-        Arrays.stream(toolBar.getComponents()).forEach(c -> c.addKeyListener(canvas.getOffsetAndZoomListener()));
+            @Override
+            public void keyReleased(KeyEvent e) {
+                getActiveCanvas().getOffsetAndZoomListener().keyReleased(e);
+            }
+
+            public Canvas getActiveCanvas() {
+                DiagramTab diagramTab = (DiagramTab) tabbedPane.getSelectedComponent();
+                return diagramTab.getCanvas();
+            }
+        };
+
+        f.addKeyListener(keyListener);
+        toolBar.addKeyListener(keyListener);
+        Arrays.stream(toolBar.getComponents()).forEach(c -> c.addKeyListener(keyListener));
 
         f.setVisible(true);
 
-        SwingUtilities.invokeLater(() -> {
-            sl.setDividerLocation(0.8);
-            SwingUtilities.invokeLater(canvas::centerDiagram);
-        });
+        // TODO
+        createNewDiagramTab(currentDiagramOnChangeFileNameListener, tabbedPane);
+        loadDiagramIntoNewTab(new File("diagrams/welcome.houmls"), currentDiagramOnChangeFileNameListener, tabbedPane);
     }
 
-    static JToolBar buildToolBar(JFrame frame, Canvas canvas, Consumer<String> currentDiagramFileNameConsumer) {
+    static class DiagramTab extends JSplitPane {
+
+        final Canvas canvas;
+        final JPanel lateralBar;
+
+        public DiagramTab(Canvas canvas, JPanel lateralBar) {
+            super(JSplitPane.HORIZONTAL_SPLIT, canvas, lateralBar);
+            this.canvas = canvas;
+            this.lateralBar = lateralBar;
+        }
+
+        public String getDiagramShortName() {
+            if (canvas.getDiagramName().isPresent()) {
+                var name = canvas.getDiagramName().get();
+                int pos = Math.max(
+                        name.lastIndexOf('/'),
+                        name.lastIndexOf('\\')
+                );
+                return name.substring(pos + 1);
+            } else {
+                return null;
+            }
+        }
+
+        public String getDiagramName() {
+            if (canvas.getDiagramName().isPresent()) {
+                return canvas.getDiagramName().get();
+            } else {
+                return null;
+            }
+        }
+
+        public Canvas getCanvas() {
+            return canvas;
+        }
+    }
+
+    static DiagramTab createNewDiagramTab(Consumer<String> currentDiagramOnChangeFileNameListener) {
+        var shapeTextEditor = new JTextArea();
+        shapeTextEditor.setBackground(yellowMartin);
+        JScrollPane scrollShapeTextEditor = new JScrollPane(shapeTextEditor, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS, JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+
+        var canvas = new Canvas(shapeTextEditor, shapesClipboard);
+
+        //
+        // LATERAL BAR
+        //
+        var lateralBar = new JPanel();
+        lateralBar.setLayout(new BorderLayout());
+        lateralBar.add(scrollShapeTextEditor);
+
+
+        DiagramTab diagramTab = new DiagramTab(canvas, lateralBar);
+        currentDiagramOnChangeFileNameListener.accept(diagramTab.getDiagramName());
+
+        lateralBar.addKeyListener(canvas.getOffsetAndZoomListener());
+        shapeTextEditor.addKeyListener(canvas.getOffsetAndZoomListener());
+        diagramTab.addKeyListener(canvas.getOffsetAndZoomListener());
+
+        return diagramTab;
+    }
+
+    static JToolBar buildToolBar(JFrame frame, JTabbedPane tabbedPane, Consumer<String> currentDiagramFileNameConsumer) {
         JToolBar toolBar = new JToolBar();
         toolBar.setFloatable(false);
 
@@ -105,20 +188,13 @@ public class MainC1 {
             FileNameExtensionFilter filter = new FileNameExtensionFilter("Houmls files", "houmls", "uxf");
 
             newButton = buildButton("icons/page.png", "New (^N)", "^n", "Control N", KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK), new AbstractAction() {
-                private static final long serialVersionUID = -1337580617687814477L;
-
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    canvas.setDiagram(new Diagram());
-                    canvas.centerDiagram();
-                    canvas.repaint();
-                    currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
+                    createNewDiagramTab(currentDiagramFileNameConsumer, tabbedPane);
                 }
             });
             // XXX ^O open file
             openBbutton = buildButton("icons/folder_page.png", "Open (^O)", "^o", "Control O", KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK), new AbstractAction() {
-                private static final long serialVersionUID = -1337580617687814477L;
-
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     JFileChooser fc = new JFileChooser(new File("."));
@@ -127,24 +203,21 @@ public class MainC1 {
                     if (returnVal == JFileChooser.APPROVE_OPTION) {
                         File file = fc.getSelectedFile();
                         try {
-                            Diagram diagram = HoumsFileFormatManager.loadFile(file.toString());
-                            canvas.setDiagram(diagram);
-                            canvas.fitZoomToWindow();
-                            canvas.repaint();
+                            loadDiagramIntoNewTab(file, currentDiagramFileNameConsumer, tabbedPane);
                         } catch (Exception e2) {
                             e2.printStackTrace();
                         }
                     }
-                    currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
                 }
             });
             // XXX ^S save current file
             saveButton = buildButton("icons/disk.png", "Save (^S)", "^s", "Control S", KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK), new AbstractAction() {
-                private static final long serialVersionUID = -1337580617687814477L;
-
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    String fileName = canvas.getDiagramName();
+                    DiagramTab diagramTab = (DiagramTab) tabbedPane.getSelectedComponent();
+                    Canvas canvas = diagramTab.getCanvas();
+
+                    String fileName = diagramTab.getDiagramName();
                     if (fileName == null) {
                         JFileChooser fc = new JFileChooser(new File("."));
                         fc.setFileFilter(filter);
@@ -156,6 +229,8 @@ public class MainC1 {
                             } catch (Exception e2) {
                                 e2.printStackTrace();
                             }
+                            tabbedPane.setTitleAt(tabbedPane.getSelectedIndex(), diagramTab.getDiagramShortName());
+                            currentDiagramFileNameConsumer.accept(diagramTab.getDiagramName());
                         }
                     } else {
                         try {
@@ -164,17 +239,17 @@ public class MainC1 {
                             e2.printStackTrace();
                         }
                     }
-                    currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
+//                    currentDiagramFileNameConsumer.accept(diagramTab.getDiagramName());
                 }
             });
 
             // XXX ^D Save as...
             saveAsButton = buildButton("icons/page_save.png", "Save As... (^D)", "^d", "Control D", KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK),
                     new AbstractAction() {
-                        private static final long serialVersionUID = -1337580617687814477L;
-
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            DiagramTab diagramTab = (DiagramTab) tabbedPane.getSelectedComponent();
+                            Canvas canvas = diagramTab.getCanvas();
 
                             JFileChooser fc = new JFileChooser(new File("."));
                             fc.setFileFilter(filter);
@@ -186,28 +261,31 @@ public class MainC1 {
                                 } catch (Exception e2) {
                                     e2.printStackTrace();
                                 }
+                                tabbedPane.setTitleAt(tabbedPane.getSelectedIndex(), diagramTab.getDiagramShortName());
+                                currentDiagramFileNameConsumer.accept(diagramTab.getDiagramName());
                             }
-                            currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
                         }
                     });
 
 
             centerDiagram = buildButton("icons/arrow_out.png", "Zoom to fit", null, null, null,
                     new AbstractAction() {
-                        private static final long serialVersionUID = -1337580617687814477L;
-
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            DiagramTab diagramTab = (DiagramTab) tabbedPane.getSelectedComponent();
+                            Canvas canvas = diagramTab.getCanvas();
+
                             canvas.fitZoomToWindow();
                         }
                     });
 
             zoomTo1Diagram = buildButton("icons/zoom.png", "Zoom to 1:1 & Center", null, null, null,
                     new AbstractAction() {
-                        private static final long serialVersionUID = -1337580617687814477L;
-
                         @Override
                         public void actionPerformed(ActionEvent e) {
+                            DiagramTab diagramTab = (DiagramTab) tabbedPane.getSelectedComponent();
+                            Canvas canvas = diagramTab.getCanvas();
+
                             canvas.centerDiagram();
                         }
                     });
@@ -223,7 +301,40 @@ public class MainC1 {
         return toolBar;
     }
 
-    protected static JButton buildButton(String imageName, String toolTipText, String shortCut, String actionCommand, KeyStroke keyStroke, Action action) {
+    static void createNewDiagramTab(Consumer<String> currentDiagramFileNameConsumer, JTabbedPane tabbedPane) {
+        DiagramTab diagramTab = createNewDiagramTab(currentDiagramFileNameConsumer);
+        tabbedPane.addTab("New", diagramTab);
+        tabbedPane.setSelectedComponent(diagramTab);
+
+        Canvas canvas = diagramTab.getCanvas();
+        SwingUtilities.invokeLater(() -> {
+            diagramTab.setDividerLocation(0.8);
+            SwingUtilities.invokeLater(canvas::centerDiagram);
+            SwingUtilities.invokeLater(canvas::requestFocus);
+        });
+    }
+
+    static void loadDiagramIntoNewTab(File file, Consumer<String> currentDiagramFileNameConsumer, JTabbedPane tabbedPane) throws Exception {
+        DiagramTab diagramTab = createNewDiagramTab(currentDiagramFileNameConsumer);
+
+        var canvas = diagramTab.getCanvas();
+        Diagram diagram = HoumsFileFormatManager.loadFile(file.toString());
+        canvas.setDiagram(diagram);
+        currentDiagramFileNameConsumer.accept(diagramTab.getDiagramName());
+
+        tabbedPane.addTab("New", diagramTab);
+        tabbedPane.setSelectedComponent(diagramTab);
+        tabbedPane.setTitleAt(tabbedPane.getSelectedIndex(), diagramTab.getDiagramShortName());
+
+        SwingUtilities.invokeLater(() -> {
+            diagramTab.setDividerLocation(0.8);
+            SwingUtilities.invokeLater(canvas::fitZoomToWindow);
+            SwingUtilities.invokeLater(canvas::requestFocus);
+        });
+    }
+
+    protected static JButton buildButton(String imageName, String toolTipText, String shortCut, String
+            actionCommand, KeyStroke keyStroke, Action action) {
 
         JButton button = new JButton();
         button.setLayout(new GridLayout(2, 1));
@@ -234,7 +345,7 @@ public class MainC1 {
         }
         button.setAction(action);
 
-        URL resource = MainC1.class.getResource(imageName);
+        URL resource = MainC2.class.getResource(imageName);
         if (resource == null) {
             throw new RuntimeException("file not found: " + imageName);
         }
