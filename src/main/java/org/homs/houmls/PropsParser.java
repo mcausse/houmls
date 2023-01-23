@@ -10,7 +10,7 @@ import java.util.regex.Pattern;
 
 public class PropsParser {
 
-    final static Pattern p = Pattern.compile("(\\w+)\\=(.*)");
+    final static Pattern p = Pattern.compile("(\\w+)=(.*)");
 
     public static Map<String, String> parseProperties(String text) {
         var r = new LinkedHashMap<String, String>();
@@ -45,15 +45,6 @@ public class PropsParser {
         if (factor < 0f || factor > 1f) {
             throw new IllegalArgumentException("factor not between 0 and 1: " + factor);
         }
-
-//        float[] rgbaFrom = cFrom.getRGBComponents(null);
-//        float[] rgbaTo = cTo.getRGBComponents(null);
-//
-//        rgbaFrom[0] += (rgbaTo[0] - rgbaFrom[0]) * factor;
-//        rgbaFrom[1] += (rgbaTo[1] - rgbaFrom[1]) * factor;
-//        rgbaFrom[2] += (rgbaTo[2] - rgbaFrom[2]) * factor;
-//
-        //return new Color(rgbaFrom[0], rgbaFrom[1], rgbaFrom[2], rgbaFrom[3]);
 
         int r = cFrom.getRed();
         int g = cFrom.getGreen();

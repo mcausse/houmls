@@ -122,9 +122,6 @@ public class Box implements Shape {
 
                 y += fontHeigth;
 
-//                g.setFont(lineFont);
-//                g.drawString(line, ix + alignCorrectionXPx, y);
-
                 var monospaceFont = LookAndFeel.monospaceFont(fontSize);
                 List<String> parts = PropsParser.split(line, '`');
                 int ax = 0;

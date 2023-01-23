@@ -693,9 +693,9 @@ m2=                     subdepartments
         <id>UMLClass</id>
         <coordinates>
             <x>1630</x>
-            <y>-370</y>
+            <y>-320</y>
             <w>170</w>
-            <h>80</h>
+            <h>90</h>
         </coordinates>
         <panel_attributes>._&lt;&lt;interface&gt;&gt;
 .*Generator
@@ -737,25 +737,25 @@ bg=#cfffcf</panel_attributes>
         <id>Relation</id>
         <coordinates>
             <x>1590</x>
-            <y>-290</y>
+            <y>-230</y>
             <w>60</w>
-            <h>110</h>
+            <h>50</h>
         </coordinates>
         <panel_attributes>lt=-&gt;&gt;
 </panel_attributes>
-        <additional_attributes>0;110;60;0</additional_attributes>
+        <additional_attributes>0;50;60;0</additional_attributes>
     </element>
     <element>
         <id>Relation</id>
         <coordinates>
             <x>1780</x>
-            <y>-290</y>
+            <y>-230</y>
             <w>50</w>
-            <h>110</h>
+            <h>50</h>
         </coordinates>
         <panel_attributes>lt=-&gt;&gt;
 </panel_attributes>
-        <additional_attributes>50;110;0;0</additional_attributes>
+        <additional_attributes>50;50;0;0</additional_attributes>
     </element>
     <element>
         <id>UMLClass</id>
@@ -786,11 +786,11 @@ bg=#cfffcf</panel_attributes>
             <x>1530</x>
             <y>-330</y>
             <w>100</w>
-            <h>0</h>
+            <h>50</h>
         </coordinates>
         <panel_attributes>lt=-&gt;
 </panel_attributes>
-        <additional_attributes>0;0;100;0</additional_attributes>
+        <additional_attributes>0;0;100;50</additional_attributes>
     </element>
     <element>
         <id>UMLClass</id>
@@ -1890,9 +1890,9 @@ fontsize=24
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>740</x>
-            <y>-650</y>
-            <w>100</w>
+            <x>700</x>
+            <y>-660</y>
+            <w>170</w>
             <h>190</h>
         </coordinates>
         <panel_attributes>.&#128034;
@@ -2016,5 +2016,67 @@ bg=#cfcfff</panel_attributes>
         <panel_attributes>lt=-
 bg=green</panel_attributes>
         <additional_attributes>0;0;-10;20;20;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLState</id>
+        <coordinates>
+            <x>1880</x>
+            <y>580</y>
+            <w>580</w>
+            <h>170</h>
+        </coordinates>
+        <panel_attributes>.*Lechuga Scripting
+--
+fontsize=24
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>FloatingText</id>
+        <coordinates>
+            <x>1890</x>
+            <y>620</y>
+            <w>570</w>
+            <h>30</h>
+        </coordinates>
+        <panel_attributes>.`org.homs:lechuga-script:0.0.2-SNAPSHOT`
+
+fontsize=14
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>LechugaScriptBox</id>
+        <coordinates>
+            <x>2030</x>
+            <y>660</y>
+            <w>310</w>
+            <h>70</h>
+        </coordinates>
+        <panel_attributes>bg=white
+
+(*graphics* :drawOval box-x box-y box-width box-height)
+
+
+(def radius-x (/ box-width 2))
+(def radius-y (/ box-height 2))
+
+(def center-x (+ box-x radius-x))
+(def center-y (+ box-y radius-y))
+
+
+(def angle 0.0)
+(def pi (field-static :java.lang.Math :PI))
+(def pi2 (* pi 2.0))
+
+(while (&lt; angle pi2)
+   (def x (* radius-x (call-static :java.lang.Math :cos angle)))
+   (def y (* radius-y (call-static :java.lang.Math :sin angle)))
+
+   (*graphics* :drawOval (to-int (+ center-x x)) (to-int (+ center-y y)) 5 5)
+
+   (set angle (+ angle 0.1))
+)</panel_attributes>
+        <additional_attributes/>
     </element>
 </diagram>

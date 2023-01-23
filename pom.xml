@@ -15,6 +15,12 @@
 
     <dependencies>
         <dependency>
+            <groupId>org.homs</groupId>
+            <artifactId>lechuga-script</artifactId>
+            <version>0.0.2-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
             <version>5.4.0</version>
@@ -79,8 +85,8 @@
                                 </delete>
 
                                 <echo file="./build/run.bat" append="false">
-@echo off
-java -cp ${project.artifactId}-${project.version}.jar org.homs.houmls.MainC2
+                                    @echo off
+                                    java -cp ${project.artifactId}-${project.version}.jar org.homs.houmls.MainC2
                                 </echo>
 
                                 <copy todir="./build" flatten="true">

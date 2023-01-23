@@ -1,6 +1,4 @@
 target
 .idea
 
-diagrams/private/
-diagrams/private/*
-diagrams/private/**/*
+diagrams/private

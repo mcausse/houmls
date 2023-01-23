@@ -90,7 +90,7 @@ public class XmlHelper {
     public static String normalizeXml(String xml) {
         return xml
                 // Normalize the XML
-                .replaceAll("\\>\\s+\\<", "><")
+                .replaceAll(">\\s+<", "><")
                 // Normalize the HL7 break lines
                 .replaceAll("[\\n\\r]+", "\n")
                 .trim();

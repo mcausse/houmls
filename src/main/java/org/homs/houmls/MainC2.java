@@ -66,9 +66,6 @@ public class MainC2 {
         tabbedPane.addChangeListener(e -> {
             DiagramTab diagramTab = (DiagramTab) ((JTabbedPane) e.getSource()).getSelectedComponent();
 
-//            diagramTab.getCanvas().repaint();
-//            diagramTab.getCanvas().requestFocus();
-
             SwingUtilities.invokeLater(() -> {
                 diagramTab.getCanvas().requestFocus();
                 diagramTab.getCanvas().repaint();
@@ -107,17 +104,9 @@ public class MainC2 {
         toolBar.addKeyListener(keyListener);
         Arrays.stream(toolBar.getComponents()).forEach(c -> c.addKeyListener(keyListener));
 
-
         f.setVisible(true);
 
-//        DiagramTab sl = createNewDiagramTab(currentDiagramOnChangeFileNameListener);
-//        tabbedPane.addTab("New", sl);
-//        Canvas canvas = sl.getCanvas();
-//        SwingUtilities.invokeLater(() -> {
-//            sl.setDividerLocation(0.8);
-//            SwingUtilities.invokeLater(canvas::centerDiagram);
-//            SwingUtilities.invokeLater(canvas::requestFocus);
-//        });
+        // TODO
         createNewDiagramTab(currentDiagramOnChangeFileNameListener, tabbedPane);
         loadDiagramIntoNewTab(new File("diagrams/welcome.houmls"), currentDiagramOnChangeFileNameListener, tabbedPane);
     }
@@ -142,7 +131,6 @@ public class MainC2 {
                 );
                 return name.substring(pos + 1);
             } else {
-                //return "New";
                 return null;
             }
         }
@@ -151,7 +139,6 @@ public class MainC2 {
             if (canvas.getDiagramName().isPresent()) {
                 return canvas.getDiagramName().get();
             } else {
-//                return "New";
                 return null;
             }
         }
@@ -201,8 +188,6 @@ public class MainC2 {
             FileNameExtensionFilter filter = new FileNameExtensionFilter("Houmls files", "houmls", "uxf");
 
             newButton = buildButton("icons/page.png", "New (^N)", "^n", "Control N", KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK), new AbstractAction() {
-                private static final long serialVersionUID = -1337580617687814477L;
-
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     createNewDiagramTab(currentDiagramFileNameConsumer, tabbedPane);
@@ -210,8 +195,6 @@ public class MainC2 {
             });
             // XXX ^O open file
             openBbutton = buildButton("icons/folder_page.png", "Open (^O)", "^o", "Control O", KeyStroke.getKeyStroke(KeyEvent.VK_O, ActionEvent.CTRL_MASK), new AbstractAction() {
-                private static final long serialVersionUID = -1337580617687814477L;
-
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     JFileChooser fc = new JFileChooser(new File("."));
@@ -229,8 +212,6 @@ public class MainC2 {
             });
             // XXX ^S save current file
             saveButton = buildButton("icons/disk.png", "Save (^S)", "^s", "Control S", KeyStroke.getKeyStroke(KeyEvent.VK_S, ActionEvent.CTRL_MASK), new AbstractAction() {
-                private static final long serialVersionUID = -1337580617687814477L;
-
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     DiagramTab diagramTab = (DiagramTab) tabbedPane.getSelectedComponent();
@@ -265,8 +246,6 @@ public class MainC2 {
             // XXX ^D Save as...
             saveAsButton = buildButton("icons/page_save.png", "Save As... (^D)", "^d", "Control D", KeyStroke.getKeyStroke(KeyEvent.VK_D, ActionEvent.CTRL_MASK),
                     new AbstractAction() {
-                        private static final long serialVersionUID = -1337580617687814477L;
-
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             DiagramTab diagramTab = (DiagramTab) tabbedPane.getSelectedComponent();
@@ -291,8 +270,6 @@ public class MainC2 {
 
             centerDiagram = buildButton("icons/arrow_out.png", "Zoom to fit", null, null, null,
                     new AbstractAction() {
-                        private static final long serialVersionUID = -1337580617687814477L;
-
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             DiagramTab diagramTab = (DiagramTab) tabbedPane.getSelectedComponent();
@@ -304,8 +281,6 @@ public class MainC2 {
 
             zoomTo1Diagram = buildButton("icons/zoom.png", "Zoom to 1:1 & Center", null, null, null,
                     new AbstractAction() {
-                        private static final long serialVersionUID = -1337580617687814477L;
-
                         @Override
                         public void actionPerformed(ActionEvent e) {
                             DiagramTab diagramTab = (DiagramTab) tabbedPane.getSelectedComponent();
@@ -331,13 +306,7 @@ public class MainC2 {
         tabbedPane.addTab("New", diagramTab);
         tabbedPane.setSelectedComponent(diagramTab);
 
-//                    DiagramTab diagramTab = (DiagramTab) tabbedPane.getSelectedComponent();
         Canvas canvas = diagramTab.getCanvas();
-
-        //                    canvas.setDiagram(new Diagram());
-//                    canvas.centerDiagram();
-//                    canvas.repaint();
-//                    currentDiagramFileNameConsumer.accept(canvas.getDiagramName());
         SwingUtilities.invokeLater(() -> {
             diagramTab.setDividerLocation(0.8);
             SwingUtilities.invokeLater(canvas::centerDiagram);

@@ -512,8 +512,8 @@ m2=*
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>-560</x>
-            <y>140</y>
+            <x>-590</x>
+            <y>150</y>
             <w>180</w>
             <h>60</h>
         </coordinates>
@@ -526,14 +526,14 @@ bg=l-l-yellow</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>-471</x>
-            <y>60</y>
-            <w>1</w>
-            <h>80</h>
+            <x>-498</x>
+            <y>79</y>
+            <w>0</w>
+            <h>71</h>
         </coordinates>
         <panel_attributes>lt=.m
 </panel_attributes>
-        <additional_attributes>0;80;1;0</additional_attributes>
+        <additional_attributes>0;71;0;0</additional_attributes>
     </element>
     <element>
         <id>UMLNote</id>
@@ -543,7 +543,7 @@ bg=l-l-yellow</panel_attributes>
             <w>250</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>Wrap a collection of `Shape`s
+        <panel_attributes>Wrap a collection of `Shape`'s
 simulating a simple `Draggable` object.
 
 Used for moving a selection of objects.
@@ -581,14 +581,14 @@ bg=l-l-yellow</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>676</x>
+            <x>666</x>
             <y>58</y>
-            <w>173</w>
+            <w>183</w>
             <h>0</h>
         </coordinates>
         <panel_attributes>lt=.m
 </panel_attributes>
-        <additional_attributes>173;0;0;0</additional_attributes>
+        <additional_attributes>183;0;0;0</additional_attributes>
     </element>
     <element>
         <id>UMLNote</id>

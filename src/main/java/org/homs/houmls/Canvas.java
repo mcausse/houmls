@@ -31,7 +31,6 @@ import static org.homs.houmls.shape.impl.connector.Connector.SELECTION_BOX_SIZE;
 public class Canvas extends JPanel {
 
     final List<Shape> selectedShapes = new ArrayList<>();
-    Draggable draggableUnderMouse = null;
     final List<Shape> shapesClipboard;
 
     int mouseCurrentPosX = 0;
@@ -285,6 +284,22 @@ public class Canvas extends JPanel {
                     repaint();
                     pushUndoCheckpoint();
                 });
+
+                JMenuItem createLechugaBox = new JMenuItem("create lechuga box");
+                pm.add(createLechugaBox);
+                createLechugaBox.addActionListener(e -> {
+                    final LechugaScriptBox turtleBox = new LechugaScriptBox(
+                            GridControl.engrid(mousePos.getX()),
+                            GridControl.engrid(mousePos.getY()),
+                            GridControl.engrid(18 * GridControl.GRID_SIZE),
+                            GridControl.engrid(8 * GridControl.GRID_SIZE),
+                            "((field-static :java.lang.System :out) :print :jou)\n" +
+                                    "bg=green\n"
+                    );
+                    diagram.addShape(turtleBox);
+                    repaint();
+                    pushUndoCheckpoint();
+                });
             } else if (!Connector.class.isAssignableFrom(selectedShape.getClass())) {
                 /*
                  * POPUP MENU: BOX
@@ -364,7 +379,7 @@ public class Canvas extends JPanel {
                         } else {
                             otherPoint = points.get(indexOfClickedPoint + 1);
                         }
-                        var middlePointToCreate = new DoublePoint((p.x + otherPoint.x) / 2, (p.y + otherPoint.y) / 2);
+                        var middlePointToCreate = new DoublePoint((p.x + otherPoint.x) / 2.0, (p.y + otherPoint.y) / 2.0);
 
                         if (indexOfClickedPoint >= conn.getMiddlePoints().size()) {
                             conn.getMiddlePoints().add(middlePointToCreate);
@@ -680,8 +695,6 @@ public class Canvas extends JPanel {
             mouseCurrentPosX = e.getX();
             mouseCurrentPosY = e.getY();
 
-            Canvas.this.draggableUnderMouse = draggable;
-
             if (draggable == null) {
                 setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
             } else {
@@ -801,15 +814,6 @@ public class Canvas extends JPanel {
                 element.draw(g);
             }
         }
-
-//        if (LookAndFeel.markDraggablePartsAsRed) {
-//            if (Canvas.this.draggableUnderMouse != null) {
-//                var r = Canvas.this.draggableUnderMouse.getRectangle();
-//                g2.setColor(Color.RED);
-//                g2.setStroke(new BasicStroke(3));
-//                g2.drawRoundRect(r.x, r.y, r.width, r.height, 6, 6);
-//            }
-//        }
 
         if (selectionBoxRectangle != null) {
             g2.setColor(Color.BLUE);

@@ -46,7 +46,7 @@ public class Actor extends Box {
         g2.fillRect(ix, iy, iwidth, iheight);
 
         g2.setColor(Color.BLACK);
-        var t = new Turtle(ix + iwidth / 2, iy, 0);
+        var t = new Turtle(ix + iwidth / 2.0, iy, 0);
         t.rotate(90);
         t.jump(GridControl.GRID_SIZE * 3);
 

@@ -30,11 +30,9 @@ public class LookAndFeel {
     }
 
     public static Font monospaceFont(int size) {
-        Map<TextAttribute, Integer> fontAttributes = new HashMap<TextAttribute, Integer>();
+        Map<TextAttribute, Integer> fontAttributes = new HashMap<>();
         fontAttributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
-        Font boldUnderline = new Font(monospaceFontName, Font.PLAIN, size).deriveFont(fontAttributes);
-        return boldUnderline;
-//        return new Font(monospaceFontName, Font.PLAIN, size);
+        return new Font(monospaceFontName, Font.BOLD, size).deriveFont(fontAttributes);
     }
 
     public static final Stroke basicStroke = new BasicStroke(1);
@@ -56,8 +54,6 @@ public class LookAndFeel {
         g2.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
         g2.setRenderingHint(RenderingHints.KEY_STROKE_CONTROL, RenderingHints.VALUE_STROKE_NORMALIZE);
     }
-
-//    public static final boolean markDraggablePartsAsRed = false;
 
     public static final Color SHAPE_SELECTED_COLOR = new Color(0, 142, 255);
     public static final BasicStroke MULTI_SELECTION_STROKE = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL,

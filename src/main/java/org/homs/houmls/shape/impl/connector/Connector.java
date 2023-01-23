@@ -217,8 +217,7 @@ public class Connector implements Shape {
 
     protected Rectangle getPointSelectionBox(ConnectorPoint connectorPoint) {
         Point p = connectorPoint.getAbsolutePoint();
-        Rectangle box = new Rectangle(p.x - SELECTION_BOX_SIZE, p.y - SELECTION_BOX_SIZE, SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
-        return box;
+        return new Rectangle(p.x - SELECTION_BOX_SIZE, p.y - SELECTION_BOX_SIZE, SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
     }
 
     @Override
@@ -263,15 +262,7 @@ public class Connector implements Shape {
         int miny = Math.min(startp.y, endp.y);
         int maxy = Math.max(startp.y, endp.y);
 
-//        for (var p : middlePoints) {
-//            minx = Math.min(minx, (int) p.x);
-//            maxx = Math.max(maxx, (int) p.x);
-//            miny = Math.min(miny, (int) p.y);
-//            maxy = Math.max(maxy, (int) p.y);
-//        }
-
-        var r = new Rectangle(minx, miny, maxx - minx, maxy - miny);
-        return r;
+        return new Rectangle(minx, miny, maxx - minx, maxy - miny);
     }
 
     public List<Point> getListOfAbsolutePoints() {

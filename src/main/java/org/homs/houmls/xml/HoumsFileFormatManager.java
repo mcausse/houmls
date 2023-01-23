@@ -59,6 +59,8 @@ public class HoumsFileFormatManager {
                 id = "TurtleBox";
             } else if (shape.getClass() == FloatingText.class) {
                 id = "FloatingText";
+            } else if (shape.getClass() == LechugaScriptBox.class) {
+                id = "LechugaScriptBox";
             } else {
                 throw new RuntimeException(shape.getClass().getName());
             }
@@ -162,6 +164,11 @@ public class HoumsFileFormatManager {
                     }
                     case "FloatingText": {
                         FloatingText box = new FloatingText(x, y, w, h, attributes);
+                        diagram.addShape(box);
+                        break;
+                    }
+                    case "LechugaScriptBox": {
+                        LechugaScriptBox box = new LechugaScriptBox(x, y, w, h, attributes);
                         diagram.addShape(box);
                         break;
                     }

@@ -45,7 +45,7 @@ public class ExportAsPngTest {
 
     @Test
     void retroBoard() throws Exception {
-        ExportAsPng.main(new String[]{basePathPrivate + "retro-board.houmls", "--output=diagrams/retro-board.png"});
+        ExportAsPng.main(new String[]{basePathPrivate + "retro-board.houmls", "--output=diagrams/private/retro-board.png"});
     }
 
     @Test
@@ -55,7 +55,7 @@ public class ExportAsPngTest {
 
     @Test
     void berbis() throws Exception {
-        ExportAsPng.main(new String[]{basePathPrivate + "berbis.houmls", "--output=diagrams/berbis.png"});
+        ExportAsPng.main(new String[]{basePathPrivate + "berbis.houmls", "--output=diagrams/private/berbis.png"});
     }
 
 }
