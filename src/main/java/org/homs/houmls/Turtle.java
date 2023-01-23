@@ -107,4 +107,29 @@ public class Turtle {
         return Math.sqrt(Math.pow(a, 2.0) + Math.pow(b, 2.0));
     }
 
+    public static class PolylineFiller {
+        final Stack<Double> xs = new Stack<>();
+        final Stack<Double> ys = new Stack<>();
+
+        public void add(int x, int y) {
+            xs.push((double) x);
+            ys.push((double) y);
+        }
+
+        public void add(double x, double y) {
+            xs.push(x);
+            ys.push(y);
+        }
+
+        public void fill(Graphics g) {
+            int[] xsa = new int[xs.size()];
+            int[] ysa = new int[xs.size()];
+            for (int i = 0; i < xs.size(); i++) {
+                xsa[i] = (int) Math.round(xs.get(i));
+                ysa[i] = (int) Math.round(ys.get(i));
+            }
+            g.fillPolygon(xsa, ysa, xs.size());
+        }
+    }
+
 }

@@ -1,9 +1,6 @@
 package org.homs.houmls;
 
 import java.awt.*;
-import java.awt.font.TextAttribute;
-import java.util.HashMap;
-import java.util.Map;
 
 public class LookAndFeel {
 
