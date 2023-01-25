@@ -239,7 +239,6 @@ public class MainC2 {
                             e2.printStackTrace();
                         }
                     }
-//                    currentDiagramFileNameConsumer.accept(diagramTab.getDiagramName());
                 }
             });
 
