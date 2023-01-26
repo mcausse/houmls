@@ -36,9 +36,8 @@ public class LookAndFeel {
     public static final Stroke basicStroke = new BasicStroke(1);
     public static final Stroke dashedStroke = new BasicStroke(1, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL, 0, new float[]{5}, 0);
 
-    public static final Boolean BOXES_WITH_SHADOW = true;
     public static final Color BOXES_SHADOW_COLOR = Color.GRAY;
-    public static final int BOXES_SHADOW_WIDTH = 2;
+    public static final String DEFAULT_BOXES_SHADOW_WIDTH = "2";
 
     public static void setRenderingHints(Graphics2D g2) {
         g2.setRenderingHint(RenderingHints.KEY_RENDERING, RenderingHints.VALUE_RENDER_QUALITY);

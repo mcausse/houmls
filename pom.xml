@@ -71,38 +71,38 @@
             </plugin>
 
 
-<!--            <plugin>-->
-<!--                <artifactId>maven-antrun-plugin</artifactId>-->
-<!--                <version>1.7</version>-->
-<!--                <executions>-->
-<!--                    <execution>-->
-<!--                        <phase>package</phase>-->
-<!--                        <configuration>-->
-<!--                            <target>-->
+            <!--            <plugin>-->
+            <!--                <artifactId>maven-antrun-plugin</artifactId>-->
+            <!--                <version>1.7</version>-->
+            <!--                <executions>-->
+            <!--                    <execution>-->
+            <!--                        <phase>package</phase>-->
+            <!--                        <configuration>-->
+            <!--                            <target>-->
 
-<!--                                <delete includeEmptyDirs="true">-->
-<!--                                    <fileset dir="./build" includes="**/*"/>-->
-<!--                                </delete>-->
+            <!--                                <delete includeEmptyDirs="true">-->
+            <!--                                    <fileset dir="./build" includes="**/*"/>-->
+            <!--                                </delete>-->
 
-<!--                                <echo file="./build/run.bat" append="false">-->
-<!--                                    @echo off-->
-<!--                                    java -cp ${project.artifactId}-${project.version}.jar org.homs.houmls.MainC2-->
-<!--                                </echo>-->
+            <!--                                <echo file="./build/run.bat" append="false">-->
+            <!--                                    @echo off-->
+            <!--                                    java -cp ${project.artifactId}-${project.version}.jar org.homs.houmls.MainC2-->
+            <!--                                </echo>-->
 
-<!--                                <copy todir="./build" flatten="true">-->
-<!--                                    <fileset dir=".">-->
-<!--                                        <include name="target/*.jar"/>-->
-<!--                                    </fileset>-->
-<!--                                </copy>-->
+            <!--                                <copy todir="./build" flatten="true">-->
+            <!--                                    <fileset dir=".">-->
+            <!--                                        <include name="target/*.jar"/>-->
+            <!--                                    </fileset>-->
+            <!--                                </copy>-->
 
-<!--                            </target>-->
-<!--                        </configuration>-->
-<!--                        <goals>-->
-<!--                            <goal>run</goal>-->
-<!--                        </goals>-->
-<!--                    </execution>-->
-<!--                </executions>-->
-<!--            </plugin>-->
+            <!--                            </target>-->
+            <!--                        </configuration>-->
+            <!--                        <goals>-->
+            <!--                            <goal>run</goal>-->
+            <!--                        </goals>-->
+            <!--                    </execution>-->
+            <!--                </executions>-->
+            <!--            </plugin>-->
         </plugins>
     </build>
 

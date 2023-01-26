@@ -28,6 +28,10 @@ public class Box implements Shape {
 
     Color backgroundColor = Color.WHITE;
     int fontSize = LookAndFeel.regularFontSize;
+    /**
+     * if 0 => no shadow
+     */
+    int shadowWidth = 0;
 
     public Box(int x, int y, int width, int height, String attributesText) {
         this.x = x;
@@ -65,6 +69,13 @@ public class Box implements Shape {
         var fontSizeString = props.getOrDefault("fontsize", String.valueOf(LookAndFeel.regularFontSize));
         try {
             this.fontSize = Integer.parseInt(fontSizeString);
+        } catch (NumberFormatException e) {
+            //
+        }
+
+        var shadowString = props.getOrDefault("shadow", DEFAULT_BOXES_SHADOW_WIDTH);
+        try {
+            this.shadowWidth = Integer.parseInt(shadowString);
         } catch (NumberFormatException e) {
             //
         }
@@ -156,14 +167,14 @@ public class Box implements Shape {
         /*
          * PINTA OMBRA DE LA CAIXA
          */
-        if (BOXES_WITH_SHADOW) {
+        if (this.shadowWidth > 0) {
             g2.setColor(BOXES_SHADOW_COLOR);
-            if (BOXES_SHADOW_WIDTH == 1) {
+            if (this.shadowWidth == 1) {
                 g2.drawLine(ix + iwidth + 1, iy + 1, ix + iwidth + 1, iy + iheight + 1);
                 g2.drawLine(ix + 1, iy + iheight + 1, ix + iwidth + 1, iy + iheight + 1);
             } else {
-                g2.fillRect(ix + iwidth, iy + BOXES_SHADOW_WIDTH, BOXES_SHADOW_WIDTH, iheight);
-                g2.fillRect(ix + BOXES_SHADOW_WIDTH, iy + iheight, iwidth, BOXES_SHADOW_WIDTH);
+                g2.fillRect(ix + iwidth, iy + this.shadowWidth, this.shadowWidth, iheight);
+                g2.fillRect(ix + this.shadowWidth, iy + iheight, iwidth, this.shadowWidth);
             }
         }
 

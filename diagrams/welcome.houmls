@@ -159,7 +159,8 @@ fontsize=24
 --
 operation()
 
-bg=#cfcfff</panel_attributes>
+bg=#cfcfff
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -174,7 +175,8 @@ bg=#cfcfff</panel_attributes>
 --
 --
      operation()
-bg=#cfcfff</panel_attributes>
+bg=#cfcfff
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -227,7 +229,8 @@ bg=l-yellow</panel_attributes>
 --
 --
 specificOperation()
-bg=#cfcfff</panel_attributes>
+bg=#cfcfff
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -1079,7 +1082,7 @@ bg=l-yellow</panel_attributes>
 .#cfcfff
 
 bg=#cfcfff
-</panel_attributes>
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -1094,7 +1097,7 @@ bg=#cfcfff
 .#ffcfcf
 
 bg=#ffcfcf
-</panel_attributes>
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -1109,7 +1112,7 @@ bg=#ffcfcf
 .#cfffcf
 
 bg=#cfffcf
-</panel_attributes>
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -1124,7 +1127,7 @@ bg=#cfffcf
 .#cfcfcf
 
 bg=#cfcfcf
-</panel_attributes>
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -2104,18 +2107,6 @@ fontsize=24
         <additional_attributes/>
     </element>
     <element>
-        <id>ImageBox</id>
-        <coordinates>
-            <x>2170</x>
-            <y>-380</y>
-            <w>160</w>
-            <h>300</h>
-        </coordinates>
-        <panel_attributes>image=diagrams/java-4.png
-</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
         <id>UMLState</id>
         <coordinates>
             <x>1520</x>
@@ -2301,7 +2292,7 @@ fontsize=24
 
 (*graphics* :setColor (field-static :java.awt.Color :BLUE))
 
-(sierpinski 7 
+(sierpinski 6 
    (to-double p1x) (to-double p1y) 
    (to-double p2x) (to-double p2y) 
    (to-double p3x) (to-double p3y))</panel_attributes>
@@ -2345,8 +2336,8 @@ fontsize=24
 (*turtle* :jump box-height)
 (*turtle* :rotate -90)
 
-(sierpinski box-width 7)
-(*turtle* :drawPolyline *graphics*)</panel_attributes>
+(sierpinski box-width 6)
+(*turtle* :fillPolygon *graphics*)</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -2447,6 +2438,30 @@ bg=yellow</panel_attributes>
 	(+ box-y (/ arc-radius 2)) 
 	(+ box-x box-width) 
 	(+ box-y y-part y-part y-part (/ arc-radius 2)))</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>ImageBox</id>
+        <coordinates>
+            <x>2230</x>
+            <y>-380</y>
+            <w>220</w>
+            <h>210</h>
+        </coordinates>
+        <panel_attributes>image=diagrams/img/spring-boot.png
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>ImageBox</id>
+        <coordinates>
+            <x>2080</x>
+            <y>-380</y>
+            <w>160</w>
+            <h>300</h>
+        </coordinates>
+        <panel_attributes>image=diagrams/java-4.png
+</panel_attributes>
         <additional_attributes/>
     </element>
 </diagram>
