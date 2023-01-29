@@ -24,8 +24,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Stack;
 
-import static org.homs.houmls.LookAndFeel.SHAPE_SELECTED_COLOR;
-import static org.homs.houmls.LookAndFeel.basicStroke;
+import static org.homs.houmls.LookAndFeel.*;
 import static org.homs.houmls.shape.impl.connector.Connector.SELECTION_BOX_SIZE;
 
 public class Canvas extends JPanel {
@@ -176,7 +175,8 @@ public class Canvas extends JPanel {
                             "._<<>>\n" +
                                     ".*C\n" +
                                     "--\n" +
-                                    "--\n"
+                                    "--\n" +
+                                    "shadow=" + DEFAULT_BOXES_SHADOW_WIDTH + "\n"
                     ));
                     repaint();
                     pushUndoCheckpoint();

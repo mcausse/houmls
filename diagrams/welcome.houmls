@@ -2458,7 +2458,7 @@ bg=yellow</panel_attributes>
             <w>160</w>
             <h>300</h>
         </coordinates>
-        <panel_attributes>image=diagrams/java-4.png
+        <panel_attributes>image=diagrams/img/java-4.png
 </panel_attributes>
         <additional_attributes/>
     </element>
