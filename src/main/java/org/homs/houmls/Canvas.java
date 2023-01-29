@@ -294,7 +294,8 @@ public class Canvas extends JPanel {
                             GridControl.engrid(18 * GridControl.GRID_SIZE),
                             GridControl.engrid(8 * GridControl.GRID_SIZE),
                             "((field-static :java.lang.System :out) :print :jou)\n" +
-                                    "bg=green\n"
+                                    "bg=green\n" +
+                                    "paintbackground=true\n"
                     );
                     diagram.addShape(turtleBox);
                     repaint();

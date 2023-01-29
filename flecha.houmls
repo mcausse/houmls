@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?><diagram program="houmls" version="0.0.1">
+    <zoom_level>10</zoom_level>
+    <help_text/>
+    <element>
+        <id>LechugaScriptBox</id>
+        <coordinates>
+            <x>10</x>
+            <y>-220</y>
+            <w>180</w>
+            <h>100</h>
+        </coordinates>
+        <panel_attributes>paintbackground=false
+
+(let {
+   [t *turtle*]  
+   [punta-width 70] 
+   [fletxa-height 50] 
+   [color-borde (field-static :java.awt.Color :BLACK)]
+   [bg-color (field-static :java.awt.Color :YELLOW)]
+   }
+
+   (t :rotate 90)
+   (t :jump (/ (- box-height fletxa-height) 2))
+   (t :walk fletxa-height)
+
+   (t :rotate -90)
+   (t :walk (- box-width punta-width))
+
+   (t :rotate 90)
+   (t :walk (/ (- box-height fletxa-height) 2))
+
+   (t :moveTo (+ box-x box-width) (+ box-y (/ box-height 2)))
+   (t :moveTo (- (+ box-x box-width) punta-width) box-y)
+   (t :setAngle 90)
+   (t :walk (/ (- box-height fletxa-height) 2))
+
+   (t :rotate 90)
+   (t :walk (- box-width punta-width))
+
+
+   (*graphics* :setColor bg-color)
+   (t :fillPolygon *graphics*)
+
+   (*graphics* :setColor color-borde)
+   (t :drawPolyline *graphics*)
+)</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>LechugaScriptBox</id>
+        <coordinates>
+            <x>10</x>
+            <y>-110</y>
+            <w>200</w>
+            <h>140</h>
+        </coordinates>
+        <panel_attributes>paintbackground=false
+
+(let {
+   [t *turtle*]  
+   [punta-width 70] 
+   [fletxa-height 50] 
+   [color-borde (field-static :java.awt.Color :BLACK)]
+   [bg-color (field-static :java.awt.Color :YELLOW)]
+   }
+
+   (def turtle-filler (new :org.homs.houmls.Turtle$PolylineFiller))
+   (turtle-filler :add 
+	box-x
+	(+ box-y (/ (- box-height fletxa-height) 2))
+   )
+   (turtle-filler :add 
+	box-x
+	(+ box-y fletxa-height (/ (- box-height fletxa-height) 2))   )
+
+
+   (*graphics* :setColor bg-color)
+   (turtle-filler :fill *graphics*)
+   (*graphics* :setColor color-borde)
+   (turtle-filler :draw *graphics*)
+
+)</panel_attributes>
+        <additional_attributes/>
+    </element>
+</diagram>

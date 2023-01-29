@@ -1,5 +1,6 @@
 package org.homs.houmls.shape.impl.box;
 
+import org.homs.houmls.PropsParser;
 import org.homs.houmls.Turtle;
 import org.homs.houmls.shape.Shape;
 import org.homs.lechugascript.Environment;
@@ -8,6 +9,7 @@ import org.homs.lechugascript.parser.ast.Ast;
 
 import java.awt.*;
 import java.util.List;
+import java.util.Map;
 
 import static org.homs.houmls.LookAndFeel.basicStroke;
 
@@ -17,6 +19,8 @@ public class LechugaScriptBox extends Box {
     final Environment env;
 
     List<Ast> asts;
+
+    boolean paintBackground = true;
 
     public LechugaScriptBox(int x, int y, int width, int height, String attributesText) {
         super(x, y, width, height, attributesText);
@@ -39,6 +43,9 @@ public class LechugaScriptBox extends Box {
                 e.printStackTrace();
             }
         }
+
+        Map<String, String> props = PropsParser.parseProperties(attributesText);
+        this.paintBackground = Boolean.parseBoolean(props.getOrDefault("paintbackground", "true"));
     }
 
     @Override
@@ -56,8 +63,10 @@ public class LechugaScriptBox extends Box {
         int iheight = (int) height;
 
         Graphics2D g2 = (Graphics2D) g;
-        g2.setColor(backgroundColor);
-        g2.fillRect(ix, iy, iwidth, iheight);
+        if (paintBackground) {
+            g2.setColor(backgroundColor);
+            g2.fillRect(ix, iy, iwidth, iheight);
+        }
 
         g2.setStroke(basicStroke);
         g2.setColor(Color.BLACK);

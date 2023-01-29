@@ -103,6 +103,11 @@ public class Turtle {
                 (int) Math.round(this.ys.peek()));
     }
 
+    public void moveTo(int x, int y) {
+        this.xs.push((double) x);
+        this.ys.push((double) y);
+    }
+
     public static double pitagoras(double a, double b) {
         return Math.sqrt(Math.pow(a, 2.0) + Math.pow(b, 2.0));
     }
@@ -129,6 +134,16 @@ public class Turtle {
                 ysa[i] = (int) Math.round(ys.get(i));
             }
             g.fillPolygon(xsa, ysa, xs.size());
+        }
+
+        public void draw(Graphics g) {
+            int[] xsa = new int[xs.size()];
+            int[] ysa = new int[xs.size()];
+            for (int i = 0; i < xs.size(); i++) {
+                xsa[i] = (int) Math.round(xs.get(i));
+                ysa[i] = (int) Math.round(ys.get(i));
+            }
+            g.drawPolyline(xsa, ysa, xs.size());
         }
     }
 
