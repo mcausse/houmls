@@ -316,6 +316,25 @@ public class Canvas extends JPanel {
                     repaint();
                     pushUndoCheckpoint();
                 });
+
+                JMenuItem packageBox = new JMenuItem("create package");
+                pm.add(packageBox);
+                packageBox.addActionListener(e -> {
+                    final PackageBox packageeBox = new PackageBox(
+                            GridControl.engrid(mousePos.getX()),
+                            GridControl.engrid(mousePos.getY()),
+                            GridControl.engrid(18 * GridControl.GRID_SIZE),
+                            GridControl.engrid(8 * GridControl.GRID_SIZE),
+                            "_<<jou>>\n" +
+                                    "*Package\n" +
+                                    "_jou.juas:0.0.2\n" +
+                                    "--\n" +
+                                    "bg=orange\n"
+                    );
+                    diagram.addShape(packageeBox);
+                    repaint();
+                    pushUndoCheckpoint();
+                });
             } else if (!Connector.class.isAssignableFrom(selectedShape.getClass())) {
                 /*
                  * POPUP MENU: BOX

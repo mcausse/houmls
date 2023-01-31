@@ -40,7 +40,7 @@ public class PackageBox extends Box {
         int packageHeight = 0;
         for (var line : textLines) {
             if (line.trim().equals("--")) {
-                packageHeight +=  FONT_Y_CORRECTION;
+                packageHeight += FONT_Y_CORRECTION;
                 break;
             }
             int lineWidth = FontMetrics.getWidth(g2, line) + FONT_X_CORRECTION * 2;

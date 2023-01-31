@@ -8,6 +8,20 @@ powered with bocadillos
     <element>
         <id>UMLState</id>
         <coordinates>
+            <x>710</x>
+            <y>-900</y>
+            <w>600</w>
+            <h>440</h>
+        </coordinates>
+        <panel_attributes>.*Package diagram
+--
+fontsize=24
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLState</id>
+        <coordinates>
             <x>3150</x>
             <y>280</y>
             <w>570</w>
@@ -21,8 +35,8 @@ fontsize=24
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>930</x>
-            <y>-800</y>
+            <x>950</x>
+            <y>-1070</y>
             <w>180</w>
             <h>80</h>
         </coordinates>
@@ -1891,8 +1905,8 @@ action</panel_attributes>
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>930</x>
-            <y>-730</y>
+            <x>950</x>
+            <y>-1000</y>
             <w>520</w>
             <h>40</h>
         </coordinates>
@@ -1906,8 +1920,8 @@ fontsize=24
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>750</x>
-            <y>-890</y>
+            <x>770</x>
+            <y>-1160</y>
             <w>170</w>
             <h>190</h>
         </coordinates>
@@ -2109,9 +2123,9 @@ fontsize=24
     <element>
         <id>UMLState</id>
         <coordinates>
-            <x>1520</x>
+            <x>1340</x>
             <y>-900</y>
-            <w>1600</w>
+            <w>1780</w>
             <h>440</h>
         </coordinates>
         <panel_attributes>.*Koch snowflake
@@ -2125,8 +2139,8 @@ fontsize=24
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>930</x>
-            <y>-690</y>
+            <x>950</x>
+            <y>-960</y>
             <w>420</w>
             <h>30</h>
         </coordinates>
@@ -2139,9 +2153,9 @@ fontsize=18
     <element>
         <id>LechugaScriptBox</id>
         <coordinates>
-            <x>1540</x>
+            <x>1370</x>
             <y>-780</y>
-            <w>1010</w>
+            <w>1180</w>
             <h>300</h>
         </coordinates>
         <panel_attributes>bg=yellow
@@ -2202,8 +2216,8 @@ fontsize=18
     <element>
         <id>UMLState</id>
         <coordinates>
-            <x>710</x>
-            <y>-600</y>
+            <x>2430</x>
+            <y>-1070</y>
             <w>680</w>
             <h>140</h>
         </coordinates>
@@ -2216,8 +2230,8 @@ fontsize=24
     <element>
         <id>LechugaScriptBox</id>
         <coordinates>
-            <x>840</x>
-            <y>-540</y>
+            <x>2560</x>
+            <y>-1010</y>
             <w>450</w>
             <h>50</h>
         </coordinates>
@@ -2465,8 +2479,8 @@ bg=yellow</panel_attributes>
     <element>
         <id>LechugaScriptBox</id>
         <coordinates>
-            <x>1100</x>
-            <y>-1000</y>
+            <x>1960</x>
+            <y>-1030</y>
             <w>180</w>
             <h>100</h>
         </coordinates>
@@ -2506,5 +2520,86 @@ bg=yellow</panel_attributes>
    (t :drawPolyline *graphics*)
 )</panel_attributes>
         <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLPackage</id>
+        <coordinates>
+            <x>920</x>
+            <y>-790</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>Track Order
+--
+bg=orange
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLPackage</id>
+        <coordinates>
+            <x>800</x>
+            <y>-620</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>Order Processing
+--
+bg=orange
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLPackage</id>
+        <coordinates>
+            <x>1040</x>
+            <y>-620</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>Shipping
+--
+bg=orange
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>1070</x>
+            <y>-710</y>
+            <w>0</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>lt=.&gt;
+                     &lt;&lt;import&gt;&gt;
+</panel_attributes>
+        <additional_attributes>0;90;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>940</x>
+            <y>-710</y>
+            <w>0</w>
+            <h>110</h>
+        </coordinates>
+        <panel_attributes>lt=.&gt;
+                     &lt;&lt;access&gt;&gt;
+</panel_attributes>
+        <additional_attributes>0;0;0;110</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>850</x>
+            <y>-750</y>
+            <w>70</w>
+            <h>130</h>
+        </coordinates>
+        <panel_attributes>lt=.&gt;
+&lt;&lt;access&gt;&gt;                          
+</panel_attributes>
+        <additional_attributes>0;130;0;0;70;0</additional_attributes>
     </element>
 </diagram>
