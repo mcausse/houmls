@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?><diagram program="houmls" version="0.0.1">
+    <zoom_level>10</zoom_level>
+    <help_text/>
+    <element>
+        <id>UMLPackage</id>
+        <coordinates>
+            <x>110</x>
+            <y>10</y>
+            <w>740</w>
+            <h>440</h>
+        </coordinates>
+        <panel_attributes>_&lt;&lt;jou&gt;&gt;
+*EmptyPackage
+_jou.juas:0.0.2
+--
+bg=orange</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>140</x>
+            <y>240</y>
+            <w>270</w>
+            <h>120</h>
+        </coordinates>
+        <panel_attributes>ServersService
+--
+Consumer&lt;Message&gt; onReceiveMessage
+--
+startServer(String serverName)
+isServerRunning(String serverName)
+stopServer(String serverName)
+--
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>530</x>
+            <y>320</y>
+            <w>260</w>
+            <h>120</h>
+        </coordinates>
+        <panel_attributes>SoapServer
+--
+Instrument instrument
+Consumer&lt;Message&gt; onReceiveMessage
+--
+start()
+sopt()
+isRunning()
+--
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>410</x>
+            <y>320</y>
+            <w>120</w>
+            <h>50</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+        <additional_attributes>0;0;120;50</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>790</x>
+            <y>370</y>
+            <w>150</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;-</panel_attributes>
+        <additional_attributes>150;0;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>940</x>
+            <y>360</y>
+            <w>260</w>
+            <h>140</h>
+        </coordinates>
+        <panel_attributes>Instrument
+--
+String name;
+String context;
+int port;
+Map&lt;
+   SoapServer.RequestMatcher, 
+   SoapServer.RequestHandler&gt; handlers;
+--
+--
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>410</x>
+            <y>200</y>
+            <w>120</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;-</panel_attributes>
+        <additional_attributes>120;0;0;90</additional_attributes>
+    </element>
+    <element>
+        <id>UMLNote</id>
+        <coordinates>
+            <x>110</x>
+            <y>470</y>
+            <w>740</w>
+            <h>270</h>
+        </coordinates>
+        <panel_attributes>- Obtain the "List&lt;ServerInfo&gt;" from the Repository.
+- Every "ServerInfo" produces a new instance of "InstrumentBuilder".
+- An "InstrumentBuilder" builds an "Instrument".
+- An "Instrument" defines to a "SoapServer" how to work.
+bg=yellow
+layer=-1</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>210</x>
+            <y>560</y>
+            <w>210</w>
+            <h>150</h>
+        </coordinates>
+        <panel_attributes>ServerInfo
+--
+String name;
+String context;
+int port;
+String instrumentBuilderClassName;
+String ventanaConnectionName;
+--
+Class&lt;InstrumentBuilder&gt; 
+   getInstrumentClass()
+--
+transparency=0</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>420</x>
+            <y>630</y>
+            <w>170</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;.
+&lt;&lt;produces&gt;&gt;</panel_attributes>
+        <additional_attributes>170;0;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>590</x>
+            <y>560</y>
+            <w>170</w>
+            <h>140</h>
+        </coordinates>
+        <panel_attributes>InstrumentBuilder
+--
+--
+Instrument build(
+   String name, 
+   String context, 
+   int port);
+--
+transparency=0
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>760</x>
+            <y>500</y>
+            <w>180</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;.
+&lt;&lt;produces&gt;&gt;</panel_attributes>
+        <additional_attributes>180;0;0;60</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>270</x>
+            <y>360</y>
+            <w>0</w>
+            <h>110</h>
+        </coordinates>
+        <panel_attributes>lt=.</panel_attributes>
+        <additional_attributes>0;110;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>530</x>
+            <y>170</y>
+            <w>170</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>ServersRepository
+--
+--
+List&lt;ServerInfo&gt; getAll()
+--
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+</diagram>

@@ -63,6 +63,8 @@ public class HoumsFileFormatManager {
                 id = "LechugaScriptBox";
             } else if (shape.getClass() == ImageBox.class) {
                 id = "ImageBox";
+            } else if (shape.getClass() == PackageBox.class) {
+                id = "UMLPackage";
             } else {
                 throw new RuntimeException(shape.getClass().getName());
             }
@@ -176,6 +178,11 @@ public class HoumsFileFormatManager {
                     }
                     case "ImageBox": {
                         ImageBox box = new ImageBox(x, y, w, h, attributes);
+                        diagram.addShape(box);
+                        break;
+                    }
+                    case "UMLPackage": {
+                        PackageBox box = new PackageBox(x, y, w, h, attributes);
                         diagram.addShape(box);
                         break;
                     }

@@ -298,17 +298,22 @@ public class Connector implements Shape {
             int middlePoint = listOfAbsolutePoints.size() / 2;
             double x = (listOfAbsolutePoints.get(middlePoint - 1).x + listOfAbsolutePoints.get(middlePoint).x) / 2.0;
             double y = (listOfAbsolutePoints.get(middlePoint - 1).y + listOfAbsolutePoints.get(middlePoint).y) / 2.0;
-            double angle = Math.atan2(y, x);
 
             g.setFont(LookAndFeel.regularFont());
 
             final FontMetrics fontMetrics = new FontMetrics((Graphics2D) g);
             Rectangle rect = fontMetrics.getBounds(text).getBounds();
 
+            double angle = Math.atan2(
+                    (listOfAbsolutePoints.get(middlePoint - 1).y - listOfAbsolutePoints.get(middlePoint).y),
+                    (listOfAbsolutePoints.get(middlePoint - 1).x - listOfAbsolutePoints.get(middlePoint).x));
             var turtle = new Turtle(x, y, angle);
-            turtle.rotate(-90);
+            if (Math.sin(angle) <= 0) {
+                turtle.rotate(-90);
+            } else {
+                turtle.rotate(90);
+            }
             turtle.walk(DIAMOND_SIZE);
-
             Point turtlePos = turtle.getPosition();
 
             String[] textlines = text.split("\\n");

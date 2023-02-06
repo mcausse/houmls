@@ -32,9 +32,13 @@ public class PropsParser {
         return r;
     }
 
-    public static Color getColorByProp(Map<String, String> props, String propName) {
-        var propValue = props.getOrDefault(propName, "white");
+    public static Color getColorByProp(Map<String, String> props, String propName, String defaultColorName) {
+        var propValue = props.getOrDefault(propName, defaultColorName);
         return getColorByName(propValue);
+    }
+
+    public static Color getColorByProp(Map<String, String> props, String propName) {
+        return getColorByProp(props, propName, "white");
     }
 
     static Color lighter(Color c, float factor) {

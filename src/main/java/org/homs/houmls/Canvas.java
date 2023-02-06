@@ -24,8 +24,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Stack;
 
-import static org.homs.houmls.LookAndFeel.SHAPE_SELECTED_COLOR;
-import static org.homs.houmls.LookAndFeel.basicStroke;
+import static org.homs.houmls.LookAndFeel.*;
 import static org.homs.houmls.shape.impl.connector.Connector.SELECTION_BOX_SIZE;
 
 public class Canvas extends JPanel {
@@ -176,7 +175,8 @@ public class Canvas extends JPanel {
                             "._<<>>\n" +
                                     ".*C\n" +
                                     "--\n" +
-                                    "--\n"
+                                    "--\n" +
+                                    "shadow=" + DEFAULT_BOXES_SHADOW_WIDTH + "\n"
                     ));
                     repaint();
                     pushUndoCheckpoint();
@@ -239,7 +239,7 @@ public class Canvas extends JPanel {
                     diagram.addShape(new Actor(
                             GridControl.engrid(mousePos.getX()),
                             GridControl.engrid(mousePos.getY()),
-                            "  Actor\n"
+                            ".Actor\n"
                     ));
                     repaint();
                     pushUndoCheckpoint();
@@ -313,6 +313,25 @@ public class Canvas extends JPanel {
                             "image=\n"
                     );
                     diagram.addShape(turtleBox);
+                    repaint();
+                    pushUndoCheckpoint();
+                });
+
+                JMenuItem packageBox = new JMenuItem("create package");
+                pm.add(packageBox);
+                packageBox.addActionListener(e -> {
+                    final PackageBox packageeBox = new PackageBox(
+                            GridControl.engrid(mousePos.getX()),
+                            GridControl.engrid(mousePos.getY()),
+                            GridControl.engrid(18 * GridControl.GRID_SIZE),
+                            GridControl.engrid(8 * GridControl.GRID_SIZE),
+                            "_<<jou>>\n" +
+                                    "*Package\n" +
+                                    "_jou.juas:0.0.2\n" +
+                                    "--\n" +
+                                    "bg=orange\n"
+                    );
+                    diagram.addShape(packageeBox);
                     repaint();
                     pushUndoCheckpoint();
                 });

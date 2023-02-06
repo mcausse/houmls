@@ -57,5 +57,14 @@ public class ExportAsPngTest {
     void berbis() throws Exception {
         ExportAsPng.main(new String[]{basePathPrivate + "berbis.houmls", "--output=diagrams/private/berbis.png"});
     }
+//    @Test
+//    void iris_globals() throws Exception {
+//        ExportAsPng.main(new String[]{basePathPrivate + "IRIS-2022-globals.houmls", "--output=D:\\gitrepos\\cachumber\\BET\\Iris2022-kills/iris-globals.png"});
+//    }
+//    @Test
+//    void new_installer_process_api() throws Exception {
+//        ExportAsPng.main(new String[]{basePathPrivate + "new-installer2.houmls", "--output=D:\\gitrepos\\labhub-installer-poc\\process-api.png"});
+//    }
+
 
 }
