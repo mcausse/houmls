@@ -24,6 +24,7 @@ public class ExportAsPng {
         GridControl.drawGrid = Boolean.parseBoolean(argsProcessor.modifiers.getOrDefault("grid", "true"));
 
         //
+
         System.out.print("Exporting: " + String.join(" ", args) + "...");
 
         Canvas canvas = new Canvas(new JTextArea(), Collections.emptyList());
@@ -38,7 +39,6 @@ public class ExportAsPng {
         BufferedImage bi = new BufferedImage((int) (diagramBounds.width * zoom), (int) (diagramBounds.height * zoom), BufferedImage.TYPE_INT_ARGB);
         Graphics2D g2 = bi.createGraphics();
 
-        //canvas.paintComponent(g2);
         canvas.paint(g2);
 
         ImageIO.write(bi, outputFileFormat.toUpperCase(), new File(outputFileName));
