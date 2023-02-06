@@ -6,6 +6,78 @@ the UML diagram tool
 powered with bocadillos
 </help_text>
     <element>
+        <id>UMLUseCase</id>
+        <coordinates>
+            <x>1780</x>
+            <y>-1020</y>
+            <w>70</w>
+            <h>70</h>
+        </coordinates>
+        <panel_attributes>
+
+
+bg=#cfcfff
+strokewidth=3
+strokecolor=red
+paintbackground=false
+shadow=0</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLUseCase</id>
+        <coordinates>
+            <x>1790</x>
+            <y>-1010</y>
+            <w>50</w>
+            <h>50</h>
+        </coordinates>
+        <panel_attributes>`
+
+
+bg=#cfcfff
+strokewidth=2
+strokecolor=red
+paintbackground=false
+shadow=0</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLUseCase</id>
+        <coordinates>
+            <x>1770</x>
+            <y>-1030</y>
+            <w>90</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>
+
+
+bg=#cfcfff
+strokewidth=4
+strokecolor=red
+paintbackground=false
+shadow=0</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLUseCase</id>
+        <coordinates>
+            <x>1760</x>
+            <y>-1040</y>
+            <w>110</w>
+            <h>110</h>
+        </coordinates>
+        <panel_attributes>
+
+
+bg=#cfcfff
+strokewidth=5
+strokecolor=red
+paintbackground=false
+shadow=0</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
         <id>UMLState</id>
         <coordinates>
             <x>710</x>
@@ -2601,5 +2673,23 @@ bg=orange
 &lt;&lt;access&gt;&gt;                          
 </panel_attributes>
         <additional_attributes>0;130;0;0;70;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLUseCase</id>
+        <coordinates>
+            <x>1800</x>
+            <y>-1000</y>
+            <w>30</w>
+            <h>30</h>
+        </coordinates>
+        <panel_attributes>`
+
+
+bg=#cfcfff
+strokewidth=1
+strokecolor=red
+paintbackground=false
+shadow=0</panel_attributes>
+        <additional_attributes/>
     </element>
 </diagram>

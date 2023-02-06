@@ -239,7 +239,7 @@ public class Canvas extends JPanel {
                     diagram.addShape(new Actor(
                             GridControl.engrid(mousePos.getX()),
                             GridControl.engrid(mousePos.getY()),
-                            "  Actor\n"
+                            ".Actor\n"
                     ));
                     repaint();
                     pushUndoCheckpoint();

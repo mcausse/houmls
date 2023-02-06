@@ -27,6 +27,8 @@ public class Box implements Shape {
     String text;
 
     Color backgroundColor = Color.WHITE;
+    boolean paintBackground = true;
+
     int fontSize = LookAndFeel.regularFontSize;
     /**
      * if 0 => no shadow
@@ -65,6 +67,7 @@ public class Box implements Shape {
         if (bg != null) {
             this.backgroundColor = bg;
         }
+        this.paintBackground = Boolean.parseBoolean(props.getOrDefault("paintbackground", "true"));
 
         var fontSizeString = props.getOrDefault("fontsize", String.valueOf(LookAndFeel.regularFontSize));
         try {

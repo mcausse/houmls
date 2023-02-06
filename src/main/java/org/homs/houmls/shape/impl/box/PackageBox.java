@@ -50,9 +50,11 @@ public class PackageBox extends Box {
             packageHeight += fontHeight; //+FONT_Y_CORRECTION;
         }
 
-        g2.setColor(backgroundColor);
-        g2.fillRect(ix, iy, packageWidth, packageHeight);
-        g2.fillRect(ix, iy + packageHeight, iwidth, iheight - packageHeight);
+        if (paintBackground) {
+            g2.setColor(backgroundColor);
+            g2.fillRect(ix, iy, packageWidth, packageHeight);
+            g2.fillRect(ix, iy + packageHeight, iwidth, iheight - packageHeight);
+        }
 
         g2.setColor(Color.BLACK);
         g2.drawRect(ix, iy, packageWidth, packageHeight);
