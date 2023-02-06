@@ -5,6 +5,7 @@ import org.homs.houmls.shape.Shape;
 
 import java.awt.*;
 
+import static org.homs.houmls.LookAndFeel.BOXES_SHADOW_COLOR;
 import static org.homs.houmls.LookAndFeel.basicStroke;
 
 public class RoundedBox extends Box {
@@ -30,6 +31,14 @@ public class RoundedBox extends Box {
         g2.setStroke(basicStroke);
 
         int roundedRadius = GridControl.GRID_SIZE * 4;
+
+        /*
+         * PINTA OMBRA
+         */
+        if (this.shadowWidth > 0) {
+            g2.setColor(BOXES_SHADOW_COLOR);
+            g2.fillRoundRect(ix + this.shadowWidth, iy + this.shadowWidth, iwidth, iheight, roundedRadius, roundedRadius);
+        }
 
         g2.setColor(backgroundColor);
         g2.fillRoundRect(ix, iy, iwidth, iheight, roundedRadius, roundedRadius);

@@ -88,7 +88,7 @@ shadow=0</panel_attributes>
         <panel_attributes>.*Package diagram
 --
 fontsize=24
-</panel_attributes>
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -101,7 +101,7 @@ fontsize=24
         </coordinates>
         <panel_attributes>
 fontsize=24
-</panel_attributes>
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -142,7 +142,7 @@ fontsize=15
         <panel_attributes>.*Colors
 --
 fontsize=24
-</panel_attributes>
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -156,7 +156,7 @@ fontsize=24
         <panel_attributes>.*Connectors
 --
 fontsize=24
-</panel_attributes>
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -170,7 +170,7 @@ fontsize=24
         <panel_attributes>.*Turtle graphics
 --
 fontsize=24
-</panel_attributes>
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -185,7 +185,7 @@ fontsize=24
 --
 
 fontsize=24
-</panel_attributes>
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -199,7 +199,7 @@ fontsize=24
         <panel_attributes>.*Use Case diagram
 --
 fontsize=24
-</panel_attributes>
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -213,7 +213,7 @@ fontsize=24
         <panel_attributes>.*Sequence diagram
 --
 fontsize=24
-</panel_attributes>
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -228,7 +228,7 @@ fontsize=24
 --
 
 fontsize=24
-</panel_attributes>
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -366,7 +366,7 @@ m2=adaptee       </panel_attributes>
         <panel_attributes>.*ER Model in Crow's Foot Notation
 --
 fontsize=24
-</panel_attributes>
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -591,7 +591,7 @@ return</panel_attributes>
         </coordinates>
         <panel_attributes>lt=-&gt;
 
-                    [each day]
+                         [each day]
 </panel_attributes>
         <additional_attributes>0;0;70;0;70;30;0;30</additional_attributes>
     </element>
@@ -1020,7 +1020,7 @@ bg=l-l-l-red</panel_attributes>
         </coordinates>
         <panel_attributes>lt=.&gt;&gt;
 
-                      &lt;extends&gt;
+                               &lt;extends&gt;
 </panel_attributes>
         <additional_attributes>0;80;0;0</additional_attributes>
     </element>
@@ -1033,7 +1033,7 @@ bg=l-l-l-red</panel_attributes>
             <h>40</h>
         </coordinates>
         <panel_attributes>lt=.&gt;
-                 &lt;includes&gt;
+&lt;includes&gt;              
 </panel_attributes>
         <additional_attributes>0;0;50;40</additional_attributes>
     </element>
@@ -1061,7 +1061,7 @@ bg=l-l-l-red</panel_attributes>
         </coordinates>
         <panel_attributes>lt=.&gt;&gt;
 
-                       &lt;extends&gt;</panel_attributes>
+                             &lt;extends&gt;</panel_attributes>
         <additional_attributes>0;130;0;0</additional_attributes>
     </element>
     <element>
@@ -2130,7 +2130,7 @@ bg=green</panel_attributes>
         <panel_attributes>.*Lechuga Scripting
 --
 fontsize=24
-</panel_attributes>
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -2141,41 +2141,10 @@ fontsize=24
             <w>570</w>
             <h>30</h>
         </coordinates>
-        <panel_attributes>.`org.homs:lechuga-script:0.0.2-SNAPSHOT`
+        <panel_attributes>.`org.homs:lechuga-script:0.0.3-SNAPSHOT`
 
 fontsize=14
 </panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>LechugaScriptBox</id>
-        <coordinates>
-            <x>2030</x>
-            <y>660</y>
-            <w>310</w>
-            <h>70</h>
-        </coordinates>
-        <panel_attributes>bg=white
-
-(*graphics* :drawOval box-x box-y box-width box-height)
-
-
-(def radius-x (/ box-width 2))
-(def radius-y (/ box-height 2))
-
-(def center-x (+ box-x radius-x))
-(def center-y (+ box-y radius-y))
-
-
-(def angle 0.0)
-(def pi (field-static :java.lang.Math :PI))
-(def pi2 (* pi 2.0))
-
-(while (&lt; angle pi2)
-   (def x (* radius-x (call-static :java.lang.Math :cos angle)))
-   (def y (* radius-y (call-static :java.lang.Math :sin angle)))
-   (*graphics* :drawOval (to-int (+ center-x x)) (to-int (+ center-y y)) 5 5)
-   (set angle (+ angle 0.1)))</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -2189,7 +2158,7 @@ fontsize=14
         <panel_attributes>.*Images
 --
 fontsize=24
-</panel_attributes>
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -2205,7 +2174,7 @@ fontsize=24
 .*Lechuga Script
 --
 fontsize=24
-</panel_attributes>
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -2296,7 +2265,7 @@ fontsize=18
         <panel_attributes>.*Lechuga Script clock
 --
 fontsize=24
-</panel_attributes>
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -2334,7 +2303,8 @@ fontsize=24
 .*Lechuga Script
 --
 fontsize=24
-</panel_attributes>
+
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -2381,7 +2351,11 @@ fontsize=24
 (sierpinski 6 
    (to-double p1x) (to-double p1y) 
    (to-double p2x) (to-double p2y) 
-   (to-double p3x) (to-double p3y))</panel_attributes>
+   (to-double p3x) (to-double p3y))
+
+
+
+shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -2421,7 +2395,9 @@ fontsize=24
 (*turtle* :rotate -90)
 
 (sierpinski box-width 6)
-(*turtle* :fillPolygon *graphics*)</panel_attributes>
+(*turtle* :fillPolygon *graphics*)
+
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -2484,7 +2460,7 @@ bg=yellow</panel_attributes>
         <id>LechugaScriptBox</id>
         <coordinates>
             <x>3560</x>
-            <y>350</y>
+            <y>320</y>
             <w>110</w>
             <h>120</h>
         </coordinates>
@@ -2521,7 +2497,9 @@ bg=yellow</panel_attributes>
 	(+ box-x box-width) 
 	(+ box-y (/ arc-radius 2)) 
 	(+ box-x box-width) 
-	(+ box-y y-part y-part y-part (/ arc-radius 2)))</panel_attributes>
+	(+ box-y y-part y-part y-part (/ arc-radius 2)))
+
+paintbackground=false</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -2553,7 +2531,7 @@ bg=yellow</panel_attributes>
         <coordinates>
             <x>1960</x>
             <y>-1030</y>
-            <w>180</w>
+            <w>160</w>
             <h>100</h>
         </coordinates>
         <panel_attributes>paintbackground=false
@@ -2644,7 +2622,7 @@ bg=orange
             <h>90</h>
         </coordinates>
         <panel_attributes>lt=.&gt;
-                     &lt;&lt;import&gt;&gt;
+                           &lt;&lt;import&gt;&gt;
 </panel_attributes>
         <additional_attributes>0;90;0;0</additional_attributes>
     </element>
@@ -2657,7 +2635,7 @@ bg=orange
             <h>110</h>
         </coordinates>
         <panel_attributes>lt=.&gt;
-                     &lt;&lt;access&gt;&gt;
+                             &lt;&lt;access&gt;&gt;
 </panel_attributes>
         <additional_attributes>0;0;0;110</additional_attributes>
     </element>
@@ -2670,7 +2648,7 @@ bg=orange
             <h>130</h>
         </coordinates>
         <panel_attributes>lt=.&gt;
-&lt;&lt;access&gt;&gt;                          
+&lt;&lt;access&gt;&gt;              
 </panel_attributes>
         <additional_attributes>0;130;0;0;70;0</additional_attributes>
     </element>
@@ -2690,6 +2668,41 @@ strokewidth=1
 strokecolor=red
 paintbackground=false
 shadow=0</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>LechugaScriptBox</id>
+        <coordinates>
+            <x>2000</x>
+            <y>660</y>
+            <w>370</w>
+            <h>70</h>
+        </coordinates>
+        <panel_attributes>
+(*graphics* :setColor (field-static :java.awt.Color :RED))
+
+(defn get-point [x cycles]
+   (let 
+      {
+         [total-rads (* cycles 2.0 (field-static :java.lang.Math :PI))]
+         [angle (* total-rads (/ x box-width))]
+         [center-y (+ box-y (/ box-height 2.0))]
+         [y (+ center-y (* (/ box-height 2.0) (call-static :java.lang.Math :sin angle)))]
+      }
+      [(to-int x) (to-int y)]))
+
+(defn pi2 [n-voltes]
+   (* n-voltes 2.0 (field-static :java.lang.Math :PI)))
+
+(def cycles 3)
+(def x 0.0)
+(def x-inc 0.5)
+(while (&lt; x (to-double box-width))
+   (def p1 (get-point x cycles))
+   (set x (+ x x-inc))
+   (def p2 (get-point x cycles))
+   (*graphics* :drawLine (+ box-x (p1 :get 0)) (p1 :get 1) (+ box-x (p2 :get 0)) (p2 :get 1))
+)</panel_attributes>
         <additional_attributes/>
     </element>
 </diagram>
