@@ -176,6 +176,7 @@ public class Canvas extends JPanel {
                                     ".*C\n" +
                                     "--\n" +
                                     "--\n" +
+                                    "bg=l-orange\n" +
                                     "shadow=" + DEFAULT_BOXES_SHADOW_WIDTH + "\n"
                     ));
                     repaint();
@@ -189,7 +190,8 @@ public class Canvas extends JPanel {
                             GridControl.engrid(mousePos.getY()),
                             GridControl.engrid(18 * GridControl.GRID_SIZE),
                             GridControl.engrid(14 * GridControl.GRID_SIZE),
-                            "Note...\n"
+                            "Note...\n" +
+                                    "bg=l-yellow\n"
                     ));
                     repaint();
                     pushUndoCheckpoint();
@@ -252,7 +254,8 @@ public class Canvas extends JPanel {
                             GridControl.engrid(mousePos.getY()),
                             GridControl.engrid(mousePos.getX() + 18 * GridControl.GRID_SIZE),
                             GridControl.engrid(mousePos.getY()),
-                            "lt=-\n"
+                            "lt=-\n" +
+                                    "bg=l-yellow"
                     );
                     bocadillo.getMiddlePoints().add(new DoublePoint(
                             GridControl.engrid(mousePos.getX() + GridControl.GRID_SIZE * 6),
