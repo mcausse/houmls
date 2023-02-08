@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><diagram program="houmls" version="0.0.1">
+<?xml version="1.0" encoding="UTF-8"?><diagram program="lechuga-uml" version="1.0.1">
     <zoom_level>10</zoom_level>
     <help_text/>
     <element>
@@ -667,7 +667,7 @@ fontsize=9</panel_attributes>
             <w>180</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>.*Text
+        <panel_attributes>.*[...]
 --
 --
 bg=l-orange</panel_attributes>

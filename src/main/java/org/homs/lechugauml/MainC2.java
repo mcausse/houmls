@@ -185,7 +185,7 @@ public class MainC2 {
             final JButton centerDiagram;
             final JButton zoomTo1Diagram;
 
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Houmls files", "lechugauml", "uxf");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("LechugaUML files (.houmls)", "houmls", "uxf");
 
             newButton = buildButton("icons/page.png", "New (^N)", "^n", "Control N", KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK), new AbstractAction() {
                 @Override

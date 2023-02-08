@@ -2581,7 +2581,7 @@ paintbackground=false</panel_attributes>
         </coordinates>
         <panel_attributes>Track Order
 --
-bg=orange
+bg=l-orange
 </panel_attributes>
         <additional_attributes/>
     </element>
@@ -2595,7 +2595,7 @@ bg=orange
         </coordinates>
         <panel_attributes>Order Processing
 --
-bg=orange
+bg=l-orange
 </panel_attributes>
         <additional_attributes/>
     </element>
@@ -2609,7 +2609,7 @@ bg=orange
         </coordinates>
         <panel_attributes>Shipping
 --
-bg=orange
+bg=l-orange
 </panel_attributes>
         <additional_attributes/>
     </element>
