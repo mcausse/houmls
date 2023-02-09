@@ -8,8 +8,8 @@ powered with bocadillos
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>1780</x>
-            <y>-1020</y>
+            <x>2570</x>
+            <y>-1050</y>
             <w>70</w>
             <h>70</h>
         </coordinates>
@@ -26,8 +26,8 @@ shadow=0</panel_attributes>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>1790</x>
-            <y>-1010</y>
+            <x>2580</x>
+            <y>-1040</y>
             <w>50</w>
             <h>50</h>
         </coordinates>
@@ -44,8 +44,8 @@ shadow=0</panel_attributes>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>1770</x>
-            <y>-1030</y>
+            <x>2560</x>
+            <y>-1060</y>
             <w>90</w>
             <h>90</h>
         </coordinates>
@@ -62,8 +62,8 @@ shadow=0</panel_attributes>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>1760</x>
-            <y>-1040</y>
+            <x>2550</x>
+            <y>-1070</y>
             <w>110</w>
             <h>110</h>
         </coordinates>
@@ -107,9 +107,9 @@ shadow=5</panel_attributes>
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>950</x>
-            <y>-1070</y>
-            <w>180</w>
+            <x>710</x>
+            <y>-1120</y>
+            <w>300</w>
             <h>80</h>
         </coordinates>
         <panel_attributes>*Lechuga UML
@@ -1977,8 +1977,8 @@ action</panel_attributes>
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>950</x>
-            <y>-1000</y>
+            <x>710</x>
+            <y>-1050</y>
             <w>590</w>
             <h>40</h>
         </coordinates>
@@ -1992,12 +1992,12 @@ fontsize=24
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>770</x>
+            <x>1460</x>
             <y>-1160</y>
-            <w>170</w>
+            <w>970</w>
             <h>190</h>
         </coordinates>
-        <panel_attributes>.&#128034;
+        <panel_attributes>.&#128034;♖♕♣&#128077;&#128076;
 fontsize=150
 </panel_attributes>
         <additional_attributes/>
@@ -2180,8 +2180,8 @@ shadow=5</panel_attributes>
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>950</x>
-            <y>-960</y>
+            <x>710</x>
+            <y>-990</y>
             <w>420</w>
             <h>30</h>
         </coordinates>
@@ -2257,7 +2257,7 @@ fontsize=18
     <element>
         <id>UMLState</id>
         <coordinates>
-            <x>2430</x>
+            <x>3020</x>
             <y>-1070</y>
             <w>680</w>
             <h>140</h>
@@ -2271,7 +2271,7 @@ shadow=5</panel_attributes>
     <element>
         <id>LechugaScriptBox</id>
         <coordinates>
-            <x>2560</x>
+            <x>3150</x>
             <y>-1010</y>
             <w>450</w>
             <h>50</h>
@@ -2529,8 +2529,8 @@ paintbackground=false</panel_attributes>
     <element>
         <id>LechugaScriptBox</id>
         <coordinates>
-            <x>1960</x>
-            <y>-1030</y>
+            <x>2750</x>
+            <y>-1060</y>
             <w>160</w>
             <h>100</h>
         </coordinates>
@@ -2655,8 +2655,8 @@ bg=l-orange
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>1800</x>
-            <y>-1000</y>
+            <x>2590</x>
+            <y>-1030</y>
             <w>30</w>
             <h>30</h>
         </coordinates>
