@@ -8,6 +8,11 @@ import java.util.List;
 
 import static org.homs.lechugauml.shape.impl.connector.Connector.BOX_EXTRA_LINKABLE_BORDER;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class ConnectorPoint {
 
     public Shape linkedShape;

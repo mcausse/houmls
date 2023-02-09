@@ -2,6 +2,11 @@ package org.homs.lechugauml.shape;
 
 import java.awt.*;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public interface Shape extends Draggable {
 
     String getAttributesText();

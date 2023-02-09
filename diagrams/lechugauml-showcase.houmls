@@ -1,15 +1,30 @@
-<?xml version="1.0" encoding="UTF-8"?><diagram program="lechuga-uml" version="1.0.1">
+<?xml version="1.0" encoding="UTF-8"?><diagram program="lechuga-uml" version="0.0.2">
     <zoom_level>10</zoom_level>
-    <help_text>Welcome to Houmls
---
-the UML diagram tool 
-powered with bocadillos
+    <help_text>
+Lechuga UML - Powered with LechugaScript and with bocadillos
+
+@author mohms
+
 </help_text>
+    <element>
+        <id>UMLState</id>
+        <coordinates>
+            <x>1740</x>
+            <y>-1070</y>
+            <w>710</w>
+            <h>140</h>
+        </coordinates>
+        <panel_attributes>.*Unicode symbols
+--
+fontsize=24
+shadow=5</panel_attributes>
+        <additional_attributes/>
+    </element>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>2570</x>
-            <y>-1050</y>
+            <x>2610</x>
+            <y>-1030</y>
             <w>70</w>
             <h>70</h>
         </coordinates>
@@ -26,8 +41,8 @@ shadow=0</panel_attributes>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>2580</x>
-            <y>-1040</y>
+            <x>2620</x>
+            <y>-1020</y>
             <w>50</w>
             <h>50</h>
         </coordinates>
@@ -44,8 +59,8 @@ shadow=0</panel_attributes>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>2560</x>
-            <y>-1060</y>
+            <x>2600</x>
+            <y>-1040</y>
             <w>90</w>
             <h>90</h>
         </coordinates>
@@ -62,8 +77,8 @@ shadow=0</panel_attributes>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>2550</x>
-            <y>-1070</y>
+            <x>2590</x>
+            <y>-1050</y>
             <w>110</w>
             <h>110</h>
         </coordinates>
@@ -107,8 +122,8 @@ shadow=5</panel_attributes>
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>710</x>
-            <y>-1120</y>
+            <x>850</x>
+            <y>-1060</y>
             <w>300</w>
             <h>80</h>
         </coordinates>
@@ -1977,12 +1992,12 @@ action</panel_attributes>
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>710</x>
-            <y>-1050</y>
+            <x>850</x>
+            <y>-990</y>
             <w>590</w>
             <h>40</h>
         </coordinates>
-        <panel_attributes>_the UML diagram tool powered with Lechuga Script
+        <panel_attributes>_Powered with LechugaScript and with bocadillos
 
 fontsize=24
 
@@ -1992,13 +2007,13 @@ fontsize=24
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>1460</x>
-            <y>-1160</y>
-            <w>970</w>
-            <h>190</h>
+            <x>1810</x>
+            <y>-1070</y>
+            <w>690</w>
+            <h>140</h>
         </coordinates>
-        <panel_attributes>.&#128034;♖♕♣&#128077;&#128076;
-fontsize=150
+        <panel_attributes>&#128034;♖♕♣&#128077;&#128076;
+fontsize=100
 </panel_attributes>
         <additional_attributes/>
     </element>
@@ -2178,20 +2193,6 @@ shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>FloatingText</id>
-        <coordinates>
-            <x>710</x>
-            <y>-990</y>
-            <w>420</w>
-            <h>30</h>
-        </coordinates>
-        <panel_attributes>`org.homs:lechuga-script:0.0.3-SNAPSHOT`
-
-fontsize=18
-</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
         <id>LechugaScriptBox</id>
         <coordinates>
             <x>1370</x>
@@ -2257,7 +2258,7 @@ fontsize=18
     <element>
         <id>UMLState</id>
         <coordinates>
-            <x>3020</x>
+            <x>3030</x>
             <y>-1070</y>
             <w>680</w>
             <h>140</h>
@@ -2271,7 +2272,7 @@ shadow=5</panel_attributes>
     <element>
         <id>LechugaScriptBox</id>
         <coordinates>
-            <x>3150</x>
+            <x>3160</x>
             <y>-1010</y>
             <w>450</w>
             <h>50</h>
@@ -2529,8 +2530,8 @@ paintbackground=false</panel_attributes>
     <element>
         <id>LechugaScriptBox</id>
         <coordinates>
-            <x>2750</x>
-            <y>-1060</y>
+            <x>2790</x>
+            <y>-1040</y>
             <w>160</w>
             <h>100</h>
         </coordinates>
@@ -2655,8 +2656,8 @@ bg=l-orange
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>2590</x>
-            <y>-1030</y>
+            <x>2630</x>
+            <y>-1010</y>
             <w>30</w>
             <h>30</h>
         </coordinates>
@@ -2703,6 +2704,18 @@ shadow=0</panel_attributes>
    (def p2 (get-point x cycles))
    (*graphics* :drawLine (+ box-x (p1 :get 0)) (p1 :get 1) (+ box-x (p2 :get 0)) (p2 :get 1))
 )</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>ImageBox</id>
+        <coordinates>
+            <x>740</x>
+            <y>-1050</y>
+            <w>90</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>image=diagrams/img/lechuga-uml.png
+</panel_attributes>
         <additional_attributes/>
     </element>
 </diagram>

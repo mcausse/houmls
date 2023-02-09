@@ -6,6 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class CmdArgumentsProcessor {
 
     public final String[] args;

@@ -4,6 +4,11 @@ import org.homs.lechugauml.shape.Shape;
 
 import java.awt.*;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class FloatingText extends Box {
 
     public FloatingText(int x, int y, int width, int height, String attributesText) {

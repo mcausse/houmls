@@ -1,5 +1,10 @@
 package org.homs.lechugauml.shape.impl.connector;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public enum ConnectorType {
 
     DEFAULT(""),

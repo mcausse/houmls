@@ -8,6 +8,11 @@ import java.util.Map;
 
 import static org.homs.lechugauml.LookAndFeel.BOXES_SHADOW_COLOR;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class Ellipse extends Box {
 
     private Stroke stroke = new BasicStroke(1);

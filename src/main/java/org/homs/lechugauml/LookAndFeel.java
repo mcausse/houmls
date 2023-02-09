@@ -2,6 +2,11 @@ package org.homs.lechugauml;
 
 import java.awt.*;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class LookAndFeel {
 
     public static final Color yellowMartin = new Color(0xff, 0xff, 0xda);

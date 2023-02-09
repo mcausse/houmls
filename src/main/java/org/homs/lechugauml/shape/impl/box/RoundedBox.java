@@ -8,6 +8,11 @@ import java.awt.*;
 import static org.homs.lechugauml.LookAndFeel.BOXES_SHADOW_COLOR;
 import static org.homs.lechugauml.LookAndFeel.basicStroke;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class RoundedBox extends Box {
 
     public RoundedBox(int x, int y, int width, int height, String attributesText) {

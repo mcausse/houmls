@@ -19,20 +19,13 @@ import java.util.function.Consumer;
 import static org.homs.lechugauml.LookAndFeel.yellowMartin;
 
 /**
- * <pre>
- *     _____ _____ _____ _____ __    _____
- *    |  |  |     |  |  |     |  |  |   __|
- *    |     |  |  |  |  | | | |  |__|__   |
- *    |__|__|_____|_____|_|_|_|_____|_____|
- *                (powered with bocadillos)
- *
- * </pre>
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
  *
  * @author mohms
  */
 public class MainC2 {
 
-    public static final String FRAME_TITLE = "Lechuga UML (╯°o°）╯︵ ┻━┻  -- ";
+    public static final String FRAME_TITLE = "Lechuga UML  0.0.2   (╯°o°）╯︵ ┻━┻  -- ";
 
     public static final String UNNAMED_FILENAME = "Unnamed";
 

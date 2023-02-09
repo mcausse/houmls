@@ -8,6 +8,11 @@ import java.awt.*;
 
 import static org.homs.lechugauml.LookAndFeel.basicStroke;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class PackageBox extends Box {
 
     public PackageBox(int x, int y, int width, int height, String attributesText) {

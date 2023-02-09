@@ -5,6 +5,11 @@ import org.homs.lechugauml.shape.impl.connector.Connector;
 
 import java.awt.*;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public interface Draggable {
 
     Cursor getTranslationCursor();

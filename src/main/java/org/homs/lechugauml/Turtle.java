@@ -3,6 +3,11 @@ package org.homs.lechugauml;
 import java.awt.*;
 import java.util.Stack;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class Turtle {
 
     final Stack<Double> xs = new Stack<>();

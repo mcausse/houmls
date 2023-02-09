@@ -8,6 +8,11 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class XmlDocumentBuilder {
 
     final Document document;

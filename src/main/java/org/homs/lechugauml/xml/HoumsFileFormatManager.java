@@ -18,6 +18,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.StringJoiner;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class HoumsFileFormatManager {
 
     public static void writeFile(Diagram diagram, String fileName) throws Exception {

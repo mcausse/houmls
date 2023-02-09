@@ -11,6 +11,11 @@ import java.util.List;
 
 import static org.homs.lechugauml.LookAndFeel.basicStroke;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class LechugaScriptBox extends Box {
 
     final Interpreter interpreter;

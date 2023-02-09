@@ -27,6 +27,11 @@ import java.util.Stack;
 import static org.homs.lechugauml.LookAndFeel.*;
 import static org.homs.lechugauml.shape.impl.connector.Connector.SELECTION_BOX_SIZE;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class Canvas extends JPanel {
 
     final List<Shape> selectedShapes = new ArrayList<>();

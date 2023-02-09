@@ -9,6 +9,11 @@ import java.awt.*;
 
 import static org.homs.lechugauml.LookAndFeel.basicStroke;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class Actor extends Box {
 
     static final int MONECO_WIDTH = GridControl.GRID_SIZE * 5;

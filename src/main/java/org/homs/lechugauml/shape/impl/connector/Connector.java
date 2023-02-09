@@ -15,6 +15,11 @@ import static org.homs.lechugauml.LookAndFeel.basicStroke;
 import static org.homs.lechugauml.LookAndFeel.dashedStroke;
 import static org.homs.lechugauml.shape.impl.connector.ConnectorType.*;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class Connector implements Shape {
 
     public static final double DIAMOND_SIZE = 13.0;

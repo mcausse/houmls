@@ -5,6 +5,11 @@ import org.homs.lechugauml.Diagram;
 import java.awt.*;
 import java.util.List;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class MultiSelectedGroupDraggable implements Draggable {
 
     final List<Shape> multiSelectedShapesToDrag;

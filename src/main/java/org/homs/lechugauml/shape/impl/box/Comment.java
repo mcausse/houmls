@@ -8,6 +8,11 @@ import java.awt.*;
 
 import static org.homs.lechugauml.LookAndFeel.basicStroke;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class Comment extends Box {
 
     public static final int COMMENT_FOLD_DIST = GridControl.GRID_SIZE;

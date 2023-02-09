@@ -7,6 +7,11 @@ import java.awt.*;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class BocadilloConnector extends Connector {
 
     Color backgroundColor = Color.WHITE;

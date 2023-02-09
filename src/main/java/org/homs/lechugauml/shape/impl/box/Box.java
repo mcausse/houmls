@@ -13,6 +13,11 @@ import java.util.function.Supplier;
 import static org.homs.lechugauml.LookAndFeel.*;
 import static org.homs.lechugauml.shape.impl.connector.Connector.SELECTION_BOX_SIZE;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class Box implements Shape {
 
     static final int FONT_X_CORRECTION = 5;

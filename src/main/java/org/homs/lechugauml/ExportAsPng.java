@@ -9,6 +9,11 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.Collections;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class ExportAsPng {
 
     public static void main(String[] args) throws Exception {

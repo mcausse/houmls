@@ -14,6 +14,11 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.io.StringWriter;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class XmlHelper {
 
     public static void save(Document document, String outputFileName) {

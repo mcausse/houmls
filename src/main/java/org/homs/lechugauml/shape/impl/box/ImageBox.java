@@ -10,6 +10,11 @@ import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class ImageBox extends Box {
 
     Image image = null;
