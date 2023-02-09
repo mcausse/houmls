@@ -1,5 +1,5 @@
-# ![alt text](src/main/resources/org/homs/houmls/houmls.png) Houmls
+# ![alt text](src/main/resources/org/homs/lechugauml/lechuga-uml.png) Houmls
 
-![alt text](welcome.png)
-![alt text](houmls-white-paper.png)
+![alt text](lechugauml-showcase.png)
+![alt text](lechugauml-white-paper.png)
 
