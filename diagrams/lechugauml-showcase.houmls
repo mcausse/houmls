@@ -2368,8 +2368,6 @@ shadow=5</panel_attributes>
             <h>500</h>
         </coordinates>
         <panel_attributes>
-
-
 (defn sierpinski [length dept]
    (if (= dept 0)
       (for k [1 1 1]

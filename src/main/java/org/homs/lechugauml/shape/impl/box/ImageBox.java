@@ -89,6 +89,11 @@ public class ImageBox extends Box {
 
         Graphics2D g2 = (Graphics2D) g;
 
+        if (paintBackground) {
+            g.setColor(backgroundColor);
+            g2.fillRect(ix, iy, iwidth, iheight);
+        }
+
         if (this.image != null) {
             g2.drawImage(image, ix, iy, iwidth, iheight, null);
         }

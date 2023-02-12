@@ -15,6 +15,11 @@ import java.util.List;
 import static org.homs.lechugauml.LookAndFeel.DEFAULT_BOXES_SHADOW_WIDTH;
 import static org.homs.lechugauml.shape.impl.connector.Connector.SELECTION_BOX_SIZE;
 
+/**
+ * Lechuga UML - Powered with LechugaScript and with bocadillos
+ *
+ * @author mohms
+ */
 public class CanvasPopupMenuBuilder {
 
     final Canvas canvas;
@@ -28,6 +33,7 @@ public class CanvasPopupMenuBuilder {
 
         if (shapeUnderMouse == null) {
             JMenuItem createConnector = new JMenuItem("create connector");
+            createConnector.setIcon(LookAndFeel.loadIcon("actions/connector.png"));
             pm.add(createConnector);
             createConnector.addActionListener(e -> {
                 canvas.getDiagram().addShape(new Connector(
@@ -135,6 +141,7 @@ public class CanvasPopupMenuBuilder {
                 canvas.pushUndoCheckpoint();
             });
             JMenuItem createBocadillo = new JMenuItem("create bocadillo");
+            createBocadillo.setIcon(LookAndFeel.loadIcon("actions/bocadillo.png"));
             pm.add(createBocadillo);
             createBocadillo.addActionListener(e -> {
                 final BocadilloConnector bocadillo = new BocadilloConnector(
@@ -196,6 +203,7 @@ public class CanvasPopupMenuBuilder {
             });
 
             JMenuItem imageBox = new JMenuItem("create image");
+            imageBox.setIcon(LookAndFeel.loadIcon("actions/image.png"));
             pm.add(imageBox);
             imageBox.addActionListener(e -> {
                 final ImageBox turtleBox = new ImageBox(
@@ -203,7 +211,9 @@ public class CanvasPopupMenuBuilder {
                         GridControl.engrid(mousePos.getY()),
                         GridControl.engrid(18 * GridControl.GRID_SIZE),
                         GridControl.engrid(8 * GridControl.GRID_SIZE),
-                        "image=\n"
+                        "image=\n" +
+                                "paintbackground=true\n" +
+                                "bg=green\n"
                 );
                 canvas.getDiagram().addShape(turtleBox);
                 canvas.repaint();
@@ -235,6 +245,7 @@ public class CanvasPopupMenuBuilder {
              */
 
             JMenuItem toFront = new JMenuItem("to front");
+            toFront.setIcon(LookAndFeel.loadIcon("actions/to-front.png"));
             pm.add(toFront);
             toFront.addActionListener(e -> {
                 canvas.getDiagram().sendToFront(shapeUnderMouse);
@@ -243,6 +254,7 @@ public class CanvasPopupMenuBuilder {
             });
 
             JMenuItem toBack = new JMenuItem("to back");
+            toBack.setIcon(LookAndFeel.loadIcon("actions/to-back.png"));
             pm.add(toBack);
             toBack.addActionListener(e -> {
                 canvas.getDiagram().sendToBack(shapeUnderMouse);
@@ -253,6 +265,7 @@ public class CanvasPopupMenuBuilder {
             pm.addSeparator();
 
             JMenuItem deleteBox = new JMenuItem("remove");
+            deleteBox.setIcon(LookAndFeel.loadIcon("actions/delete.png"));
             pm.add(deleteBox);
             deleteBox.addActionListener(e -> {
                 canvas.getDiagram().getShapes().removeAll(selectedShapes);
@@ -271,9 +284,10 @@ public class CanvasPopupMenuBuilder {
 
             pm.addSeparator();
 
-            JMenuItem toBack = new JMenuItem("remove");
-            pm.add(toBack);
-            toBack.addActionListener(e -> {
+            JMenuItem remove = new JMenuItem("remove");
+            remove.setIcon(LookAndFeel.loadIcon("actions/delete.png"));
+            pm.add(remove);
+            remove.addActionListener(e -> {
                 canvas.getDiagram().getShapes().removeAll(selectedShapes);
                 selectedShapes.clear();
                 canvas.repaint();
@@ -287,9 +301,10 @@ public class CanvasPopupMenuBuilder {
         if (selectedShapes.size() != 1) {
             return;
         }
-        JMenuItem toFront = new JMenuItem("add new point");
-        pm.add(toFront);
-        toFront.addActionListener(e -> {
+        JMenuItem createPoint = new JMenuItem("add new point");
+        createPoint.setIcon(LookAndFeel.loadIcon("actions/create-point.png"));
+        pm.add(createPoint);
+        createPoint.addActionListener(e -> {
             Connector conn = (Connector) selectedShapes.get(0);
 
             java.util.List<Point> points = conn.getListOfAbsolutePoints();
@@ -330,9 +345,10 @@ public class CanvasPopupMenuBuilder {
             return;
         }
 
-        JMenuItem toFront = new JMenuItem("delete point");
-        pm.add(toFront);
-        toFront.addActionListener(e -> {
+        JMenuItem deletePoint = new JMenuItem("delete point");
+        deletePoint.setIcon(LookAndFeel.loadIcon("actions/delete-point.png"));
+        pm.add(deletePoint);
+        deletePoint.addActionListener(e -> {
             Connector conn = (Connector) selectedShapes.get(0);
 
             List<Point> points = conn.getListOfAbsolutePoints();
