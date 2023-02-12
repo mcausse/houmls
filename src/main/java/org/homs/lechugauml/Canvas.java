@@ -3,11 +3,7 @@ package org.homs.lechugauml;
 import org.homs.lechugauml.shape.Draggable;
 import org.homs.lechugauml.shape.MultiSelectedGroupDraggable;
 import org.homs.lechugauml.shape.Shape;
-import org.homs.lechugauml.shape.impl.box.Box;
-import org.homs.lechugauml.shape.impl.box.*;
-import org.homs.lechugauml.shape.impl.connector.BocadilloConnector;
 import org.homs.lechugauml.shape.impl.connector.Connector;
-import org.homs.lechugauml.shape.impl.connector.DoublePoint;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -24,8 +20,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Stack;
 
-import static org.homs.lechugauml.LookAndFeel.*;
-import static org.homs.lechugauml.shape.impl.connector.Connector.SELECTION_BOX_SIZE;
+import static org.homs.lechugauml.LookAndFeel.SHAPE_SELECTED_COLOR;
+import static org.homs.lechugauml.LookAndFeel.basicStroke;
 
 /**
  * Lechuga UML - Powered with LechugaScript and with bocadillos
@@ -78,8 +74,8 @@ public class Canvas extends JPanel {
 
             boolean controlPressed = offsetAndZoomListener != null && offsetAndZoomListener.controlPressed;
 
-            var selectedShape = findShapeByMousePosition(mouseEvent.getX(), mouseEvent.getY());
-            if (selectedShape == null) {
+            var shapeUnderMouse = findShapeByMousePosition(mouseEvent.getX(), mouseEvent.getY());
+            if (shapeUnderMouse == null) {
                 selectedShapes.clear();
                 editorTextPaneRef.setText(diagram.getDiagramAttributesText());
             } else {
@@ -88,10 +84,10 @@ public class Canvas extends JPanel {
                      * si es clicka sobre una Shape amb Control, s'afegeix/esborra
                      * de la llista de sel.lecció múltiple.
                      */
-                    if (selectedShapes.contains(selectedShape)) {
-                        selectedShapes.remove(selectedShape);
+                    if (selectedShapes.contains(shapeUnderMouse)) {
+                        selectedShapes.remove(shapeUnderMouse);
                     } else {
-                        selectedShapes.add(selectedShape);
+                        selectedShapes.add(shapeUnderMouse);
                     }
                 } else {
                     /*
@@ -99,11 +95,11 @@ public class Canvas extends JPanel {
                      * - si forma part de la sel.lecció => no fer res, segurament s'ha començat a draggar!
                      * - si no forma partt de les shapes sel.leccionades, reiniciar la multisel.lecció
                      */
-                    if (selectedShapes.contains(selectedShape)) {
+                    if (selectedShapes.contains(shapeUnderMouse)) {
                         // es deu començar a draggar
                     } else {
                         selectedShapes.clear();
-                        selectedShapes.add(selectedShape);
+                        selectedShapes.add(shapeUnderMouse);
                     }
                 }
 
@@ -125,7 +121,7 @@ public class Canvas extends JPanel {
                     return;
                 }
 
-                JPopupMenu pm = buildPopupMenu(selectedShape, mousePos);
+                JPopupMenu pm = new CanvasPopupMenuBuilder(Canvas.this).buildPopupMenu(selectedShapes, shapeUnderMouse, mousePos);
 
                 repaint();
                 pm.show(Canvas.this, mouseEvent.getX(), mouseEvent.getY());
@@ -147,355 +143,6 @@ public class Canvas extends JPanel {
             }
 
             repaint();
-        }
-
-        protected JPopupMenu buildPopupMenu(Shape selectedShape, Point2D mousePos) {
-            JPopupMenu pm = new JPopupMenu();
-
-            if (selectedShape == null) {
-                JMenuItem createConnector = new JMenuItem("create connector");
-                pm.add(createConnector);
-                createConnector.addActionListener(e -> {
-                    diagram.addShape(new Connector(
-                            GridControl.engrid(mousePos.getX()),
-                            GridControl.engrid(mousePos.getY()),
-                            GridControl.engrid(mousePos.getX()) + 18 * GridControl.GRID_SIZE,
-                            GridControl.engrid(mousePos.getY()),
-                            "lt=->\n"
-                    ));
-                    repaint();
-                    pushUndoCheckpoint();
-                });
-
-                pm.addSeparator();
-
-                JMenuItem createClass = new JMenuItem("create class");
-                createClass.setIcon(LookAndFeel.loadIcon("actions/class.png"));
-                pm.add(createClass);
-                createClass.addActionListener(e -> {
-                    diagram.addShape(new Box(
-                            GridControl.engrid(mousePos.getX()),
-                            GridControl.engrid(mousePos.getY()),
-                            GridControl.engrid(18 * GridControl.GRID_SIZE),
-                            GridControl.engrid(8 * GridControl.GRID_SIZE),
-                            "._<<>>\n" +
-                                    ".*C\n" +
-                                    "--\n" +
-                                    "--\n" +
-                                    "bg=l-orange\n" +
-                                    "shadow=" + DEFAULT_BOXES_SHADOW_WIDTH + "\n"
-                    ));
-                    repaint();
-                    pushUndoCheckpoint();
-                });
-                JMenuItem createComment = new JMenuItem("create comment");
-                createComment.setIcon(LookAndFeel.loadIcon("actions/comment.png"));
-                pm.add(createComment);
-                createComment.addActionListener(e -> {
-                    diagram.addShape(new Comment(
-                            GridControl.engrid(mousePos.getX()),
-                            GridControl.engrid(mousePos.getY()),
-                            GridControl.engrid(18 * GridControl.GRID_SIZE),
-                            GridControl.engrid(14 * GridControl.GRID_SIZE),
-                            "Note...\n" +
-                                    "bg=l-yellow\n"
-                    ));
-                    repaint();
-                    pushUndoCheckpoint();
-                });
-                JMenuItem createRoundedBox = new JMenuItem("create rounded box");
-                createRoundedBox.setIcon(LookAndFeel.loadIcon("actions/rounded.png"));
-                pm.add(createRoundedBox);
-                createRoundedBox.addActionListener(e -> {
-                    diagram.addShape(new RoundedBox(
-                            GridControl.engrid(mousePos.getX()),
-                            GridControl.engrid(mousePos.getY()),
-                            GridControl.engrid(18 * GridControl.GRID_SIZE),
-                            GridControl.engrid(14 * GridControl.GRID_SIZE),
-                            ".*Title\n--\nfontsize=24\n"
-                    ));
-                    repaint();
-                    pushUndoCheckpoint();
-                });
-                JMenuItem createEllipse = new JMenuItem("create ellipse");
-                createEllipse.setIcon(LookAndFeel.loadIcon("actions/ellipse.png"));
-                pm.add(createEllipse);
-                createEllipse.addActionListener(e -> {
-                    diagram.addShape(new Ellipse(
-                            GridControl.engrid(mousePos.getX()),
-                            GridControl.engrid(mousePos.getY()),
-                            GridControl.engrid(18 * GridControl.GRID_SIZE),
-                            GridControl.engrid(9 * GridControl.GRID_SIZE),
-                            "\n" +
-                                    "\n" +
-                                    ".Title\n" +
-                                    "bg=l-l-l-red"
-                    ));
-                    repaint();
-                    pushUndoCheckpoint();
-                });
-                JMenuItem createTextBox = new JMenuItem("create text box");
-                createTextBox.setIcon(LookAndFeel.loadIcon("actions/text.png"));
-                pm.add(createTextBox);
-                createTextBox.addActionListener(e -> {
-                    diagram.addShape(new FloatingText(
-                            GridControl.engrid(mousePos.getX()),
-                            GridControl.engrid(mousePos.getY()),
-                            GridControl.engrid(18 * GridControl.GRID_SIZE),
-                            GridControl.engrid(14 * GridControl.GRID_SIZE),
-                            ".*Title\nfontsize=24\n"
-                    ));
-                    repaint();
-                    pushUndoCheckpoint();
-                });
-                JMenuItem createActor = new JMenuItem("create actor");
-                createActor.setIcon(LookAndFeel.loadIcon("actions/actor.png"));
-                pm.add(createActor);
-                createActor.addActionListener(e -> {
-                    diagram.addShape(new Actor(
-                            GridControl.engrid(mousePos.getX()),
-                            GridControl.engrid(mousePos.getY()),
-                            ".Actor\n"
-                    ));
-                    repaint();
-                    pushUndoCheckpoint();
-                });
-                JMenuItem createBocadillo = new JMenuItem("create bocadillo");
-                pm.add(createBocadillo);
-                createBocadillo.addActionListener(e -> {
-                    final BocadilloConnector bocadillo = new BocadilloConnector(
-                            GridControl.engrid(mousePos.getX()),
-                            GridControl.engrid(mousePos.getY()),
-                            GridControl.engrid(mousePos.getX() + 18 * GridControl.GRID_SIZE),
-                            GridControl.engrid(mousePos.getY()),
-                            "lt=-\n" +
-                                    "bg=l-yellow"
-                    );
-                    bocadillo.getMiddlePoints().add(new DoublePoint(
-                            GridControl.engrid(mousePos.getX() + GridControl.GRID_SIZE * 6),
-                            GridControl.engrid(mousePos.getY() + GridControl.GRID_SIZE * 6)
-                    ));
-                    diagram.addShape(bocadillo);
-                    repaint();
-                    pushUndoCheckpoint();
-                });
-
-                JMenuItem createTurtleBox = new JMenuItem("create turtle box");
-                createTurtleBox.setIcon(LookAndFeel.loadIcon("actions/turtle.png"));
-                pm.add(createTurtleBox);
-                createTurtleBox.addActionListener(e -> {
-                    final TurtleBox turtleBox = new TurtleBox(
-                            GridControl.engrid(mousePos.getX()),
-                            GridControl.engrid(mousePos.getY()),
-                            GridControl.engrid(18 * GridControl.GRID_SIZE),
-                            GridControl.engrid(8 * GridControl.GRID_SIZE),
-                            "rotate 90 jump 20 rotate -90\n" +
-                                    "rotate -45 walk 20 \n" +
-                                    "rotate 45 walk 50\n" +
-                                    "rotate 45 walk 20\n" +
-                                    "rotate 90 walk 55\n" +
-                                    "rotate 90 walk 55\n" +
-                                    "rotate 135 walk 76\n" +
-                                    "draw\n"
-                    );
-                    diagram.addShape(turtleBox);
-                    repaint();
-                    pushUndoCheckpoint();
-                });
-
-                JMenuItem createLechugaBox = new JMenuItem("create lechuga box");
-                createLechugaBox.setIcon(LookAndFeel.loadIcon("actions/lechuga.png"));
-                pm.add(createLechugaBox);
-                createLechugaBox.addActionListener(e -> {
-                    final LechugaScriptBox turtleBox = new LechugaScriptBox(
-                            GridControl.engrid(mousePos.getX()),
-                            GridControl.engrid(mousePos.getY()),
-                            GridControl.engrid(18 * GridControl.GRID_SIZE),
-                            GridControl.engrid(8 * GridControl.GRID_SIZE),
-                            "((field-static :java.lang.System :out) :print :jou)\n" +
-                                    "bg=green\n" +
-                                    "paintbackground=true\n"
-                    );
-                    diagram.addShape(turtleBox);
-                    repaint();
-                    pushUndoCheckpoint();
-                });
-
-                JMenuItem imageBox = new JMenuItem("create image");
-                pm.add(imageBox);
-                imageBox.addActionListener(e -> {
-                    final ImageBox turtleBox = new ImageBox(
-                            GridControl.engrid(mousePos.getX()),
-                            GridControl.engrid(mousePos.getY()),
-                            GridControl.engrid(18 * GridControl.GRID_SIZE),
-                            GridControl.engrid(8 * GridControl.GRID_SIZE),
-                            "image=\n"
-                    );
-                    diagram.addShape(turtleBox);
-                    repaint();
-                    pushUndoCheckpoint();
-                });
-
-                JMenuItem packageBox = new JMenuItem("create package");
-                packageBox.setIcon(LookAndFeel.loadIcon("actions/package.png"));
-                pm.add(packageBox);
-                packageBox.addActionListener(e -> {
-                    final PackageBox packageeBox = new PackageBox(
-                            GridControl.engrid(mousePos.getX()),
-                            GridControl.engrid(mousePos.getY()),
-                            GridControl.engrid(18 * GridControl.GRID_SIZE),
-                            GridControl.engrid(8 * GridControl.GRID_SIZE),
-                            "_<<jou>>\n" +
-                                    "*Package\n" +
-                                    "_jou.juas:0.0.2\n" +
-                                    "--\n" +
-                                    "bg=orange\n"
-                    );
-                    diagram.addShape(packageeBox);
-                    repaint();
-                    pushUndoCheckpoint();
-                });
-            } else if (!Connector.class.isAssignableFrom(selectedShape.getClass())) {
-                /*
-                 * POPUP MENU: BOX
-                 */
-
-                JMenuItem toFront = new JMenuItem("to front");
-                pm.add(toFront);
-                toFront.addActionListener(e -> {
-                    diagram.sendToFront(selectedShape);
-                    repaint();
-                    pushUndoCheckpoint();
-                });
-
-                JMenuItem toBack = new JMenuItem("to back");
-                pm.add(toBack);
-                toBack.addActionListener(e -> {
-                    diagram.sendToBack(selectedShape);
-                    repaint();
-                    pushUndoCheckpoint();
-                });
-
-                pm.addSeparator();
-
-                JMenuItem deleteBox = new JMenuItem("remove");
-                pm.add(deleteBox);
-                deleteBox.addActionListener(e -> {
-                    diagram.getShapes().removeAll(selectedShapes);
-                    selectedShapes.clear();
-                    pushUndoCheckpoint();
-                    repaint();
-                });
-
-            } else if (Connector.class.isAssignableFrom(selectedShape.getClass())) {
-
-                /*
-                 * POPUP MENU: CONNECTOR
-                 */
-                popupMenuForConnector_CreateMiddlePoint(mousePos, pm);
-                popupMenuForConnector_DeleteMiddlePoint(mousePos, pm);
-
-                pm.addSeparator();
-
-                JMenuItem toBack = new JMenuItem("remove");
-                pm.add(toBack);
-                toBack.addActionListener(e -> {
-                    diagram.getShapes().removeAll(selectedShapes);
-                    selectedShapes.clear();
-                    repaint();
-                    pushUndoCheckpoint();
-                });
-            }
-            return pm;
-        }
-
-        private void popupMenuForConnector_CreateMiddlePoint(Point2D mousePos, JPopupMenu pm) {
-            if (selectedShapes.size() != 1) {
-                return;
-            }
-            JMenuItem toFront = new JMenuItem("add new point");
-            pm.add(toFront);
-            toFront.addActionListener(e -> {
-                Connector conn = (Connector) selectedShapes.get(0);
-
-                List<Point> points = conn.getListOfAbsolutePoints();
-                for (var i = 0; i < points.size(); i++) {
-                    Point p = points.get(i);
-                    Rectangle pointSelectionBox = new Rectangle(p.x - SELECTION_BOX_SIZE, p.y - SELECTION_BOX_SIZE, SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
-                    if (pointSelectionBox.contains(mousePos.getX(), mousePos.getY())) {
-
-                        /*
-                         * CREATES A NEW MIDDLE POINT IN THE CONNECTOR
-                         */
-                        int indexOfClickedPoint = points.indexOf(p);
-                        final Point otherPoint;
-                        if (indexOfClickedPoint == points.size() - 1) {
-                            otherPoint = points.get(points.size() - 2);
-                        } else {
-                            otherPoint = points.get(indexOfClickedPoint + 1);
-                        }
-                        var middlePointToCreate = new DoublePoint((p.x + otherPoint.x) / 2.0, (p.y + otherPoint.y) / 2.0);
-
-                        if (indexOfClickedPoint >= conn.getMiddlePoints().size()) {
-                            conn.getMiddlePoints().add(middlePointToCreate);
-                            pushUndoCheckpoint();
-                        } else {
-                            conn.getMiddlePoints().add(indexOfClickedPoint, middlePointToCreate);
-                            pushUndoCheckpoint();
-                        }
-                        break;
-                    }
-                }
-                repaint();
-            });
-        }
-
-        private void popupMenuForConnector_DeleteMiddlePoint(Point2D mousePos, JPopupMenu pm) {
-
-            if (selectedShapes.size() != 1) {
-                return;
-            }
-
-            JMenuItem toFront = new JMenuItem("delete point");
-            pm.add(toFront);
-            toFront.addActionListener(e -> {
-                Connector conn = (Connector) selectedShapes.get(0);
-
-                List<Point> points = conn.getListOfAbsolutePoints();
-                if (points.size() <= 2) {
-                    return;
-                }
-                for (var i = 0; i < points.size(); i++) {
-                    Point p = points.get(i);
-                    Rectangle pointSelectionBox = new Rectangle(p.x - SELECTION_BOX_SIZE, p.y - SELECTION_BOX_SIZE, SELECTION_BOX_SIZE * 2, SELECTION_BOX_SIZE * 2);
-                    if (pointSelectionBox.contains(mousePos.getX(), mousePos.getY())) {
-
-                        if (i == 0) {
-                            // remove first point
-                            conn.getStartPoint().linkedShape = null;
-                            conn.getStartPoint().posx = conn.getMiddlePoints().get(0).x;
-                            conn.getStartPoint().posy = conn.getMiddlePoints().get(0).y;
-                            conn.getMiddlePoints().remove(0);
-                            pushUndoCheckpoint();
-                        } else if (i == points.size() - 1) {
-                            // remove last point
-                            conn.getEndPoint().linkedShape = null;
-                            conn.getEndPoint().posx = conn.getMiddlePoints().get(conn.getMiddlePoints().size() - 1).x;
-                            conn.getEndPoint().posy = conn.getMiddlePoints().get(conn.getMiddlePoints().size() - 1).y;
-                            conn.getMiddlePoints().remove(conn.getMiddlePoints().size() - 1);
-                            pushUndoCheckpoint();
-                        } else {
-                            // remove middle point
-                            conn.getMiddlePoints().remove(i - 1);
-                            pushUndoCheckpoint();
-                        }
-
-                        break;
-                    }
-                }
-
-                repaint();
-            });
         }
 
         @Override
