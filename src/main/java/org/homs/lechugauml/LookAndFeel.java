@@ -1,6 +1,8 @@
 package org.homs.lechugauml;
 
+import javax.swing.*;
 import java.awt.*;
+import java.net.URL;
 
 /**
  * Lechuga UML - Powered with LechugaScript and with bocadillos
@@ -61,6 +63,20 @@ public class LookAndFeel {
     public static final Color SHAPE_SELECTED_COLOR = new Color(0, 142, 255);
     public static final BasicStroke MULTI_SELECTION_STROKE = new BasicStroke(3, BasicStroke.CAP_BUTT, BasicStroke.JOIN_BEVEL,
             0, new float[]{5}, 0);
+
+    public static Image loadImage(String name) {
+        final String baseURL = "org/homs/lechugauml/";
+        final URL resource = MainC2.class.getClassLoader().getResource(baseURL + name);
+        if (resource == null) {
+            throw new RuntimeException("error loading resource: " + name);
+        }
+
+        return Toolkit.getDefaultToolkit().getImage(resource);
+    }
+
+    public static Icon loadIcon(String name) {
+        return new ImageIcon(loadImage(name));
+    }
 }
 
 

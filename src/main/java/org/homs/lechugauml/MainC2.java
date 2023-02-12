@@ -14,6 +14,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.function.Consumer;
 
 import static org.homs.lechugauml.LookAndFeel.yellowMartin;
@@ -29,7 +30,7 @@ public class MainC2 {
 
     public static final String UNNAMED_FILENAME = "Unnamed";
 
-    static final Image frameIcon = Toolkit.getDefaultToolkit().getImage(MainC2.class.getClassLoader().getResource("org/homs/lechugauml/lechuga-uml.png"));
+    static final Image frameIcon = LookAndFeel.loadImage("lechuga-uml.png");
 
     static final List<Shape> shapesClipboard = new ArrayList<>();
 
@@ -58,12 +59,13 @@ public class MainC2 {
 
         tabbedPane.addChangeListener(e -> {
             DiagramTab diagramTab = (DiagramTab) ((JTabbedPane) e.getSource()).getSelectedComponent();
-
-            SwingUtilities.invokeLater(() -> {
-                diagramTab.getCanvas().requestFocus();
-                diagramTab.getCanvas().repaint();
-                currentDiagramOnChangeFileNameListener.accept(diagramTab.getDiagramName());
-            });
+            if (diagramTab != null) {
+                SwingUtilities.invokeLater(() -> {
+                    diagramTab.getCanvas().requestFocus();
+                    diagramTab.getCanvas().repaint();
+                    currentDiagramOnChangeFileNameListener.accept(diagramTab.getDiagramName());
+                });
+            }
         });
 
         //
@@ -74,22 +76,25 @@ public class MainC2 {
         var keyListener = new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
-                getActiveCanvas().getOffsetAndZoomListener().keyTyped(e);
+                getActiveCanvas().ifPresent(c -> c.getOffsetAndZoomListener().keyTyped(e));
             }
 
             @Override
             public void keyPressed(KeyEvent e) {
-                getActiveCanvas().getOffsetAndZoomListener().keyPressed(e);
+                getActiveCanvas().ifPresent(c -> c.getOffsetAndZoomListener().keyPressed(e));
             }
 
             @Override
             public void keyReleased(KeyEvent e) {
-                getActiveCanvas().getOffsetAndZoomListener().keyReleased(e);
+                getActiveCanvas().ifPresent(c -> c.getOffsetAndZoomListener().keyReleased(e));
             }
 
-            public Canvas getActiveCanvas() {
+            protected Optional<Canvas> getActiveCanvas() {
                 DiagramTab diagramTab = (DiagramTab) tabbedPane.getSelectedComponent();
-                return diagramTab.getCanvas();
+                if (diagramTab == null) {
+                    return Optional.empty();
+                }
+                return Optional.of(diagramTab.getCanvas());
             }
         };
 
@@ -175,6 +180,7 @@ public class MainC2 {
             final JButton openBbutton;
             final JButton saveButton;
             final JButton saveAsButton;
+            final JButton closeTabButton;
             final JButton centerDiagram;
             final JButton zoomTo1Diagram;
 
@@ -259,6 +265,15 @@ public class MainC2 {
                         }
                     });
 
+            // XXX ^W Close tab...
+            closeTabButton = buildButton("icons/cross.png", "Close (^W)", "^w", "Control W", KeyStroke.getKeyStroke(KeyEvent.VK_W, ActionEvent.CTRL_MASK),
+                    new AbstractAction() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            DiagramTab diagramTab = (DiagramTab) tabbedPane.getSelectedComponent();
+                            tabbedPane.remove(diagramTab);
+                        }
+                    });
 
             centerDiagram = buildButton("icons/arrow_out.png", "Zoom to fit", null, null, null,
                     new AbstractAction() {
@@ -286,6 +301,7 @@ public class MainC2 {
             toolBar.add(openBbutton);
             toolBar.add(saveButton);
             toolBar.add(saveAsButton);
+            toolBar.add(closeTabButton);
             toolBar.addSeparator();
             toolBar.add(centerDiagram);
             toolBar.add(zoomTo1Diagram);

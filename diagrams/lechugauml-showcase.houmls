@@ -23,7 +23,7 @@ shadow=5</panel_attributes>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>2610</x>
+            <x>2600</x>
             <y>-1030</y>
             <w>70</w>
             <h>70</h>
@@ -41,7 +41,7 @@ shadow=0</panel_attributes>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>2620</x>
+            <x>2610</x>
             <y>-1020</y>
             <w>50</w>
             <h>50</h>
@@ -59,7 +59,7 @@ shadow=0</panel_attributes>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>2600</x>
+            <x>2590</x>
             <y>-1040</y>
             <w>90</w>
             <h>90</h>
@@ -77,7 +77,7 @@ shadow=0</panel_attributes>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>2590</x>
+            <x>2580</x>
             <y>-1050</y>
             <w>110</w>
             <h>110</h>
@@ -997,7 +997,7 @@ bg=l-l-l-red</panel_attributes>
             <w>160</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>lt=-&gt;
+        <panel_attributes>lt=-
 </panel_attributes>
         <additional_attributes>0;80;160;0</additional_attributes>
     </element>
@@ -1009,7 +1009,7 @@ bg=l-l-l-red</panel_attributes>
             <w>160</w>
             <h>40</h>
         </coordinates>
-        <panel_attributes>lt=-&gt;
+        <panel_attributes>lt=-
 </panel_attributes>
         <additional_attributes>0;0;160;40</additional_attributes>
     </element>
@@ -1021,7 +1021,7 @@ bg=l-l-l-red</panel_attributes>
             <w>160</w>
             <h>0</h>
         </coordinates>
-        <panel_attributes>lt=-&gt;
+        <panel_attributes>lt=-
 </panel_attributes>
         <additional_attributes>0;0;160;0</additional_attributes>
     </element>
@@ -1033,9 +1033,9 @@ bg=l-l-l-red</panel_attributes>
             <w>0</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>lt=.&gt;&gt;
+        <panel_attributes>lt=.&gt;
 
-                               &lt;extends&gt;
+                               &lt;extend&gt;
 </panel_attributes>
         <additional_attributes>0;80;0;0</additional_attributes>
     </element>
@@ -1048,7 +1048,7 @@ bg=l-l-l-red</panel_attributes>
             <h>40</h>
         </coordinates>
         <panel_attributes>lt=.&gt;
-&lt;includes&gt;              
+&lt;include&gt;              
 </panel_attributes>
         <additional_attributes>0;0;50;40</additional_attributes>
     </element>
@@ -2007,10 +2007,10 @@ fontsize=24
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>1810</x>
+            <x>1800</x>
             <y>-1070</y>
-            <w>690</w>
-            <h>140</h>
+            <w>580</w>
+            <h>130</h>
         </coordinates>
         <panel_attributes>&#128034;♖♕♣&#128077;&#128076;
 fontsize=100
@@ -2258,9 +2258,9 @@ fontsize=18
     <element>
         <id>UMLState</id>
         <coordinates>
-            <x>3030</x>
+            <x>3150</x>
             <y>-1070</y>
-            <w>680</w>
+            <w>560</w>
             <h>140</h>
         </coordinates>
         <panel_attributes>.*Lechuga Script clock
@@ -2272,7 +2272,7 @@ shadow=5</panel_attributes>
     <element>
         <id>LechugaScriptBox</id>
         <coordinates>
-            <x>3160</x>
+            <x>3210</x>
             <y>-1010</y>
             <w>450</w>
             <h>50</h>
@@ -2363,7 +2363,7 @@ shadow=5</panel_attributes>
         <id>LechugaScriptBox</id>
         <coordinates>
             <x>3180</x>
-            <y>-280</y>
+            <y>-300</y>
             <w>500</w>
             <h>500</h>
         </coordinates>
@@ -2530,8 +2530,8 @@ paintbackground=false</panel_attributes>
     <element>
         <id>LechugaScriptBox</id>
         <coordinates>
-            <x>2790</x>
-            <y>-1040</y>
+            <x>2780</x>
+            <y>-1050</y>
             <w>160</w>
             <h>100</h>
         </coordinates>
@@ -2656,7 +2656,7 @@ bg=l-orange
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>2630</x>
+            <x>2620</x>
             <y>-1010</y>
             <w>30</w>
             <h>30</h>
@@ -2676,34 +2676,47 @@ shadow=0</panel_attributes>
         <coordinates>
             <x>2000</x>
             <y>660</y>
-            <w>370</w>
+            <w>360</w>
             <h>70</h>
         </coordinates>
         <panel_attributes>
-(*graphics* :setColor (field-static :java.awt.Color :RED))
+(def pi (field-static :java.lang.Math :PI))
+(def pi2 (* 2.0 pi))
+(def pi2-div-3 (/ pi2 3))
+(defn math/sin [angle] (call-static :java.lang.Math :sin angle))
 
-(defn get-point [x cycles]
+(defn get-y [x cycles offset-rads]
    (let 
       {
-         [total-rads (* cycles 2.0 (field-static :java.lang.Math :PI))]
-         [angle (* total-rads (/ x box-width))]
+         [total-rads (* cycles 2.0 pi)]
+         [angle (+ offset-rads (/ (* total-rads x) box-width))]
          [center-y (+ box-y (/ box-height 2.0))]
-         [y (+ center-y (* (/ box-height 2.0) (call-static :java.lang.Math :sin angle)))]
+         [y (+ center-y (* (/ box-height 2.0) (math/sin angle)))]
       }
-      [(to-int x) (to-int y)]))
-
-(defn pi2 [n-voltes]
-   (* n-voltes 2.0 (field-static :java.lang.Math :PI)))
+      (to-int y)))
 
 (def cycles 3)
-(def x 0.0)
-(def x-inc 0.5)
-(while (&lt; x (to-double box-width))
-   (def p1 (get-point x cycles))
-   (set x (+ x x-inc))
-   (def p2 (get-point x cycles))
-   (*graphics* :drawLine (+ box-x (p1 :get 0)) (p1 :get 1) (+ box-x (p2 :get 0)) (p2 :get 1))
-)</panel_attributes>
+
+(*graphics* :setColor (field-static :java.awt.Color :RED))
+(def x 0)
+(while (&lt; x box-width)
+   (def y (get-y x cycles 0.0))
+   (*graphics* :drawRect (+ box-x x) y 1 1)
+   (set x (+ x 1)))
+
+(*graphics* :setColor (field-static :java.awt.Color :GREEN))
+(def x 0)
+(while (&lt; x box-width)
+   (def y (get-y x cycles pi2-div-3))
+   (*graphics* :drawRect (+ box-x x) y 1 1)
+   (set x (+ x 1)))
+
+(*graphics* :setColor (field-static :java.awt.Color :BLUE))
+(def x 0)
+(while (&lt; x box-width)
+   (def y (get-y x cycles (* 2 pi2-div-3)))
+   (*graphics* :drawRect (+ box-x x) y 1 1)
+   (set x (+ x 1)))</panel_attributes>
         <additional_attributes/>
     </element>
     <element>

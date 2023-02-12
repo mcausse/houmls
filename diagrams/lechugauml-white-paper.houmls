@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><diagram program="lechuga-uml" version="1.0.1">
+<?xml version="1.0" encoding="UTF-8"?><diagram program="lechuga-uml" version="0.0.2">
     <zoom_level>10</zoom_level>
     <help_text/>
     <element>
@@ -684,5 +684,21 @@ bg=l-orange</panel_attributes>
         <panel_attributes>lt=-&gt;&gt;
 </panel_attributes>
         <additional_attributes>0;540;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>FloatingText</id>
+        <coordinates>
+            <x>-670</x>
+            <y>-520</y>
+            <w>580</w>
+            <h>120</h>
+        </coordinates>
+        <panel_attributes>.*Lechuga UML - Data Model
+--
+`org.homs.lechugauml.shape    
+
+fontsize=38
+</panel_attributes>
+        <additional_attributes/>
     </element>
 </diagram>

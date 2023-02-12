@@ -26,7 +26,7 @@ public class ExportAsPngTest {
 
     @Test
     void name() throws Exception {
-        var fs = processDirectory(new File("."), name -> name.endsWith(".houmls"));
+        var fs = processDirectory(new File("."), name -> name.endsWith(".houmls") || name.endsWith(".uxf"));
         for (var f : fs) {
             ExportAsPng.main(new String[]{
                     f.toString(),

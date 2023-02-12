@@ -30,7 +30,8 @@ public class Actor extends Box {
 
     @Override
     public Draggable findDraggableByPos(double mousex, double mousey) {
-        if (this.x <= mousex && mousex <= this.x + this.width && this.y <= mousey && mousey <= this.y + this.height) {
+        // if (this.x <= mousex && mousex <= this.x + this.width && this.y <= mousey && mousey <= this.y + this.height) {
+        if (getRectangle().contains(mousex, mousey)) {
             return this;
         }
         return null;
