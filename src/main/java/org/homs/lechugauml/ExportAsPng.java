@@ -1,6 +1,6 @@
 package org.homs.lechugauml;
 
-import org.homs.lechugauml.xml.HoumsFileFormatManager;
+import org.homs.lechugauml.xml.HoumlsFileFormatManager;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -33,7 +33,7 @@ public class ExportAsPng {
         System.out.print("Exporting: " + String.join(" ", args) + "...");
 
         Canvas canvas = new Canvas(new JTextArea(), Collections.emptyList());
-        canvas.setDiagram(HoumsFileFormatManager.loadFile(inputFileName));
+        canvas.setDiagram(HoumlsFileFormatManager.loadFile(inputFileName));
         Rectangle diagramBounds = canvas.getDiagram().getDiagramBounds();
         diagramBounds.grow(100, 100);
 

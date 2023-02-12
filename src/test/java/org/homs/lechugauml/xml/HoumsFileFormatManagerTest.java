@@ -12,8 +12,8 @@ class HoumsFileFormatManagerTest {
         String basePath = "diagrams/";
 
         // Act
-        var d = HoumsFileFormatManager.loadFile(basePath + "houmls.houmls");
-        HoumsFileFormatManager.writeFile(d, basePath + "houmls.houmls.bkp");
+        var d = HoumlsFileFormatManager.loadFile(basePath + "houmls.houmls");
+        HoumlsFileFormatManager.writeFile(d, basePath + "houmls.houmls.bkp");
 
         var inputXml = ResourceHelper.resourceToString(basePath + "houmls.houmls.bkp");
         var expectedOutputHl7 = ResourceHelper.resourceToString(basePath + "houmls.houmls");

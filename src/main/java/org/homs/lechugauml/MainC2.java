@@ -1,7 +1,7 @@
 package org.homs.lechugauml;
 
 import org.homs.lechugauml.shape.Shape;
-import org.homs.lechugauml.xml.HoumsFileFormatManager;
+import org.homs.lechugauml.xml.HoumlsFileFormatManager;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -224,7 +224,7 @@ public class MainC2 {
                         if (returnVal == JFileChooser.APPROVE_OPTION) {
                             File file = fc.getSelectedFile();
                             try {
-                                HoumsFileFormatManager.writeFile(canvas.getDiagram(), file.toString());
+                                HoumlsFileFormatManager.writeFile(canvas.getDiagram(), file.toString());
                             } catch (Exception e2) {
                                 e2.printStackTrace();
                             }
@@ -233,7 +233,7 @@ public class MainC2 {
                         }
                     } else {
                         try {
-                            HoumsFileFormatManager.writeFile(canvas.getDiagram(), fileName);
+                            HoumlsFileFormatManager.writeFile(canvas.getDiagram(), fileName);
                         } catch (Exception e2) {
                             e2.printStackTrace();
                         }
@@ -255,7 +255,7 @@ public class MainC2 {
                             if (returnVal == JFileChooser.APPROVE_OPTION) {
                                 File file = fc.getSelectedFile();
                                 try {
-                                    HoumsFileFormatManager.writeFile(canvas.getDiagram(), file.toString());
+                                    HoumlsFileFormatManager.writeFile(canvas.getDiagram(), file.toString());
                                 } catch (Exception e2) {
                                     e2.printStackTrace();
                                 }
@@ -326,7 +326,7 @@ public class MainC2 {
         DiagramTab diagramTab = createNewDiagramTab(currentDiagramFileNameConsumer);
 
         var canvas = diagramTab.getCanvas();
-        Diagram diagram = HoumsFileFormatManager.loadFile(file.toString());
+        Diagram diagram = HoumlsFileFormatManager.loadFile(file.toString());
         canvas.setDiagram(diagram);
         currentDiagramFileNameConsumer.accept(diagramTab.getDiagramName());
 

@@ -23,7 +23,7 @@ import java.util.StringJoiner;
  *
  * @author mohms
  */
-public class HoumsFileFormatManager {
+public class HoumlsFileFormatManager {
 
     public static void writeFile(Diagram diagram, String fileName) throws Exception {
 
