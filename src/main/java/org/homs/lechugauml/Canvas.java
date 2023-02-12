@@ -170,6 +170,7 @@ public class Canvas extends JPanel {
                 pm.addSeparator();
 
                 JMenuItem createClass = new JMenuItem("create class");
+                createClass.setIcon(LookAndFeel.loadIcon("actions/class.png"));
                 pm.add(createClass);
                 createClass.addActionListener(e -> {
                     diagram.addShape(new Box(
@@ -188,6 +189,7 @@ public class Canvas extends JPanel {
                     pushUndoCheckpoint();
                 });
                 JMenuItem createComment = new JMenuItem("create comment");
+                createComment.setIcon(LookAndFeel.loadIcon("actions/comment.png"));
                 pm.add(createComment);
                 createComment.addActionListener(e -> {
                     diagram.addShape(new Comment(
@@ -202,6 +204,7 @@ public class Canvas extends JPanel {
                     pushUndoCheckpoint();
                 });
                 JMenuItem createRoundedBox = new JMenuItem("create rounded box");
+                createRoundedBox.setIcon(LookAndFeel.loadIcon("actions/rounded.png"));
                 pm.add(createRoundedBox);
                 createRoundedBox.addActionListener(e -> {
                     diagram.addShape(new RoundedBox(
@@ -215,19 +218,24 @@ public class Canvas extends JPanel {
                     pushUndoCheckpoint();
                 });
                 JMenuItem createEllipse = new JMenuItem("create ellipse");
+                createEllipse.setIcon(LookAndFeel.loadIcon("actions/ellipse.png"));
                 pm.add(createEllipse);
                 createEllipse.addActionListener(e -> {
                     diagram.addShape(new Ellipse(
                             GridControl.engrid(mousePos.getX()),
                             GridControl.engrid(mousePos.getY()),
                             GridControl.engrid(18 * GridControl.GRID_SIZE),
-                            GridControl.engrid(14 * GridControl.GRID_SIZE),
-                            ".*Title\nfontsize=24\n"
+                            GridControl.engrid(9 * GridControl.GRID_SIZE),
+                            "\n" +
+                                    "\n" +
+                                    ".Title\n" +
+                                    "bg=l-l-l-red"
                     ));
                     repaint();
                     pushUndoCheckpoint();
                 });
                 JMenuItem createTextBox = new JMenuItem("create text box");
+                createTextBox.setIcon(LookAndFeel.loadIcon("actions/text.png"));
                 pm.add(createTextBox);
                 createTextBox.addActionListener(e -> {
                     diagram.addShape(new FloatingText(
@@ -241,6 +249,7 @@ public class Canvas extends JPanel {
                     pushUndoCheckpoint();
                 });
                 JMenuItem createActor = new JMenuItem("create actor");
+                createActor.setIcon(LookAndFeel.loadIcon("actions/actor.png"));
                 pm.add(createActor);
                 createActor.addActionListener(e -> {
                     diagram.addShape(new Actor(
@@ -272,6 +281,7 @@ public class Canvas extends JPanel {
                 });
 
                 JMenuItem createTurtleBox = new JMenuItem("create turtle box");
+                createTurtleBox.setIcon(LookAndFeel.loadIcon("actions/turtle.png"));
                 pm.add(createTurtleBox);
                 createTurtleBox.addActionListener(e -> {
                     final TurtleBox turtleBox = new TurtleBox(
@@ -294,6 +304,7 @@ public class Canvas extends JPanel {
                 });
 
                 JMenuItem createLechugaBox = new JMenuItem("create lechuga box");
+                createLechugaBox.setIcon(LookAndFeel.loadIcon("actions/lechuga.png"));
                 pm.add(createLechugaBox);
                 createLechugaBox.addActionListener(e -> {
                     final LechugaScriptBox turtleBox = new LechugaScriptBox(
@@ -326,6 +337,7 @@ public class Canvas extends JPanel {
                 });
 
                 JMenuItem packageBox = new JMenuItem("create package");
+                packageBox.setIcon(LookAndFeel.loadIcon("actions/package.png"));
                 pm.add(packageBox);
                 packageBox.addActionListener(e -> {
                     final PackageBox packageeBox = new PackageBox(
@@ -635,6 +647,11 @@ public class Canvas extends JPanel {
         Point firstDragPoint = null;
         Point lastDragPoint = null;
         Draggable selectedDraggable = null;
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+            mouseDragged(e);
+        }
 
         @Override
         public void mouseDragged(MouseEvent e) {
