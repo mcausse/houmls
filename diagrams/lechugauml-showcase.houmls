@@ -9,7 +9,7 @@ Lechuga UML - Powered with LechugaScript and with bocadillos
     <element>
         <id>UMLState</id>
         <coordinates>
-            <x>1740</x>
+            <x>2420</x>
             <y>-1070</y>
             <w>710</w>
             <h>140</h>
@@ -23,8 +23,8 @@ shadow=5</panel_attributes>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>2600</x>
-            <y>-1030</y>
+            <x>2690</x>
+            <y>790</y>
             <w>70</w>
             <h>70</h>
         </coordinates>
@@ -41,8 +41,8 @@ shadow=0</panel_attributes>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>2610</x>
-            <y>-1020</y>
+            <x>2700</x>
+            <y>800</y>
             <w>50</w>
             <h>50</h>
         </coordinates>
@@ -59,8 +59,8 @@ shadow=0</panel_attributes>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>2590</x>
-            <y>-1040</y>
+            <x>2680</x>
+            <y>780</y>
             <w>90</w>
             <h>90</h>
         </coordinates>
@@ -77,8 +77,8 @@ shadow=0</panel_attributes>
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>2580</x>
-            <y>-1050</y>
+            <x>2670</x>
+            <y>770</y>
             <w>110</w>
             <h>110</h>
         </coordinates>
@@ -2007,7 +2007,7 @@ fontsize=24
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>1800</x>
+            <x>2480</x>
             <y>-1070</y>
             <w>580</w>
             <h>130</h>
@@ -2528,8 +2528,8 @@ paintbackground=false</panel_attributes>
     <element>
         <id>LechugaScriptBox</id>
         <coordinates>
-            <x>2780</x>
-            <y>-1050</y>
+            <x>2870</x>
+            <y>770</y>
             <w>160</w>
             <h>100</h>
         </coordinates>
@@ -2654,8 +2654,8 @@ bg=l-orange
     <element>
         <id>UMLUseCase</id>
         <coordinates>
-            <x>2620</x>
-            <y>-1010</y>
+            <x>2710</x>
+            <y>810</y>
             <w>30</w>
             <h>30</h>
         </coordinates>
@@ -2728,5 +2728,195 @@ shadow=0</panel_attributes>
         <panel_attributes>image=diagrams/img/lechuga-uml.png
 </panel_attributes>
         <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLState</id>
+        <coordinates>
+            <x>1810</x>
+            <y>-1120</y>
+            <w>570</w>
+            <h>190</h>
+        </coordinates>
+        <panel_attributes>.*Components diagram
+--
+fontsize=24
+shadow=5</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>1840</x>
+            <y>-1050</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>
+
+   AccountManagement
+bg=l-orange
+shadow=2
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>LechugaScriptBox</id>
+        <coordinates>
+            <x>1990</x>
+            <y>-1040</y>
+            <w>20</w>
+            <h>30</h>
+        </coordinates>
+        <panel_attributes>
+
+bg=l-orange
+
+(def main-box-division (/ box-width 4))
+
+(*graphics* :setColor box-bg-color)
+(*graphics* :fillRect box-x box-y box-width box-height)
+
+(*graphics* :setColor (field-static :java.awt.Color :WHITE))
+(*graphics* :fillRect 
+   (+ box-x main-box-division) 
+   box-y 
+   (* 3 main-box-division) 
+   box-height)
+(*graphics* :setColor (field-static :java.awt.Color :BLACK))
+(*graphics* :drawRect 
+   (+ box-x main-box-division) 
+   box-y 
+   (* 3 main-box-division) 
+   box-height)
+
+
+(*graphics* :setColor (field-static :java.awt.Color :WHITE))
+(*graphics* :fillRect 
+   box-x
+   (+ box-y main-box-division)
+   (* 2 main-box-division)
+   main-box-division
+)
+(*graphics* :fillRect 
+   box-x
+   (+ box-y (* 3 main-box-division))
+   (* 2 main-box-division)
+   main-box-division
+)
+
+(*graphics* :setColor (field-static :java.awt.Color :BLACK))
+(*graphics* :drawRect 
+   box-x
+   (+ box-y main-box-division)
+   (* 2 main-box-division)
+   main-box-division
+)
+(*graphics* :drawRect 
+   box-x
+   (+ box-y (* 3 main-box-division))
+   (* 2 main-box-division)
+   main-box-division
+)</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>2150</x>
+            <y>-1050</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>
+
+    CreditChecker
+bg=l-orange
+shadow=2
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>LechugaScriptBox</id>
+        <coordinates>
+            <x>2300</x>
+            <y>-1040</y>
+            <w>20</w>
+            <h>30</h>
+        </coordinates>
+        <panel_attributes>
+
+bg=l-orange
+
+(def main-box-division (/ box-width 4))
+
+(*graphics* :setColor box-bg-color)
+(*graphics* :fillRect box-x box-y box-width box-height)
+
+(*graphics* :setColor (field-static :java.awt.Color :WHITE))
+(*graphics* :fillRect 
+   (+ box-x main-box-division) 
+   box-y 
+   (* 3 main-box-division) 
+   box-height)
+(*graphics* :setColor (field-static :java.awt.Color :BLACK))
+(*graphics* :drawRect 
+   (+ box-x main-box-division) 
+   box-y 
+   (* 3 main-box-division) 
+   box-height)
+
+
+(*graphics* :setColor (field-static :java.awt.Color :WHITE))
+(*graphics* :fillRect 
+   box-x
+   (+ box-y main-box-division)
+   (* 2 main-box-division)
+   main-box-division
+)
+(*graphics* :fillRect 
+   box-x
+   (+ box-y (* 3 main-box-division))
+   (* 2 main-box-division)
+   main-box-division
+)
+
+(*graphics* :setColor (field-static :java.awt.Color :BLACK))
+(*graphics* :drawRect 
+   box-x
+   (+ box-y main-box-division)
+   (* 2 main-box-division)
+   main-box-division
+)
+(*graphics* :drawRect 
+   box-x
+   (+ box-y (* 3 main-box-division))
+   (* 2 main-box-division)
+   main-box-division
+)</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>2020</x>
+            <y>-1010</y>
+            <w>60</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=-(
+</panel_attributes>
+        <additional_attributes>0;0;60;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>2090</x>
+            <y>-1010</y>
+            <w>60</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=o-
+</panel_attributes>
+        <additional_attributes>0;0;60;0</additional_attributes>
     </element>
 </diagram>
