@@ -2776,47 +2776,32 @@ bg=l-orange
 (*graphics* :setColor box-bg-color)
 (*graphics* :fillRect box-x box-y box-width box-height)
 
-(*graphics* :setColor (field-static :java.awt.Color :WHITE))
-(*graphics* :fillRect 
+(defn drawRect [x y width height]
+   (*graphics* :setColor (field-static :java.awt.Color :WHITE))
+   (*graphics* :fillRect x y width height)
+   (*graphics* :setColor (field-static :java.awt.Color :BLACK))
+   (*graphics* :drawRect x y width height)
+)
+
+
+(drawRect 
    (+ box-x main-box-division) 
    box-y 
    (* 3 main-box-division) 
    box-height)
-(*graphics* :setColor (field-static :java.awt.Color :BLACK))
-(*graphics* :drawRect 
-   (+ box-x main-box-division) 
-   box-y 
-   (* 3 main-box-division) 
-   box-height)
 
-
-(*graphics* :setColor (field-static :java.awt.Color :WHITE))
-(*graphics* :fillRect 
+(drawRect 
    box-x
    (+ box-y main-box-division)
    (* 2 main-box-division)
-   main-box-division
-)
-(*graphics* :fillRect 
-   box-x
-   (+ box-y (* 3 main-box-division))
-   (* 2 main-box-division)
-   main-box-division
-)
+   main-box-division)
 
-(*graphics* :setColor (field-static :java.awt.Color :BLACK))
-(*graphics* :drawRect 
-   box-x
-   (+ box-y main-box-division)
-   (* 2 main-box-division)
-   main-box-division
-)
-(*graphics* :drawRect 
+(drawRect 
    box-x
    (+ box-y (* 3 main-box-division))
    (* 2 main-box-division)
-   main-box-division
-)</panel_attributes>
+   main-box-division)
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -2852,47 +2837,32 @@ bg=l-orange
 (*graphics* :setColor box-bg-color)
 (*graphics* :fillRect box-x box-y box-width box-height)
 
-(*graphics* :setColor (field-static :java.awt.Color :WHITE))
-(*graphics* :fillRect 
+(defn drawRect [x y width height]
+   (*graphics* :setColor (field-static :java.awt.Color :WHITE))
+   (*graphics* :fillRect x y width height)
+   (*graphics* :setColor (field-static :java.awt.Color :BLACK))
+   (*graphics* :drawRect x y width height)
+)
+
+
+(drawRect 
    (+ box-x main-box-division) 
    box-y 
    (* 3 main-box-division) 
    box-height)
-(*graphics* :setColor (field-static :java.awt.Color :BLACK))
-(*graphics* :drawRect 
-   (+ box-x main-box-division) 
-   box-y 
-   (* 3 main-box-division) 
-   box-height)
 
-
-(*graphics* :setColor (field-static :java.awt.Color :WHITE))
-(*graphics* :fillRect 
+(drawRect 
    box-x
    (+ box-y main-box-division)
    (* 2 main-box-division)
-   main-box-division
-)
-(*graphics* :fillRect 
-   box-x
-   (+ box-y (* 3 main-box-division))
-   (* 2 main-box-division)
-   main-box-division
-)
+   main-box-division)
 
-(*graphics* :setColor (field-static :java.awt.Color :BLACK))
-(*graphics* :drawRect 
-   box-x
-   (+ box-y main-box-division)
-   (* 2 main-box-division)
-   main-box-division
-)
-(*graphics* :drawRect 
+(drawRect 
    box-x
    (+ box-y (* 3 main-box-division))
    (* 2 main-box-division)
-   main-box-division
-)</panel_attributes>
+   main-box-division)
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>

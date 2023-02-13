@@ -32,7 +32,7 @@ public class CanvasPopupMenuBuilder {
         JPopupMenu pm = new JPopupMenu();
 
         if (shapeUnderMouse == null) {
-            JMenuItem createConnector = new JMenuItem("create connector");
+            JMenuItem createConnector = new JMenuItem("+ connector");
             createConnector.setIcon(LookAndFeel.loadIcon("actions/connector.png"));
             pm.add(createConnector);
             createConnector.addActionListener(e -> {
@@ -49,7 +49,7 @@ public class CanvasPopupMenuBuilder {
 
             pm.addSeparator();
 
-            JMenuItem createClass = new JMenuItem("create class");
+            JMenuItem createClass = new JMenuItem("+ class");
             createClass.setIcon(LookAndFeel.loadIcon("actions/class.png"));
             pm.add(createClass);
             createClass.addActionListener(e -> {
@@ -68,7 +68,7 @@ public class CanvasPopupMenuBuilder {
                 canvas.repaint();
                 canvas.pushUndoCheckpoint();
             });
-            JMenuItem createComment = new JMenuItem("create comment");
+            JMenuItem createComment = new JMenuItem("+ comment");
             createComment.setIcon(LookAndFeel.loadIcon("actions/comment.png"));
             pm.add(createComment);
             createComment.addActionListener(e -> {
@@ -83,7 +83,7 @@ public class CanvasPopupMenuBuilder {
                 canvas.repaint();
                 canvas.pushUndoCheckpoint();
             });
-            JMenuItem createRoundedBox = new JMenuItem("create rounded box");
+            JMenuItem createRoundedBox = new JMenuItem("+ rounded box");
             createRoundedBox.setIcon(LookAndFeel.loadIcon("actions/rounded.png"));
             pm.add(createRoundedBox);
             createRoundedBox.addActionListener(e -> {
@@ -97,7 +97,7 @@ public class CanvasPopupMenuBuilder {
                 canvas.repaint();
                 canvas.pushUndoCheckpoint();
             });
-            JMenuItem createEllipse = new JMenuItem("create ellipse");
+            JMenuItem createEllipse = new JMenuItem("+ ellipse");
             createEllipse.setIcon(LookAndFeel.loadIcon("actions/ellipse.png"));
             pm.add(createEllipse);
             createEllipse.addActionListener(e -> {
@@ -114,7 +114,7 @@ public class CanvasPopupMenuBuilder {
                 canvas.repaint();
                 canvas.pushUndoCheckpoint();
             });
-            JMenuItem createTextBox = new JMenuItem("create text box");
+            JMenuItem createTextBox = new JMenuItem("+ text box");
             createTextBox.setIcon(LookAndFeel.loadIcon("actions/text.png"));
             pm.add(createTextBox);
             createTextBox.addActionListener(e -> {
@@ -128,7 +128,7 @@ public class CanvasPopupMenuBuilder {
                 canvas.repaint();
                 canvas.pushUndoCheckpoint();
             });
-            JMenuItem createActor = new JMenuItem("create actor");
+            JMenuItem createActor = new JMenuItem("+ actor");
             createActor.setIcon(LookAndFeel.loadIcon("actions/actor.png"));
             pm.add(createActor);
             createActor.addActionListener(e -> {
@@ -140,7 +140,7 @@ public class CanvasPopupMenuBuilder {
                 canvas.repaint();
                 canvas.pushUndoCheckpoint();
             });
-            JMenuItem createBocadillo = new JMenuItem("create bocadillo");
+            JMenuItem createBocadillo = new JMenuItem("+ bocadillo");
             createBocadillo.setIcon(LookAndFeel.loadIcon("actions/bocadillo.png"));
             pm.add(createBocadillo);
             createBocadillo.addActionListener(e -> {
@@ -161,7 +161,7 @@ public class CanvasPopupMenuBuilder {
                 canvas.pushUndoCheckpoint();
             });
 
-            JMenuItem createTurtleBox = new JMenuItem("create turtle box");
+            JMenuItem createTurtleBox = new JMenuItem("+ turtle box");
             createTurtleBox.setIcon(LookAndFeel.loadIcon("actions/turtle.png"));
             pm.add(createTurtleBox);
             createTurtleBox.addActionListener(e -> {
@@ -184,7 +184,7 @@ public class CanvasPopupMenuBuilder {
                 canvas.pushUndoCheckpoint();
             });
 
-            JMenuItem createLechugaBox = new JMenuItem("create lechuga box");
+            JMenuItem createLechugaBox = new JMenuItem("+ lechuga box");
             createLechugaBox.setIcon(LookAndFeel.loadIcon("actions/lechuga.png"));
             pm.add(createLechugaBox);
             createLechugaBox.addActionListener(e -> {
@@ -202,7 +202,7 @@ public class CanvasPopupMenuBuilder {
                 canvas.pushUndoCheckpoint();
             });
 
-            JMenuItem imageBox = new JMenuItem("create image");
+            JMenuItem imageBox = new JMenuItem("+ image");
             imageBox.setIcon(LookAndFeel.loadIcon("actions/image.png"));
             pm.add(imageBox);
             imageBox.addActionListener(e -> {
@@ -220,7 +220,7 @@ public class CanvasPopupMenuBuilder {
                 canvas.pushUndoCheckpoint();
             });
 
-            JMenuItem packageBox = new JMenuItem("create package");
+            JMenuItem packageBox = new JMenuItem("+ package");
             packageBox.setIcon(LookAndFeel.loadIcon("actions/package.png"));
             pm.add(packageBox);
             packageBox.addActionListener(e -> {
