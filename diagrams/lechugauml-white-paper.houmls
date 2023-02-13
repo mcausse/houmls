@@ -186,7 +186,7 @@ bg=l-orange</panel_attributes>
             <w>110</w>
             <h>0</h>
         </coordinates>
-        <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
+        <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
 m2=2
 </panel_attributes>
         <additional_attributes>0;0;110;0</additional_attributes>
@@ -345,7 +345,7 @@ m2=type</panel_attributes>
             <w>420</w>
             <h>0</h>
         </coordinates>
-        <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
+        <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
 m2=*
 middlePoints         
 </panel_attributes>
@@ -464,7 +464,7 @@ bg=l-orange</panel_attributes>
             <w>160</w>
             <h>0</h>
         </coordinates>
-        <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
+        <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
 m2=*
 shapes
 </panel_attributes>

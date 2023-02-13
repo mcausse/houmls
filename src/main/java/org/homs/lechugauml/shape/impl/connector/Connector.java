@@ -482,7 +482,7 @@ public class Connector implements Shape {
             }
             break;
             case REQUIRED: {
-                var requiredRadiusPx = 6;
+                var requiredRadiusPx = 6 + GridControl.GRID_SIZE / 2;
                 var turtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);
                 turtle.walk(-requiredRadiusPx);
                 Point p = turtle.getPosition();
@@ -496,7 +496,7 @@ public class Connector implements Shape {
             case PROVIDED: {
                 var providedRadiusPx = 6;
                 var turtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);
-                turtle.walk(providedRadiusPx);
+                turtle.walk(providedRadiusPx - GridControl.GRID_SIZE / 2);
                 g.setColor(Color.WHITE);
                 turtle.fillCircle(g, providedRadiusPx);
                 g.setColor(Color.BLACK);

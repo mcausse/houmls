@@ -50,7 +50,7 @@ public class CanvasPopupMenuBuilder {
             pm.addSeparator();
 
             JMenuItem createClass = new JMenuItem("+ class");
-            createClass.setIcon(LookAndFeel.loadIcon("actions/class.png"));
+            createClass.setIcon(LookAndFeel.loadIcon("actions/cclass.png"));
             pm.add(createClass);
             createClass.addActionListener(e -> {
                 canvas.getDiagram().addShape(new Box(
@@ -69,7 +69,7 @@ public class CanvasPopupMenuBuilder {
                 canvas.pushUndoCheckpoint();
             });
             JMenuItem createComment = new JMenuItem("+ comment");
-            createComment.setIcon(LookAndFeel.loadIcon("actions/comment.png"));
+            createComment.setIcon(LookAndFeel.loadIcon("actions/ccomment.png"));
             pm.add(createComment);
             createComment.addActionListener(e -> {
                 canvas.getDiagram().addShape(new Comment(
@@ -83,8 +83,8 @@ public class CanvasPopupMenuBuilder {
                 canvas.repaint();
                 canvas.pushUndoCheckpoint();
             });
-            JMenuItem createRoundedBox = new JMenuItem("+ rounded box");
-            createRoundedBox.setIcon(LookAndFeel.loadIcon("actions/rounded.png"));
+            JMenuItem createRoundedBox = new JMenuItem("+ rounded");
+            createRoundedBox.setIcon(LookAndFeel.loadIcon("actions/crounded.png"));
             pm.add(createRoundedBox);
             createRoundedBox.addActionListener(e -> {
                 canvas.getDiagram().addShape(new RoundedBox(
@@ -98,7 +98,7 @@ public class CanvasPopupMenuBuilder {
                 canvas.pushUndoCheckpoint();
             });
             JMenuItem createEllipse = new JMenuItem("+ ellipse");
-            createEllipse.setIcon(LookAndFeel.loadIcon("actions/ellipse.png"));
+            createEllipse.setIcon(LookAndFeel.loadIcon("actions/cellipse.png"));
             pm.add(createEllipse);
             createEllipse.addActionListener(e -> {
                 canvas.getDiagram().addShape(new Ellipse(
@@ -114,7 +114,7 @@ public class CanvasPopupMenuBuilder {
                 canvas.repaint();
                 canvas.pushUndoCheckpoint();
             });
-            JMenuItem createTextBox = new JMenuItem("+ text box");
+            JMenuItem createTextBox = new JMenuItem("+ text");
             createTextBox.setIcon(LookAndFeel.loadIcon("actions/text.png"));
             pm.add(createTextBox);
             createTextBox.addActionListener(e -> {
@@ -141,7 +141,7 @@ public class CanvasPopupMenuBuilder {
                 canvas.pushUndoCheckpoint();
             });
             JMenuItem createBocadillo = new JMenuItem("+ bocadillo");
-            createBocadillo.setIcon(LookAndFeel.loadIcon("actions/bocadillo.png"));
+            createBocadillo.setIcon(LookAndFeel.loadIcon("actions/cbocadillo.png"));
             pm.add(createBocadillo);
             createBocadillo.addActionListener(e -> {
                 final BocadilloConnector bocadillo = new BocadilloConnector(
@@ -161,7 +161,7 @@ public class CanvasPopupMenuBuilder {
                 canvas.pushUndoCheckpoint();
             });
 
-            JMenuItem createTurtleBox = new JMenuItem("+ turtle box");
+            JMenuItem createTurtleBox = new JMenuItem("+ turtle");
             createTurtleBox.setIcon(LookAndFeel.loadIcon("actions/turtle.png"));
             pm.add(createTurtleBox);
             createTurtleBox.addActionListener(e -> {
@@ -184,8 +184,8 @@ public class CanvasPopupMenuBuilder {
                 canvas.pushUndoCheckpoint();
             });
 
-            JMenuItem createLechugaBox = new JMenuItem("+ lechuga box");
-            createLechugaBox.setIcon(LookAndFeel.loadIcon("actions/lechuga.png"));
+            JMenuItem createLechugaBox = new JMenuItem("+ lechuga");
+            createLechugaBox.setIcon(LookAndFeel.loadIcon("actions/cclechuga.png"));
             pm.add(createLechugaBox);
             createLechugaBox.addActionListener(e -> {
                 final LechugaScriptBox turtleBox = new LechugaScriptBox(
@@ -203,7 +203,7 @@ public class CanvasPopupMenuBuilder {
             });
 
             JMenuItem imageBox = new JMenuItem("+ image");
-            imageBox.setIcon(LookAndFeel.loadIcon("actions/image.png"));
+            imageBox.setIcon(LookAndFeel.loadIcon("actions/cimage.png"));
             pm.add(imageBox);
             imageBox.addActionListener(e -> {
                 final ImageBox turtleBox = new ImageBox(
@@ -221,7 +221,7 @@ public class CanvasPopupMenuBuilder {
             });
 
             JMenuItem packageBox = new JMenuItem("+ package");
-            packageBox.setIcon(LookAndFeel.loadIcon("actions/package.png"));
+            packageBox.setIcon(LookAndFeel.loadIcon("actions/cpackage.png"));
             pm.add(packageBox);
             packageBox.addActionListener(e -> {
                 final PackageBox packageeBox = new PackageBox(
@@ -245,7 +245,7 @@ public class CanvasPopupMenuBuilder {
              */
 
             JMenuItem toFront = new JMenuItem("to front");
-            toFront.setIcon(LookAndFeel.loadIcon("actions/to-front.png"));
+            toFront.setIcon(LookAndFeel.loadIcon("actions/cto-front.png"));
             pm.add(toFront);
             toFront.addActionListener(e -> {
                 canvas.getDiagram().sendToFront(shapeUnderMouse);
@@ -254,7 +254,7 @@ public class CanvasPopupMenuBuilder {
             });
 
             JMenuItem toBack = new JMenuItem("to back");
-            toBack.setIcon(LookAndFeel.loadIcon("actions/to-back.png"));
+            toBack.setIcon(LookAndFeel.loadIcon("actions/cto-back.png"));
             pm.add(toBack);
             toBack.addActionListener(e -> {
                 canvas.getDiagram().sendToBack(shapeUnderMouse);
@@ -265,7 +265,7 @@ public class CanvasPopupMenuBuilder {
             pm.addSeparator();
 
             JMenuItem deleteBox = new JMenuItem("remove");
-            deleteBox.setIcon(LookAndFeel.loadIcon("actions/delete.png"));
+            deleteBox.setIcon(LookAndFeel.loadIcon("actions/cdelete.png"));
             pm.add(deleteBox);
             deleteBox.addActionListener(e -> {
                 canvas.getDiagram().getShapes().removeAll(selectedShapes);
@@ -285,7 +285,7 @@ public class CanvasPopupMenuBuilder {
             pm.addSeparator();
 
             JMenuItem remove = new JMenuItem("remove");
-            remove.setIcon(LookAndFeel.loadIcon("actions/delete.png"));
+            remove.setIcon(LookAndFeel.loadIcon("actions/cdelete.png"));
             pm.add(remove);
             remove.addActionListener(e -> {
                 canvas.getDiagram().getShapes().removeAll(selectedShapes);

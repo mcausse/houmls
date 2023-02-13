@@ -2753,7 +2753,7 @@ shadow=5</panel_attributes>
         </coordinates>
         <panel_attributes>
 
-   AccountManagement
+*   AccountManagement
 bg=l-orange
 shadow=2
 </panel_attributes>
@@ -2814,7 +2814,7 @@ bg=l-orange
         </coordinates>
         <panel_attributes>
 
-    CreditChecker
+*    CreditChecker
 bg=l-orange
 shadow=2
 </panel_attributes>
