@@ -302,7 +302,7 @@ public class CanvasPopupMenuBuilder {
             return;
         }
         JMenuItem createPoint = new JMenuItem("add new point");
-        createPoint.setIcon(LookAndFeel.loadIcon("actions/create-point.png"));
+        createPoint.setIcon(LookAndFeel.loadIcon("actions/ccreate-point.png"));
         pm.add(createPoint);
         createPoint.addActionListener(e -> {
             Connector conn = (Connector) selectedShapes.get(0);
@@ -346,7 +346,7 @@ public class CanvasPopupMenuBuilder {
         }
 
         JMenuItem deletePoint = new JMenuItem("delete point");
-        deletePoint.setIcon(LookAndFeel.loadIcon("actions/delete-point.png"));
+        deletePoint.setIcon(LookAndFeel.loadIcon("actions/cdelete-point.png"));
         pm.add(deletePoint);
         deletePoint.addActionListener(e -> {
             Connector conn = (Connector) selectedShapes.get(0);

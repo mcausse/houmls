@@ -124,7 +124,7 @@ shadow=5</panel_attributes>
         <coordinates>
             <x>850</x>
             <y>-1060</y>
-            <w>300</w>
+            <w>520</w>
             <h>80</h>
         </coordinates>
         <panel_attributes>*Lechuga UML
@@ -2349,7 +2349,7 @@ shadow=5</panel_attributes>
 
 (*graphics* :setColor (field-static :java.awt.Color :BLUE))
 
-(sierpinski 6 
+(sierpinski 5 
    (to-double p1x) (to-double p1y) 
    (to-double p2x) (to-double p2y) 
    (to-double p3x) (to-double p3y))
@@ -2393,7 +2393,7 @@ shadow=5</panel_attributes>
 (*turtle* :jump box-height)
 (*turtle* :rotate -90)
 
-(sierpinski box-width 6)
+(sierpinski box-width 5)
 (*turtle* :fillPolygon *graphics*)
 
 </panel_attributes>

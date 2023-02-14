@@ -7,7 +7,6 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
-import java.io.IOException;
 import java.util.Map;
 
 /**
@@ -47,8 +46,9 @@ public class ImageBox extends Box {
             try {
                 var imageIcon = new ImageIcon(ImageIO.read(new File(imageFile)));
                 this.image = imageIcon.getImage();
-            } catch (IOException e) {
-                e.printStackTrace();
+            } catch (Exception e) {
+                var e2 = new RuntimeException("trying to load: '" + imageFile + "'", e);
+                e2.printStackTrace();
             }
 
 //            BufferedImage img = null;

@@ -182,12 +182,12 @@ bg=l-orange</panel_attributes>
         <id>Relation</id>
         <coordinates>
             <x>430</x>
-            <y>160</y>
+            <y>140</y>
             <w>110</w>
             <h>0</h>
         </coordinates>
-        <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
-m2=2
+        <panel_attributes>lt=-&gt;
+startPoint
 </panel_attributes>
         <additional_attributes>0;0;110;0</additional_attributes>
     </element>
@@ -312,7 +312,7 @@ bg=l-orange</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>850</x>
+            <x>910</x>
             <y>-110</y>
             <w>180</w>
             <h>80</h>
@@ -330,31 +330,31 @@ bg=l-orange</panel_attributes>
         <coordinates>
             <x>720</x>
             <y>-70</y>
-            <w>130</w>
+            <w>190</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>lt=-&gt;
-m2=type</panel_attributes>
-        <additional_attributes>0;80;0;0;130;0</additional_attributes>
+        <panel_attributes>lt=&lt;-
+type</panel_attributes>
+        <additional_attributes>190;0;0;0;0;80</additional_attributes>
     </element>
     <element>
         <id>Relation</id>
         <coordinates>
             <x>430</x>
             <y>290</y>
-            <w>420</w>
+            <w>490</w>
             <h>0</h>
         </coordinates>
         <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
 m2=*
 middlePoints         
 </panel_attributes>
-        <additional_attributes>0;0;420;0</additional_attributes>
+        <additional_attributes>0;0;490;0</additional_attributes>
     </element>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>850</x>
+            <x>920</x>
             <y>250</y>
             <w>180</w>
             <h>80</h>
@@ -369,7 +369,7 @@ bg=l-orange</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>850</x>
+            <x>920</x>
             <y>120</y>
             <w>180</w>
             <h>80</h>
@@ -384,7 +384,7 @@ bg=l-orange</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>940</x>
+            <x>1010</x>
             <y>200</y>
             <w>0</w>
             <h>50</h>
@@ -619,7 +619,7 @@ bg=l-l-yellow</panel_attributes>
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>850</x>
+            <x>910</x>
             <y>-340</y>
             <w>180</w>
             <h>190</h>
@@ -650,7 +650,7 @@ fontsize=9</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>940</x>
+            <x>1000</x>
             <y>-150</y>
             <w>0</w>
             <h>40</h>
@@ -688,14 +688,13 @@ bg=l-orange</panel_attributes>
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>-670</x>
+            <x>-760</x>
             <y>-520</y>
-            <w>660</w>
+            <w>490</w>
             <h>120</h>
         </coordinates>
-        <panel_attributes>.*Lechuga UML - Data Model
---
-`  org.homs.lechugauml.shape    
+        <panel_attributes>*Lechuga UML - Data Model
+-- 
 
 fontsize=38
 </panel_attributes>
@@ -704,8 +703,8 @@ fontsize=38
     <element>
         <id>UMLPackage</id>
         <coordinates>
-            <x>-670</x>
-            <y>-460</y>
+            <x>-850</x>
+            <y>-440</y>
             <w>40</w>
             <h>40</h>
         </coordinates>
@@ -714,5 +713,32 @@ fontsize=38
 bg=l-l-green
 fontsize=8</panel_attributes>
         <additional_attributes/>
+    </element>
+    <element>
+        <id>FloatingText</id>
+        <coordinates>
+            <x>-800</x>
+            <y>-450</y>
+            <w>590</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>`org.homs.lechugauml.shape    
+
+fontsize=38
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>430</x>
+            <y>180</y>
+            <w>110</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+endPoint
+</panel_attributes>
+        <additional_attributes>0;0;110;0</additional_attributes>
     </element>
 </diagram>
