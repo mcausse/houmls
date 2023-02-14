@@ -107,6 +107,7 @@ public class MainC2 {
         // TODO
         createNewDiagramTab(currentDiagramOnChangeFileNameListener, tabbedPane);
         loadDiagramIntoNewTab(new File("diagrams/lechugauml-showcase.houmls"), currentDiagramOnChangeFileNameListener, tabbedPane);
+        loadDiagramIntoNewTab(new File("diagrams/lechugauml-white-paper.houmls"), currentDiagramOnChangeFileNameListener, tabbedPane);
     }
 
     static class DiagramTab extends JSplitPane {
@@ -168,11 +169,21 @@ public class MainC2 {
         shapeTextEditor.addKeyListener(canvas.getOffsetAndZoomListener());
         diagramTab.addKeyListener(canvas.getOffsetAndZoomListener());
 
+        lateralBar.addKeyListener(canvas.getKeyboardListener());
+//        shapeTextEditor.addKeyListener(canvas.getKeyboardListener());
+        diagramTab.addKeyListener(canvas.getKeyboardListener());
+
         return diagramTab;
     }
 
     static JToolBar buildToolBar(JFrame frame, JTabbedPane tabbedPane, Consumer<String> currentDiagramFileNameConsumer) {
         JToolBar toolBar = new JToolBar();
+//        toolBar.addFocusListener(new FocusAdapter(){
+//            @Override
+//            public void focusGained(FocusEvent e) {
+//                tabbedPane.requestFocus();
+//            }
+//        });
         toolBar.setFloatable(false);
 
         {

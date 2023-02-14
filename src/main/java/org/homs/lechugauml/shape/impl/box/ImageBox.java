@@ -26,7 +26,10 @@ public class ImageBox extends Box {
     @Override
     public void setAttributesText(String attributesText) {
         super.setAttributesText(attributesText);
+
         Map<String, String> props = PropsParser.parseProperties(attributesText);
+        paintBackground = Boolean.parseBoolean(props.getOrDefault("paintbackground", "false"));
+
         if (props.containsKey("image")) {
             var imageFile = props.get("image");
 //            try {

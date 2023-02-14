@@ -180,6 +180,102 @@ public class Canvas extends JPanel {
 
     final OffsetAndZoomListener offsetAndZoomListener;
 
+    public OffsetAndZoomListener getOffsetAndZoomListener() {
+        return offsetAndZoomListener;
+    }
+
+    final KeyboardListener keyboardListener;
+
+    public KeyboardListener getKeyboardListener() {
+        return keyboardListener;
+    }
+
+    class KeyboardListener extends KeyAdapter {
+
+        final int CONTROL_AMOUNT = 10;
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+//            System.out.println(e.getKeyCode());
+            boolean controlPressed = e.isControlDown();
+
+            if (isArrowPressed(e.getKeyCode())) {
+                handleArrowPressed(e.getKeyCode(), controlPressed);
+                repaint();
+            } else if (isSuprimirPressed(e.getKeyCode()) && !selectedShapes.isEmpty()) {
+                handleSuprimirSelection();
+                repaint();
+            }
+        }
+
+        boolean isSuprimirPressed(int keyCode) {
+            return keyCode == 127;
+        }
+
+        void handleSuprimirSelection() {
+            for (var shape : selectedShapes) {
+                diagram.getShapes().remove(shape);
+            }
+            pushUndoCheckpoint();
+        }
+
+        boolean isArrowPressed(int keyCode) {
+            return keyCode >= 37 && keyCode <= 40;
+        }
+
+        void handleArrowPressed(int keyCode, boolean controlPressed) {
+            int ax = 0;
+            int ay = 0;
+            switch (keyCode) {
+                /* left */
+                case 37:
+                    if (controlPressed) {
+                        ax += GridControl.GRID_SIZE * CONTROL_AMOUNT;
+                    } else {
+                        ax += GridControl.GRID_SIZE;
+                    }
+                    break;
+                /* up */
+                case 38:
+                    if (controlPressed) {
+                        ay += GridControl.GRID_SIZE * CONTROL_AMOUNT;
+                    } else {
+                        ay += GridControl.GRID_SIZE;
+                    }
+                    break;
+                /* right */
+                case 39:
+                    if (controlPressed) {
+                        ax -= GridControl.GRID_SIZE * CONTROL_AMOUNT;
+                    } else {
+                        ax -= GridControl.GRID_SIZE;
+                    }
+                    break;
+                /* down */
+                case 40:
+                    if (controlPressed) {
+                        ay -= GridControl.GRID_SIZE * CONTROL_AMOUNT;
+                    } else {
+                        ay -= GridControl.GRID_SIZE;
+                    }
+                    break;
+            }
+
+            if (selectedShapes.isEmpty()) {
+                // MOU TOT EL DIAGRAMA EN FUNCIÓ DE (ax, ay)
+                diagram.offsetX += ax / diagram.zoom;
+                diagram.offsetY += ay / diagram.zoom;
+            } else {
+                // MOU LO SELECTED EN FUNCIÓ DE (ax, ay)
+                for (var shape : selectedShapes) {
+                    shape.translate(getDiagram(), -ax, -ay);
+                }
+            }
+
+            pushUndoCheckpoint();
+        }
+    }
+
     class OffsetAndZoomListener extends KeyAdapter implements MouseWheelListener {
 
         static final int MOUSE_WHEEL_ROTATION_PX_AMOUNT = 75;
@@ -214,7 +310,7 @@ public class Canvas extends JPanel {
 
                 if (controlPressed && (e.getKeyCode() == 'c' || e.getKeyCode() == 'C' || e.getKeyCode() == 'x' || e.getKeyCode() == 'X')) {
 
-                    // ^C - copy selection
+                    // ^C - copy selection / ^X - cut selection
                     if (!selectedShapes.isEmpty()) {
                         shapesClipboard.clear();
                         Rectangle rect = null;
@@ -437,6 +533,9 @@ public class Canvas extends JPanel {
         addMouseWheelListener(offsetAndZoomListener);
         addKeyListener(offsetAndZoomListener);
 
+        this.keyboardListener = new KeyboardListener();
+        addKeyListener(keyboardListener);
+
         var draggablesListener = new DraggablesListener();
         addMouseListener(draggablesListener);
         addMouseMotionListener(draggablesListener);
@@ -447,10 +546,6 @@ public class Canvas extends JPanel {
 
     public void addShape(Shape shape) {
         this.diagram.addShape(shape);
-    }
-
-    public OffsetAndZoomListener getOffsetAndZoomListener() {
-        return offsetAndZoomListener;
     }
 
     public void centerDiagram() {
@@ -482,6 +577,8 @@ public class Canvas extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
+
+//        long t1 = System.currentTimeMillis();
 
         Dimension dim = getSize();
         g.setColor(Color.WHITE);
@@ -527,6 +624,10 @@ public class Canvas extends JPanel {
             g2.setStroke(LookAndFeel.MULTI_SELECTION_STROKE);
             g2.drawRect(selectionBoxRectangle.x, selectionBoxRectangle.y, selectionBoxRectangle.width, selectionBoxRectangle.height);
         }
+
+//        long tperiod =  System.currentTimeMillis()-t1;
+//        double fps = 1000.0/(tperiod);
+//        System.out.println(tperiod+"ms/frame => "+fps);
     }
 
     void drawGrid(Graphics g) {

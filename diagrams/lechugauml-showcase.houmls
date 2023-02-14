@@ -97,7 +97,7 @@ shadow=0</panel_attributes>
         <coordinates>
             <x>710</x>
             <y>-900</y>
-            <w>600</w>
+            <w>710</w>
             <h>440</h>
         </coordinates>
         <panel_attributes>.*Package diagram
@@ -124,7 +124,7 @@ shadow=5</panel_attributes>
         <coordinates>
             <x>850</x>
             <y>-1060</y>
-            <w>520</w>
+            <w>300</w>
             <h>80</h>
         </coordinates>
         <panel_attributes>*Lechuga UML
@@ -191,9 +191,9 @@ shadow=5</panel_attributes>
     <element>
         <id>UMLState</id>
         <coordinates>
-            <x>1410</x>
+            <x>1420</x>
             <y>-430</y>
-            <w>600</w>
+            <w>590</w>
             <h>370</h>
         </coordinates>
         <panel_attributes>.*Generic classes
@@ -900,14 +900,14 @@ bg=#cfffcf</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>1570</x>
+            <x>1580</x>
             <y>-280</y>
-            <w>60</w>
+            <w>50</w>
             <h>0</h>
         </coordinates>
         <panel_attributes>lt=-&gt;
 </panel_attributes>
-        <additional_attributes>0;0;60;0</additional_attributes>
+        <additional_attributes>0;0;50;0</additional_attributes>
     </element>
     <element>
         <id>UMLClass</id>
@@ -2014,7 +2014,7 @@ fontsize=24
         </coordinates>
         <panel_attributes>&#128034;♖♕♣&#128077;&#128076;
 fontsize=100
-</panel_attributes>
+paintbackground=false</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -2179,9 +2179,9 @@ shadow=5</panel_attributes>
     <element>
         <id>UMLState</id>
         <coordinates>
-            <x>1340</x>
+            <x>1450</x>
             <y>-900</y>
-            <w>1780</w>
+            <w>1670</w>
             <h>440</h>
         </coordinates>
         <panel_attributes>.*Koch snowflake
@@ -2195,9 +2195,9 @@ shadow=5</panel_attributes>
     <element>
         <id>LechugaScriptBox</id>
         <coordinates>
-            <x>1370</x>
+            <x>1480</x>
             <y>-780</y>
-            <w>1180</w>
+            <w>990</w>
             <h>300</h>
         </coordinates>
         <panel_attributes>bg=yellow
@@ -2219,7 +2219,7 @@ shadow=5</panel_attributes>
             (*turtle* :rotate angle)
             (koch (/ size 3) (- n 1)))))))
 
-(koch box-width 5)
+(koch box-width 4)
 
 (*graphics* :setColor (field-static :java.awt.Color :ORANGE))
 (*turtle* :fillPolygon *graphics*)
@@ -2232,7 +2232,7 @@ shadow=5</panel_attributes>
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>2580</x>
+            <x>2550</x>
             <y>-740</y>
             <w>500</w>
             <h>230</h>
@@ -2349,7 +2349,7 @@ shadow=5</panel_attributes>
 
 (*graphics* :setColor (field-static :java.awt.Color :BLUE))
 
-(sierpinski 5 
+(sierpinski 4 
    (to-double p1x) (to-double p1y) 
    (to-double p2x) (to-double p2y) 
    (to-double p3x) (to-double p3y))
@@ -2393,7 +2393,7 @@ shadow=5</panel_attributes>
 (*turtle* :jump box-height)
 (*turtle* :rotate -90)
 
-(sierpinski box-width 5)
+(sierpinski box-width 4)
 (*turtle* :fillPolygon *graphics*)
 
 </panel_attributes>
@@ -2573,7 +2573,7 @@ paintbackground=false</panel_attributes>
     <element>
         <id>UMLPackage</id>
         <coordinates>
-            <x>920</x>
+            <x>980</x>
             <y>-790</y>
             <w>180</w>
             <h>80</h>
@@ -2581,13 +2581,13 @@ paintbackground=false</panel_attributes>
         <panel_attributes>Track Order
 --
 bg=l-orange
-</panel_attributes>
+shadow=3</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLPackage</id>
         <coordinates>
-            <x>800</x>
+            <x>860</x>
             <y>-620</y>
             <w>180</w>
             <h>80</h>
@@ -2595,13 +2595,13 @@ bg=l-orange
         <panel_attributes>Order Processing
 --
 bg=l-orange
-</panel_attributes>
+shadow=3</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLPackage</id>
         <coordinates>
-            <x>1040</x>
+            <x>1100</x>
             <y>-620</y>
             <w>180</w>
             <h>80</h>
@@ -2609,13 +2609,13 @@ bg=l-orange
         <panel_attributes>Shipping
 --
 bg=l-orange
-</panel_attributes>
+shadow=3</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>1070</x>
+            <x>1130</x>
             <y>-710</y>
             <w>0</w>
             <h>90</h>
@@ -2628,7 +2628,7 @@ bg=l-orange
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>940</x>
+            <x>1000</x>
             <y>-710</y>
             <w>0</w>
             <h>110</h>
@@ -2641,7 +2641,7 @@ bg=l-orange
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>850</x>
+            <x>910</x>
             <y>-750</y>
             <w>70</w>
             <h>130</h>
@@ -2734,7 +2734,7 @@ shadow=5</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>1840</x>
+            <x>1850</x>
             <y>-1050</y>
             <w>180</w>
             <h>80</h>
@@ -2795,7 +2795,7 @@ bg=l-orange
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>2150</x>
+            <x>2160</x>
             <y>-1050</y>
             <w>180</w>
             <h>80</h>
@@ -2856,7 +2856,7 @@ bg=l-orange
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>2020</x>
+            <x>2030</x>
             <y>-1010</y>
             <w>60</w>
             <h>0</h>
@@ -2868,7 +2868,7 @@ bg=l-orange
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>2090</x>
+            <x>2100</x>
             <y>-1010</y>
             <w>60</w>
             <h>0</h>
@@ -2887,6 +2887,8 @@ bg=l-orange
         </coordinates>
         <panel_attributes>bg=green
 fontsize=24
+paintbackground=true
+bg=GREEN
 </panel_attributes>
         <additional_attributes/>
     </element>
@@ -2917,6 +2919,8 @@ fontsize=6</panel_attributes>
         </coordinates>
         <panel_attributes>bg=green
 fontsize=24
+paintbackground=true
+bg=GREEN
 </panel_attributes>
         <additional_attributes/>
     </element>
@@ -2928,7 +2932,7 @@ fontsize=24
             <w>40</w>
             <h>40</h>
         </coordinates>
-        <panel_attributes>     
+        <panel_attributes>       
 --
 bg=white
 fontsize=6
@@ -2946,6 +2950,8 @@ shadowcolor=black</panel_attributes>
         </coordinates>
         <panel_attributes>bg=green
 fontsize=24
+paintbackground=true
+bg=GREEN
 </panel_attributes>
         <additional_attributes/>
     </element>
@@ -2964,6 +2970,21 @@ bg=white
 shadow=3
 shadowcolor=black
 fontsize=6</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>ImageBox</id>
+        <coordinates>
+            <x>1550</x>
+            <y>-1000</y>
+            <w>70</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>image=C:\java\workospace\martin-uml\src\main\resources\org\homs\lechugauml\actions\cclechuga.png
+org\homs\lechugauml\actions\cclechuga.png
+paintbackground=false
+bg=green
+</panel_attributes>
         <additional_attributes/>
     </element>
 </diagram>
