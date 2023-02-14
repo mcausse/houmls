@@ -12,7 +12,7 @@ import java.awt.*;
 import java.awt.geom.Point2D;
 import java.util.List;
 
-import static org.homs.lechugauml.LookAndFeel.DEFAULT_BOXES_SHADOW_WIDTH;
+import static org.homs.lechugauml.LookAndFeel.DEFAULT_SHADOW_WIDTH;
 import static org.homs.lechugauml.shape.impl.connector.Connector.SELECTION_BOX_SIZE;
 
 /**
@@ -63,7 +63,7 @@ public class CanvasPopupMenuBuilder {
                                 "--\n" +
                                 "--\n" +
                                 "bg=l-orange\n" +
-                                "shadow=" + DEFAULT_BOXES_SHADOW_WIDTH + "\n"
+                                "shadow=" + DEFAULT_SHADOW_WIDTH + "\n"
                 ));
                 canvas.repaint();
                 canvas.pushUndoCheckpoint();

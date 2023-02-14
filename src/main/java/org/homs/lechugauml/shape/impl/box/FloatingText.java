@@ -13,6 +13,8 @@ public class FloatingText extends Box {
 
     public FloatingText(int x, int y, int width, int height, String attributesText) {
         super(x, y, width, height, attributesText);
+        paintBackground = false;
+        setAttributesText(attributesText);
     }
 
     @Override
@@ -23,6 +25,11 @@ public class FloatingText extends Box {
     }
 
     protected void drawTheBox(Graphics2D g2) {
-        // just overrides this method, with nothing to do here
+
+        if (paintBackground) {
+            g2.setColor(backgroundColor);
+            g2.fillRect((int) x, (int) y, (int) width, (int) height);
+        }
     }
+
 }

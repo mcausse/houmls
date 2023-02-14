@@ -39,6 +39,7 @@ public class Box implements Shape {
      * if 0 => no shadow
      */
     int shadowWidth = 0;
+    Color shadowColor = DEFAULT_SHADOW_COLOR;
 
     public Box(int x, int y, int width, int height, String attributesText) {
         this.x = x;
@@ -81,7 +82,8 @@ public class Box implements Shape {
             //
         }
 
-        var shadowString = props.getOrDefault("shadow", DEFAULT_BOXES_SHADOW_WIDTH);
+        var shadowString = props.getOrDefault("shadow", DEFAULT_SHADOW_WIDTH);
+        this.shadowColor = PropsParser.getColorByProp(props, "shadowcolor", DEFAULT_SHADOW_COLOR);
         try {
             this.shadowWidth = Integer.parseInt(shadowString);
         } catch (NumberFormatException e) {
@@ -176,7 +178,7 @@ public class Box implements Shape {
          * PINTA OMBRA DE LA CAIXA
          */
         if (this.shadowWidth > 0) {
-            g2.setColor(BOXES_SHADOW_COLOR);
+            g2.setColor(shadowColor);
             if (this.shadowWidth == 1) {
                 g2.drawLine(ix + iwidth + 1, iy + 1, ix + iwidth + 1, iy + iheight + 1);
                 g2.drawLine(ix + 1, iy + iheight + 1, ix + iwidth + 1, iy + iheight + 1);

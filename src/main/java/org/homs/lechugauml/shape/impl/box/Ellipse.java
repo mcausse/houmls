@@ -6,8 +6,6 @@ import org.homs.lechugauml.shape.Shape;
 import java.awt.*;
 import java.util.Map;
 
-import static org.homs.lechugauml.LookAndFeel.BOXES_SHADOW_COLOR;
-
 /**
  * Lechuga UML - Powered with LechugaScript and with bocadillos
  *
@@ -56,7 +54,7 @@ public class Ellipse extends Box {
          * PINTA OMBRA
          */
         if (this.shadowWidth > 0) {
-            g2.setColor(BOXES_SHADOW_COLOR);
+            g2.setColor(shadowColor);
             g2.fillOval(ix + this.shadowWidth, iy + this.shadowWidth, iwidth, iheight);
         }
 

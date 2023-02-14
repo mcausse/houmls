@@ -52,7 +52,17 @@ public class PackageBox extends Box {
             if (packageWidth < lineWidth) {
                 packageWidth = lineWidth;
             }
-            packageHeight += fontHeight; //+FONT_Y_CORRECTION;
+            packageHeight += fontHeight;
+        }
+
+        /*
+         * PINTA OMBRA
+         */
+        if (shadowWidth > 0) {
+            g2.setColor(shadowColor);
+            g2.fillRect(ix + packageWidth, iy + shadowWidth, shadowWidth, packageHeight);
+            g2.fillRect(ix + iwidth, iy + shadowWidth + packageHeight, shadowWidth, iheight - packageHeight);
+            g2.fillRect(ix + shadowWidth, iy + iheight, iwidth, shadowWidth);
         }
 
         if (paintBackground) {

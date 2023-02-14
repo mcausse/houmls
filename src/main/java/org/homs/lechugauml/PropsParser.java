@@ -37,6 +37,14 @@ public class PropsParser {
         return r;
     }
 
+    public static Color getColorByProp(Map<String, String> props, String propName, Color defaultColor) {
+        if (!props.containsKey(propName)) {
+            return defaultColor;
+        }
+        var propValue = props.get(propName);
+        return getColorByName(propValue);
+    }
+
     public static Color getColorByProp(Map<String, String> props, String propName, String defaultColorName) {
         var propValue = props.getOrDefault(propName, defaultColorName);
         return getColorByName(propValue);

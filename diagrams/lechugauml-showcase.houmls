@@ -2718,18 +2718,6 @@ shadow=0</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>ImageBox</id>
-        <coordinates>
-            <x>740</x>
-            <y>-1050</y>
-            <w>90</w>
-            <h>90</h>
-        </coordinates>
-        <panel_attributes>image=diagrams/img/lechuga-uml.png
-</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
         <id>UMLState</id>
         <coordinates>
             <x>1810</x>
@@ -2888,5 +2876,94 @@ bg=l-orange
         <panel_attributes>lt=o-
 </panel_attributes>
         <additional_attributes>0;0;60;0</additional_attributes>
+    </element>
+    <element>
+        <id>FloatingText</id>
+        <coordinates>
+            <x>1630</x>
+            <y>-1000</y>
+            <w>60</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>bg=green
+fontsize=24
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>1640</x>
+            <y>-990</y>
+            <w>40</w>
+            <h>40</h>
+        </coordinates>
+        <panel_attributes>
+--
+--
+bg=white
+shadow=3
+shadowcolor=black
+fontsize=6</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>FloatingText</id>
+        <coordinates>
+            <x>1710</x>
+            <y>-1000</y>
+            <w>60</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>bg=green
+fontsize=24
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLPackage</id>
+        <coordinates>
+            <x>1720</x>
+            <y>-990</y>
+            <w>40</w>
+            <h>40</h>
+        </coordinates>
+        <panel_attributes>     
+--
+bg=white
+fontsize=6
+shadow=3
+shadowcolor=black</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>FloatingText</id>
+        <coordinates>
+            <x>770</x>
+            <y>-1030</y>
+            <w>60</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>bg=green
+fontsize=24
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>780</x>
+            <y>-1020</y>
+            <w>40</w>
+            <h>40</h>
+        </coordinates>
+        <panel_attributes>
+--
+--
+bg=white
+shadow=3
+shadowcolor=black
+fontsize=6</panel_attributes>
+        <additional_attributes/>
     </element>
 </diagram>
