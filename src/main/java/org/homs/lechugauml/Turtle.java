@@ -141,6 +141,16 @@ public class Turtle {
             g.fillPolygon(xsa, ysa, xs.size());
         }
 
+        public void fillShadow(Graphics g) {
+            int[] xsa = new int[xs.size()];
+            int[] ysa = new int[xs.size()];
+            for (int i = 0; i < xs.size(); i++) {
+                xsa[i] = 2 + (int) Math.round(xs.get(i));
+                ysa[i] = 2 + (int) Math.round(ys.get(i));
+            }
+            g.fillPolygon(xsa, ysa, xs.size());
+        }
+
         public void draw(Graphics g) {
             int[] xsa = new int[xs.size()];
             int[] ysa = new int[xs.size()];

@@ -193,7 +193,16 @@ public class CanvasPopupMenuBuilder {
                         GridControl.engrid(mousePos.getY()),
                         GridControl.engrid(18 * GridControl.GRID_SIZE),
                         GridControl.engrid(8 * GridControl.GRID_SIZE),
-                        "((field-static :java.lang.System :out) :print :jou)\n" +
+                        ";;; \n" +
+                                ";;; \n" +
+                                ";;; <component description>\n" +
+                                ";;; \n" +
+                                ";;; \n" +
+                                ";\n" +
+                                "; variables: *turtle* *graphics* box-x box-y box-width box-height box-bg-color box-font-size\n" +
+                                ";" +
+                                "" +
+                                "((field-static :java.lang.System :out) :print :jou)\n" +
                                 "bg=green\n" +
                                 "paintbackground=true\n"
                 );

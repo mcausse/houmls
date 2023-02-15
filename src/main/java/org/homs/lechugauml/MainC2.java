@@ -24,6 +24,7 @@ import static org.homs.lechugauml.LookAndFeel.yellowMartin;
  *
  * @author mohms
  */
+// TODO limit undo levels!
 public class MainC2 {
 
     public static final String FRAME_TITLE = "Lechuga UML  0.0.2   (╯°o°）╯︵ ┻━┻  -- ";

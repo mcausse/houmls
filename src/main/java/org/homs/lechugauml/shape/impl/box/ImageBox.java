@@ -7,6 +7,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
@@ -16,6 +17,28 @@ import java.util.Map;
  */
 public class ImageBox extends Box {
 
+    static class ImagesCache {
+        final Map<String, Image> images = new LinkedHashMap<>();
+
+        public Image getImage(String imageFile) {
+            if (images.containsKey(imageFile)) {
+                return images.get(imageFile);
+            }
+
+            try {
+                var imageIcon = new ImageIcon(ImageIO.read(new File(imageFile)));
+                var image = imageIcon.getImage();
+                images.put(imageFile, image);
+                return image;
+            } catch (Exception e) {
+                var e2 = new RuntimeException("trying to load: '" + imageFile + "'", e);
+                e2.printStackTrace();
+                return null;
+            }
+        }
+    }
+
+    final static ImagesCache imagesCache = new ImagesCache();
     Image image = null;
 
     public ImageBox(int x, int y, int width, int height, String attributesText) {
@@ -32,47 +55,16 @@ public class ImageBox extends Box {
 
         if (props.containsKey("image")) {
             var imageFile = props.get("image");
+
+
 //            try {
-//                BufferedImage img = ImageIO.read(new File(imageFile));
-//                this.image=image;
-//            } catch (IOException e) {
-//                e.printStackTrace();
+//                var imageIcon = new ImageIcon(ImageIO.read(new File(imageFile)));
+//                this.image = imageIcon.getImage();
+//            } catch (Exception e) {
+//                var e2 = new RuntimeException("trying to load: '" + imageFile + "'", e);
+//                e2.printStackTrace();
 //            }
-
-//            ImageIcon imageIcon = new ImageIcon(imageFile);
-//            Image tmpImage = imageIcon.getImage();
-//            BufferedImage img = new BufferedImage(imageIcon.getIconWidth(), imageIcon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
-//            img.getGraphics().drawImage(tmpImage, 0, 0, null);
-//            tmpImage.flush();
-//            this.image = img;
-
-            try {
-                var imageIcon = new ImageIcon(ImageIO.read(new File(imageFile)));
-                this.image = imageIcon.getImage();
-            } catch (Exception e) {
-                var e2 = new RuntimeException("trying to load: '" + imageFile + "'", e);
-                e2.printStackTrace();
-            }
-
-//            BufferedImage img = null;
-//            try {
-//                img = ImageIO.read(new File(imageFile));
-//            } catch (IOException e) {
-//                e.printStackTrace();
-//            }
-//            int w = img.getWidth(null);
-//            int h = img.getHeight(null);
-//            BufferedImage bi = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-//            Graphics g = bi.getGraphics();
-//            g.drawImage(img, 0, 0, null);
-//
-//            this.image=bi;
-
-//            Image image = Toolkit.getDefaultToolkit().getImage(new File(imageFile).getAbsolutePath());
-
-
-//            Image image = Toolkit.getDefaultToolkit().createImage(new File(imageFile).getAbsolutePath());
-//            this.image=image;
+            this.image = imagesCache.getImage(imageFile);
         }
     }
 
