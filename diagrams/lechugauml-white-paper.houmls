@@ -422,8 +422,8 @@ bg=l-orange</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>-670</x>
-            <y>-260</y>
+            <x>-860</x>
+            <y>-700</y>
             <w>490</w>
             <h>360</h>
         </coordinates>
@@ -459,16 +459,16 @@ bg=l-orange</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>-180</x>
-            <y>-90</y>
-            <w>160</w>
-            <h>0</h>
+            <x>-400</x>
+            <y>-340</y>
+            <w>380</w>
+            <h>190</h>
         </coordinates>
         <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
 m2=*
-shapes
+                       shapes
 </panel_attributes>
-        <additional_attributes>0;0;160;0</additional_attributes>
+        <additional_attributes>0;0;0;190;380;190</additional_attributes>
     </element>
     <element>
         <id>UMLClass</id>
@@ -512,8 +512,8 @@ m2=*
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>-590</x>
-            <y>150</y>
+            <x>-780</x>
+            <y>-290</y>
             <w>180</w>
             <h>60</h>
         </coordinates>
@@ -526,8 +526,8 @@ bg=l-l-yellow</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>-498</x>
-            <y>79</y>
+            <x>-688</x>
+            <y>-361</y>
             <w>0</w>
             <h>71</h>
         </coordinates>
@@ -593,8 +593,8 @@ bg=l-l-yellow</panel_attributes>
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>-430</x>
-            <y>-330</y>
+            <x>-620</x>
+            <y>-770</y>
             <w>180</w>
             <h>50</h>
         </coordinates>
@@ -607,8 +607,8 @@ bg=l-l-yellow</panel_attributes>
     <element>
         <id>Bocadillo</id>
         <coordinates>
-            <x>-380</x>
-            <y>-280</y>
+            <x>-570</x>
+            <y>-720</y>
             <w>30</w>
             <h>0</h>
         </coordinates>
@@ -688,8 +688,8 @@ bg=l-orange</panel_attributes>
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>-760</x>
-            <y>-520</y>
+            <x>-1450</x>
+            <y>-700</y>
             <w>490</w>
             <h>120</h>
         </coordinates>
@@ -703,8 +703,8 @@ fontsize=38
     <element>
         <id>UMLPackage</id>
         <coordinates>
-            <x>-850</x>
-            <y>-440</y>
+            <x>-1470</x>
+            <y>-620</y>
             <w>40</w>
             <h>40</h>
         </coordinates>
@@ -719,12 +719,12 @@ shadow=3
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>-800</x>
-            <y>-450</y>
-            <w>590</w>
+            <x>-1420</x>
+            <y>-630</y>
+            <w>460</w>
             <h>60</h>
         </coordinates>
-        <panel_attributes>`org.homs.lechugauml.shape    
+        <panel_attributes>`org.homs.lechugauml    
 
 fontsize=38
 </panel_attributes>
@@ -742,5 +742,399 @@ fontsize=38
 endPoint
 </panel_attributes>
         <additional_attributes>0;0;110;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>-860</x>
+            <y>-110</y>
+            <w>490</w>
+            <h>500</h>
+        </coordinates>
+        <panel_attributes>.*Canvas
+--
+int mouseCurrentPosX;
+int mouseCurrentPosY;
+--
+void addShape(Shape shape)
+void fitZoomToWindow()
+void drawGrid(Graphics g)
+AffineTransform getAffineTransform()
+void paintComponent(Graphics g)
+Draggable findDraggableByMousePosition(int posx, int posy)
+Shape findShapeByMousePosition(int posx, int posy)
+Optional&lt;String&gt; getDiagramName()
+
+
+bg=l-orange</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>-370</x>
+            <y>-100</y>
+            <w>350</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+m2=*
+selectedShapes
+</panel_attributes>
+        <additional_attributes>0;0;350;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>-370</x>
+            <y>-40</y>
+            <w>350</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+m2=*
+shapesClipboard
+</panel_attributes>
+        <additional_attributes>0;0;350;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>-1240</x>
+            <y>220</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*ObjectSelectorListener
+--
+--
+bg=l-orange</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>-1500</x>
+            <y>220</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*MouseAdapter
+--
+--
+bg=l-orange</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>-1320</x>
+            <y>260</y>
+            <w>80</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;&gt;
+</panel_attributes>
+        <additional_attributes>80;0;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>-1060</x>
+            <y>260</y>
+            <w>200</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=+-&gt;
+</panel_attributes>
+        <additional_attributes>200;0;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>-560</x>
+            <y>-340</y>
+            <w>0</w>
+            <h>230</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+m2=*
+                            undoStack
+</panel_attributes>
+        <additional_attributes>0;230;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>-1240</x>
+            <y>330</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*KeyboardListener
+--
+--
+bg=l-orange</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>-1500</x>
+            <y>330</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*KeyAdapter
+--
+--
+bg=l-orange</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>-1320</x>
+            <y>370</y>
+            <w>80</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;&gt;
+</panel_attributes>
+        <additional_attributes>80;0;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>-1060</x>
+            <y>370</y>
+            <w>200</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=+-&gt;
+</panel_attributes>
+        <additional_attributes>200;0;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>-1240</x>
+            <y>110</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*OffsetAndZoomListener
+--
+--
+bg=l-orange</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>-1710</x>
+            <y>110</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*KeyAdapter
+--
+--
+bg=l-orange</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>-1500</x>
+            <y>80</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>._&lt;&lt;interface&gt;&gt;
+.*MouseWheelListener
+--
+--
+bg=l-l-l-blue</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>-1320</x>
+            <y>130</y>
+            <w>80</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=.&gt;&gt;
+</panel_attributes>
+        <additional_attributes>80;0;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>-1530</x>
+            <y>180</y>
+            <w>290</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;&gt;
+</panel_attributes>
+        <additional_attributes>290;0;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>-1060</x>
+            <y>150</y>
+            <w>200</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=+-&gt;
+</panel_attributes>
+        <additional_attributes>200;0;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>-1240</x>
+            <y>-30</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*DraggablesListener
+--
+--
+bg=l-orange</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>-1700</x>
+            <y>-30</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*MouseAdapter
+--
+--
+bg=l-orange</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>-1490</x>
+            <y>-60</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>._&lt;&lt;interface&gt;&gt;
+.*MouseMotionListener
+--
+--
+bg=l-l-l-blue</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>-1310</x>
+            <y>-10</y>
+            <w>70</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=.&gt;&gt;
+</panel_attributes>
+        <additional_attributes>70;0;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>-1520</x>
+            <y>40</y>
+            <w>280</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;&gt;
+</panel_attributes>
+        <additional_attributes>280;0;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>-1060</x>
+            <y>10</y>
+            <w>200</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=+-&gt;
+</panel_attributes>
+        <additional_attributes>200;0;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>-480</x>
+            <y>-340</y>
+            <w>0</w>
+            <h>230</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+                           diagram</panel_attributes>
+        <additional_attributes>0;230;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>-850</x>
+            <y>530</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*JTextArea
+--
+--
+bg=l-orange</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>-760</x>
+            <y>390</y>
+            <w>0</w>
+            <h>140</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+                                         editorTextPaneRef</panel_attributes>
+        <additional_attributes>0;0;0;140</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>-990</x>
+            <y>-290</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*JPanel
+--
+--
+bg=l-orange</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>-840</x>
+            <y>-210</y>
+            <w>0</w>
+            <h>100</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;&gt;
+</panel_attributes>
+        <additional_attributes>0;100;0;0</additional_attributes>
     </element>
 </diagram>

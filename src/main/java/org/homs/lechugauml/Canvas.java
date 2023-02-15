@@ -30,6 +30,8 @@ import static org.homs.lechugauml.LookAndFeel.basicStroke;
  */
 public class Canvas extends JPanel {
 
+    static final int UNDO_STACK_MAX_SIZE = 50;
+
     final List<Shape> selectedShapes = new ArrayList<>();
     final List<Shape> shapesClipboard;
 
@@ -175,6 +177,9 @@ public class Canvas extends JPanel {
 
     // ^Z
     public void pushUndoCheckpoint() {
+        while (this.undoStack.size() > UNDO_STACK_MAX_SIZE) {
+            this.undoStack.remove(0);
+        }
         this.undoStack.push(diagram.clone());
     }
 
