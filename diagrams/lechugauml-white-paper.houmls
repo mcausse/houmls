@@ -439,6 +439,7 @@ final List&lt;Shape&gt; shapes = new ArrayList&lt;&gt;();
 --
 void reset()
 Diagram clone()
+void manageConnectorLinks()
 void addShape(Shape element)
 List&lt;Shape&gt; getShapesBy(Predicate&lt;? super Shape&gt; predicate)
 List&lt;Shape&gt; getShapes()
@@ -450,7 +451,7 @@ String getDiagramAttributesText()
 void setDiagramAttributesText(String diagramAttributesText)
 String getName()
 void setName(String name)
-void manageConnectorLinks()
+
 
 
 bg=l-orange</panel_attributes>
@@ -459,16 +460,16 @@ bg=l-orange</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>-400</x>
+            <x>-420</x>
             <y>-340</y>
-            <w>380</w>
+            <w>400</w>
             <h>190</h>
         </coordinates>
         <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
 m2=*
                        shapes
 </panel_attributes>
-        <additional_attributes>0;0;0;190;380;190</additional_attributes>
+        <additional_attributes>0;0;0;190;400;190</additional_attributes>
     </element>
     <element>
         <id>UMLClass</id>
@@ -512,8 +513,8 @@ m2=*
     <element>
         <id>UMLNote</id>
         <coordinates>
-            <x>-780</x>
-            <y>-290</y>
+            <x>-270</x>
+            <y>-550</y>
             <w>180</w>
             <h>60</h>
         </coordinates>
@@ -526,14 +527,14 @@ bg=l-l-yellow</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>-688</x>
-            <y>-361</y>
-            <w>0</w>
-            <h>71</h>
+            <x>-679</x>
+            <y>-526</y>
+            <w>410</w>
+            <h>1</h>
         </coordinates>
         <panel_attributes>lt=.m
 </panel_attributes>
-        <additional_attributes>0;71;0;0</additional_attributes>
+        <additional_attributes>410;1;0;0</additional_attributes>
     </element>
     <element>
         <id>UMLNote</id>
@@ -703,7 +704,7 @@ fontsize=38
     <element>
         <id>UMLPackage</id>
         <coordinates>
-            <x>-1470</x>
+            <x>-1450</x>
             <y>-620</y>
             <w>40</w>
             <h>40</h>
@@ -719,7 +720,7 @@ shadow=3
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>-1420</x>
+            <x>-1400</x>
             <y>-630</y>
             <w>460</w>
             <h>60</h>
@@ -753,8 +754,6 @@ endPoint
         </coordinates>
         <panel_attributes>.*Canvas
 --
-int mouseCurrentPosX;
-int mouseCurrentPosY;
 --
 void addShape(Shape shape)
 void fitZoomToWindow()
@@ -852,7 +851,7 @@ bg=l-orange</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>-560</x>
+            <x>-610</x>
             <y>-340</y>
             <w>0</w>
             <h>230</h>
@@ -932,7 +931,7 @@ bg=l-orange</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>-1710</x>
+            <x>-1700</x>
             <y>110</y>
             <w>180</w>
             <h>80</h>
@@ -973,14 +972,14 @@ bg=l-l-l-blue</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>-1530</x>
+            <x>-1520</x>
             <y>180</y>
-            <w>290</w>
+            <w>280</w>
             <h>0</h>
         </coordinates>
         <panel_attributes>lt=-&gt;&gt;
 </panel_attributes>
-        <additional_attributes>290;0;0;0</additional_attributes>
+        <additional_attributes>280;0;0;0</additional_attributes>
     </element>
     <element>
         <id>Relation</id>
@@ -1076,7 +1075,7 @@ bg=l-l-l-blue</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>-480</x>
+            <x>-520</x>
             <y>-340</y>
             <w>0</w>
             <h>230</h>
@@ -1114,8 +1113,8 @@ bg=l-orange</panel_attributes>
     <element>
         <id>UMLClass</id>
         <coordinates>
-            <x>-990</x>
-            <y>-290</y>
+            <x>-860</x>
+            <y>-270</y>
             <w>180</w>
             <h>80</h>
         </coordinates>
@@ -1128,13 +1127,13 @@ bg=l-orange</panel_attributes>
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>-840</x>
-            <y>-210</y>
+            <x>-770</x>
+            <y>-190</y>
             <w>0</w>
-            <h>100</h>
+            <h>80</h>
         </coordinates>
         <panel_attributes>lt=-&gt;&gt;
 </panel_attributes>
-        <additional_attributes>0;100;0;0</additional_attributes>
+        <additional_attributes>0;80;0;0</additional_attributes>
     </element>
 </diagram>

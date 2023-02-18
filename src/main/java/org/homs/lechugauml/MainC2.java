@@ -24,6 +24,7 @@ import static org.homs.lechugauml.LookAndFeel.yellowMartin;
  *
  * @author mohms
  */
+// TODO arrows: m1,m2,m3,m4... refers to the label of the n-th segment!
 public class MainC2 {
 
     public static final String FRAME_TITLE = "Lechuga UML  0.0.2   (╯°o°）╯︵ ┻━┻  -- ";
@@ -170,7 +171,6 @@ public class MainC2 {
         diagramTab.addKeyListener(canvas.getOffsetAndZoomListener());
 
         lateralBar.addKeyListener(canvas.getKeyboardListener());
-//        shapeTextEditor.addKeyListener(canvas.getKeyboardListener());
         diagramTab.addKeyListener(canvas.getKeyboardListener());
 
         return diagramTab;
@@ -178,12 +178,6 @@ public class MainC2 {
 
     static JToolBar buildToolBar(JFrame frame, JTabbedPane tabbedPane, Consumer<String> currentDiagramFileNameConsumer) {
         JToolBar toolBar = new JToolBar();
-//        toolBar.addFocusListener(new FocusAdapter(){
-//            @Override
-//            public void focusGained(FocusEvent e) {
-//                tabbedPane.requestFocus();
-//            }
-//        });
         toolBar.setFloatable(false);
 
         {
@@ -194,6 +188,7 @@ public class MainC2 {
             final JButton closeTabButton;
             final JButton centerDiagram;
             final JButton zoomTo1Diagram;
+            final JButton generatePng;
 
             FileNameExtensionFilter filter = new FileNameExtensionFilter("LechugaUML files (.houmls)", "houmls", "uxf");
 
@@ -308,6 +303,32 @@ public class MainC2 {
                         }
                     });
 
+            generatePng = buildButton("icons/script_go.png", "Export PNG", null, null, null,
+                    new AbstractAction() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            DiagramTab diagramTab = (DiagramTab) tabbedPane.getSelectedComponent();
+                            Canvas canvas = diagramTab.getCanvas();
+
+                            JFileChooser fc = new JFileChooser(new File("."));
+                            fc.setFileFilter(filter);
+                            int returnVal = fc.showSaveDialog(saveButton);
+                            if (returnVal == JFileChooser.APPROVE_OPTION) {
+                                File file = fc.getSelectedFile();
+                                frame.setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
+                                try {
+                                    var diagram = canvas.getDiagram().clone();
+                                    ExportAsPng.exportAsPng(3.0, "png", file.toString(), diagram);
+                                } catch (Exception e2) {
+                                    e2.printStackTrace();
+                                }
+                                frame.setCursor(Cursor.getPredefinedCursor(Cursor.DEFAULT_CURSOR));
+                                tabbedPane.setTitleAt(tabbedPane.getSelectedIndex(), diagramTab.getDiagramShortName());
+                                currentDiagramFileNameConsumer.accept(diagramTab.getDiagramName());
+                            }
+                        }
+                    });
+
             toolBar.add(newButton);
             toolBar.add(openBbutton);
             toolBar.add(saveButton);
@@ -316,6 +337,8 @@ public class MainC2 {
             toolBar.addSeparator();
             toolBar.add(centerDiagram);
             toolBar.add(zoomTo1Diagram);
+            toolBar.addSeparator();
+            toolBar.add(generatePng);
         }
         return toolBar;
     }

@@ -7,6 +7,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.Collections;
 
 /**
@@ -28,12 +29,18 @@ public class ExportAsPng {
 
         GridControl.drawGrid = Boolean.parseBoolean(argsProcessor.modifiers.getOrDefault("grid", "true"));
 
-        //
+        final Diagram diagram = HoumlsFileFormatManager.loadFile(inputFileName);
 
+        //
         System.out.print("Exporting: " + String.join(" ", args) + "...");
 
+        exportAsPng(zoom, outputFileFormat, outputFileName, diagram);
+    }
+
+    public static void exportAsPng(double zoom, String outputFileFormat, String outputFileName, Diagram diagram) throws IOException {
+
         Canvas canvas = new Canvas(new JTextArea(), Collections.emptyList());
-        canvas.setDiagram(HoumlsFileFormatManager.loadFile(inputFileName));
+        canvas.setDiagram(diagram);
         Rectangle diagramBounds = canvas.getDiagram().getDiagramBounds();
         diagramBounds.grow(100, 100);
 
