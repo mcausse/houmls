@@ -2049,10 +2049,10 @@ shadow=5</panel_attributes>
 
 (koch box-width 4)
 
-(*graphics* :setColor (field-static :java.awt.Color :ORANGE))
+(*this* :setColor *graphics* :ORANGE)
 (*turtle* :fillPolygon *graphics*)
 
-(*graphics* :setColor (field-static :java.awt.Color :BLACK))
+(*this* :setColor *graphics* :BLACK)
 (*turtle* :drawPolyline *graphics*)
 </panel_attributes>
         <additional_attributes/>
@@ -2107,14 +2107,15 @@ shadow=5</panel_attributes>
         </coordinates>
         <panel_attributes>
 
-(*graphics* :setFont
+(*this* :setFont *graphics*
    (call-static :org.homs.lechugauml.LookAndFeel :monospaceFont 30)
 )
 
 (def sdf (new :java.text.SimpleDateFormat "yyyy-MM-dd HH:mm:ss:SSS"))
 (def now (sdf :format (new :java.util.Date)))
 
-(*graphics* :drawString now box-x (+ box-y 30))
+(*this* :setColor *graphics* :BLACK)
+(*this* :drawString *graphics* now box-x (+ box-y 30))
 
 </panel_attributes>
         <additional_attributes/>
@@ -2175,7 +2176,7 @@ shadow=5</panel_attributes>
 (def p1x (/ (+ p2x p3x) 2))
 (def p1y box-y)
 
-(*graphics* :setColor (field-static :java.awt.Color :BLUE))
+(*this* :setColor *graphics* :BLUE)
 
 (sierpinski 4 
    (to-double p1x) (to-double p1y) 
@@ -2215,7 +2216,7 @@ shadow=5</panel_attributes>
          (*turtle* :rotate 60))))
 
 
-(*graphics* :setColor (field-static :java.awt.Color :BLUE))
+(*this* :setColor *graphics* :BLUE)
 
 (*turtle* :rotate 90)
 (*turtle* :jump box-height)
@@ -2286,8 +2287,8 @@ bg=yellow</panel_attributes>
     <element>
         <id>LechugaScriptBox</id>
         <coordinates>
-            <x>4020</x>
-            <y>550</y>
+            <x>4000</x>
+            <y>170</y>
             <w>110</w>
             <h>120</h>
         </coordinates>
@@ -2297,30 +2298,30 @@ bg=yellow</panel_attributes>
 (def y-part (/ box-height 4))
 (def arc-radius (/ box-height 6))
 
-(*graphics* :setColor (field-static :java.awt.Color :GRAY))
-(*graphics* :fillRect 
+(*this* :setColor *graphics* :GRAY)
+(*this* :fillRect *graphics* 
 	box-x 
 	(+ box-y (/ arc-radius 2))
 	box-width 
 	(* y-part 3)
 )
-(*graphics* :fillOval box-x box-y box-width arc-radius)
-(*graphics* :fillOval box-x (+ box-y y-part y-part y-part) box-width arc-radius)
+(*this* :fillOval *graphics* box-x box-y box-width arc-radius)
+(*this* :fillOval *graphics* box-x (+ box-y y-part y-part y-part) box-width arc-radius)
 
-(*graphics* :setColor (field-static :java.awt.Color :BLACK))
+(*this* :setColor *graphics* :BLACK)
 
-(*graphics* :drawOval box-x box-y box-width arc-radius)
-(*graphics* :drawArc box-x (+ box-y y-part) box-width arc-radius 0 -180)
-(*graphics* :drawArc box-x (+ box-y y-part y-part) box-width arc-radius 0 -180)
-(*graphics* :drawArc box-x (+ box-y y-part y-part y-part) box-width arc-radius 0 -180)
+(*this* :drawOval *graphics* box-x box-y box-width arc-radius)
+(*this* :drawArc *graphics* box-x (+ box-y y-part) box-width arc-radius 0 -180)
+(*this* :drawArc *graphics* box-x (+ box-y y-part y-part) box-width arc-radius 0 -180)
+(*this* :drawArc *graphics* box-x (+ box-y y-part y-part y-part) box-width arc-radius 0 -180)
 
-(*graphics* :drawLine 
+(*this* :drawLine *graphics*
 	box-x 
 	(+ box-y (/ arc-radius 2)) 
 	box-x 
 	(+ box-y y-part y-part y-part (/ arc-radius 2)))
 
-(*graphics* :drawLine 
+(*this* :drawLine *graphics*
 	(+ box-x box-width) 
 	(+ box-y (/ arc-radius 2)) 
 	(+ box-x box-width) 
@@ -2351,51 +2352,6 @@ paintbackground=false</panel_attributes>
         </coordinates>
         <panel_attributes>image=diagrams/img/java-4.png
 </panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>LechugaScriptBox</id>
-        <coordinates>
-            <x>4160</x>
-            <y>410</y>
-            <w>180</w>
-            <h>100</h>
-        </coordinates>
-        <panel_attributes>paintbackground=false
-
-(let {
-   [t *turtle*]  
-   [punta-width 70] 
-   [fletxa-height 50] 
-   [color-borde (field-static :java.awt.Color :BLACK)]
-   [bg-color (field-static :java.awt.Color :YELLOW)]
-   }
-
-   (t :rotate 90)
-   (t :jump (/ (- box-height fletxa-height) 2))
-   (t :walk fletxa-height)
-
-   (t :rotate -90)
-   (t :walk (- box-width punta-width))
-
-   (t :rotate 90)
-   (t :walk (/ (- box-height fletxa-height) 2))
-
-   (t :moveTo (+ box-x box-width) (+ box-y (/ box-height 2)))
-   (t :moveTo (- (+ box-x box-width) punta-width) box-y)
-   (t :setAngle 90)
-   (t :walk (/ (- box-height fletxa-height) 2))
-
-   (t :rotate 90)
-   (t :walk (- box-width punta-width))
-
-
-   (*graphics* :setColor bg-color)
-   (t :fillPolygon *graphics*)
-
-   (*graphics* :setColor color-borde)
-   (t :drawPolyline *graphics*)
-)</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -2523,25 +2479,25 @@ shadow=0</panel_attributes>
 
 (def cycles 3)
 
-(*graphics* :setColor (field-static :java.awt.Color :RED))
+(*this* :setColor *graphics* :RED)
 (def x 0)
 (while (&lt; x box-width)
    (def y (get-y x cycles 0.0))
-   (*graphics* :drawRect (+ box-x x) y 1 1)
+   (*this* :drawRect *graphics* (+ box-x x) y 1 1)
    (set x (+ x 1)))
 
-(*graphics* :setColor (field-static :java.awt.Color :GREEN))
+(*this* :setColor *graphics* :GREEN)
 (def x 0)
 (while (&lt; x box-width)
    (def y (get-y x cycles pi2-div-3))
-   (*graphics* :drawRect (+ box-x x) y 1 1)
+   (*this* :drawRect *graphics* (+ box-x x) y 1 1)
    (set x (+ x 1)))
 
-(*graphics* :setColor (field-static :java.awt.Color :BLUE))
+(*this* :setColor *graphics* :BLUE)
 (def x 0)
 (while (&lt; x box-width)
    (def y (get-y x cycles (* 2 pi2-div-3)))
-   (*graphics* :drawRect (+ box-x x) y 1 1)
+   (*this* :drawRect *graphics* (+ box-x x) y 1 1)
    (set x (+ x 1)))</panel_attributes>
         <additional_attributes/>
     </element>
@@ -2648,60 +2604,11 @@ fontsize=6</panel_attributes>
             <w>70</w>
             <h>60</h>
         </coordinates>
-        <panel_attributes>image=C:\java\workospace\martin-uml\src\main\resources\org\homs\lechugauml\actions\cclechuga.png
+        <panel_attributes>image=src\main\resources\org\homs\lechugauml\actions\cclechuga.png
 org\homs\lechugauml\actions\cclechuga.png
 paintbackground=false
 bg=green
 </panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>LechugaScriptBox</id>
-        <coordinates>
-            <x>4200</x>
-            <y>560</y>
-            <w>110</w>
-            <h>100</h>
-        </coordinates>
-        <panel_attributes>;;; 
-;;; 
-;;; ROMBOID COMPONENT
-;;; 
-;;; 
-;
-; variables: *turtle* *graphics* box-x box-y box-width box-height box-bg-color box-font-size
-;
-
-(let {[p (new :org.homs.lechugauml.Turtle$PolylineFiller)]}
-
-   (p :add 
-	box-x
-        (+ box-y (/ box-height 2)))
-   (p :add 
-	(+ box-x (/ box-width 2))
-        box-y)
-   (p :add 
-	(+ box-x box-width)
-        (+ box-y (/ box-height 2)))
-   (p :add 
-	(+ box-x (/ box-width 2))
-        (+ box-y box-height))
-   (p :add 
-	box-x
-        (+ box-y (/ box-height 2)))
-
-   (*graphics* :setColor (field-static :java.awt.Color :GRAY))
-   (p :fillShadow *graphics*)
-
-   (*graphics* :setColor box-bg-color)
-   (p :fill *graphics*)
-
-   (*graphics* :setColor (field-static :java.awt.Color :BLACK))
-   (p :draw *graphics*)
-)
-
-paintbackground=false
-bg=l-yellow</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
@@ -2754,13 +2661,13 @@ bg=l-l-l-magenta
 	box-x
         (+ box-y (/ box-height 2)))
 
-   (*graphics* :setColor (field-static :java.awt.Color :GRAY))
+   (*this* :setColor *graphics* :GRAY)
    (p :fillShadow *graphics*)
 
-   (*graphics* :setColor box-bg-color)
+   (*this* :setColor *graphics* box-bg-color)
    (p :fill *graphics*)
 
-   (*graphics* :setColor (field-static :java.awt.Color :BLACK))
+   (*this* :setColor *graphics* :BLACK)
    (p :draw *graphics*)
 )
 
@@ -2836,36 +2743,6 @@ bg=l-l-l-magenta</panel_attributes>
     <element>
         <id>LechugaScriptBox</id>
         <coordinates>
-            <x>4010</x>
-            <y>310</y>
-            <w>290</w>
-            <h>60</h>
-        </coordinates>
-        <panel_attributes>;;; 
-;;; 
-;;; ACTIVITY DIAGRAM MERGE LINE
-;;; 
-;;; 
-;
-; variables: *turtle* *graphics* box-x box-y box-width box-height box-bg-color box-font-size
-
-
-(*graphics* :setColor (field-static :java.awt.Color :BLACK))
-(*graphics* :fillRect 
-   box-x 
-   (+ box-y (/ box-height 2))
-   box-width 
-   5)
-
-
-; bg=green
-paintbackground=false
-</panel_attributes>
-        <additional_attributes/>
-    </element>
-    <element>
-        <id>LechugaScriptBox</id>
-        <coordinates>
             <x>3260</x>
             <y>110</y>
             <w>320</w>
@@ -2880,8 +2757,10 @@ paintbackground=false
 ; variables: *turtle* *graphics* box-x box-y box-width box-height box-bg-color box-font-size
 
 
-(*graphics* :setColor (field-static :java.awt.Color :BLACK))
-(*graphics* :fillRect 
+;(*graphics* :setColor (field-static :java.awt.Color :BLACK))
+; (call-static :org.homs.lechugauml.shape.impl.box.LechugaScriptBox :setColor *graphics* :BLACK)
+(*this* :setColor *graphics* :BLACK)
+(*this* :fillRect *graphics*
    box-x 
    (+ box-y (/ box-height 2))
    box-width 
@@ -2952,13 +2831,13 @@ paintbackground=false
 	box-x
         (+ box-y (/ box-height 2)))
 
-   (*graphics* :setColor (field-static :java.awt.Color :GRAY))
+   (*this* :setColor *graphics* :GRAY)
    (p :fillShadow *graphics*)
 
-   (*graphics* :setColor box-bg-color)
+   (*this* :setColor *graphics* box-bg-color)
    (p :fill *graphics*)
 
-   (*graphics* :setColor (field-static :java.awt.Color :BLACK))
+   (*this* :setColor *graphics* :BLACK)
    (p :draw *graphics*)
 )
 
@@ -3098,14 +2977,14 @@ bg=l-orange
 
 (def main-box-division (/ box-width 4))
 
-(*graphics* :setColor box-bg-color)
-(*graphics* :fillRect box-x box-y box-width box-height)
+(*this* :setColor *graphics* box-bg-color)
+(*this* :fillRect *graphics* box-x box-y box-width box-height)
 
 (defn drawRect [x y width height]
-   (*graphics* :setColor (field-static :java.awt.Color :WHITE))
-   (*graphics* :fillRect x y width height)
-   (*graphics* :setColor (field-static :java.awt.Color :BLACK))
-   (*graphics* :drawRect x y width height)
+   (*this* :setColor *graphics* (field-static :java.awt.Color :WHITE))
+   (*this* :fillRect *graphics* x y width height)
+   (*this* :setColor *graphics* (field-static :java.awt.Color :BLACK))
+   (*this* :drawRect *graphics* x y width height)
 )
 
 
@@ -3159,14 +3038,14 @@ bg=l-orange
 
 (def main-box-division (/ box-width 4))
 
-(*graphics* :setColor box-bg-color)
-(*graphics* :fillRect box-x box-y box-width box-height)
+(*this* :setColor *graphics* box-bg-color)
+(*this* :fillRect *graphics* box-x box-y box-width box-height)
 
 (defn drawRect [x y width height]
-   (*graphics* :setColor (field-static :java.awt.Color :WHITE))
-   (*graphics* :fillRect x y width height)
-   (*graphics* :setColor (field-static :java.awt.Color :BLACK))
-   (*graphics* :drawRect x y width height)
+   (*this* :setColor *graphics* (field-static :java.awt.Color :WHITE))
+   (*this* :fillRect *graphics* x y width height)
+   (*this* :setColor *graphics* (field-static :java.awt.Color :BLACK))
+   (*this* :drawRect *graphics* x y width height)
 )
 
 

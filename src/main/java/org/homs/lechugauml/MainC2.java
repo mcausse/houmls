@@ -311,6 +311,7 @@ public class MainC2 {
                             Canvas canvas = diagramTab.getCanvas();
 
                             JFileChooser fc = new JFileChooser(new File("."));
+                            FileNameExtensionFilter filter = new FileNameExtensionFilter("PNG files", "png");
                             fc.setFileFilter(filter);
                             int returnVal = fc.showSaveDialog(saveButton);
                             if (returnVal == JFileChooser.APPROVE_OPTION) {

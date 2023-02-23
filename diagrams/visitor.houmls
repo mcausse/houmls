@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?><diagram program="lechuga-uml" version="0.0.2">
+    <zoom_level>10</zoom_level>
+    <help_text/>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>340</x>
+            <y>-250</y>
+            <w>240</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*Documentation
+--
+Documentation documentation;
+--
+
+
+
+bg=l-orange</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>-210</x>
+            <y>-10</y>
+            <w>240</w>
+            <h>240</h>
+        </coordinates>
+        <panel_attributes>.*CacheClass
+--
+Documentation documentation;
+
+String fullyQualifiedClassName;
+String packageName;
+String className;
+boolean isAbstract;
+List&lt;CacheClass&gt; extendsOf;
+Documentation doc;
+
+List&lt;CacheParameter&gt; parameters;
+List&lt;CacheProperty&gt; properties;
+List&lt;CacheMethod&gt; methods;
+--
+void accept(CacheVisitor visitor)
+
+
+bg=l-orange</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>160</x>
+            <y>-90</y>
+            <w>240</w>
+            <h>120</h>
+        </coordinates>
+        <panel_attributes>.*CacheParameter
+--
+Documentation documentation;
+String name;
+CacheClass type;
+String decorators;
+--
+void accept(CacheVisitor visitor)
+
+bg=l-orange</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>260</x>
+            <y>50</y>
+            <w>240</w>
+            <h>110</h>
+        </coordinates>
+        <panel_attributes>.*CacheProperty
+--
+Documentation documentation;
+String name;
+CacheClass type;
+String decorators;
+--
+void accept(CacheVisitor visitor)
+
+bg=l-orange</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>360</x>
+            <y>180</y>
+            <w>240</w>
+            <h>130</h>
+        </coordinates>
+        <panel_attributes>.*CacheMethod
+--
+Documentation documentation;
+boolean isStatic;
+String name;
+List&lt;CacheMethodArgument&gt; arguments;
+CacheClass returnType;
+--
+void accept(CacheVisitor visitor)
+
+bg=l-orange</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <coordinates>
+            <x>690</x>
+            <y>190</y>
+            <w>240</w>
+            <h>110</h>
+        </coordinates>
+        <panel_attributes>.*CacheMethodArgument
+--
+boolean isByRef;
+String name;
+CacheClass type;
+String defaultValue;
+--
+
+
+bg=l-orange</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>30</x>
+            <y>10</y>
+            <w>130</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+m2=*</panel_attributes>
+        <additional_attributes>0;0;130;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>30</x>
+            <y>90</y>
+            <w>230</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+m2=*</panel_attributes>
+        <additional_attributes>0;0;230;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>30</x>
+            <y>200</y>
+            <w>330</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+m2=*</panel_attributes>
+        <additional_attributes>0;0;330;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>600</x>
+            <y>250</y>
+            <w>90</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+m2=*</panel_attributes>
+        <additional_attributes>0;0;90;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>460</x>
+            <y>-170</y>
+            <w>0</w>
+            <h>220</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+</panel_attributes>
+        <additional_attributes>0;220;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>560</x>
+            <y>-170</y>
+            <w>0</w>
+            <h>350</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+</panel_attributes>
+        <additional_attributes>0;350;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>360</x>
+            <y>-170</y>
+            <w>0</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+</panel_attributes>
+        <additional_attributes>0;80;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>-90</x>
+            <y>-220</y>
+            <w>430</w>
+            <h>210</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+</panel_attributes>
+        <additional_attributes>0;210;0;0;430;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>-50</x>
+            <y>230</y>
+            <w>410</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+</panel_attributes>
+        <additional_attributes>410;60;0;60;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>-150</x>
+            <y>230</y>
+            <w>970</w>
+            <h>70</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+</panel_attributes>
+        <additional_attributes>970;70;970;130;0;130;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>30</x>
+            <y>140</y>
+            <w>230</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+</panel_attributes>
+        <additional_attributes>230;0;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <coordinates>
+            <x>-20</x>
+            <y>-60</y>
+            <w>180</w>
+            <h>50</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+</panel_attributes>
+        <additional_attributes>180;0;0;0;0;50</additional_attributes>
+    </element>
+</diagram>
