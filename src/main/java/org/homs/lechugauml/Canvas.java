@@ -482,7 +482,7 @@ public class Canvas extends JPanel {
             if (selectionBoxRectangle != null) {
                 selectionBoxRectangle = null;
                 repaint();
-                pushUndoCheckpoint();
+//                pushUndoCheckpoint();
             }
             if (lastDragPoint != null) {
                 if (selectedDraggable != null) {

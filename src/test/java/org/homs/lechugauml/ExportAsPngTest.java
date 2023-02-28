@@ -5,13 +5,14 @@ import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 import java.util.function.Predicate;
 
 public class ExportAsPngTest {
 
     protected List<File> processDirectory(File folder, Predicate<String> fileNamePredicate) {
         List<File> r = new ArrayList<>();
-        for (final File fileEntry : folder.listFiles()) {
+        for (final File fileEntry : Objects.requireNonNull(folder.listFiles())) {
             if (fileEntry.isDirectory()) {
                 r.addAll(processDirectory(fileEntry, fileNamePredicate));
             } else {

@@ -24,7 +24,18 @@ import static org.homs.lechugauml.LookAndFeel.yellowMartin;
  *
  * @author mohms
  */
-// TODO arrows: m1,m2,m3,m4... refers to the label of the n-th segment!
+
+/**
+ * TODO
+ * <pre>
+ * OpenJDK 64-Bit Server VM warning: INFO: os::commit_memory(0x0000000095f00000, 332398592, 0) failed; error='El archivo de paginaci�n es demasiado peque�o para completar la operaci�n' (DOS error/errno=1455)
+ * #
+ * # There is insufficient memory for the Java Runtime Environment to continue.
+ * # Native memory allocation (mmap) failed to map 332398592 bytes for G1 virtual space
+ * # An error report file with more information is saved as:
+ * # C:\java\workospace\martin-uml\hs_err_pid7112.log
+ * </pre>
+ */
 public class MainC2 {
 
     public static final String FRAME_TITLE = "Lechuga UML  0.0.2   (╯°o°）╯︵ ┻━┻  -- ";
@@ -105,8 +116,9 @@ public class MainC2 {
 
         f.setVisible(true);
 
-        // TODO
         createNewDiagramTab(currentDiagramOnChangeFileNameListener, tabbedPane);
+
+        // TODO
         loadDiagramIntoNewTab(new File("diagrams/lechugauml-showcase.houmls"), currentDiagramOnChangeFileNameListener, tabbedPane);
         loadDiagramIntoNewTab(new File("diagrams/lechugauml-white-paper.houmls"), currentDiagramOnChangeFileNameListener, tabbedPane);
     }

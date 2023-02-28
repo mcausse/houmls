@@ -2042,10 +2042,9 @@ shadow=5</panel_attributes>
 (defn koch [size n]
    (if (= n 0)
       (*turtle* :walk size)
-      (for-each [0 60 -120 60]
-         (angle =&gt; (multi
+      (for angle [0 60 -120 60]
             (*turtle* :rotate angle)
-            (koch (/ size 3) (- n 1)))))))
+            (koch (/ size 3) (- n 1)))))
 
 (koch box-width 4)
 
@@ -2068,13 +2067,12 @@ shadow=5</panel_attributes>
         <panel_attributes>*Koch function definition, in Lechuga Script
 --
 
-`  (defn koch [size n]
-`     (if (= n 0)
-`        (*turtle* :walk size)
-`        (for-each [0 60 -120 60]
-`           (angle =&gt; (multi
-`              (*turtle* :rotate angle)
-`              (koch (/ size 3) (- n 1)))))))
+` (defn koch [size n]
+`    (if (= n 0)
+`       (*turtle* :walk size)
+`       (for angle [0 60 -120 60]
+`             (*turtle* :rotate angle)
+`             (koch (/ size 3) (- n 1)))))
 
 
 bg=l-yellow
@@ -2231,8 +2229,8 @@ shadow=5</panel_attributes>
     <element>
         <id>UMLState</id>
         <coordinates>
-            <x>4250</x>
-            <y>-790</y>
+            <x>4230</x>
+            <y>-870</y>
             <w>180</w>
             <h>70</h>
         </coordinates>
@@ -2247,8 +2245,8 @@ bg=yellow
     <element>
         <id>Bocadillo</id>
         <coordinates>
-            <x>4280</x>
-            <y>-720</y>
+            <x>4260</x>
+            <y>-800</y>
             <w>50</w>
             <h>0</h>
         </coordinates>
@@ -2645,21 +2643,11 @@ bg=l-l-l-magenta
 
 (let {[p (new :org.homs.lechugauml.Turtle$PolylineFiller)]}
 
-   (p :add 
-	box-x
-        (+ box-y (/ box-height 2)))
-   (p :add 
-	(+ box-x (/ box-width 2))
-        box-y)
-   (p :add 
-	(+ box-x box-width)
-        (+ box-y (/ box-height 2)))
-   (p :add 
-	(+ box-x (/ box-width 2))
-        (+ box-y box-height))
-   (p :add 
-	box-x
-        (+ box-y (/ box-height 2)))
+   (p :add box-x (+ box-y (/ box-height 2)))
+   (p :add (+ box-x (/ box-width 2)) box-y)
+   (p :add (+ box-x box-width) (+ box-y (/ box-height 2)))
+   (p :add (+ box-x (/ box-width 2)) (+ box-y box-height))
+   (p :add box-x (+ box-y (/ box-height 2)))
 
    (*this* :setColor *graphics* :GRAY)
    (p :fillShadow *graphics*)
@@ -2757,8 +2745,6 @@ bg=l-l-l-magenta</panel_attributes>
 ; variables: *turtle* *graphics* box-x box-y box-width box-height box-bg-color box-font-size
 
 
-;(*graphics* :setColor (field-static :java.awt.Color :BLACK))
-; (call-static :org.homs.lechugauml.shape.impl.box.LechugaScriptBox :setColor *graphics* :BLACK)
 (*this* :setColor *graphics* :BLACK)
 (*this* :fillRect *graphics*
    box-x 
