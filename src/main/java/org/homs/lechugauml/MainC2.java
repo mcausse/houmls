@@ -38,7 +38,7 @@ import static org.homs.lechugauml.LookAndFeel.yellowMartin;
  */
 public class MainC2 {
 
-    public static final String FRAME_TITLE = "Lechuga UML  0.0.2   (╯°o°）╯︵ ┻━┻  -- ";
+    public static final String FRAME_TITLE = "Lechuga UML  0.0.3   (╯°o°）╯︵ ┻━┻  -- ";
 
     public static final String UNNAMED_FILENAME = "Unnamed";
 
@@ -202,7 +202,7 @@ public class MainC2 {
             final JButton zoomTo1Diagram;
             final JButton generatePng;
 
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("LechugaUML files (.houmls)", "houmls", "uxf");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("Diagram files", "houmls", "uxf", "uxf2");
 
             newButton = buildButton("icons/page.png", "New (^N)", "^n", "Control N", KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK), new AbstractAction() {
                 @Override

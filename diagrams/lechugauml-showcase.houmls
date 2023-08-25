@@ -2485,14 +2485,14 @@ shadow=0</panel_attributes>
    (set x (+ x 1)))
 
 (*this* :setColor *graphics* :GREEN)
-(def x 0)
+(set x 0)
 (while (&lt; x box-width)
    (def y (get-y x cycles pi2-div-3))
    (*this* :drawRect *graphics* (+ box-x x) y 1 1)
    (set x (+ x 1)))
 
 (*this* :setColor *graphics* :BLUE)
-(def x 0)
+(set x 0)
 (while (&lt; x box-width)
    (def y (get-y x cycles (* 2 pi2-div-3)))
    (*this* :drawRect *graphics* (+ box-x x) y 1 1)
@@ -3082,9 +3082,9 @@ bg=l-orange
     <element>
         <id>LechugaScriptBox</id>
         <coordinates>
-            <x>4303</x>
-            <y>506</y>
-            <w>20</w>
+            <x>4290</x>
+            <y>400</y>
+            <w>120</w>
             <h>220</h>
         </coordinates>
         <panel_attributes>;;; 
@@ -3102,6 +3102,36 @@ bg=l-orange
    box-y
    5
    box-height)
+
+
+; bg=green
+paintbackground=false
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>LechugaScriptBox</id>
+        <coordinates>
+            <x>3930</x>
+            <y>550</y>
+            <w>320</w>
+            <h>140</h>
+        </coordinates>
+        <panel_attributes>;;; 
+;;; 
+;;; ACTIVITY DIAGRAM MERGE LINE
+;;; 
+;;; 
+;
+; variables: *turtle* *graphics* box-x box-y box-width box-height box-bg-color box-font-size
+
+
+(*this* :setColor *graphics* :BLACK)
+(*this* :fillRect *graphics*
+   box-x 
+   (+ box-y (/ box-height 2))
+   box-width 
+   5)
 
 
 ; bg=green

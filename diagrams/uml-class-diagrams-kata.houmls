@@ -95,8 +95,8 @@ bg=l-orange</panel_attributes>
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>-130</x>
-            <y>-540</y>
+            <x>840</x>
+            <y>-450</y>
             <w>910</w>
             <h>80</h>
         </coordinates>
@@ -110,8 +110,8 @@ fontsize=44
     <element>
         <id>FloatingText</id>
         <coordinates>
-            <x>-130</x>
-            <y>-460</y>
+            <x>840</x>
+            <y>-370</y>
             <w>330</w>
             <h>50</h>
         </coordinates>
@@ -575,7 +575,7 @@ bg=l-orange</panel_attributes>
             <w>110</w>
             <h>80</h>
         </coordinates>
-        <panel_attributes>`public class Bird {
+        <panel_attributes>`public interface Bird {
 `   public void fly();
 `}
 
