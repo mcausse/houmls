@@ -3,6 +3,7 @@ package org.homs.lechugauml;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -27,13 +28,14 @@ public class ExportAsPngTest {
 
     @Test
     void name() throws Exception {
+        new File("./png").mkdir();
         var fs = processDirectory(new File("."), name -> name.endsWith(".houmls") || name.endsWith(".uxf"));
         for (var f : fs) {
             ExportAsPng.main(new String[]{
                     f.toString(),
                     "--zoom=2",
                     "--format=png",
-                    "--output=" + f + ".png"
+                    "--output=./png/" + f.getName() + ".png"
             });
         }
     }
