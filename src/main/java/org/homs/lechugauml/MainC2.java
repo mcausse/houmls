@@ -38,7 +38,7 @@ import static org.homs.lechugauml.LookAndFeel.yellowMartin;
  */
 public class MainC2 {
 
-    public static final String FRAME_TITLE = "Lechuga UML  0.0.3   (╯°o°）╯︵ ┻━┻  -- ";
+    public static final String FRAME_TITLE = "Lechuga UML  0.0.2   (╯°o°）╯︵ ┻━┻  -- ";
 
     public static final String UNNAMED_FILENAME = "Unnamed";
 
@@ -101,7 +101,7 @@ public class MainC2 {
                 getActiveCanvas().ifPresent(c -> c.getOffsetAndZoomListener().keyReleased(e));
             }
 
-            protected Optional<Canvas> getActiveCanvas() {
+            private Optional<Canvas> getActiveCanvas() {
                 DiagramTab diagramTab = (DiagramTab) tabbedPane.getSelectedComponent();
                 if (diagramTab == null) {
                     return Optional.empty();
@@ -121,6 +121,7 @@ public class MainC2 {
         // TODO
         loadDiagramIntoNewTab(new File("diagrams/lechugauml-showcase.houmls"), currentDiagramOnChangeFileNameListener, tabbedPane);
         loadDiagramIntoNewTab(new File("diagrams/lechugauml-white-paper.houmls"), currentDiagramOnChangeFileNameListener, tabbedPane);
+        loadDiagramIntoNewTab(new File("diagrams/private/OrderEntrance3.houmls"), currentDiagramOnChangeFileNameListener, tabbedPane);
     }
 
     static class DiagramTab extends JSplitPane {
@@ -201,8 +202,9 @@ public class MainC2 {
             final JButton centerDiagram;
             final JButton zoomTo1Diagram;
             final JButton generatePng;
+            final JCheckBox turboButton;
 
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("Diagram files", "houmls", "uxf", "uxf2");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("LechugaUML files (.houmls)", "houmls", "uxf");
 
             newButton = buildButton("icons/page.png", "New (^N)", "^n", "Control N", KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK), new AbstractAction() {
                 @Override
@@ -342,6 +344,12 @@ public class MainC2 {
                         }
                     });
 
+            turboButton = new JCheckBox("Turbo");
+            turboButton.addActionListener(e -> {
+                LookAndFeel.turbo = turboButton.isSelected();
+                frame.repaint();
+            });
+
             toolBar.add(newButton);
             toolBar.add(openBbutton);
             toolBar.add(saveButton);
@@ -352,6 +360,8 @@ public class MainC2 {
             toolBar.add(zoomTo1Diagram);
             toolBar.addSeparator();
             toolBar.add(generatePng);
+            toolBar.addSeparator();
+            toolBar.add(turboButton);
         }
         return toolBar;
     }

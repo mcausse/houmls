@@ -30,7 +30,7 @@ class XmlDocumentBuilderTest {
             xmlBuilder.set("", "LIS");
 
             fail("an exception should be thrown");
-        } catch (Exception e) {
+        } catch (RuntimeException e) {
             assertThat(e.getMessage()).isEqualTo("the expression is empty");
         }
     }

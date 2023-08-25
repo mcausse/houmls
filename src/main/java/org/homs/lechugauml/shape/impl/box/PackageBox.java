@@ -58,7 +58,7 @@ public class PackageBox extends Box {
         /*
          * PINTA OMBRA
          */
-        if (shadowWidth > 0) {
+        if (shadowWidth > 0 && !LookAndFeel.turbo) {
             g2.setColor(shadowColor);
             g2.fillRect(ix + packageWidth, iy + shadowWidth, shadowWidth, packageHeight);
             g2.fillRect(ix + iwidth, iy + shadowWidth + packageHeight, shadowWidth, iheight - packageHeight);

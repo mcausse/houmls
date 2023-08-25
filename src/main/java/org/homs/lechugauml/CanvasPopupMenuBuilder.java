@@ -41,7 +41,11 @@ public class CanvasPopupMenuBuilder {
                         GridControl.engrid(mousePos.getY()),
                         GridControl.engrid(mousePos.getX()) + 18 * GridControl.GRID_SIZE,
                         GridControl.engrid(mousePos.getY()),
-                        "lt=->\n"
+                        "lt=->\n" +
+                                "strokewidth=1\n" +
+                                "color=black\n" +
+                                "m1=\n" +
+                                "m2=\n"
                 ));
                 canvas.repaint();
                 canvas.pushUndoCheckpoint();
@@ -201,7 +205,6 @@ public class CanvasPopupMenuBuilder {
                                 ";\n" +
                                 "; variables: *turtle* *graphics* box-x box-y box-width box-height box-bg-color box-font-size\n" +
                                 ";" +
-                                "" +
                                 "((field-static :java.lang.System :out) :print :jou)\n" +
                                 "bg=green\n" +
                                 "paintbackground=true\n"

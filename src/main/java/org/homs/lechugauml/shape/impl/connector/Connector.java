@@ -12,7 +12,6 @@ import java.util.Map;
 import java.util.function.Supplier;
 
 import static org.homs.lechugauml.LookAndFeel.basicStroke;
-import static org.homs.lechugauml.LookAndFeel.dashedStroke;
 import static org.homs.lechugauml.shape.impl.connector.ConnectorType.*;
 
 /**
@@ -33,7 +32,9 @@ public class Connector implements Shape {
     String attributesText;
 
     String text = "";
-    Stroke stroke = basicStroke;
+    Stroke strokeLine = basicStroke;
+    Stroke strokeSym = basicStroke;
+    Color strokeColor = Color.BLACK;
 
     public Connector(double startx, double starty, double endx, double endy, String attributes) {
         this.startPoint = new ConnectorPoint(null, DEFAULT, startx, starty);
@@ -88,6 +89,18 @@ public class Connector implements Shape {
         String m1 = props.getOrDefault("m1", "");
         String m2 = props.getOrDefault("m2", "");
 
+        int strokewidth = 1;
+        try {
+            strokewidth = Integer.parseInt(props.getOrDefault("strokewidth", "1"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        try {
+            this.strokeColor = PropsParser.getColorByProp(props, "color", "black");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         startPoint.text = m1;
         endPoint.text = m2;
 
@@ -97,10 +110,14 @@ public class Connector implements Shape {
         );
         if (lineStyleCharacterPos >= 0) {
             if (lt.charAt(lineStyleCharacterPos) == '-') {
-                this.stroke = basicStroke;
+                this.strokeLine = new BasicStroke(strokewidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 10);
+            } else if (lt.charAt(lineStyleCharacterPos) == '.') {
+                this.strokeLine = new BasicStroke(strokewidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 10, new float[]{5}, 0);
             } else {
-                this.stroke = dashedStroke;
+                this.strokeLine = basicStroke;
             }
+            this.strokeSym = new BasicStroke(strokewidth, BasicStroke.CAP_ROUND, BasicStroke.JOIN_ROUND, 10);
+
             String startStyle = lt.substring(0, lineStyleCharacterPos);
             String endStyle = lt.substring(lineStyleCharacterPos + 1);
             String revEndStyle = PropsParser.reverseArrowStyle(endStyle);
@@ -283,13 +300,13 @@ public class Connector implements Shape {
     @Override
     public void draw(Graphics g) {
 
-        ((Graphics2D) g).setStroke(this.stroke);
+        g.setColor(strokeColor);
 
         /*
          * DRAW THE LINE
          */
+        ((Graphics2D) g).setStroke(this.strokeLine);
         List<Point> listOfAbsolutePoints = getListOfAbsolutePoints();
-        g.setColor(Color.BLACK);
         for (var i = 1; i < listOfAbsolutePoints.size(); i++) {
             var p1 = listOfAbsolutePoints.get(i - 1);
             var p2 = listOfAbsolutePoints.get(i);
@@ -299,6 +316,8 @@ public class Connector implements Shape {
         /*
          * DRAW THE CONNECTOR LABEL
          */
+        g.setColor(Color.BLACK);
+        ((Graphics2D) g).setStroke(basicStroke);
         {
             int middlePoint = listOfAbsolutePoints.size() / 2;
             double x = (listOfAbsolutePoints.get(middlePoint - 1).x + listOfAbsolutePoints.get(middlePoint).x) / 2.0;
@@ -337,6 +356,8 @@ public class Connector implements Shape {
         /*
          * DRAW THE ARROWS & LABELS
          */
+        g.setColor(strokeColor);
+        ((Graphics2D) g).setStroke(this.strokeSym);
         {
             Point firstPoint = listOfAbsolutePoints.get(0);
             Point secondPoint = listOfAbsolutePoints.get(1);
@@ -375,7 +396,7 @@ public class Connector implements Shape {
             case MEMBER_COMMENT: {
                 int MEMBER_COMMENT_BOX_RADIUS = 3;
 
-                g.setColor(Color.BLACK);
+                g.setColor(strokeColor);
                 var turtle = new Turtle(firstPoint.getX(), firstPoint.getY(), angle);
                 turtle.walk(GridControl.GRID_SIZE);
                 turtle.drawPolyline(g);
@@ -383,7 +404,7 @@ public class Connector implements Shape {
                 g.setColor(Color.WHITE);
                 g.fillOval(firstPoint.x - MEMBER_COMMENT_BOX_RADIUS, firstPoint.y - MEMBER_COMMENT_BOX_RADIUS,
                         MEMBER_COMMENT_BOX_RADIUS * 2, MEMBER_COMMENT_BOX_RADIUS * 2);
-                g.setColor(Color.BLACK);
+                g.setColor(strokeColor);
                 g.drawOval(firstPoint.x - MEMBER_COMMENT_BOX_RADIUS, firstPoint.y - MEMBER_COMMENT_BOX_RADIUS,
                         MEMBER_COMMENT_BOX_RADIUS * 2, MEMBER_COMMENT_BOX_RADIUS * 2);
             }
@@ -406,10 +427,10 @@ public class Connector implements Shape {
                 if (type == ConnectorType.AGGREGATION) {
                     g.setColor(Color.WHITE);
                     turtle.fillPolygon(g);
-                    g.setColor(Color.BLACK);
+                    g.setColor(strokeColor);
                     turtle.drawPolyline(g);
                 } else if (type == ConnectorType.COMPOSITION) {
-                    g.setColor(Color.BLACK);
+                    g.setColor(strokeColor);
                     turtle.fillPolygon(g);
                 } else {
                     throw new RuntimeException(type.name());
@@ -428,12 +449,12 @@ public class Connector implements Shape {
                 turtle.rotate(90 + alpha);
                 turtle.walk(arrowSize);
                 if (type == INHERITANCE_BLACKFILLED) {
-                    g.setColor(Color.BLACK);
+                    g.setColor(strokeColor);
                     turtle.fillPolygon(g);
                 } else {
                     g.setColor(Color.WHITE);
                     turtle.fillPolygon(g);
-                    g.setColor(Color.BLACK);
+                    g.setColor(strokeColor);
                     turtle.drawPolyline(g);
                 }
             }
@@ -445,7 +466,7 @@ public class Connector implements Shape {
                 turtle.walk(-DIAMOND_SIZE);
                 turtle.rotate(+35 + 35);
                 turtle.walk(DIAMOND_SIZE);
-                g.setColor(Color.BLACK);
+                g.setColor(strokeColor);
                 turtle.drawPolyline(g);
             }
             break;
@@ -463,7 +484,7 @@ public class Connector implements Shape {
                 turtle.jump(innerClassRadiusPx);
                 g.setColor(Color.WHITE);
                 turtle.fillCircle(g, innerClassRadiusPx);
-                g.setColor(Color.BLACK);
+                g.setColor(strokeColor);
                 turtle.drawCircle(g, innerClassRadiusPx);
 
                 int plusSignRAdius = innerClassRadiusPx - 3;
@@ -499,7 +520,7 @@ public class Connector implements Shape {
                 turtle.walk(providedRadiusPx - GridControl.GRID_SIZE / 2);
                 g.setColor(Color.WHITE);
                 turtle.fillCircle(g, providedRadiusPx);
-                g.setColor(Color.BLACK);
+                g.setColor(strokeColor);
                 turtle.drawCircle(g, providedRadiusPx);
             }
             break;
@@ -515,7 +536,7 @@ public class Connector implements Shape {
         double degreesRomboideSpace = DIAMOND_SIZE / Math.cos(Math.toRadians(45 - degreesRomboide));
         int CIRCLE_RADIUS = 4;
 
-        g.setColor(Color.BLACK);
+        g.setColor(strokeColor);
 
         //
         // MULTIPLICITAT
@@ -550,7 +571,7 @@ public class Connector implements Shape {
             }
             g.setColor(Color.WHITE);
             turtle.fillCircle(g, CIRCLE_RADIUS);
-            g.setColor(Color.BLACK);
+            g.setColor(strokeColor);
             turtle.drawCircle(g, CIRCLE_RADIUS);
         } else if (type == TO_ONE_MANDATORY || type == TO_MANY_MANDATORY) {
             var turtle = new Turtle(posx, posy, angle);
