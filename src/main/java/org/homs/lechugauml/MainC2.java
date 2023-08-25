@@ -38,7 +38,7 @@ import static org.homs.lechugauml.LookAndFeel.yellowMartin;
  */
 public class MainC2 {
 
-    public static final String FRAME_TITLE = "Lechuga UML  0.0.2   (╯°o°）╯︵ ┻━┻  -- ";
+    public static final String FRAME_TITLE = "Lechuga UML  0.0.3   (╯°o°）╯︵ ┻━┻  -- ";
 
     public static final String UNNAMED_FILENAME = "Unnamed";
 

@@ -36,7 +36,7 @@ public class HoumlsFileFormatManager {
         Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
 
         XmlDocumentBuilder xmlBuilder = new XmlDocumentBuilder(doc);
-        xmlBuilder.set(xmlRoot, "[@program='lechuga-uml'][@version='0.0.2']", "");
+        xmlBuilder.set(xmlRoot, "[@program='lechuga-uml'][@version='0.0.3']", "");
 
         xmlBuilder.withPrefix(xmlRoot)
                 .set("/zoom_level", "10")

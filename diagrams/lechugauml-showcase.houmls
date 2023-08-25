@@ -884,7 +884,7 @@ bg=#cfffcf</panel_attributes>
         <id>Relation</id>
         <coordinates>
             <x>2070</x>
-            <y>50</y>
+            <y>30</y>
             <w>230</w>
             <h>0</h>
         </coordinates>
@@ -3142,17 +3142,18 @@ paintbackground=false
     <element>
         <id>Relation</id>
         <coordinates>
-            <x>2530</x>
-            <y>930</y>
-            <w>150</w>
-            <h>40</h>
+            <x>2070</x>
+            <y>80</y>
+            <w>230</w>
+            <h>0</h>
         </coordinates>
-        <panel_attributes>lt=&lt;&lt;-&gt;
+        <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+m1=   0..1
+m2=*
 strokewidth=3
-strokecolor=red
-hello
-m1=abc
-m2=xyz</panel_attributes>
-        <additional_attributes>0;40;150;0</additional_attributes>
+color=red
+this is a relation
+</panel_attributes>
+        <additional_attributes>0;0;230;0</additional_attributes>
     </element>
 </diagram>
