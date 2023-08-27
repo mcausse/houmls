@@ -16,8 +16,8 @@ class OrderEntrance3Test {
                 new File("diagrams/private/OrderEntrance3.houmls").toPath(),
                 new File("D:/gitrepos/cachumber/2023/BET/MM-link-ACKs-to-parent-messages/OrderEntrance3.houmls").toPath(),
                 StandardCopyOption.REPLACE_EXISTING);
-        ExportAsPng.main(new String[]{"diagrams/private/OrderEntrance3.houmls", "--zoom=3", "--format=png", "--output=diagrams/private/OrderEntrance3.png", "--grid=false"});
-        ExportAsPng.main(new String[]{"diagrams/private/OrderEntrance3.houmls", "--zoom=3", "--format=png", "--output=D:\\gitrepos\\cachumber\\2023\\BET\\MM-link-ACKs-to-parent-messages/OrderEntrance3.png", "--grid=false"});
-        ExportAsPng.main(new String[]{"diagrams/private/OrderEntrance3.houmls", "--zoom=3", "--format=png", "--output=D:\\gitrepos\\diagrams/OrderEntrance3.png", "--grid=false"});
+        ExportAsPng.main(new String[]{"diagrams_v3/private/OrderEntrance3.uxf3", "--zoom=3", "--format=png", "--output=diagrams/private/OrderEntrance3.png", "--grid=false"});
+        ExportAsPng.main(new String[]{"diagrams_v3/private/OrderEntrance3.uxf3", "--zoom=3", "--format=png", "--output=D:\\gitrepos\\cachumber\\2023\\BET\\MM-link-ACKs-to-parent-messages/OrderEntrance3.png", "--grid=false"});
+        ExportAsPng.main(new String[]{"diagrams_v3/private/OrderEntrance3.uxf3", "--zoom=3", "--format=png", "--output=D:\\gitrepos\\diagrams/OrderEntrance3.png", "--grid=false"});
     }
 }

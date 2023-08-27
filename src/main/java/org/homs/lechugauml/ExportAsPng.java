@@ -29,7 +29,7 @@ public class ExportAsPng {
 
         GridControl.drawGrid = Boolean.parseBoolean(argsProcessor.modifiers.getOrDefault("grid", "true"));
 
-        final Diagram diagram = HoumlsFileFormatManager.loadFile(inputFileName);
+        final Diagram diagram = HoumlsFileFormatManager.loadFile_v3(inputFileName);
 
         //
         System.out.print("Exporting: " + String.join(" ", args) + "...");

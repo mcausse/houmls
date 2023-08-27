@@ -63,7 +63,7 @@ public class TurtleBox extends Box {
                 break;
                 case "color": {
                     String value = parts[p++];
-                    Color bg = PropsParser.getColorByName(value);
+                    Color bg = PropsParser.getColorByName(value, 0);
                     g2.setColor(bg);
                 }
                 break;

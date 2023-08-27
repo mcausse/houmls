@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
 
-public class ExportAsPngTest {
+class ExportAsPngTest {
 
     protected List<File> processDirectory(File folder, Predicate<String> fileNamePredicate) {
         List<File> r = new ArrayList<>();
@@ -29,7 +29,7 @@ public class ExportAsPngTest {
     @Test
     void name() throws Exception {
         new File("./png").mkdir();
-        var fs = processDirectory(new File("."), name -> name.endsWith(".houmls") || name.endsWith(".uxf"));
+        var fs = processDirectory(new File("."), name -> name.endsWith(".uxf3"));
         for (var f : fs) {
             ExportAsPng.main(new String[]{
                     f.toString(),
@@ -42,12 +42,12 @@ public class ExportAsPngTest {
 
     @Test
     void welcome() throws Exception {
-        ExportAsPng.main(new String[]{"diagrams/lechugauml-showcase.houmls", "--zoom=3", "--format=png", "--output=lechugauml-showcase.png", "--grid=false"});
+        ExportAsPng.main(new String[]{"diagrams_v3/lechugauml-showcase.uxf3", "--zoom=3", "--format=png", "--output=lechugauml-showcase.png", "--grid=false"});
     }
 
     @Test
     void houmls_white_paper() throws Exception {
-        ExportAsPng.main(new String[]{"diagrams/lechugauml-white-paper.houmls", "--output=./lechugauml-white-paper.png"});
+        ExportAsPng.main(new String[]{"diagrams_v3/lechugauml-white-paper.uxf3", "--output=./lechugauml-white-paper.png"});
     }
 
 }

@@ -66,7 +66,8 @@ public class CanvasPopupMenuBuilder {
                                 ".*C\n" +
                                 "--\n" +
                                 "--\n" +
-                                "bg=l-orange\n" +
+                                "bg=orange\n" +
+                                "lighter=2\n" +
                                 "shadow=" + DEFAULT_SHADOW_WIDTH + "\n"
                 ));
                 canvas.repaint();
@@ -82,7 +83,8 @@ public class CanvasPopupMenuBuilder {
                         GridControl.engrid(18 * GridControl.GRID_SIZE),
                         GridControl.engrid(14 * GridControl.GRID_SIZE),
                         "Note...\n" +
-                                "bg=l-yellow\n"
+                                "bg=yellow\n" +
+                                "lighter=2\n"
                 ));
                 canvas.repaint();
                 canvas.pushUndoCheckpoint();
@@ -113,7 +115,8 @@ public class CanvasPopupMenuBuilder {
                         "\n" +
                                 "\n" +
                                 ".Title\n" +
-                                "bg=l-l-l-red"
+                                "bg=red\n" +
+                                "lighter=3\n"
                 ));
                 canvas.repaint();
                 canvas.pushUndoCheckpoint();
@@ -154,7 +157,8 @@ public class CanvasPopupMenuBuilder {
                         GridControl.engrid(mousePos.getX() + 18 * GridControl.GRID_SIZE),
                         GridControl.engrid(mousePos.getY()),
                         "lt=-\n" +
-                                "bg=l-yellow"
+                                "bg=yellow\n" +
+                                "lighter=3\n"
                 );
                 bocadillo.getMiddlePoints().add(new DoublePoint(
                         GridControl.engrid(mousePos.getX() + GridControl.GRID_SIZE * 6),

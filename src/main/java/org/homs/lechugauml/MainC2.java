@@ -38,7 +38,7 @@ import static org.homs.lechugauml.LookAndFeel.yellowMartin;
  */
 public class MainC2 {
 
-    public static final String FRAME_TITLE = "Lechuga UML  0.0.3   (╯°o°）╯︵ ┻━┻  -- ";
+    public static final String FRAME_TITLE = "Lechuga UML - 0.0.3       (╯°o°）╯︵ ┻━┻  -- ";
 
     public static final String UNNAMED_FILENAME = "Unnamed";
 
@@ -119,9 +119,9 @@ public class MainC2 {
         createNewDiagramTab(currentDiagramOnChangeFileNameListener, tabbedPane);
 
         // TODO
-        loadDiagramIntoNewTab(new File("diagrams/lechugauml-showcase.houmls"), currentDiagramOnChangeFileNameListener, tabbedPane);
-        loadDiagramIntoNewTab(new File("diagrams/lechugauml-white-paper.houmls"), currentDiagramOnChangeFileNameListener, tabbedPane);
-        loadDiagramIntoNewTab(new File("diagrams/private/OrderEntrance3.houmls"), currentDiagramOnChangeFileNameListener, tabbedPane);
+        loadDiagramIntoNewTab(new File("diagrams_v3/lechugauml-showcase.uxf3"), currentDiagramOnChangeFileNameListener, tabbedPane);
+        loadDiagramIntoNewTab(new File("diagrams_v3/lechugauml-white-paper.uxf3"), currentDiagramOnChangeFileNameListener, tabbedPane);
+        loadDiagramIntoNewTab(new File("diagrams_v3/private/OrderEntrance3.uxf3"), currentDiagramOnChangeFileNameListener, tabbedPane);
     }
 
     static class DiagramTab extends JSplitPane {
@@ -204,7 +204,7 @@ public class MainC2 {
             final JButton generatePng;
             final JCheckBox turboButton;
 
-            FileNameExtensionFilter filter = new FileNameExtensionFilter("LechugaUML files (.houmls)", "houmls", "uxf");
+            FileNameExtensionFilter filter = new FileNameExtensionFilter("LechugaUML UXF files", "houmls", "uxf", "uxf2", "uxf3");
 
             newButton = buildButton("icons/page.png", "New (^N)", "^n", "Control N", KeyStroke.getKeyStroke(KeyEvent.VK_N, ActionEvent.CTRL_MASK), new AbstractAction() {
                 @Override
@@ -244,7 +244,7 @@ public class MainC2 {
                         if (returnVal == JFileChooser.APPROVE_OPTION) {
                             File file = fc.getSelectedFile();
                             try {
-                                HoumlsFileFormatManager.writeFile(canvas.getDiagram(), file.toString());
+                                HoumlsFileFormatManager.writeFile_v3(canvas.getDiagram(), file.toString());
                             } catch (Exception e2) {
                                 e2.printStackTrace();
                             }
@@ -253,7 +253,7 @@ public class MainC2 {
                         }
                     } else {
                         try {
-                            HoumlsFileFormatManager.writeFile(canvas.getDiagram(), fileName);
+                            HoumlsFileFormatManager.writeFile_v3(canvas.getDiagram(), fileName);
                         } catch (Exception e2) {
                             e2.printStackTrace();
                         }
@@ -275,7 +275,7 @@ public class MainC2 {
                             if (returnVal == JFileChooser.APPROVE_OPTION) {
                                 File file = fc.getSelectedFile();
                                 try {
-                                    HoumlsFileFormatManager.writeFile(canvas.getDiagram(), file.toString());
+                                    HoumlsFileFormatManager.writeFile_v3(canvas.getDiagram(), file.toString());
                                 } catch (Exception e2) {
                                     e2.printStackTrace();
                                 }
@@ -383,7 +383,7 @@ public class MainC2 {
         DiagramTab diagramTab = createNewDiagramTab(currentDiagramFileNameConsumer);
 
         var canvas = diagramTab.getCanvas();
-        Diagram diagram = HoumlsFileFormatManager.loadFile(file.toString());
+        Diagram diagram = HoumlsFileFormatManager.loadFile_v3(file.toString());
         canvas.setDiagram(diagram);
         currentDiagramFileNameConsumer.accept(diagramTab.getDiagramName());
 

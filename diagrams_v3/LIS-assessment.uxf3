@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="UTF-8"?><diagram program="lechuga-uml" version="0.0.3">
+    <zoom_level>10</zoom_level>
+    <help_text/>
+    <element>
+        <id>UMLState</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-580</x>
+            <y>-400</y>
+            <w>570</w>
+            <h>370</h>
+        </coordinates>
+        <panel_attributes>
+fontsize=24
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-530</x>
+            <y>-350</y>
+            <w>190</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>.*Patient
+--
+--
+
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-830</x>
+            <y>-170</y>
+            <w>190</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>.*Order
+--
+--
+Collection&lt;Test&gt; getTests()
+
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-530</x>
+            <y>-170</y>
+            <w>190</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>.*Container
+--
+--
+
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-240</x>
+            <y>-350</y>
+            <w>190</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>._&lt;&lt;interface&gt;&gt;
+.*Sample
+--
+--
+
+bg=blue
+lighter=3
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-840</x>
+            <y>20</y>
+            <w>210</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>._&lt;&lt;abstract&gt;&gt;
+.*Test
+--
+.[common properties]
+--
+acceptVisitor(TestOperation testOp)
+
+bg=red
+lighter=2
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-640</x>
+            <y>-120</y>
+            <w>110</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+</panel_attributes>
+        <additional_attributes>0;0;110;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-340</x>
+            <y>-300</y>
+            <w>100</w>
+            <h>180</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+</panel_attributes>
+        <additional_attributes>0;180;50;180;50;0;100;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-730</x>
+            <y>-80</y>
+            <w>0</w>
+            <h>100</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+m2=*</panel_attributes>
+        <additional_attributes>0;0;0;100</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-1760</x>
+            <y>-170</y>
+            <w>190</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>._&lt;&lt;interface&gt;&gt;
+.*TestOperationsFactory
+--
+--
+TestOperation[] create(Test test)
+
+bg=blue
+lighter=3
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-1760</x>
+            <y>20</y>
+            <w>190</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>.*DefaultTestOperationsFactory   
+--
+--
+
+
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-1660</x>
+            <y>-80</y>
+            <w>0</w>
+            <h>100</h>
+        </coordinates>
+        <panel_attributes>lt=.&gt;&gt;
+</panel_attributes>
+        <additional_attributes>0;100;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-1570</x>
+            <y>70</y>
+            <w>140</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=.&gt;
+&lt;&lt;instances&gt;&gt;</panel_attributes>
+        <additional_attributes>0;0;140;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-1030</x>
+            <y>210</y>
+            <w>230</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*BiochemistryTest
+--
+--
+acceptVisitor(TestOperation testOp)
+
+bg=orange
+lighter=1
+
+shadow=2
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-970</x>
+            <y>310</y>
+            <w>230</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*ImmunologyTest
+--
+--
+acceptVisitor(TestOperation testOp)
+
+bg=orange
+lighter=1
+
+shadow=2
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-930</x>
+            <y>410</y>
+            <w>250</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*MicrobiologyTest
+--
+--
+acceptVisitor(TestOperation testOp)
+
+
+bg=orange
+lighter=1
+
+shadow=2
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-870</x>
+            <y>510</y>
+            <w>240</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*HematologyTest
+--
+--
+acceptVisitor(TestOperation testOp)
+
+
+bg=orange
+lighter=1
+
+shadow=2
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-760</x>
+            <y>110</y>
+            <w>0</w>
+            <h>200</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;&gt;
+</panel_attributes>
+        <additional_attributes>0;200;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-700</x>
+            <y>110</y>
+            <w>0</w>
+            <h>300</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;&gt;
+</panel_attributes>
+        <additional_attributes>0;300;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-650</x>
+            <y>110</y>
+            <w>0</w>
+            <h>400</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;&gt;
+</panel_attributes>
+        <additional_attributes>0;400;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-820</x>
+            <y>110</y>
+            <w>0</w>
+            <h>100</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;&gt;
+</panel_attributes>
+        <additional_attributes>0;100;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-2060</x>
+            <y>-170</y>
+            <w>190</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>.*TestManager
+--
+--
+processOrder(Order order)
+
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-1870</x>
+            <y>-120</y>
+            <w>110</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+</panel_attributes>
+        <additional_attributes>0;0;110;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-1430</x>
+            <y>20</y>
+            <w>250</w>
+            <h>140</h>
+        </coordinates>
+        <panel_attributes>._&lt;&lt;interface&gt;&gt;
+.*TestOperation
+--
+--
+visitBiochemistryTest(BiochemistryTest test)
+visitImmunologyTest(ImmunologyTest test)
+visitMicrobiologyTest(MicrobiologyTest test)
+visitHematologyTest(HematologyTest test)
+
+
+bg=blue
+lighter=3
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-1570</x>
+            <y>220</y>
+            <w>190</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>.*HemoglobinTestOperation
+--
+--
+
+
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-1470</x>
+            <y>330</y>
+            <w>190</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>.*GlucoseTestOperation
+--
+--
+
+
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-1380</x>
+            <y>440</y>
+            <w>190</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>.*SodiumTestOperation
+--
+--
+
+
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-1300</x>
+            <y>160</y>
+            <w>0</w>
+            <h>170</h>
+        </coordinates>
+        <panel_attributes>lt=.&gt;&gt;
+</panel_attributes>
+        <additional_attributes>0;170;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-1400</x>
+            <y>160</y>
+            <w>0</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>lt=.&gt;&gt;
+</panel_attributes>
+        <additional_attributes>0;60;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-1210</x>
+            <y>160</y>
+            <w>0</w>
+            <h>280</h>
+        </coordinates>
+        <panel_attributes>lt=.&gt;&gt;
+</panel_attributes>
+        <additional_attributes>0;280;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLNote</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-1610</x>
+            <y>-710</y>
+            <w>780</w>
+            <h>470</h>
+        </coordinates>
+        <panel_attributes>
+A Laboratory Information System  (LIS) is a software whose responsibility is providing a set of interfaces and tools for lab technicians 
+to perform their day to day tasks in a Clinical Laboratory.
+
+Usually patients go to the hospital (or primary care center) for sample (e.g. blood) collection. The sample depending on the sample type 
+is placed in a container (e.g. a tube for blood or serum) and the container is labeled for ensuring the proper assignment to the patient. 
+Once the container with the sample arrives to the laboratory, it is registered in the LIS as an Order which contains the collection of 
+Tests (glucose, sodium, hemoglobin, etc) to be performed on a Patient’s sample (those tests were previously “ordered” by a clinician to 
+the patient). 
+
+Tests can be of different types, for instance:
+
+    - Biochemistry
+    - Immunology
+    - Microbiology
+    - Hematology
+
+A Test has a set of common properties, plus specific properties depending on the test type.
+
+Also different operations can be applied over Tests of a given Order, and the same type of operation (e.g. a calculation) can vary based 
+on the type of tests. These operations are managed by the “Test Manager Module”.
+
+Stakeholders might ask to add new types of operations to be performed over the tests of an order, so the system should be flexible to add 
+new operation types, which as said before, might differ depending on the test type.
+
+Your task is defining a refactoring strategy of the “Test Manager Module”, to ensure:
+
+    - Extensibility: New operations can be added without needing to change the core of the application. 
+      The same operation type might be different depending on the test type.
+    - Maintainability: Developers can easily add new operations to be applied over the tests of an order.
+
+bg=yellow
+lighter=3
+
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLNote</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-2230</x>
+            <y>10</y>
+            <w>410</w>
+            <h>110</h>
+        </coordinates>
+        <panel_attributes>
+`for(test : order.getTests()) {
+`   for(testOp : testOperationsFactory.create(test)) {
+`      test.acceptVisitor(testOp)
+`   }
+`}
+
+bg=yellow
+lighter=2
+
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-1893</x>
+            <y>-131</y>
+            <w>1</w>
+            <h>141</h>
+        </coordinates>
+        <panel_attributes>lt=.m
+</panel_attributes>
+        <additional_attributes>0;141;1;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-430</x>
+            <y>-260</y>
+            <w>0</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;&gt;&gt;&gt;
+m1=*</panel_attributes>
+        <additional_attributes>0;90;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLNote</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-560</x>
+            <y>520</y>
+            <w>230</w>
+            <h>50</h>
+        </coordinates>
+        <panel_attributes>
+testOp.visitHematologyTest(this);
+
+bg=yellow
+lighter=2
+
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-648</x>
+            <y>549</y>
+            <w>88</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=.m
+</panel_attributes>
+        <additional_attributes>88;0;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-1100</x>
+            <y>-170</y>
+            <w>0</w>
+            <h>710</h>
+        </coordinates>
+        <panel_attributes>lt=.
+</panel_attributes>
+        <additional_attributes>0;0;0;710</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-240</x>
+            <y>-170</y>
+            <w>190</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>.*BloodSample
+--
+--
+
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-140</x>
+            <y>-260</y>
+            <w>0</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>lt=.&gt;&gt;
+</panel_attributes>
+        <additional_attributes>0;90;0;0</additional_attributes>
+    </element>
+</diagram>

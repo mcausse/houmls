@@ -83,7 +83,7 @@ public class Box implements Shape {
         }
 
         var shadowString = props.getOrDefault("shadow", DEFAULT_SHADOW_WIDTH);
-        this.shadowColor = PropsParser.getColorByProp(props, "shadowcolor", DEFAULT_SHADOW_COLOR);
+        this.shadowColor = PropsParser.getColorByPropWithoutLighting(props, "shadowcolor", DEFAULT_SHADOW_COLOR);
         try {
             this.shadowWidth = Integer.parseInt(shadowString);
         } catch (NumberFormatException e) {

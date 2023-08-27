@@ -37,17 +37,23 @@ public class PropsParser {
         return r;
     }
 
-    public static Color getColorByProp(Map<String, String> props, String propName, Color defaultColor) {
+    public static Color getColorByPropWithoutLighting(Map<String, String> props, String propName, Color defaultColor) {
         if (!props.containsKey(propName)) {
             return defaultColor;
         }
         var propValue = props.get(propName);
-        return getColorByName(propValue);
+        return getColorByName(propValue, 0);
     }
 
     public static Color getColorByProp(Map<String, String> props, String propName, String defaultColorName) {
         var propValue = props.getOrDefault(propName, defaultColorName);
-        return getColorByName(propValue);
+        int lighterValue = 0;
+        try {
+            lighterValue = Integer.parseInt(props.getOrDefault("lighter", "0"));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return getColorByName(propValue, lighterValue);
     }
 
     public static Color getColorByProp(Map<String, String> props, String propName) {
@@ -71,33 +77,34 @@ public class PropsParser {
         int mixerg = cTo.getGreen();
         int mixerb = cTo.getBlue();
 
-        return new Color(
-                (int) (r + (mixerr - r) * factor),
-                (int) (g + (mixerg - g) * factor),
-                (int) (b + (mixerb - b) * factor)
-        );
+        return new Color((int) (r + (mixerr - r) * factor), (int) (g + (mixerg - g) * factor), (int) (b + (mixerb - b) * factor));
     }
 
-    public static Color getColorByName(String name) {
+    public static Color getColorByName(String name, int lighterValue) {
         if (name.startsWith("#")) {
             try {
                 return Color.decode(name);
             } catch (Exception e) {
+                e.printStackTrace();
                 return null;
             }
         } else {
             try {
-                int lighter = 0;
-                while (name.startsWith("l-")) {
-                    lighter++;
-                    name = name.substring("l-".length());
-                }
+
+//                // TODO migration only
+//                 lighterValue = 0;
+//                while (name.startsWith("l-")) {
+//                    lighterValue++;
+//                    name = name.substring("l-".length());
+//                }
+
                 var c = (Color) Color.class.getField(name.toUpperCase()).get(null);
-                for (int i = 0; i < lighter; i++) {
+                for (int i = 0; i < lighterValue; i++) {
                     c = lighter(c, 0.4f);
                 }
                 return c;
             } catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
+                e.printStackTrace();
                 return Color.WHITE;
             }
         }

@@ -36,7 +36,7 @@ public class Ellipse extends Box {
         try {
             Map<String, String> props = PropsParser.parseProperties(attributesText);
             this.stroke = new BasicStroke(Integer.parseInt(props.getOrDefault("strokewidth", "1")));
-            this.strokeColor = PropsParser.getColorByProp(props, "strokecolor", "black");
+            this.strokeColor = PropsParser.getColorByPropWithoutLighting(props, "strokecolor", Color.BLACK);
         } catch (Exception e) {
             e.printStackTrace();
         }
