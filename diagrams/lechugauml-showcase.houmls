@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><diagram program="lechuga-uml" version="0.0.2">
+<?xml version="1.0" encoding="UTF-8"?><diagram program="lechuga-uml" version="0.0.3">
     <zoom_level>10</zoom_level>
     <help_text>
 Lechuga UML - Powered with LechugaScript and with bocadillos
@@ -3155,5 +3155,17 @@ color=red
 this is a relation
 </panel_attributes>
         <additional_attributes>0;0;230;0</additional_attributes>
+    </element>
+    <element>
+        <id>Bocadillo</id>
+        <coordinates>
+            <x>4309</x>
+            <y>259</y>
+            <w>1</w>
+            <h>1</h>
+        </coordinates>
+        <panel_attributes>lt=-
+bg=l-yellow</panel_attributes>
+        <additional_attributes>1;1;1;81;90;80;90;100;140;40;90;-20;90;0;0;0</additional_attributes>
     </element>
 </diagram>
