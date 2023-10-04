@@ -37,7 +37,7 @@ public class HoumlsFileFormatManager {
         Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().newDocument();
 
         XmlDocumentBuilder xmlBuilder = new XmlDocumentBuilder(doc);
-        xmlBuilder.set(xmlRoot, "[@program='lechuga-uml'][@version='0.0.3']", "");
+        xmlBuilder.set(xmlRoot, "[@program='lechuga-uml'][@version='0.0.2']", "");
 
         xmlBuilder.withPrefix(xmlRoot)
                 .set("/zoom_level", "10")
@@ -144,7 +144,7 @@ public class HoumlsFileFormatManager {
                 id = "UMLClass";
                 lechugaId = "TurtleBox";
             } else if (shape.getClass() == FloatingText.class) {
-                id = "Text"; //"FloatingText";
+                id = "Text";
             } else if (shape.getClass() == LechugaScriptBox.class) {
                 id = "UMLClass";
                 lechugaId = "LechugaScriptBox";
