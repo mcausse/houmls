@@ -1,0 +1,1598 @@
+<?xml version="1.0" encoding="UTF-8"?><diagram program="lechuga-uml" version="0.0.3">
+    <zoom_level>10</zoom_level>
+    <help_text/>
+    <element>
+        <id>UMLState</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-550</x>
+            <y>910</y>
+            <w>430</w>
+            <h>170</h>
+        </coordinates>
+        <panel_attributes>
+fontsize=24
+shadow=5</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLState</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>540</x>
+            <y>490</y>
+            <w>680</w>
+            <h>270</h>
+        </coordinates>
+        <panel_attributes>
+fontsize=24
+shadow=5</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLState</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>230</x>
+            <y>-240</y>
+            <w>970</w>
+            <h>210</h>
+        </coordinates>
+        <panel_attributes>
+fontsize=24
+shadow=5</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLState</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-550</x>
+            <y>-240</y>
+            <w>600</w>
+            <h>150</h>
+        </coordinates>
+        <panel_attributes>
+fontsize=24
+shadow=5</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLState</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-550</x>
+            <y>110</y>
+            <w>930</w>
+            <h>250</h>
+        </coordinates>
+        <panel_attributes>
+fontsize=24
+shadow=5</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLState</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-550</x>
+            <y>490</y>
+            <w>1050</w>
+            <h>270</h>
+        </coordinates>
+        <panel_attributes>
+fontsize=24
+shadow=5</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-490</x>
+            <y>-190</y>
+            <w>140</w>
+            <h>50</h>
+        </coordinates>
+        <panel_attributes>
+.*Dialer
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>840</x>
+            <y>-450</y>
+            <w>910</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*UML Class Diagrams Cheatsheet
+--
+
+fontsize=44
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>840</x>
+            <y>-370</y>
+            <w>330</w>
+            <h>50</h>
+        </coordinates>
+        <panel_attributes>This content is based on the book "UML for Java Programmers - Robert Cecil Martin - 2002 by Prentice-Hall, Inc.".
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>270</x>
+            <y>-190</y>
+            <w>200</w>
+            <h>110</h>
+        </coordinates>
+        <panel_attributes>.*Dialer
+--
+- digits: List&lt;Integer&gt;
+--
+# setDigits(List&lt;Integer&gt; digit)
++ getDigits(): List&lt;Integer&gt;
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>550</x>
+            <y>-200</y>
+            <w>320</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>`public class Dialer {
+`  private List&lt;Integer&gt; digits;
+`  
+`  protected void setDigits(List&lt;Integer&gt; digits) { ... }
+`  public List&lt;Integer&gt; getDigits();
+`}
+
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-550</x>
+            <y>-330</y>
+            <w>1750</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>*Classes
+--
+fontsize=24
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-550</x>
+            <y>20</y>
+            <w>1770</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>*Associations
+--
+fontsize=24
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-490</x>
+            <y>140</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*Phone
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-210</x>
+            <y>140</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*Button
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-350</x>
+            <y>170</y>
+            <w>140</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+m2=15
+itsButtons</panel_attributes>
+        <additional_attributes>0;0;140;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-490</x>
+            <y>270</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>.*Phone
+--
+Button[] itsButtons
+--
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-210</x>
+            <y>270</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>.*Button
+--
+--
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-350</x>
+            <y>300</y>
+            <w>140</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+m2=15
+</panel_attributes>
+        <additional_attributes>0;0;140;0</additional_attributes>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-280</x>
+            <y>-190</y>
+            <w>190</w>
+            <h>50</h>
+        </coordinates>
+        <panel_attributes>`public class Dialer {
+`}
+
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>30</x>
+            <y>200</y>
+            <w>110</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>`public class Phone {
+`   Button itsButtons[15];
+`}
+
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>600</x>
+            <y>120</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*PhoneBook
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>900</x>
+            <y>280</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*PhoneNumber
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>740</x>
+            <y>290</y>
+            <w>160</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+cell</panel_attributes>
+        <additional_attributes>0;0;160;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>600</x>
+            <y>280</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>.*Contact
+--
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>670</x>
+            <y>180</y>
+            <w>0</w>
+            <h>100</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+contacts         
+
+ 
+m2=*</panel_attributes>
+        <additional_attributes>0;0;0;100</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>740</x>
+            <y>310</y>
+            <w>160</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+home</panel_attributes>
+        <additional_attributes>0;0;160;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>740</x>
+            <y>330</y>
+            <w>160</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+fax</panel_attributes>
+        <additional_attributes>0;0;160;0</additional_attributes>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-550</x>
+            <y>420</y>
+            <w>1770</w>
+            <h>50</h>
+        </coordinates>
+        <panel_attributes>*Inheritance
+--
+fontsize=24
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-520</x>
+            <y>530</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*Bird
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-520</x>
+            <y>660</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*Duck
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-450</x>
+            <y>590</y>
+            <w>0</w>
+            <h>70</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;&gt;
+</panel_attributes>
+        <additional_attributes>0;70;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-310</x>
+            <y>550</y>
+            <w>310</w>
+            <h>120</h>
+        </coordinates>
+        <panel_attributes>`public class Bird {
+`   ...
+`}
+
+`public class Duck extends Bird {
+`   ...
+`}
+
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>600</x>
+            <y>530</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*Bird
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>600</x>
+            <y>660</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*Duck
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>670</x>
+            <y>590</y>
+            <w>0</w>
+            <h>70</h>
+        </coordinates>
+        <panel_attributes>lt=.&gt;&gt;
+</panel_attributes>
+        <additional_attributes>0;70;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>820</x>
+            <y>550</y>
+            <w>310</w>
+            <h>120</h>
+        </coordinates>
+        <panel_attributes>`public interface Bird {
+`   ...
+`}
+
+`public class Duck implements Bird {
+`   ...
+`}
+
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-550</x>
+            <y>840</y>
+            <w>1770</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>*Class stereotypes
+--
+fontsize=24
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>90</x>
+            <y>550</y>
+            <w>310</w>
+            <h>120</h>
+        </coordinates>
+        <panel_attributes>`public interface Bird {
+`   ...
+`}
+
+`public interface Duck extends Bird {
+`   ...
+`}
+
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-530</x>
+            <y>950</y>
+            <w>140</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>._&lt;&lt;interface&gt;&gt;
+.*Bird
+--
+--
++ fly()
+
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-370</x>
+            <y>960</y>
+            <w>110</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>`public interface Bird {
+`   public void fly();
+`}
+
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLState</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>410</x>
+            <y>910</y>
+            <w>810</w>
+            <h>170</h>
+        </coordinates>
+        <panel_attributes>
+fontsize=24
+shadow=5</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>430</x>
+            <y>940</y>
+            <w>160</w>
+            <h>110</h>
+        </coordinates>
+        <panel_attributes>._&lt;&lt;utility&gt;&gt;
+.*MathUtils
+--
++ PI: double
+--
++ sin(double rads): double
++ cos(double rads): double
+
+
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>610</x>
+            <y>950</y>
+            <w>110</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>`public class Math {
+`  public static final double PI = 3.14159265358979323;
+`  public static double sin(double rads){...}
+`  public static double cos(double rads){...}
+`}
+
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLState</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-100</x>
+            <y>910</y>
+            <w>490</w>
+            <h>170</h>
+        </coordinates>
+        <panel_attributes>
+fontsize=24
+shadow=5</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-80</x>
+            <y>950</y>
+            <w>140</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>._&lt;&lt;abstract&gt;&gt;
+.*Bird
+--
+--
++ fly()
+
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>80</x>
+            <y>960</y>
+            <w>110</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>`public abstract class Bird {
+`   public void fly();
+`}
+
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-550</x>
+            <y>1160</y>
+            <w>870</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>*Aggregation
+--
+fontsize=24
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLState</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-550</x>
+            <y>1230</y>
+            <w>880</w>
+            <h>170</h>
+        </coordinates>
+        <panel_attributes>
+fontsize=24
+shadow=5</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-40</x>
+            <y>1280</y>
+            <w>110</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>`public class Whole {
+`  private List&lt;Part&gt; parts;
+`}
+
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-500</x>
+            <y>1280</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*Whole
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-260</x>
+            <y>1280</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*Part
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-360</x>
+            <y>1310</y>
+            <w>100</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+m2=*</panel_attributes>
+        <additional_attributes>0;0;100;0</additional_attributes>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>390</x>
+            <y>1160</y>
+            <w>830</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>*Composition
+--
+fontsize=24
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLState</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>380</x>
+            <y>1230</y>
+            <w>840</w>
+            <h>170</h>
+        </coordinates>
+        <panel_attributes>
+fontsize=24
+shadow=5</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>890</x>
+            <y>1280</y>
+            <w>110</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>`public class Whole {
+`  private List&lt;Part&gt; parts;
+`}
+
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>430</x>
+            <y>1280</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*Whole
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>670</x>
+            <y>1280</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*Part
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>570</x>
+            <y>1310</y>
+            <w>100</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;&lt;&lt;&lt;&lt;-&gt;
+m2=*</panel_attributes>
+        <additional_attributes>0;0;100;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id>LechugaScriptBox</lechuga-id>
+        <coordinates>
+            <x>1270</x>
+            <y>-330</y>
+            <w>90</w>
+            <h>1750</h>
+        </coordinates>
+        <panel_attributes>;;; 
+;;; 
+;;; ACTIVITY DIAGRAM MERGE LINE
+;;; 
+;;; 
+;
+; variables: *turtle* *graphics* box-x box-y box-width box-height box-bg-color box-font-size
+
+
+(*this* :setColor *graphics* :BLACK)
+(*this* :fillRect *graphics*
+   (+ box-x (/ box-width 2))
+   box-y
+   5
+   box-height)
+
+
+; bg=green
+paintbackground=false
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLState</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1420</x>
+            <y>-280</y>
+            <w>1130</w>
+            <h>430</h>
+        </coordinates>
+        <panel_attributes>
+fontsize=24
+shadow=5
+bg=green
+lighter=3
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1480</x>
+            <y>0</y>
+            <w>200</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>
+
+.*BinaryTreeNode
+
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1820</x>
+            <y>-230</y>
+            <w>320</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>`public class BinaryTreeNode {
+`  BinaryTreeNode leftNode;
+`  BinaryTreeNode rightNode;
+`}
+
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1590</x>
+            <y>0</y>
+            <w>90</w>
+            <h>50</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+m2=2</panel_attributes>
+        <additional_attributes>90;50;140;50;140;-40;0;-40;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1830</x>
+            <y>0</y>
+            <w>200</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>
+
+.*BinaryTreeNode
+
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1930</x>
+            <y>0</y>
+            <w>100</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+                 right
+</panel_attributes>
+        <additional_attributes>100;60;170;60;170;-60;0;-60;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1950</x>
+            <y>0</y>
+            <w>80</w>
+            <h>40</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+left   
+
+ </panel_attributes>
+        <additional_attributes>80;40;130;40;130;-40;0;-40;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLState</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1420</x>
+            <y>270</y>
+            <w>1130</w>
+            <h>580</h>
+        </coordinates>
+        <panel_attributes>
+fontsize=24
+shadow=5</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id>LechugaScriptBox</lechuga-id>
+        <coordinates>
+            <x>1510</x>
+            <y>430</y>
+            <w>960</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>;;; 
+;;; 
+;;; ACTIVITY DIAGRAM MERGE LINE
+;;; 
+;;; 
+;
+; variables: *turtle* *graphics* box-x box-y box-width box-height box-bg-color box-font-size
+
+
+(*this* :setColor *graphics* :BLACK)
+(*this* :fillRect *graphics*
+   box-x 
+   (+ box-y (/ box-height 2))
+   box-width 
+   5)
+
+
+; bg=green
+paintbackground=false
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1510</x>
+            <y>320</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*A
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1650</x>
+            <y>350</y>
+            <w>140</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=.&gt;
+&lt;&lt;creates&gt;&gt;</panel_attributes>
+        <additional_attributes>0;0;140;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1790</x>
+            <y>320</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*B
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>2100</x>
+            <y>290</y>
+            <w>320</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>`public class A {
+`  public B makeB() {
+`    return new B();
+`  }
+`}
+
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1510</x>
+            <y>520</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*A
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1650</x>
+            <y>550</y>
+            <w>140</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=.&gt;
+&lt;&lt;local&gt;&gt;</panel_attributes>
+        <additional_attributes>0;0;140;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1790</x>
+            <y>520</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*B
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>2100</x>
+            <y>490</y>
+            <w>320</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>`public class A {
+`  public void f() {
+`    B b = new B();
+`    // use b
+`  }
+`}
+
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id>LechugaScriptBox</lechuga-id>
+        <coordinates>
+            <x>1510</x>
+            <y>630</y>
+            <w>960</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>;;; 
+;;; 
+;;; ACTIVITY DIAGRAM MERGE LINE
+;;; 
+;;; 
+;
+; variables: *turtle* *graphics* box-x box-y box-width box-height box-bg-color box-font-size
+
+
+(*this* :setColor *graphics* :BLACK)
+(*this* :fillRect *graphics*
+   box-x 
+   (+ box-y (/ box-height 2))
+   box-width 
+   5)
+
+
+; bg=green
+paintbackground=false
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1510</x>
+            <y>730</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*A
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1650</x>
+            <y>760</y>
+            <w>140</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=.&gt;
+&lt;&lt;parameter&gt;&gt;</panel_attributes>
+        <additional_attributes>0;0;140;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1790</x>
+            <y>730</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*B
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>2100</x>
+            <y>700</y>
+            <w>320</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>`public class A {
+`  public void f(B b) {
+`    // use b;
+`  }
+`}
+
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1420</x>
+            <y>190</y>
+            <w>1130</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>*Association Stereotypes
+--
+fontsize=24
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1420</x>
+            <y>890</y>
+            <w>1120</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>*Inner classes
+--
+fontsize=24
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLState</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1420</x>
+            <y>980</y>
+            <w>1130</w>
+            <h>420</h>
+        </coordinates>
+        <panel_attributes>
+fontsize=24
+shadow=5</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id>LechugaScriptBox</lechuga-id>
+        <coordinates>
+            <x>1510</x>
+            <y>1150</y>
+            <w>960</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>;;; 
+;;; 
+;;; ACTIVITY DIAGRAM MERGE LINE
+;;; 
+;;; 
+;
+; variables: *turtle* *graphics* box-x box-y box-width box-height box-bg-color box-font-size
+
+
+(*this* :setColor *graphics* :BLACK)
+(*this* :fillRect *graphics*
+   box-x 
+   (+ box-y (/ box-height 2))
+   box-width 
+   5)
+
+
+; bg=green
+paintbackground=false
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1510</x>
+            <y>1030</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*A
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1650</x>
+            <y>1060</y>
+            <w>140</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=+-&gt;
+</panel_attributes>
+        <additional_attributes>0;0;140;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1790</x>
+            <y>1030</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*B
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>2020</x>
+            <y>1000</y>
+            <w>320</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>`public class A {
+`  private class B {
+`    ...
+`  }
+`  
+`  B b;
+`}
+
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Text</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>2020</x>
+            <y>1230</y>
+            <w>320</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>`public class Window {
+`  public void f() {
+`    ActionListener l = new ActionListener() {
+`      // implementation
+`    };
+`  }
+`}
+
+fontsize=18
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1790</x>
+            <y>1260</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>._&lt;&lt;anonymous&gt;&gt;
+.*ActionListener
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1650</x>
+            <y>1290</y>
+            <w>140</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=+.&gt;
+&lt;&lt;local&gt;
+</panel_attributes>
+        <additional_attributes>0;0;140;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>1510</x>
+            <y>1260</y>
+            <w>140</w>
+            <h>60</h>
+        </coordinates>
+        <panel_attributes>
+.*Window
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>2220</x>
+            <y>0</y>
+            <w>200</w>
+            <h>90</h>
+        </coordinates>
+        <panel_attributes>.*BinaryTreeNode
+--
+BinaryTreeNode left
+BinaryTreeNode right
+--
+
+bg=orange
+lighter=1
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>2330</x>
+            <y>0</y>
+            <w>90</w>
+            <h>50</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+m2=2</panel_attributes>
+        <additional_attributes>90;50;140;50;140;-40;0;-40;0;0</additional_attributes>
+    </element>
+</diagram>

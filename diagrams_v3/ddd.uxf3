@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?><diagram program="lechuga-uml" version="0.0.3">
+    <zoom_level>10</zoom_level>
+    <help_text/>
+    <element>
+        <id>UMLPackage</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-400</x>
+            <y>-510</y>
+            <w>520</w>
+            <h>160</h>
+        </coordinates>
+        <panel_attributes>domain.entity
+--
+bg=white
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-370</x>
+            <y>-460</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*Votr
+--
+--
+bg=orange
+lighter=1
+
+shadow=2
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-100</x>
+            <y>-460</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*User
+--
+--
+bg=orange
+lighter=1
+
+shadow=2
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-190</x>
+            <y>-420</y>
+            <w>90</w>
+            <h>0</h>
+        </coordinates>
+        <panel_attributes>lt=&lt;&lt;&lt;&lt;-&gt;
+m2=*</panel_attributes>
+        <additional_attributes>0;0;90;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLPackage</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-400</x>
+            <y>-130</y>
+            <w>520</w>
+            <h>160</h>
+        </coordinates>
+        <panel_attributes>domain.repository
+--
+bg=white
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-370</x>
+            <y>-80</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.&lt;&lt;interface&gt;&gt;
+.*VotrRepository
+--
+--
+bg=orange
+lighter=1
+
+shadow=2
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-100</x>
+            <y>-80</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.&lt;&lt;interface&gt;&gt;
+.*UserRepository
+--
+--
+bg=orange
+lighter=1
+
+shadow=2
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLPackage</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-400</x>
+            <y>60</y>
+            <w>520</w>
+            <h>160</h>
+        </coordinates>
+        <panel_attributes>infra.jdbcrepository
+--
+bg=white
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-370</x>
+            <y>110</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*JdbcVotrRepository
+--
+--
+bg=orange
+lighter=1
+
+shadow=2
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-100</x>
+            <y>110</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*JdbcUserRepository
+--
+--
+bg=orange
+lighter=1
+
+shadow=2
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-10</x>
+            <y>0</y>
+            <w>0</w>
+            <h>110</h>
+        </coordinates>
+        <panel_attributes>lt=.&gt;&gt;
+</panel_attributes>
+        <additional_attributes>0;110;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-280</x>
+            <y>0</y>
+            <w>0</w>
+            <h>110</h>
+        </coordinates>
+        <panel_attributes>lt=.&gt;&gt;
+</panel_attributes>
+        <additional_attributes>0;110;0;0</additional_attributes>
+    </element>
+    <element>
+        <id>UMLPackage</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-400</x>
+            <y>-320</y>
+            <w>530</w>
+            <h>160</h>
+        </coordinates>
+        <panel_attributes>domain.service
+--
+bg=white
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>UMLClass</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-230</x>
+            <y>-270</y>
+            <w>180</w>
+            <h>80</h>
+        </coordinates>
+        <panel_attributes>.*VotrService
+--
+void createVotr(Votr votr)
+Votr loadVotr(UUID votr)
+--
+bg=orange
+lighter=1
+
+shadow=2
+</panel_attributes>
+        <additional_attributes/>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-50</x>
+            <y>-230</y>
+            <w>40</w>
+            <h>150</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+</panel_attributes>
+        <additional_attributes>0;0;40;0;40;150</additional_attributes>
+    </element>
+    <element>
+        <id>Relation</id>
+        <lechuga-id/>
+        <coordinates>
+            <x>-280</x>
+            <y>-230</y>
+            <w>50</w>
+            <h>150</h>
+        </coordinates>
+        <panel_attributes>lt=-&gt;
+</panel_attributes>
+        <additional_attributes>50;0;0;0;0;150</additional_attributes>
+    </element>
+</diagram>

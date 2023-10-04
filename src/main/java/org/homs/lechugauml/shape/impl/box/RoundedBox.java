@@ -1,6 +1,7 @@
 package org.homs.lechugauml.shape.impl.box;
 
 import org.homs.lechugauml.GridControl;
+import org.homs.lechugauml.LookAndFeel;
 import org.homs.lechugauml.shape.Shape;
 
 import java.awt.*;
@@ -39,7 +40,7 @@ public class RoundedBox extends Box {
         /*
          * PINTA OMBRA
          */
-        if (this.shadowWidth > 0) {
+        if (this.shadowWidth > 0 && !LookAndFeel.turbo) {
             g2.setColor(shadowColor);
             g2.fillRoundRect(ix + this.shadowWidth, iy + this.shadowWidth, iwidth, iheight, roundedRadius, roundedRadius);
         }

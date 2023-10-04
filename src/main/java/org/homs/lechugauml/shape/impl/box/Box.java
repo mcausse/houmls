@@ -22,7 +22,7 @@ public class Box implements Shape {
 
     static final int FONT_X_CORRECTION = 5;
     static final int FONT_Y_CORRECTION = 6;
-    static final double BOX_MIN_SIZE = GridControl.GRID_SIZE * 2;
+    static final double BOX_MIN_SIZE = GridControl.GRID_SIZE * 2.0;
 
     double x;
     double y;
@@ -83,7 +83,7 @@ public class Box implements Shape {
         }
 
         var shadowString = props.getOrDefault("shadow", DEFAULT_SHADOW_WIDTH);
-        this.shadowColor = PropsParser.getColorByProp(props, "shadowcolor", DEFAULT_SHADOW_COLOR);
+        this.shadowColor = PropsParser.getColorByPropWithoutLighting(props, "shadowcolor", DEFAULT_SHADOW_COLOR);
         try {
             this.shadowWidth = Integer.parseInt(shadowString);
         } catch (NumberFormatException e) {
@@ -177,7 +177,7 @@ public class Box implements Shape {
         /*
          * PINTA OMBRA DE LA CAIXA
          */
-        if (this.shadowWidth > 0) {
+        if (this.shadowWidth > 0 && !LookAndFeel.turbo) {
             g2.setColor(shadowColor);
             if (this.shadowWidth == 1) {
                 g2.drawLine(ix + iwidth + 1, iy + 1, ix + iwidth + 1, iy + iheight + 1);
@@ -247,11 +247,11 @@ public class Box implements Shape {
 
                             // Busca els connectors linkats a aquest objecte abans de canviar de mides
                             diagram.findConnectorsBy(
-                                    c -> c.getStartPoint().linkedShape == Box.this && c.getStartPoint().posy > Box.this.height / 2)
+                                            c -> c.getStartPoint().linkedShape == Box.this && c.getStartPoint().posy > Box.this.height / 2)
                                     .forEach(c -> c.getStartPoint().posy += dy);
 
                             diagram.findConnectorsBy(
-                                    c -> c.getEndPoint().linkedShape == Box.this && c.getEndPoint().posy > Box.this.height / 2)
+                                            c -> c.getEndPoint().linkedShape == Box.this && c.getEndPoint().posy > Box.this.height / 2)
                                     .forEach(c -> c.getEndPoint().posy += dy);
 
                             Box.this.height += dy;
@@ -266,11 +266,11 @@ public class Box implements Shape {
                         Box.this.height = GridControl.engrid(Box.this.height);
 
                         diagram.findConnectorsBy(
-                                c -> c.getStartPoint().linkedShape == Box.this && c.getStartPoint().posy > Box.this.height / 2)
+                                        c -> c.getStartPoint().linkedShape == Box.this && c.getStartPoint().posy > Box.this.height / 2)
                                 .forEach(c -> c.getStartPoint().engrida());
 
                         diagram.findConnectorsBy(
-                                c -> c.getEndPoint().linkedShape == Box.this && c.getEndPoint().posy > Box.this.height / 2)
+                                        c -> c.getEndPoint().linkedShape == Box.this && c.getEndPoint().posy > Box.this.height / 2)
                                 .forEach(c -> c.getEndPoint().engrida());
                     }
                 };
@@ -303,11 +303,11 @@ public class Box implements Shape {
 
                             // Busca els connectors linkats a aquest objecte abans de canviar de mides
                             diagram.findConnectorsBy(
-                                    c -> c.getStartPoint().linkedShape == Box.this && c.getStartPoint().posx > Box.this.width / 2)
+                                            c -> c.getStartPoint().linkedShape == Box.this && c.getStartPoint().posx > Box.this.width / 2)
                                     .forEach(c -> c.getStartPoint().posx += dx);
 
                             diagram.findConnectorsBy(
-                                    c -> c.getEndPoint().linkedShape == Box.this && c.getEndPoint().posx > Box.this.width / 2)
+                                            c -> c.getEndPoint().linkedShape == Box.this && c.getEndPoint().posx > Box.this.width / 2)
                                     .forEach(c -> c.getEndPoint().posx += dx);
 
                             Box.this.width += dx;
@@ -322,11 +322,11 @@ public class Box implements Shape {
                         Box.this.height = GridControl.engrid(Box.this.height);
 
                         diagram.findConnectorsBy(
-                                c -> c.getStartPoint().linkedShape == Box.this && c.getStartPoint().posx > Box.this.width / 2)
+                                        c -> c.getStartPoint().linkedShape == Box.this && c.getStartPoint().posx > Box.this.width / 2)
                                 .forEach(c -> c.getStartPoint().engrida());
 
                         diagram.findConnectorsBy(
-                                c -> c.getEndPoint().linkedShape == Box.this && c.getEndPoint().posx > Box.this.width / 2)
+                                        c -> c.getEndPoint().linkedShape == Box.this && c.getEndPoint().posx > Box.this.width / 2)
                                 .forEach(c -> c.getEndPoint().engrida());
                     }
                 };
@@ -359,7 +359,7 @@ public class Box implements Shape {
 
                             // Busca els connectors linkats a aquest objecte abans de canviar de mides
                             diagram.findConnectorsBy(
-                                    c -> c.getStartPoint().linkedShape == Box.this)
+                                            c -> c.getStartPoint().linkedShape == Box.this)
                                     .forEach(c -> {
                                         if (c.getStartPoint().posx < Box.this.width / 2) {
                                             // ja es mou amb el posx
@@ -370,7 +370,7 @@ public class Box implements Shape {
                                     });
 
                             diagram.findConnectorsBy(
-                                    c -> c.getEndPoint().linkedShape == Box.this)
+                                            c -> c.getEndPoint().linkedShape == Box.this)
                                     .forEach(c -> {
                                         if (c.getEndPoint().posx < Box.this.width / 2) {
                                             // ja es mou amb el posx
@@ -393,11 +393,11 @@ public class Box implements Shape {
                         Box.this.height = GridControl.engrid(Box.this.height);
 
                         diagram.findConnectorsBy(
-                                c -> c.getStartPoint().linkedShape == Box.this)// && c.getStartPoint().posx < Box.this.width / 2)
+                                        c -> c.getStartPoint().linkedShape == Box.this)
                                 .forEach(c -> c.getStartPoint().engrida());
 
                         diagram.findConnectorsBy(
-                                c -> c.getEndPoint().linkedShape == Box.this)// && c.getEndPoint().posx < Box.this.width / 2)
+                                        c -> c.getEndPoint().linkedShape == Box.this)
                                 .forEach(c -> c.getEndPoint().engrida());
                     }
                 };
@@ -431,7 +431,7 @@ public class Box implements Shape {
 
                             // Busca els connectors linkats a aquest objecte abans de canviar de mides
                             diagram.findConnectorsBy(
-                                    c -> c.getStartPoint().linkedShape == Box.this)
+                                            c -> c.getStartPoint().linkedShape == Box.this)
                                     .forEach(c -> {
                                         if (c.getStartPoint().posy < Box.this.height / 2) {
                                             // ja es mou sol
@@ -441,7 +441,7 @@ public class Box implements Shape {
                                     });
 
                             diagram.findConnectorsBy(
-                                    c -> c.getEndPoint().linkedShape == Box.this)
+                                            c -> c.getEndPoint().linkedShape == Box.this)
                                     .forEach(c -> {
                                         if (c.getEndPoint().posy < Box.this.height / 2) {
                                             // ja es mou sol
@@ -463,18 +463,17 @@ public class Box implements Shape {
                         Box.this.height = GridControl.engrid(Box.this.height);
 
                         diagram.findConnectorsBy(
-                                c -> c.getStartPoint().linkedShape == Box.this)// && c.getStartPoint().posy < Box.this.height / 2)
+                                        c -> c.getStartPoint().linkedShape == Box.this)
                                 .forEach(c -> c.getStartPoint().engrida());
 
                         diagram.findConnectorsBy(
-                                c -> c.getEndPoint().linkedShape == Box.this)// && c.getEndPoint().posy < Box.this.height / 2)
+                                        c -> c.getEndPoint().linkedShape == Box.this)
                                 .forEach(c -> c.getEndPoint().engrida());
                     }
                 };
             }
         }
 
-        // if (this.x <= mousex && mousex <= this.x + this.width && this.y <= mousey && mousey <= this.y + this.height) {
         if (getRectangle().contains(mousex, mousey)) {
             return this;
         }

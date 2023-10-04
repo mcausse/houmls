@@ -8,6 +8,7 @@ Lechuga UML - Powered with LechugaScript and with bocadillos
 </help_text>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>3150</x>
             <y>-430</y>
@@ -22,6 +23,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>3810</x>
             <y>-430</y>
@@ -36,6 +38,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>4020</x>
             <y>420</y>
@@ -54,6 +57,7 @@ shadow=0</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>4030</x>
             <y>430</y>
@@ -72,6 +76,7 @@ shadow=0</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>4010</x>
             <y>410</y>
@@ -90,6 +95,7 @@ shadow=0</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>4000</x>
             <y>400</y>
@@ -108,6 +114,7 @@ shadow=0</panel_attributes>
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>710</x>
             <y>-900</y>
@@ -121,7 +128,8 @@ shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>FloatingText</id>
+        <id>Text</id>
+        <lechuga-id/>
         <coordinates>
             <x>850</x>
             <y>-1060</y>
@@ -136,6 +144,7 @@ fontsize=44
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>2490</x>
             <y>-430</y>
@@ -150,6 +159,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>1880</x>
             <y>-40</y>
@@ -164,6 +174,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>1480</x>
             <y>580</y>
@@ -178,6 +189,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>1420</x>
             <y>-430</y>
@@ -193,6 +205,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>710</x>
             <y>-430</y>
@@ -207,6 +220,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>1480</x>
             <y>-40</y>
@@ -221,6 +235,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>710</x>
             <y>90</y>
@@ -236,6 +251,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>970</x>
             <y>170</y>
@@ -254,6 +270,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>970</x>
             <y>350</y>
@@ -270,6 +287,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1060</x>
             <y>270</y>
@@ -282,6 +300,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>UMLNote</id>
+        <lechuga-id/>
         <coordinates>
             <x>740</x>
             <y>360</y>
@@ -291,11 +310,14 @@ shadow=5</panel_attributes>
         <panel_attributes>
 adaptee.specificOperation()
 
-bg=l-yellow</panel_attributes>
+bg=yellow
+lighter=1
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>920</x>
             <y>388</y>
@@ -308,6 +330,7 @@ bg=l-yellow</panel_attributes>
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>1250</x>
             <y>170</y>
@@ -324,6 +347,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1150</x>
             <y>230</y>
@@ -336,6 +360,7 @@ m2=adaptee       </panel_attributes>
     </element>
     <element>
         <id>UMLActor</id>
+        <lechuga-id/>
         <coordinates>
             <x>830</x>
             <y>180</y>
@@ -348,6 +373,7 @@ m2=adaptee       </panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>880</x>
             <y>230</y>
@@ -360,6 +386,7 @@ m2=adaptee       </panel_attributes>
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>710</x>
             <y>490</y>
@@ -374,6 +401,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>800</x>
             <y>570</y>
@@ -383,11 +411,14 @@ shadow=5</panel_attributes>
         <panel_attributes>.*Player
 --
 --
-bg=l-l-l-cyan</panel_attributes>
+bg=cyan
+lighter=3
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>1180</x>
             <y>570</y>
@@ -397,11 +428,14 @@ bg=l-l-l-cyan</panel_attributes>
         <panel_attributes>.*Map
 --
 --
-bg=l-l-l-cyan</panel_attributes>
+bg=cyan
+lighter=3
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>990</x>
             <y>660</y>
@@ -411,11 +445,14 @@ bg=l-l-l-cyan</panel_attributes>
         <panel_attributes>.*Session
 --
 --
-bg=l-l-l-cyan</panel_attributes>
+bg=cyan
+lighter=3
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>890</x>
             <y>630</y>
@@ -428,6 +465,7 @@ bg=l-l-l-cyan</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1170</x>
             <y>630</y>
@@ -440,6 +478,7 @@ bg=l-l-l-cyan</panel_attributes>
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>1520</x>
             <y>40</y>
@@ -455,6 +494,7 @@ bg=pink
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1580</x>
             <y>90</y>
@@ -467,17 +507,21 @@ bg=pink
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>1570</x>
             <y>130</y>
             <w>20</w>
             <h>290</h>
         </coordinates>
-        <panel_attributes>bg=l-orange</panel_attributes>
+        <panel_attributes>bg=orange
+lighter=1
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1580</x>
             <y>420</y>
@@ -490,6 +534,7 @@ bg=pink
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>1680</x>
             <y>40</y>
@@ -504,17 +549,21 @@ bg=pink</panel_attributes>
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>1730</x>
             <y>150</y>
             <w>20</w>
             <h>110</h>
         </coordinates>
-        <panel_attributes>bg=l-orange</panel_attributes>
+        <panel_attributes>bg=orange
+lighter=1
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1740</x>
             <y>90</y>
@@ -527,6 +576,7 @@ bg=pink</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1740</x>
             <y>260</y>
@@ -539,17 +589,21 @@ bg=pink</panel_attributes>
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>1730</x>
             <y>420</y>
             <w>20</w>
             <h>70</h>
         </coordinates>
-        <panel_attributes>bg=l-orange</panel_attributes>
+        <panel_attributes>bg=orange
+lighter=1
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1740</x>
             <y>490</y>
@@ -562,6 +616,7 @@ bg=pink</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1590</x>
             <y>150</y>
@@ -574,6 +629,7 @@ action</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1590</x>
             <y>260</y>
@@ -586,6 +642,7 @@ return</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1590</x>
             <y>330</y>
@@ -600,6 +657,7 @@ return</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1940</x>
             <y>120</y>
@@ -612,6 +670,7 @@ return</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1940</x>
             <y>150</y>
@@ -624,6 +683,7 @@ return</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1940</x>
             <y>180</y>
@@ -636,6 +696,7 @@ return</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1940</x>
             <y>210</y>
@@ -648,6 +709,7 @@ return</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1940</x>
             <y>240</y>
@@ -660,6 +722,7 @@ return</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1940</x>
             <y>270</y>
@@ -672,6 +735,7 @@ return</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1940</x>
             <y>300</y>
@@ -684,6 +748,7 @@ return</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1940</x>
             <y>330</y>
@@ -696,6 +761,7 @@ return</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1940</x>
             <y>360</y>
@@ -708,6 +774,7 @@ return</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1940</x>
             <y>390</y>
@@ -720,6 +787,7 @@ return</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1940</x>
             <y>420</y>
@@ -732,6 +800,7 @@ return</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1940</x>
             <y>450</y>
@@ -744,6 +813,7 @@ return</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1940</x>
             <y>480</y>
@@ -756,6 +826,7 @@ return</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1940</x>
             <y>510</y>
@@ -768,6 +839,7 @@ return</panel_attributes>
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>1630</x>
             <y>-320</y>
@@ -784,6 +856,7 @@ bg=#cfffcf</panel_attributes>
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>1490</x>
             <y>-180</y>
@@ -798,6 +871,7 @@ bg=#cfffcf</panel_attributes>
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>1740</x>
             <y>-180</y>
@@ -812,6 +886,7 @@ bg=#cfffcf</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1590</x>
             <y>-230</y>
@@ -824,6 +899,7 @@ bg=#cfffcf</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1780</x>
             <y>-230</y>
@@ -836,6 +912,7 @@ bg=#cfffcf</panel_attributes>
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>1890</x>
             <y>-190</y>
@@ -848,6 +925,7 @@ bg=#cfffcf</panel_attributes>
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>1630</x>
             <y>-190</y>
@@ -859,6 +937,7 @@ bg=#cfffcf</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1580</x>
             <y>-280</y>
@@ -871,6 +950,7 @@ bg=#cfffcf</panel_attributes>
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>1780</x>
             <y>-330</y>
@@ -882,6 +962,7 @@ bg=#cfffcf</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>2070</x>
             <y>30</y>
@@ -897,6 +978,7 @@ this is a relation
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>950</x>
             <y>-360</y>
@@ -906,11 +988,14 @@ this is a relation
         <panel_attributes>
 
 .edit a diagram
-bg=l-l-l-red</panel_attributes>
+bg=red
+lighter=3
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLActor</id>
+        <lechuga-id/>
         <coordinates>
             <x>740</x>
             <y>-250</y>
@@ -923,6 +1008,7 @@ bg=l-l-l-red</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>950</x>
             <y>-200</y>
@@ -932,11 +1018,14 @@ bg=l-l-l-red</panel_attributes>
         <panel_attributes>
 
 .edit a diagram
-bg=l-l-l-red</panel_attributes>
+bg=red
+lighter=3
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>950</x>
             <y>-40</y>
@@ -946,11 +1035,14 @@ bg=l-l-l-red</panel_attributes>
         <panel_attributes>
 
 .edit a diagram
-bg=l-l-l-red</panel_attributes>
+bg=red
+lighter=3
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>790</x>
             <y>-310</y>
@@ -963,6 +1055,7 @@ bg=l-l-l-red</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>790</x>
             <y>-200</y>
@@ -975,6 +1068,7 @@ bg=l-l-l-red</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>790</x>
             <y>0</y>
@@ -987,6 +1081,7 @@ bg=l-l-l-red</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1040</x>
             <y>-120</y>
@@ -1001,6 +1096,7 @@ bg=l-l-l-red</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1120</x>
             <y>-300</y>
@@ -1014,6 +1110,7 @@ bg=l-l-l-red</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>1170</x>
             <y>-290</y>
@@ -1023,11 +1120,14 @@ bg=l-l-l-red</panel_attributes>
         <panel_attributes>
 
 .edit a diagram
-bg=l-l-l-red</panel_attributes>
+bg=red
+lighter=3
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>770</x>
             <y>-170</y>
@@ -1041,6 +1141,7 @@ bg=l-l-l-red</panel_attributes>
     </element>
     <element>
         <id>UMLActor</id>
+        <lechuga-id/>
         <coordinates>
             <x>740</x>
             <y>-40</y>
@@ -1053,6 +1154,7 @@ bg=l-l-l-red</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2810</x>
             <y>-100</y>
@@ -1068,6 +1170,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2550</x>
             <y>-100</y>
@@ -1083,6 +1186,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2680</x>
             <y>-100</y>
@@ -1098,6 +1202,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2940</x>
             <y>-100</y>
@@ -1113,6 +1218,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2680</x>
             <y>110</y>
@@ -1122,12 +1228,15 @@ shadow=5</panel_attributes>
         <panel_attributes>
 .l-orange
 
-bg=l-orange
+bg=orange
+lighter=1
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2680</x>
             <y>40</y>
@@ -1137,12 +1246,15 @@ bg=l-orange
         <panel_attributes>
 .l-yellow
 
-bg=l-yellow
+bg=yellow
+lighter=1
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2680</x>
             <y>250</y>
@@ -1152,12 +1264,15 @@ bg=l-yellow
         <panel_attributes>
 .l-red
 
-bg=l-red
+bg=red
+lighter=1
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2680</x>
             <y>180</y>
@@ -1167,12 +1282,15 @@ bg=l-red
         <panel_attributes>
 .l-pink
 
-bg=l-pink
+bg=pink
+lighter=1
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2680</x>
             <y>390</y>
@@ -1182,12 +1300,15 @@ bg=l-pink
         <panel_attributes>
 .l-green
 
-bg=l-green
+bg=green
+lighter=1
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2680</x>
             <y>530</y>
@@ -1197,12 +1318,15 @@ bg=l-green
         <panel_attributes>
 .l-blue
 
-bg=l-blue
+bg=blue
+lighter=1
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2810</x>
             <y>320</y>
@@ -1212,12 +1336,15 @@ bg=l-blue
         <panel_attributes>
 .l-l-magenta
 
-bg=l-l-magenta
+bg=magenta
+lighter=2
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2680</x>
             <y>670</y>
@@ -1227,12 +1354,15 @@ bg=l-l-magenta
         <panel_attributes>
 .l-black
 
-bg=l-black
+bg=black
+lighter=1
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2680</x>
             <y>600</y>
@@ -1242,12 +1372,15 @@ bg=l-black
         <panel_attributes>
 .l-gray
 
-bg=l-gray
+bg=gray
+lighter=1
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2810</x>
             <y>250</y>
@@ -1257,12 +1390,15 @@ bg=l-gray
         <panel_attributes>
 .l-l-red
 
-bg=l-l-red
+bg=red
+lighter=2
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2810</x>
             <y>530</y>
@@ -1272,12 +1408,15 @@ bg=l-l-red
         <panel_attributes>
 .l-l-blue
 
-bg=l-l-blue
+bg=blue
+lighter=2
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2680</x>
             <y>320</y>
@@ -1287,12 +1426,15 @@ bg=l-l-blue
         <panel_attributes>
 .l-magenta
 
-bg=l-magenta
+bg=magenta
+lighter=1
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2810</x>
             <y>390</y>
@@ -1302,12 +1444,15 @@ bg=l-magenta
         <panel_attributes>
 .l-l-green
 
-bg=l-l-green
+bg=green
+lighter=2
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2550</x>
             <y>40</y>
@@ -1323,6 +1468,7 @@ bg=yellow
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2550</x>
             <y>110</y>
@@ -1338,6 +1484,7 @@ bg=orange
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2550</x>
             <y>180</y>
@@ -1353,6 +1500,7 @@ bg=pink
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2550</x>
             <y>250</y>
@@ -1368,6 +1516,7 @@ bg=red
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2550</x>
             <y>320</y>
@@ -1383,6 +1532,7 @@ bg=magenta
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2550</x>
             <y>390</y>
@@ -1398,6 +1548,7 @@ bg=green
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2550</x>
             <y>530</y>
@@ -1413,6 +1564,7 @@ bg=blue
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2550</x>
             <y>600</y>
@@ -1428,6 +1580,7 @@ bg=gray
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2550</x>
             <y>670</y>
@@ -1443,6 +1596,7 @@ bg=black
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2810</x>
             <y>600</y>
@@ -1452,12 +1606,15 @@ bg=black
         <panel_attributes>
 .l-l-gray
 
-bg=l-l-gray
+bg=gray
+lighter=2
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2810</x>
             <y>670</y>
@@ -1467,12 +1624,15 @@ bg=l-l-gray
         <panel_attributes>
 .l-l-black
 
-bg=l-l-black
+bg=black
+lighter=2
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2940</x>
             <y>670</y>
@@ -1482,12 +1642,15 @@ bg=l-l-black
         <panel_attributes>
 .l-l-l-black
 
-bg=l-l-l-black
+bg=black
+lighter=3
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2940</x>
             <y>530</y>
@@ -1497,12 +1660,15 @@ bg=l-l-l-black
         <panel_attributes>
 .l-l-l-blue
 
-bg=l-l-l-blue
+bg=blue
+lighter=3
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2940</x>
             <y>390</y>
@@ -1512,12 +1678,15 @@ bg=l-l-l-blue
         <panel_attributes>
 .l-l-l-green
 
-bg=l-l-l-green
+bg=green
+lighter=3
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2940</x>
             <y>320</y>
@@ -1527,12 +1696,15 @@ bg=l-l-l-green
         <panel_attributes>
 .l-l-l-magenta
 
-bg=l-l-l-magenta
+bg=magenta
+lighter=3
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2940</x>
             <y>250</y>
@@ -1542,12 +1714,15 @@ bg=l-l-l-magenta
         <panel_attributes>
 .l-l-l-red
 
-bg=l-l-l-red
+bg=red
+lighter=3
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2810</x>
             <y>110</y>
@@ -1557,12 +1732,15 @@ bg=l-l-l-red
         <panel_attributes>
 .l-l-orange
 
-bg=l-l-orange
+bg=orange
+lighter=2
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2810</x>
             <y>40</y>
@@ -1572,12 +1750,15 @@ bg=l-l-orange
         <panel_attributes>
 .l-l-yellow
 
-bg=l-l-yellow
+bg=yellow
+lighter=2
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2940</x>
             <y>600</y>
@@ -1587,12 +1768,15 @@ bg=l-l-yellow
         <panel_attributes>
 .l-l-l-gray
 
-bg=l-l-l-gray
+bg=gray
+lighter=3
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>TurtleBox</id>
+        <id>UMLClass</id>
+        <lechuga-id>TurtleBox</lechuga-id>
         <coordinates>
             <x>1620</x>
             <y>650</y>
@@ -1617,6 +1801,7 @@ draw</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2550</x>
             <y>460</y>
@@ -1632,6 +1817,7 @@ bg=cyan
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2680</x>
             <y>460</y>
@@ -1641,12 +1827,15 @@ bg=cyan
         <panel_attributes>
 .l-cyan
 
-bg=l-cyan
+bg=cyan
+lighter=1
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2810</x>
             <y>460</y>
@@ -1656,12 +1845,15 @@ bg=l-cyan
         <panel_attributes>
 .l-l-cyan
 
-bg=l-l-cyan
+bg=cyan
+lighter=2
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2940</x>
             <y>460</y>
@@ -1671,12 +1863,15 @@ bg=l-l-cyan
         <panel_attributes>
 .l-l-l-cyan
 
-bg=l-l-l-cyan
+bg=cyan
+lighter=3
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1590</x>
             <y>420</y>
@@ -1689,6 +1884,7 @@ action</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>2200</x>
             <y>120</y>
@@ -1701,6 +1897,7 @@ action</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>2200</x>
             <y>150</y>
@@ -1713,6 +1910,7 @@ action</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>2200</x>
             <y>180</y>
@@ -1725,6 +1923,7 @@ action</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>2200</x>
             <y>210</y>
@@ -1737,6 +1936,7 @@ action</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>2200</x>
             <y>240</y>
@@ -1749,6 +1949,7 @@ action</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>2200</x>
             <y>270</y>
@@ -1761,6 +1962,7 @@ action</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>2200</x>
             <y>300</y>
@@ -1773,6 +1975,7 @@ action</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>2200</x>
             <y>330</y>
@@ -1785,6 +1988,7 @@ action</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>2200</x>
             <y>360</y>
@@ -1797,6 +2001,7 @@ action</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>2200</x>
             <y>390</y>
@@ -1809,6 +2014,7 @@ action</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>2200</x>
             <y>420</y>
@@ -1821,6 +2027,7 @@ action</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>2200</x>
             <y>450</y>
@@ -1833,6 +2040,7 @@ action</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>2200</x>
             <y>480</y>
@@ -1845,6 +2053,7 @@ action</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>2200</x>
             <y>510</y>
@@ -1856,7 +2065,8 @@ action</panel_attributes>
         <additional_attributes>0;0;180;0</additional_attributes>
     </element>
     <element>
-        <id>FloatingText</id>
+        <id>Text</id>
+        <lechuga-id/>
         <coordinates>
             <x>850</x>
             <y>-990</y>
@@ -1871,7 +2081,8 @@ fontsize=24
         <additional_attributes/>
     </element>
     <element>
-        <id>FloatingText</id>
+        <id>Text</id>
+        <lechuga-id/>
         <coordinates>
             <x>3930</x>
             <y>-360</y>
@@ -1886,6 +2097,7 @@ paintbackground=false</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2700</x>
             <y>-310</y>
@@ -1899,6 +2111,7 @@ bg=#ffcfcf</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2770</x>
             <y>-310</y>
@@ -1912,6 +2125,7 @@ bg=#cfffcf</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2840</x>
             <y>-310</y>
@@ -1925,6 +2139,7 @@ bg=#cfcfff</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2700</x>
             <y>-250</y>
@@ -1938,6 +2153,7 @@ bg=#ffcfcf</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2770</x>
             <y>-250</y>
@@ -1951,6 +2167,7 @@ bg=#cfffcf</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>2840</x>
             <y>-250</y>
@@ -1964,6 +2181,7 @@ bg=#cfcfff</panel_attributes>
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>1880</x>
             <y>580</y>
@@ -1977,7 +2195,8 @@ shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>FloatingText</id>
+        <id>Text</id>
+        <lechuga-id/>
         <coordinates>
             <x>1880</x>
             <y>620</y>
@@ -1992,6 +2211,7 @@ fontsize=14
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>2040</x>
             <y>-430</y>
@@ -2006,6 +2226,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>1450</x>
             <y>-900</y>
@@ -2021,7 +2242,8 @@ shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>LechugaScriptBox</id>
+        <id>UMLClass</id>
+        <lechuga-id>LechugaScriptBox</lechuga-id>
         <coordinates>
             <x>1480</x>
             <y>-780</y>
@@ -2057,7 +2279,8 @@ shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>FloatingText</id>
+        <id>Text</id>
+        <lechuga-id/>
         <coordinates>
             <x>2550</x>
             <y>-740</y>
@@ -2075,7 +2298,9 @@ shadow=5</panel_attributes>
 `             (koch (/ size 3) (- n 1)))))
 
 
-bg=l-yellow
+bg=yellow
+lighter=1
+
 
 fontsize=18
 </panel_attributes>
@@ -2083,6 +2308,7 @@ fontsize=18
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>3810</x>
             <y>-50</y>
@@ -2096,7 +2322,8 @@ shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>LechugaScriptBox</id>
+        <id>UMLClass</id>
+        <lechuga-id>LechugaScriptBox</lechuga-id>
         <coordinates>
             <x>3900</x>
             <y>20</y>
@@ -2120,6 +2347,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>3150</x>
             <y>-1070</y>
@@ -2136,7 +2364,8 @@ shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>LechugaScriptBox</id>
+        <id>UMLClass</id>
+        <lechuga-id>LechugaScriptBox</lechuga-id>
         <coordinates>
             <x>3180</x>
             <y>-960</y>
@@ -2187,7 +2416,8 @@ shadow=5</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>LechugaScriptBox</id>
+        <id>UMLClass</id>
+        <lechuga-id>LechugaScriptBox</lechuga-id>
         <coordinates>
             <x>3810</x>
             <y>-950</y>
@@ -2228,6 +2458,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>4230</x>
             <y>-870</y>
@@ -2243,7 +2474,8 @@ bg=yellow
         <additional_attributes/>
     </element>
     <element>
-        <id>Bocadillo</id>
+        <id>Relation</id>
+        <lechuga-id>Bocadillo</lechuga-id>
         <coordinates>
             <x>4260</x>
             <y>-800</y>
@@ -2256,6 +2488,7 @@ bg=yellow</panel_attributes>
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>3570</x>
             <y>-950</y>
@@ -2271,7 +2504,8 @@ bg=yellow
         <additional_attributes/>
     </element>
     <element>
-        <id>Bocadillo</id>
+        <id>Relation</id>
+        <lechuga-id>Bocadillo</lechuga-id>
         <coordinates>
             <x>3600</x>
             <y>-880</y>
@@ -2283,7 +2517,8 @@ bg=yellow</panel_attributes>
         <additional_attributes>0;0;-30;50;50;0</additional_attributes>
     </element>
     <element>
-        <id>LechugaScriptBox</id>
+        <id>UMLClass</id>
+        <lechuga-id>LechugaScriptBox</lechuga-id>
         <coordinates>
             <x>4000</x>
             <y>170</y>
@@ -2329,7 +2564,8 @@ paintbackground=false</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>ImageBox</id>
+        <id>UMLClass</id>
+        <lechuga-id>ImageBox</lechuga-id>
         <coordinates>
             <x>2260</x>
             <y>-360</y>
@@ -2341,7 +2577,8 @@ paintbackground=false</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>ImageBox</id>
+        <id>UMLClass</id>
+        <lechuga-id>ImageBox</lechuga-id>
         <coordinates>
             <x>2080</x>
             <y>-380</y>
@@ -2354,6 +2591,7 @@ paintbackground=false</panel_attributes>
     </element>
     <element>
         <id>UMLPackage</id>
+        <lechuga-id/>
         <coordinates>
             <x>980</x>
             <y>-790</y>
@@ -2362,12 +2600,15 @@ paintbackground=false</panel_attributes>
         </coordinates>
         <panel_attributes>Track Order
 --
-bg=l-orange
+bg=orange
+lighter=1
+
 shadow=3</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLPackage</id>
+        <lechuga-id/>
         <coordinates>
             <x>860</x>
             <y>-620</y>
@@ -2376,12 +2617,15 @@ shadow=3</panel_attributes>
         </coordinates>
         <panel_attributes>Order Processing
 --
-bg=l-orange
+bg=orange
+lighter=1
+
 shadow=3</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>UMLPackage</id>
+        <lechuga-id/>
         <coordinates>
             <x>1100</x>
             <y>-620</y>
@@ -2390,12 +2634,15 @@ shadow=3</panel_attributes>
         </coordinates>
         <panel_attributes>Shipping
 --
-bg=l-orange
+bg=orange
+lighter=1
+
 shadow=3</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1130</x>
             <y>-710</y>
@@ -2409,6 +2656,7 @@ shadow=3</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>1000</x>
             <y>-710</y>
@@ -2422,6 +2670,7 @@ shadow=3</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>910</x>
             <y>-750</y>
@@ -2435,6 +2684,7 @@ shadow=3</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>4040</x>
             <y>440</y>
@@ -2452,7 +2702,8 @@ shadow=0</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>LechugaScriptBox</id>
+        <id>UMLClass</id>
+        <lechuga-id>LechugaScriptBox</lechuga-id>
         <coordinates>
             <x>2000</x>
             <y>660</y>
@@ -2500,7 +2751,8 @@ shadow=0</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>FloatingText</id>
+        <id>Text</id>
+        <lechuga-id/>
         <coordinates>
             <x>2890</x>
             <y>-1000</y>
@@ -2516,6 +2768,7 @@ bg=GREEN
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>2900</x>
             <y>-990</y>
@@ -2532,7 +2785,8 @@ fontsize=6</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>FloatingText</id>
+        <id>Text</id>
+        <lechuga-id/>
         <coordinates>
             <x>2970</x>
             <y>-1000</y>
@@ -2548,6 +2802,7 @@ bg=GREEN
     </element>
     <element>
         <id>UMLPackage</id>
+        <lechuga-id/>
         <coordinates>
             <x>2980</x>
             <y>-990</y>
@@ -2563,7 +2818,8 @@ shadowcolor=black</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>FloatingText</id>
+        <id>Text</id>
+        <lechuga-id/>
         <coordinates>
             <x>770</x>
             <y>-1030</y>
@@ -2579,6 +2835,7 @@ bg=GREEN
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>780</x>
             <y>-1020</y>
@@ -2595,7 +2852,8 @@ fontsize=6</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>ImageBox</id>
+        <id>UMLClass</id>
+        <lechuga-id>ImageBox</lechuga-id>
         <coordinates>
             <x>2810</x>
             <y>-1000</y>
@@ -2611,6 +2869,7 @@ bg=green
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>3350</x>
             <y>-220</y>
@@ -2620,12 +2879,15 @@ bg=green
         <panel_attributes>
 .Open email
 
-bg=l-l-l-magenta
+bg=magenta
+lighter=3
+
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>LechugaScriptBox</id>
+        <id>UMLClass</id>
+        <lechuga-id>LechugaScriptBox</lechuga-id>
         <coordinates>
             <x>3380</x>
             <y>-120</y>
@@ -2660,11 +2922,14 @@ bg=l-l-l-magenta
 )
 
 paintbackground=false
-bg=l-yellow</panel_attributes>
+bg=yellow
+lighter=1
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>3420</x>
             <y>-170</y>
@@ -2677,6 +2942,7 @@ bg=l-yellow</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>3460</x>
             <y>-80</y>
@@ -2689,6 +2955,7 @@ bg=l-yellow</panel_attributes>
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>3490</x>
             <y>0</y>
@@ -2699,11 +2966,14 @@ bg=l-yellow</panel_attributes>
 .Delete email
 
 
-bg=l-l-l-magenta</panel_attributes>
+bg=magenta
+lighter=3
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>3280</x>
             <y>-80</y>
@@ -2716,6 +2986,7 @@ bg=l-l-l-magenta</panel_attributes>
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>3210</x>
             <y>0</y>
@@ -2725,11 +2996,14 @@ bg=l-l-l-magenta</panel_attributes>
         <panel_attributes>
 .Read email
 
-bg=l-l-l-magenta</panel_attributes>
+bg=magenta
+lighter=3
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>LechugaScriptBox</id>
+        <id>UMLClass</id>
+        <lechuga-id>LechugaScriptBox</lechuga-id>
         <coordinates>
             <x>3260</x>
             <y>110</y>
@@ -2760,6 +3034,7 @@ paintbackground=false
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>3280</x>
             <y>50</y>
@@ -2772,6 +3047,7 @@ paintbackground=false
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>3560</x>
             <y>50</y>
@@ -2783,7 +3059,8 @@ paintbackground=false
         <additional_attributes>0;0;0;90</additional_attributes>
     </element>
     <element>
-        <id>LechugaScriptBox</id>
+        <id>UMLClass</id>
+        <lechuga-id>LechugaScriptBox</lechuga-id>
         <coordinates>
             <x>3380</x>
             <y>190</y>
@@ -2828,11 +3105,14 @@ paintbackground=false
 )
 
 paintbackground=false
-bg=l-yellow</panel_attributes>
+bg=yellow
+lighter=1
+</panel_attributes>
         <additional_attributes/>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>3420</x>
             <y>140</y>
@@ -2845,6 +3125,7 @@ bg=l-yellow</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>3420</x>
             <y>270</y>
@@ -2857,6 +3138,7 @@ bg=l-yellow</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>3460</x>
             <y>-190</y>
@@ -2869,6 +3151,7 @@ m1=                                               [there are more pending emails
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>3400</x>
             <y>330</y>
@@ -2884,6 +3167,7 @@ strokewidth=5</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>3410</x>
             <y>340</y>
@@ -2897,6 +3181,7 @@ shadow=0</panel_attributes>
     </element>
     <element>
         <id>UMLUseCase</id>
+        <lechuga-id/>
         <coordinates>
             <x>3400</x>
             <y>-330</y>
@@ -2909,6 +3194,7 @@ bg=black</panel_attributes>
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>3420</x>
             <y>-290</y>
@@ -2921,6 +3207,7 @@ bg=black</panel_attributes>
     </element>
     <element>
         <id>UMLState</id>
+        <lechuga-id/>
         <coordinates>
             <x>3150</x>
             <y>490</y>
@@ -2935,6 +3222,7 @@ shadow=5</panel_attributes>
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>3200</x>
             <y>600</y>
@@ -2944,13 +3232,16 @@ shadow=5</panel_attributes>
         <panel_attributes>
 
 *   AccountManagement
-bg=l-orange
+bg=orange
+lighter=1
+
 shadow=2
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>LechugaScriptBox</id>
+        <id>UMLClass</id>
+        <lechuga-id>LechugaScriptBox</lechuga-id>
         <coordinates>
             <x>3350</x>
             <y>610</y>
@@ -2959,7 +3250,9 @@ shadow=2
         </coordinates>
         <panel_attributes>
 
-bg=l-orange
+bg=orange
+lighter=1
+
 
 (def main-box-division (/ box-width 4))
 
@@ -2996,6 +3289,7 @@ bg=l-orange
     </element>
     <element>
         <id>UMLClass</id>
+        <lechuga-id/>
         <coordinates>
             <x>3540</x>
             <y>600</y>
@@ -3005,13 +3299,16 @@ bg=l-orange
         <panel_attributes>
 
 *    CreditChecker
-bg=l-orange
+bg=orange
+lighter=1
+
 shadow=2
 </panel_attributes>
         <additional_attributes/>
     </element>
     <element>
-        <id>LechugaScriptBox</id>
+        <id>UMLClass</id>
+        <lechuga-id>LechugaScriptBox</lechuga-id>
         <coordinates>
             <x>3690</x>
             <y>610</y>
@@ -3020,7 +3317,9 @@ shadow=2
         </coordinates>
         <panel_attributes>
 
-bg=l-orange
+bg=orange
+lighter=1
+
 
 (def main-box-division (/ box-width 4))
 
@@ -3057,6 +3356,7 @@ bg=l-orange
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>3380</x>
             <y>640</y>
@@ -3069,6 +3369,7 @@ bg=l-orange
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>3460</x>
             <y>640</y>
@@ -3080,7 +3381,8 @@ bg=l-orange
         <additional_attributes>0;0;80;0</additional_attributes>
     </element>
     <element>
-        <id>LechugaScriptBox</id>
+        <id>UMLClass</id>
+        <lechuga-id>LechugaScriptBox</lechuga-id>
         <coordinates>
             <x>4290</x>
             <y>400</y>
@@ -3110,7 +3412,8 @@ paintbackground=false
         <additional_attributes/>
     </element>
     <element>
-        <id>LechugaScriptBox</id>
+        <id>UMLClass</id>
+        <lechuga-id>LechugaScriptBox</lechuga-id>
         <coordinates>
             <x>3930</x>
             <y>550</y>
@@ -3141,6 +3444,7 @@ paintbackground=false
     </element>
     <element>
         <id>Relation</id>
+        <lechuga-id/>
         <coordinates>
             <x>2070</x>
             <y>80</y>
@@ -3157,7 +3461,8 @@ this is a relation
         <additional_attributes>0;0;230;0</additional_attributes>
     </element>
     <element>
-        <id>Bocadillo</id>
+        <id>Relation</id>
+        <lechuga-id>Bocadillo</lechuga-id>
         <coordinates>
             <x>4309</x>
             <y>259</y>
@@ -3165,7 +3470,9 @@ this is a relation
             <h>1</h>
         </coordinates>
         <panel_attributes>lt=-
-bg=l-yellow</panel_attributes>
+bg=yellow
+lighter=1
+</panel_attributes>
         <additional_attributes>1;1;1;81;90;80;90;100;140;40;90;-20;90;0;0;0</additional_attributes>
     </element>
 </diagram>

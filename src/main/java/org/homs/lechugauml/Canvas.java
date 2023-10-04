@@ -283,7 +283,7 @@ public class Canvas extends JPanel {
 
     class OffsetAndZoomListener extends KeyAdapter implements MouseWheelListener {
 
-        static final int MOUSE_WHEEL_ROTATION_PX_AMOUNT = 75;
+        static final int MOUSE_WHEEL_ROTATION_PX_AMOUNT = 125;
         static final double MOUSE_WHEEL_ROTATION_ZOOM_FACTOR = 0.20;
 
         boolean controlPressed = false;

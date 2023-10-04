@@ -1,5 +1,6 @@
 package org.homs.lechugauml.shape.impl.connector;
 
+import org.homs.lechugauml.LookAndFeel;
 import org.homs.lechugauml.PropsParser;
 import org.homs.lechugauml.shape.Shape;
 
@@ -18,7 +19,7 @@ public class BocadilloConnector extends Connector {
 
     public BocadilloConnector(double startx, double starty, double endx, double endy, String attributes) {
         super(startx, starty, endx, endy, attributes);
-        setAttributesText(attributesText);
+        setAttributesText(getAttributesText());
     }
 
     @Override
@@ -53,7 +54,7 @@ public class BocadilloConnector extends Connector {
     @Override
     public void draw(Graphics g) {
 
-        ((Graphics2D) g).setStroke(this.stroke);
+        ((Graphics2D) g).setStroke(LookAndFeel.basicStroke);
 
         List<Point> listOfAbsolutePoints = getListOfAbsolutePoints();
         int[] xs = new int[listOfAbsolutePoints.size()];

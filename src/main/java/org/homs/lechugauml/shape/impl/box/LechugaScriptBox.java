@@ -96,7 +96,7 @@ public class LechugaScriptBox extends Box {
     }
 
     public void setColor(Graphics g, String c) {
-        g.setColor(PropsParser.getColorByName(c));
+        g.setColor(PropsParser.getColorByName(c, 0));
     }
 
     public void fillRect(Graphics g, int x, int y, int w, int h) {

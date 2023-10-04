@@ -1,5 +1,6 @@
 package org.homs.lechugauml.shape.impl.box;
 
+import org.homs.lechugauml.LookAndFeel;
 import org.homs.lechugauml.PropsParser;
 import org.homs.lechugauml.shape.Shape;
 
@@ -35,7 +36,7 @@ public class Ellipse extends Box {
         try {
             Map<String, String> props = PropsParser.parseProperties(attributesText);
             this.stroke = new BasicStroke(Integer.parseInt(props.getOrDefault("strokewidth", "1")));
-            this.strokeColor = PropsParser.getColorByProp(props, "strokecolor", "black");
+            this.strokeColor = PropsParser.getColorByPropWithoutLighting(props, "strokecolor", Color.BLACK);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -53,7 +54,7 @@ public class Ellipse extends Box {
         /*
          * PINTA OMBRA
          */
-        if (this.shadowWidth > 0) {
+        if (this.shadowWidth > 0 && !LookAndFeel.turbo) {
             g2.setColor(shadowColor);
             g2.fillOval(ix + this.shadowWidth, iy + this.shadowWidth, iwidth, iheight);
         }
